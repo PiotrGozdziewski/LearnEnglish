@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_zestaw"
+            android:icon="@drawable/ic_action_name_zadania"
+            android:title="Nowy zestaw" />
+        <item
+            android:id="@+id/nav_kategorie"
+            android:icon="@drawable/ic_action_name_lista"
+            android:title="Kategorie" />
+        <item
+            android:id="@+id/nav_stat"
+            android:icon="@drawable/ic_action_name_stat"
+            android:title="Statystyki" />
+        <item
+            android:id="@+id/nav_ustawienia"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Ustawienia" />
+
+        <item
+            android:id="@+id/nav_profil"
+            android:icon="@drawable/ic_action_name_profil"
+            android:title="Mój profil" />
+
+
+        <item
+            android:id="@+id/nav_wyloguj"
+            android:icon="@drawable/ic_action_name_logout"
+            android:title="Wyloguj" />
+
+    </group>
+
+
+
+</menu>

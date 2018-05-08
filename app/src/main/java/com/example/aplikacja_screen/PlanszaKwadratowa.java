@@ -1,4 +1,4 @@
-package com.example.m.aplikacja_screen;
+package com.example.aplikacja_screen;
 
 import android.graphics.Color;
 import android.os.Handler;
@@ -10,6 +10,8 @@ import java.lang.*;
 import java.util.concurrent.TimeUnit;
 
 import android.widget.Toast;
+
+import com.example.m.aplikacja_screen.R;
 
 public class PlanszaKwadratowa extends AppCompatActivity {
 

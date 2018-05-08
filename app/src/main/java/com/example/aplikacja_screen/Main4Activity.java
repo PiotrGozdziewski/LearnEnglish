@@ -1,17 +1,14 @@
-package com.example.m.aplikacja_screen;
+package com.example.aplikacja_screen;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
 
+import com.example.m.aplikacja_screen.R;
+
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class Main4Activity extends AppCompatActivity {
 

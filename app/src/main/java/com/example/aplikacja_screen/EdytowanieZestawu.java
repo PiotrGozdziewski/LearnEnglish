@@ -1,4 +1,4 @@
-package com.example.m.aplikacja_screen;
+package com.example.aplikacja_screen;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,14 +8,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CheckedTextView;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.m.aplikacja_screen.R;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class EdytowanieZestawu extends AppCompatActivity {
 

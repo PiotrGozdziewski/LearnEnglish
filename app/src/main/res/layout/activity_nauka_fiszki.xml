@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.m.aplikacja_screen.Nauka_fiszki">
+    tools:context="com.example.m.aplikacja_screen.com.example.aplikacja_screen.Nauka_fiszki">
 
     <Button
         android:id="@+id/button7"

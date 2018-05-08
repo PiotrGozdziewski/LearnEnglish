@@ -1,4 +1,4 @@
-package com.example.m.aplikacja_screen;
+package com.example.aplikacja_screen;
 
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -8,6 +8,8 @@ import android.view.Gravity;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+
+import com.example.m.aplikacja_screen.R;
 
 public class Statystyka extends AppCompatActivity {
 

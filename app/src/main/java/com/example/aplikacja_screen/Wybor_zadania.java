@@ -1,4 +1,4 @@
-package com.example.m.aplikacja_screen;
+package com.example.aplikacja_screen;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +9,8 @@ import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.m.aplikacja_screen.R;
 
 public class Wybor_zadania extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.example.m.aplikacja_screen;
+package com.example.aplikacja_screen;
 
 /**
  * Created by Piotr on 09.04.2018.

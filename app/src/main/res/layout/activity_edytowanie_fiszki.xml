@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.m.aplikacja_screen.EdytowanieFiszki">
+    tools:context="com.example.m.aplikacja_screen.com.example.aplikacja_screen.EdytowanieFiszki">
 
     <EditText
         android:id="@+id/textView19"

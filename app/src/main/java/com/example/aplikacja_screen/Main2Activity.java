@@ -1,4 +1,4 @@
-package com.example.m.aplikacja_screen;
+package com.example.aplikacja_screen;
 
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
@@ -17,15 +17,13 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
-import android.text.style.UnderlineSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.ScaleAnimation;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
+import com.example.m.aplikacja_screen.R;
 
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.m.aplikacja_screen.Moj_profil">
+    tools:context="com.example.m.aplikacja_screen.com.example.aplikacja_screen.Moj_profil">
 
     <TabHost
         android:id="@+id/tabHost"

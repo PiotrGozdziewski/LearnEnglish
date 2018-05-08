@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.m.aplikacja_screen.NoweHaslo">
+    tools:context="com.example.m.aplikacja_screen.com.example.aplikacja_screen.NoweHaslo">
 
     <TextView
         android:id="@+id/textView14"

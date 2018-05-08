@@ -1,4 +1,4 @@
-package com.example.m.aplikacja_screen;
+package com.example.aplikacja_screen;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -12,8 +12,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.example.m.aplikacja_screen.R;
 
 public class Main3Activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 

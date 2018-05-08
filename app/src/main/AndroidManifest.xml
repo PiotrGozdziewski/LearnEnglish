@@ -7,6 +7,9 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	
     <!-- pozwolenie na korzystanie z Internetu -->
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -18,7 +21,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.example.aplikacja_screen.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="com.package.name.MyActivity" />
@@ -27,34 +30,34 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Main2Activity"
+            android:name="com.example.aplikacja_screen.Main2Activity"
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme" />
-        <activity android:name=".Main3Activity" />
-        <activity android:name=".Wybor_kategorii" />
-        <activity android:name=".Tworzenie_zestawu" />
-        <activity android:name=".Moje_zestawy" />
-        <activity android:name=".Wybor_zadania" />
-        <activity android:name=".Zapomniane_haslo" />
-        <activity android:name=".NoweHaslo" />
-        <activity android:name=".Dodanie_fiszki" />
-        <activity android:name=".Nauka_fiszki" />
-        <activity android:name=".Moj_profil" />
-        <activity android:name=".Statystyka" />
-        <activity android:name=".EdytowanieZestawu" />
-        <activity android:name=".EdytowanieFiszki" />
-        <activity android:name=".UsuwanieFiszek" />
-        <activity android:name=".Dopasowanie">
+        <activity android:name="com.example.aplikacja_screen.Main3Activity" />
+        <activity android:name="com.example.aplikacja_screen.Wybor_kategorii" />
+        <activity android:name="com.example.aplikacja_screen.Tworzenie_zestawu" />
+        <activity android:name="com.example.aplikacja_screen.Moje_zestawy" />
+        <activity android:name="com.example.aplikacja_screen.Wybor_zadania" />
+        <activity android:name="com.example.aplikacja_screen.Zapomniane_haslo" />
+        <activity android:name="com.example.aplikacja_screen.NoweHaslo" />
+        <activity android:name="com.example.aplikacja_screen.Dodanie_fiszki" />
+        <activity android:name="com.example.aplikacja_screen.Nauka_fiszki" />
+        <activity android:name="com.example.aplikacja_screen.Moj_profil" />
+        <activity android:name="com.example.aplikacja_screen.Statystyka" />
+        <activity android:name="com.example.aplikacja_screen.EdytowanieZestawu" />
+        <activity android:name="com.example.aplikacja_screen.EdytowanieFiszki" />
+        <activity android:name="com.example.aplikacja_screen.UsuwanieFiszek" />
+        <activity android:name="com.example.aplikacja_screen.Dopasowanie">
         </activity>
-        <activity android:name=".Wybor">
+        <activity android:name="com.example.aplikacja_screen.Wybor">
         </activity>
-        <activity android:name=".Tlumaczenie">
+        <activity android:name="com.example.aplikacja_screen.Tlumaczenie">
         </activity>
-        <activity android:name=".Laczenie">
+        <activity android:name="com.example.aplikacja_screen.Laczenie">
         </activity>
-        <activity android:name=".Uzupelnianie">
+        <activity android:name="com.example.aplikacja_screen.Uzupelnianie">
         </activity>
-        <activity android:name=".PlanszaKwadratowa">
+        <activity android:name="com.example.aplikacja_screen.PlanszaKwadratowa">
         </activity>
     </application>
 

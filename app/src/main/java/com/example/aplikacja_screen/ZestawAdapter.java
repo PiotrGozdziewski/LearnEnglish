@@ -1,9 +1,8 @@
-package com.example.m.aplikacja_screen;
+package com.example.aplikacja_screen;
 
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.m.aplikacja_screen.R;
 
 import java.util.List;
 

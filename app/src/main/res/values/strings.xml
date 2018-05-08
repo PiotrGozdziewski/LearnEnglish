@@ -19,12 +19,13 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_main2"></string>
     <string name="spinner_prompt">Pytanie-podpowiedz</string>
     <string-array name="pytania">
         <item>Pytanie 1</item>
         <item>Pytanie 2</item>
         <item>Pytanie 3</item>
     </string-array>
+    <string name="title_activity_zestaw">Zestaw</string>
 
 </resources>

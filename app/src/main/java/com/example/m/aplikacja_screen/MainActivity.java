@@ -36,12 +36,16 @@ public class MainActivity extends AppCompatActivity {
         zaloguj.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                     Toast.makeText(getApplicationContext(), "Poprawnie zalogowano.", Toast.LENGTH_LONG).show();
+
+                 String l=login.getText().toString();
+                 //Toast.makeText(getApplicationContext(), l, Toast.LENGTH_LONG).show();
                      login.setText("");
                      haslo.setText("");
 
+                     Intent intent=new Intent(MainActivity.this,Main2Activity.class);
+                     intent.putExtra("keyName",l);
                      //przejscie do kolejnego ekranu
-                     startActivity(new Intent(MainActivity.this, Main2Activity.class));
+                     startActivity(intent);
 
              }}
         );
@@ -55,15 +59,13 @@ public class MainActivity extends AppCompatActivity {
 
         String x="login użytkownika";
         zapomniane_hasło=(TextView)findViewById(R.id.textView5);
+        zapomniane_hasło.setText("Zapomniałeś hasła ?");
       //  zapomniane_hasło.setMovementMethod(LinkMovementMethod.getInstance());
-        zapomniane_hasło.setText(Html.fromHtml("<a href=\"mailto:administrator@x.com?&amp;subject=Zapomniane%20hasło\n" +
-                "&amp;body=Login: "+x+"\">Zapomniałeś hasła?</a>"));
-        zapomniane_hasło.setMovementMethod(LinkMovementMethod.getInstance());
 
         zapomniane_hasło.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(MainActivity.this,Zapomniane_haslo.class));
             }
         });
 

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.m.aplikacja_screen.Dopasowanie">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/imageView6"
+        android:layout_marginStart="33dp"
+        app:srcCompat="@android:color/holo_green_light" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/imageView7"
+        android:layout_marginEnd="30dp"
+        app:srcCompat="@android:color/holo_blue_bright" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignStart="@+id/imageView4"
+        android:layout_marginTop="28dp"
+        app:srcCompat="@android:color/holo_red_dark" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignStart="@+id/imageView2"
+        android:layout_below="@+id/imageView6"
+        android:layout_marginTop="65dp"
+        app:srcCompat="@android:color/holo_orange_light" />
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/imageView2"
+        android:layout_below="@+id/imageView2"
+        android:popupBackground="#e1cee4"
+        android:spinnerMode="dialog"
+        android:layout_marginTop="19dp" />
+
+    <Spinner
+        android:id="@+id/spinner4"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/imageView7"
+        android:layout_below="@+id/imageView4"
+        android:popupBackground="#e1cee4"
+        android:layout_marginTop="32dp" />
+
+    <Spinner
+        android:id="@+id/spinner5"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/imageView4"
+        android:popupBackground="#e1cee4"
+        android:layout_alignTop="@+id/spinner4" />
+
+    <Spinner
+        android:id="@+id/spinner3"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/imageView6"
+        android:popupBackground="#e1cee4"
+        android:layout_alignTop="@+id/spinner2" />
+
+    <Button
+        android:id="@+id/button32"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button33"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:text="Sprawdź" />
+
+    <Button
+        android:id="@+id/button33"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/button32"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="47dp"
+        android:text="Dalej" />
+
+</RelativeLayout>

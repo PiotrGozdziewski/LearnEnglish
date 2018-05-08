@@ -29,11 +29,32 @@
         <activity
             android:name=".Main2Activity"
             android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Main3Activity" />
+        <activity android:name=".Wybor_kategorii" />
+        <activity android:name=".Tworzenie_zestawu" />
+        <activity android:name=".Moje_zestawy" />
+        <activity android:name=".Wybor_zadania" />
+        <activity android:name=".Zapomniane_haslo" />
+        <activity android:name=".NoweHaslo" />
+        <activity android:name=".Dodanie_fiszki" />
+        <activity android:name=".Nauka_fiszki" />
+        <activity android:name=".Moj_profil" />
+        <activity android:name=".Statystyka" />
+        <activity android:name=".EdytowanieZestawu" />
+        <activity android:name=".EdytowanieFiszki" />
+        <activity android:name=".UsuwanieFiszek" />
+        <activity android:name=".Dopasowanie">
         </activity>
-        <activity android:name=".Main3Activity">
+        <activity android:name=".Wybor">
         </activity>
-        <activity android:name=".Main4Activity">
+        <activity android:name=".Tlumaczenie">
+        </activity>
+        <activity android:name=".Laczenie">
+        </activity>
+        <activity android:name=".Uzupelnianie">
+        </activity>
+        <activity android:name=".PlanszaKwadratowa">
         </activity>
     </application>
 

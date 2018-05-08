@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient"
+    android:background="@drawable/tlo"
     tools:context="com.example.m.aplikacja_screen.MainActivity">
 
 
@@ -18,7 +18,7 @@
         android:adjustViewBounds="true"
         android:cropToPadding="false"
         android:scaleType="centerCrop"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:srcCompat="@drawable/pnglogico"
         android:layout_alignStart="@+id/editText6" />
 
@@ -32,7 +32,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="Login"
-        android:textColorHint="#dce0e5"
+        android:textColorHint="#e9ece9"
         android:contextClickable="true"
         android:textSize="16dp"
         android:layout_centerHorizontal="true"
@@ -57,7 +57,7 @@
     <android.support.v7.widget.CardView
         android:layout_width="300dp"
         android:layout_height="50dp"
-        app:cardBackgroundColor="#e6d2f4"
+        app:cardBackgroundColor="#d4f5da"
         app:cardCornerRadius="25dp"
         android:layout_marginTop="53dp"
         android:layout_below="@+id/editText7"
@@ -83,7 +83,7 @@
     <android.support.v7.widget.CardView
         android:layout_width="300dp"
         android:layout_height="50dp"
-        app:cardBackgroundColor="#e6d2f4"
+        app:cardBackgroundColor="#d4f5da"
         app:cardCornerRadius="25dp"
         android:layout_marginTop="133dp"
         android:layout_below="@+id/editText7"
@@ -111,6 +111,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/cardView2"
+        android:textColor="#dce0e5"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="29dp"
         android:textColorLink="#efe1e1"

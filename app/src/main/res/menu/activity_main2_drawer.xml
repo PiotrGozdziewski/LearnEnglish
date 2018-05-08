@@ -7,7 +7,7 @@
         <item
             android:id="@+id/nav_zestaw"
             android:icon="@drawable/ic_action_name_zadania"
-            android:title="Nowy zestaw" />
+            android:title="Moje zestawy" />
         <item
             android:id="@+id/nav_kategorie"
             android:icon="@drawable/ic_action_name_lista"
@@ -16,10 +16,6 @@
             android:id="@+id/nav_stat"
             android:icon="@drawable/ic_action_name_stat"
             android:title="Statystyki" />
-        <item
-            android:id="@+id/nav_ustawienia"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Ustawienia" />
 
         <item
             android:id="@+id/nav_profil"

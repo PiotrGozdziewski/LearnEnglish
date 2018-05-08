@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.m.aplikacja_screen.Moj_profil">
+
+    <TabHost
+        android:id="@+id/tabHost"
+        android:layout_width="400dip"
+        android:layout_height="600dip"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/tab1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/textView15"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginLeft="15dp"
+                        android:inputType="textPersonName"
+                        android:hint="Wprowadź nowy login" />
+
+                    <Button
+                        android:id="@+id/button8"
+                        android:layout_width="270dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_height="wrap_content"
+                        android:text="Zmień login" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tab2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/textView16"
+                        android:layout_width="310dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@+id/textView15"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="30dp"
+                        android:inputType="textPassword"
+                        android:hint="Wprowadź stare hasło"/>
+
+                    <EditText
+                        android:id="@+id/textView17"
+                        android:layout_width="310dp"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="30dp"
+                        android:inputType="textPassword"
+                        android:hint="Wprowadź nowe hasło" />
+
+                    <EditText
+                        android:id="@+id/textView18"
+                        android:layout_width="310dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="20dp"
+                        android:inputType="textPassword"
+                        android:hint="Wprowadź ponownie nowe hasło" />
+
+                    <Button
+                        android:id="@+id/button9"
+                        android:layout_width="270dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="70dp"
+                        android:layout_marginLeft="40dp"
+                        android:text="Zmień hasło" />
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/tab3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView25"
+                        android:layout_width="150dp"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="30dp"
+                        android:textSize="20dp"
+                        android:layout_marginLeft="15dp"
+                        android:text="Przypomnienie" />
+
+                    <ToggleButton
+                        android:id="@+id/toggleButton"
+                        android:layout_width="95dp"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="215dp"
+                        android:onClick="onToggleClicked" />
+                </RelativeLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
+</RelativeLayout>

@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.util.Log;
 
 import com.example.Uzytkownik;
+import com.example.Zestaw;
 import com.example.aplikacja_screen.MainActivity;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -81,8 +82,20 @@ public class Database {
         return cursor;
     }
 
+    //funkcja dla zestawu
+    public Cursor getSets(){
+        String[] projection ={
+                SetsContract.Columns._ID,
+                SetsContract.Columns.SETS_USER_ID,
+                SetsContract.Columns.SETS_NAME};
 
-
+        Cursor cursor=contentResolver.query(SetsContract.CONTENT_URI,
+                projection,
+                null,
+                null,
+                SetsContract.Columns._ID);
+        return cursor;
+    }
 
 
 

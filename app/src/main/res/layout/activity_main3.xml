@@ -72,7 +72,7 @@
     <Spinner
         android:id="@+id/spinnerRej"
         android:layout_width="300dp"
-        android:layout_height="40dp"
+        android:layout_height="60dp"
         android:layout_alignStart="@+id/textView6"
         android:layout_below="@+id/textView6"
         android:padding="5dip"

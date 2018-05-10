@@ -1,7 +1,9 @@
 package com.example.aplikacja_screen;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.Database.Database;
+import com.example.Database.UsersContract;
 import com.example.Uzytkownik;
 import com.example.m.aplikacja_screen.R;
 
@@ -36,9 +39,6 @@ public class MainActivity extends AppCompatActivity {
         login = (TextView) findViewById(R.id.editText6);
         haslo = (TextView) findViewById(R.id.editText7);
 
-
-
-
         zaloguj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,10 +46,18 @@ public class MainActivity extends AppCompatActivity {
                 String p = haslo.getText().toString();
 
                 Uzytkownik uzytkownik = db.loginUser(l, p);
-
                 if (uzytkownik != null) {
                     Intent intent = new Intent(MainActivity.this, BocznyPasekLewy.class);
                     intent.putExtra("user", uzytkownik);
+                    //pobranie wartosci id uzytkownika
+                    int id=uzytkownik.getId();
+                    String id_uzytkownik=String.valueOf(id);
+                    //przeslanie wartosci id uzytkownika do activity TworzenieZestawu bez wlaczania TworzenieZestawu
+                    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putString("id", id_uzytkownik);
+                    editor.commit();
+
                     Toast.makeText(getApplicationContext(), "good", Toast.LENGTH_LONG).show();
                     startActivity(intent);
                 } else {

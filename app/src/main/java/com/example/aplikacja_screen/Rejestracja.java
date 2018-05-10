@@ -93,10 +93,10 @@ public class Rejestracja extends AppCompatActivity implements AdapterView.OnItem
         cursor.close();
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, questions);
-        pytanie_podpowiedz.setPrompt("Wybierz pytanie");
+
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         pytanie_podpowiedz.setAdapter(adapter);
-
+        pytanie_podpowiedz.setPrompt("Wybierz pytanie");
 
         //  pytanie_podpowiedz.setOnItemClickListener((AdapterView.OnItemClickListener) this);
         // ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.pytania, android.R.layout.simple_spinner_item);

@@ -11,6 +11,7 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.Zestaw;
 import com.example.m.aplikacja_screen.R;
 
 import java.util.List;
@@ -40,7 +41,7 @@ public class ZestawAdapter extends RecyclerView.Adapter<ZestawAdapter.ViewHolder
     public void onBindViewHolder(ViewHolder holder, int position) {
         Zestaw z = list.get(position);
         holder.nazwa.setText(z.getNazwa());
-        holder.opis.setText(z.getOpis());
+        //holder.opis.setText(z.getOpis());
 
         holder.opcje.setOnClickListener(new View.OnClickListener() {
 

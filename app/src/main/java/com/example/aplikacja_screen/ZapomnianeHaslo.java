@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.example.m.aplikacja_screen.R;
 
-public class Zapomniane_haslo extends AppCompatActivity {
+public class ZapomnianeHaslo extends AppCompatActivity {
 
     EditText podaj_login;
     EditText odpowiedz_pytanie;
@@ -18,17 +18,18 @@ public class Zapomniane_haslo extends AppCompatActivity {
     TextView tresc_pytania;
     Button odzyskaj_haslo;
     Button sprawdz_odpowiedz;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zapomniane_haslo);
 
-        podaj_login=(EditText)findViewById(R.id.editText);
-        odpowiedz_pytanie=(EditText)findViewById(R.id.editText3);
-        login=(TextView)findViewById(R.id.textView10);
-        tresc_pytania=(TextView)findViewById(R.id.textView11);
-        odzyskaj_haslo=(Button)findViewById(R.id.button3);
-        sprawdz_odpowiedz=(Button)findViewById(R.id.button4);
+        podaj_login = (EditText) findViewById(R.id.editText);
+        odpowiedz_pytanie = (EditText) findViewById(R.id.editText3);
+        login = (TextView) findViewById(R.id.textView10);
+        tresc_pytania = (TextView) findViewById(R.id.textView11);
+        odzyskaj_haslo = (Button) findViewById(R.id.button3);
+        sprawdz_odpowiedz = (Button) findViewById(R.id.button4);
 
         odzyskaj_haslo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,13 +43,13 @@ public class Zapomniane_haslo extends AppCompatActivity {
         sprawdz_odpowiedz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Zapomniane_haslo.this,NoweHaslo.class));
+                startActivity(new Intent(ZapomnianeHaslo.this, NoweHaslo.class));
             }
         });
     }
 
-    public void onBackPressed(){
-        startActivity(new Intent(Zapomniane_haslo.this,MainActivity.class));
+    public void onBackPressed() {
+        startActivity(new Intent(ZapomnianeHaslo.this, MainActivity.class));
     }
 
 

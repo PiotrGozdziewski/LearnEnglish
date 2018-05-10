@@ -14,7 +14,7 @@ import com.example.m.aplikacja_screen.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Moje_zestawy extends AppCompatActivity {
+public class MojeZestawy extends AppCompatActivity {
 
     Button dodaj;
     TextView option;
@@ -43,7 +43,7 @@ public class Moje_zestawy extends AppCompatActivity {
         dodaj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               startActivity(new Intent(Moje_zestawy.this, TworzenieZestawu.class));
+               startActivity(new Intent(MojeZestawy.this, TworzenieZestawu.class));
             }
         });
     }
@@ -60,6 +60,6 @@ public class Moje_zestawy extends AppCompatActivity {
     }
 
     public void onBackPressed(){
-        startActivity(new Intent(Moje_zestawy.this,BocznyPasekLewy.class));
+        startActivity(new Intent(MojeZestawy.this,BocznyPasekLewy.class));
     }
 }

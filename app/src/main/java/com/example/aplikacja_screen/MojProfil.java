@@ -11,42 +11,43 @@ import com.example.m.aplikacja_screen.R;
 //co tu ma byc
 //zmienianie loginu,hasla
 //wybor czy chcemy powiadomieniatry
-public class Moj_profil extends AppCompatActivity {
+public class MojProfil extends AppCompatActivity {
 
     TabHost tabHost;
     ToggleButton tb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_moj_profil);
-        tb=(ToggleButton)findViewById(R.id.toggleButton);
+        tb = (ToggleButton) findViewById(R.id.toggleButton);
 
-        tabHost=(TabHost)findViewById(R.id.tabHost);
+        tabHost = (TabHost) findViewById(R.id.tabHost);
         tabHost.setup();
-        TabHost.TabSpec s1=tabHost.newTabSpec("Login");
+        TabHost.TabSpec s1 = tabHost.newTabSpec("Login");
         s1.setContent(R.id.tab1);
         s1.setIndicator("Ustawianie loginu");
 
         tabHost.addTab(s1);
 
-        s1=tabHost.newTabSpec("Hasło");
+        s1 = tabHost.newTabSpec("Hasło");
         s1.setContent(R.id.tab2);
         s1.setIndicator("Ustawianie hasła");
         tabHost.addTab(s1);
 
-        s1=tabHost.newTabSpec("Inne");
+        s1 = tabHost.newTabSpec("Inne");
         s1.setContent(R.id.tab3);
         s1.setIndicator("Inne");
         tabHost.addTab(s1);
     }
 
-    public void onToggleClicked(View v){
+    public void onToggleClicked(View v) {
         boolean on = ((ToggleButton) v).isChecked();
 
         if (on) {
-        //wlacz przypomnienie
+            //wlacz przypomnienie
         } else {
-        //wylacz przypomnienie
+            //wylacz przypomnienie
         }
     }
 }

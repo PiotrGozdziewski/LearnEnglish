@@ -1,8 +1,6 @@
 package com.example.aplikacja_screen;
 
-import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -21,11 +19,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.Uzytkownik;
 import com.example.m.aplikacja_screen.R;
 
-public class Main2Activity extends AppCompatActivity
+public class BocznyPasekLewy extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     TextView zalogowany_jako;
@@ -44,7 +42,7 @@ public class Main2Activity extends AppCompatActivity
     View view;
 
     //od wątków
-    Handler handler=new Handler();
+    Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,21 +62,20 @@ public class Main2Activity extends AppCompatActivity
 //        });
 
         //NAVIGATION VIEW
-        navigationView=(NavigationView)findViewById(R.id.nav_view);
-        headerView=navigationView.getHeaderView(0);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        headerView = navigationView.getHeaderView(0);
         //ZALOGOWANY JAKO... --POBIERANIE WARTOSCI
-        zalogowany_jako=(TextView)headerView.findViewById(R.id.zalogowany_jako);
-        Intent intent1=getIntent();
-        Bundle b=intent1.getExtras();
-        if(b!=null)
-        {
-            String z=getIntent().getExtras().getString("keyName","");
+        zalogowany_jako = (TextView) headerView.findViewById(R.id.zalogowany_jako);
+        Intent intent1 = getIntent();
+        Bundle b = intent1.getExtras();
+        if (b != null) {
+            Uzytkownik z = (Uzytkownik) getIntent().getExtras().getSerializable("user");
             //DODATKOWE OPCJE DO WYSWIETLANIA
-            SpannableString sp= new SpannableString(z);
+            SpannableString sp = new SpannableString(z.getImie());
             //sp.setSpan(new UnderlineSpan(),0,sp.length(),0);
-            sp.setSpan(new StyleSpan(Typeface.BOLD),0,sp.length(),0);
-            sp.setSpan(new StyleSpan(Typeface.ITALIC),0,sp.length(),0);
-            sp.setSpan(new RelativeSizeSpan(1.5f),0,sp.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            sp.setSpan(new StyleSpan(Typeface.BOLD), 0, sp.length(), 0);
+            sp.setSpan(new StyleSpan(Typeface.ITALIC), 0, sp.length(), 0);
+            sp.setSpan(new RelativeSizeSpan(1.5f), 0, sp.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             zalogowany_jako.append(sp);
         }
 
@@ -91,8 +88,8 @@ public class Main2Activity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-       // animacja_przod=(TextView)findViewById(R.id.animacja_przod);
-       // animacja_tyl=(TextView)findViewById(R.id.animacja_tyl);
+        // animacja_przod=(TextView)findViewById(R.id.animacja_przod);
+        // animacja_tyl=(TextView)findViewById(R.id.animacja_tyl);
 
 //      od animacji
 //        findViews();
@@ -104,7 +101,7 @@ public class Main2Activity extends AppCompatActivity
 //            flipCard(view); //create view
 //            }
 //        },2000);
-     }
+    }
 
     @Override
     public void onBackPressed() {
@@ -142,18 +139,18 @@ public class Main2Activity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        if (id ==R.id.nav_zestaw) {
+        if (id == R.id.nav_zestaw) {
             // Handle the camera action
-            startActivity(new Intent(Main2Activity.this, Moje_zestawy.class));       //dodano
+            startActivity(new Intent(BocznyPasekLewy.this, MojeZestawy.class));       //dodano
         } else if (id == R.id.nav_kategorie) {
-            startActivity(new Intent(Main2Activity.this, Wybor_kategorii.class));
+            startActivity(new Intent(BocznyPasekLewy.this, WyborKategorii.class));
         } else if (id == R.id.nav_wyloguj) {
-            startActivity(new Intent(Main2Activity.this,MainActivity.class));
+            startActivity(new Intent(BocznyPasekLewy.this, MainActivity.class));
             //wylogowanie z konta
-        }else if(id==R.id.nav_profil){
-            startActivity(new Intent(Main2Activity.this,Moj_profil.class));
-        }else if(id==R.id.nav_stat){
-            startActivity(new Intent(Main2Activity.this,Statystyka.class));
+        } else if (id == R.id.nav_profil) {
+            startActivity(new Intent(BocznyPasekLewy.this, MojProfil.class));
+        } else if (id == R.id.nav_stat) {
+            startActivity(new Intent(BocznyPasekLewy.this, Statystyka.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -194,4 +191,4 @@ public class Main2Activity extends AppCompatActivity
 //                mIsBackVisible = false;
 //            }
 //        }
-    }
+}

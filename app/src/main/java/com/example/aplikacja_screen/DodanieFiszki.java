@@ -8,19 +8,20 @@ import android.widget.EditText;
 
 import com.example.m.aplikacja_screen.R;
 
-public class Dodanie_fiszki extends AppCompatActivity {
+public class DodanieFiszki extends AppCompatActivity {
 
     Button dodaj_fiszke;
     EditText pl;
     EditText en;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dodanie_fiszki);
 
-        dodaj_fiszke=(Button)findViewById(R.id.button6);
-        pl=(EditText)findViewById(R.id.editText9);
-        en=(EditText)findViewById(R.id.editText10);
+        dodaj_fiszke = (Button) findViewById(R.id.button6);
+        pl = (EditText) findViewById(R.id.editText9);
+        en = (EditText) findViewById(R.id.editText10);
         dodaj_fiszke.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

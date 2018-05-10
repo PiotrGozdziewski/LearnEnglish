@@ -14,6 +14,8 @@ import com.example.m.aplikacja_screen.R;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "MainActivity";
+
     public static final String PATH = "/sdcard/Download/";
 
     CardView zaloguj;
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         zarejestruj = (CardView) findViewById(R.id.cardView2);
         login = (TextView) findViewById(R.id.editText6);
         haslo = (TextView) findViewById(R.id.editText7);
+
 
 
 

@@ -67,7 +67,19 @@ public class Database {
         return uzytkownik;
     }
 
+    public Cursor getQuestions() {
+        String[] projection = {
+                QuestionsContract.Columns._ID,
+                QuestionsContract.Columns.QUESTIONS_QUESTION};
 
+        Cursor cursor = contentResolver.query(QuestionsContract.CONTENT_URI,
+                projection,
+                null,
+                null,
+                QuestionsContract.Columns._ID);
+
+        return cursor;
+    }
 
 
 

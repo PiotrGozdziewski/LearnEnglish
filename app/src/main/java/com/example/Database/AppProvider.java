@@ -23,7 +23,7 @@ public class AppProvider extends ContentProvider {
 
     public static final UriMatcher uriMatcher = buildUriMatcher();
 
-    static final String CONTENT_AUTHORITY = "provider";
+    static final String CONTENT_AUTHORITY = "com.example.Database.provider";
     public static final Uri CONTENT_AUTHORITY_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
 
     private static final int QUESTIONS = 50;

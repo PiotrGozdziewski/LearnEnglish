@@ -25,20 +25,20 @@ public class EdytowanieZestawu extends AppCompatActivity {
     Button edytuj_fiszke;
     String s;
     CheckBox cb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edytowanie_zestawu);
 
-        edytuj_fiszke=(Button)findViewById(R.id.edytuj_fiszke);
+        edytuj_fiszke = (Button) findViewById(R.id.edytuj_fiszke);
         lv = (ListView) findViewById(R.id.listView);
         lv.setChoiceMode(lv.CHOICE_MODE_SINGLE);
 
         //polaczenie danych (słówka pl+en) z dwóch tablic
-        String[] polaczenie=new String[pl.length];
-        for(int i=0;i<pl.length;i++)
-        {
-            polaczenie[i]=pl[i]+" - "+en[i];
+        String[] polaczenie = new String[pl.length];
+        for (int i = 0; i < pl.length; i++) {
+            polaczenie[i] = pl[i] + " - " + en[i];
         }
         //arrayList w adapterze i wyswietlanie w listView
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.list_view_checkbox, R.id.checkedTextView, polaczenie);
@@ -48,24 +48,25 @@ public class EdytowanieZestawu extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 //                 s= (String) lv.getItemAtPosition(i); //tutaj dostajemy całą linijkę
-                polskie=pl[i];
-                angielskie=en[i];
-                liczba=i;
+                polskie = pl[i];
+                angielskie = en[i];
+                liczba = i;
             }
         });
 
         edytuj_fiszke.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(EdytowanieZestawu.this,EdytowanieFiszki.class);
-                intent.putExtra("pl",polskie);
-                intent.putExtra("en",angielskie);
-                intent.putExtra("liczba",liczba);
+                Intent intent = new Intent(EdytowanieZestawu.this, EdytowanieFiszki.class);
+                intent.putExtra("pl", polskie);
+                intent.putExtra("en", angielskie);
+                intent.putExtra("liczba", liczba);
                 startActivity(intent);
             }
         });
     }
-    public void onBackPressed(){
-        startActivity(new Intent(EdytowanieZestawu.this,Moje_zestawy.class));
+
+    public void onBackPressed() {
+        startActivity(new Intent(EdytowanieZestawu.this, MojeZestawy.class));
     }
 }

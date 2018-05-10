@@ -28,14 +28,13 @@ public class UsuwanieFiszek extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuwanie_fiszek);
 
-        usun_fiszke=(Button)findViewById(R.id.usun_fiszke);
+        usun_fiszke = (Button) findViewById(R.id.usun_fiszke);
         lv1 = (ListView) findViewById(R.id.listView1);
         lv1.setChoiceMode(lv1.CHOICE_MODE_MULTIPLE);
         //polaczenie danych (słówka pl+en) z dwóch tablic
-        String[] polaczenie=new String[pl.length];
-        for(int i=0;i<pl.length;i++)
-        {
-            polaczenie[i]=pl[i]+" - "+en[i];
+        String[] polaczenie = new String[pl.length];
+        for (int i = 0; i < pl.length; i++) {
+            polaczenie[i] = pl[i] + " - " + en[i];
         }
         //arrayList w adapterze i wyswietlanie w listView
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.list_view_checkbox, R.id.checkedTextView, polaczenie);
@@ -45,9 +44,9 @@ public class UsuwanieFiszek extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 //                 s= (String) lv.getItemAtPosition(i); //tutaj dostajemy całą linijkę
-                polskie=pl[i];
-                angielskie=en[i];
-                liczba=i;
+                polskie = pl[i];
+                angielskie = en[i];
+                liczba = i;
             }
         });
 
@@ -58,7 +57,8 @@ public class UsuwanieFiszek extends AppCompatActivity {
             }
         });
     }
+
     public void onBackPressed(){
-        startActivity(new Intent(UsuwanieFiszek.this,Moje_zestawy.class));
+        startActivity(new Intent(UsuwanieFiszek.this,MojeZestawy.class));
     }
 }

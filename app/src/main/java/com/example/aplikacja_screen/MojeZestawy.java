@@ -43,7 +43,7 @@ public class Moje_zestawy extends AppCompatActivity {
         dodaj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               startActivity(new Intent(Moje_zestawy.this, Tworzenie_zestawu.class));
+               startActivity(new Intent(Moje_zestawy.this, TworzenieZestawu.class));
             }
         });
     }
@@ -60,6 +60,6 @@ public class Moje_zestawy extends AppCompatActivity {
     }
 
     public void onBackPressed(){
-        startActivity(new Intent(Moje_zestawy.this,Main2Activity.class));
+        startActivity(new Intent(Moje_zestawy.this,BocznyPasekLewy.class));
     }
 }

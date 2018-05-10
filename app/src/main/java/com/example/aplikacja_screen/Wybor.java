@@ -10,7 +10,7 @@ import com.example.m.aplikacja_screen.R;
 
 public class Wybor extends AppCompatActivity {
 
-    Button b1,b2,b3,b4,nastepne_slowo;
+    Button b1, b2, b3, b4, nastepne_slowo;
     TextView t1;
 
     @Override
@@ -19,13 +19,13 @@ public class Wybor extends AppCompatActivity {
         setContentView(R.layout.activity_wybor);
 
         //14,16,18,19
-        b1=(Button)findViewById(R.id.button14);
-        b2=(Button)findViewById(R.id.button16);
-        b3=(Button)findViewById(R.id.button18);
-        b4=(Button)findViewById(R.id.button19);
-        nastepne_slowo=(Button)findViewById(R.id.button15);
+        b1 = (Button) findViewById(R.id.button14);
+        b2 = (Button) findViewById(R.id.button16);
+        b3 = (Button) findViewById(R.id.button18);
+        b4 = (Button) findViewById(R.id.button19);
+        nastepne_slowo = (Button) findViewById(R.id.button15);
 
-        t1=(TextView)findViewById(R.id.textView20);
+        t1 = (TextView) findViewById(R.id.textView20);
         t1.setText("DOM");
         t1.setTextSize(20);
         b1.setText("House");

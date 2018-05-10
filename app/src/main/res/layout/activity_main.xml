@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/tlo"
-    tools:context="com.example.m.aplikacja_screen.com.example.aplikacja_screen.MainActivity">
+    tools:context="com.example.m.aplikacja_screen.MainActivity">
 
 
     <ImageView
@@ -18,8 +18,8 @@
         android:adjustViewBounds="true"
         android:cropToPadding="false"
         android:scaleType="centerCrop"
-        android:visibility="invisible"
-        app:srcCompat="@drawable/pnglogico"
+        android:visibility="visible"
+        app:srcCompat="@drawable/logo"
         android:layout_alignStart="@+id/editText6" />
 
     <EditText

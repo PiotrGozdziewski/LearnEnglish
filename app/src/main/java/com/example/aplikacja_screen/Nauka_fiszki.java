@@ -15,8 +15,8 @@ public class Nauka_fiszki extends AppCompatActivity {
     Boolean odwroc=false;
     ImageButton next;
     int i=0;
-    String [] pl={"Zakwaterowanie","jajko","boczek","makaron","xxxx","aaaa","Okulary przeciwsłoneczne"};
-    String [] en = {"Accomodation", "egg", "bacon", "pasta", "Eksesk","EjEj","sunglasses"};
+    String [] pl={"zakwaterowanie","słońce","pies","kot","makaron","okulary przeciwsłoneczne"};
+    String [] en = {"accomodation", "sun", "dog", "cat", "pasta","sunglasses"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

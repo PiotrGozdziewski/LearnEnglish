@@ -48,7 +48,7 @@ public class Wybor_zadania extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if(wybór.isChecked()){
                     multiLine.setVisibility(View.VISIBLE);
-                    multiLine.setText("\tWybór\n\tZadanie polega na wybraniu słowa,\nktóre nie pasuje do pozostałych słów.");
+                    multiLine.setText("\tWybór\n\tZadanie polega na wybraniu,\nodpowiednio przetlumaczonego slowa.");
                 }
             }
         });

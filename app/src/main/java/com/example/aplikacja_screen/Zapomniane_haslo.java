@@ -47,5 +47,9 @@ public class Zapomniane_haslo extends AppCompatActivity {
         });
     }
 
+    public void onBackPressed(){
+        startActivity(new Intent(Zapomniane_haslo.this,MainActivity.class));
+    }
+
 
 }

@@ -91,18 +91,19 @@ public class Main2Activity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        animacja_przod=(TextView)findViewById(R.id.animacja_przod);
-        animacja_tyl=(TextView)findViewById(R.id.animacja_tyl);
+       // animacja_przod=(TextView)findViewById(R.id.animacja_przod);
+       // animacja_tyl=(TextView)findViewById(R.id.animacja_tyl);
 
-        findViews();
-        loadAnimations();
-        changeCameraDistance();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-            flipCard(view); //create view
-            }
-        },2000);
+//      od animacji
+//        findViews();
+//        loadAnimations();
+//        changeCameraDistance();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//            flipCard(view); //create view
+//            }
+//        },2000);
      }
 
     @Override
@@ -143,7 +144,6 @@ public class Main2Activity extends AppCompatActivity
         int id = item.getItemId();
         if (id ==R.id.nav_zestaw) {
             // Handle the camera action
-            Toast.makeText(getApplicationContext(),"tutaj",Toast.LENGTH_SHORT).show();
             startActivity(new Intent(Main2Activity.this, Moje_zestawy.class));       //dodano
         } else if (id == R.id.nav_kategorie) {
             startActivity(new Intent(Main2Activity.this, Wybor_kategorii.class));
@@ -161,37 +161,37 @@ public class Main2Activity extends AppCompatActivity
         return true;
     }
 
-    private void changeCameraDistance() {
-        int distance = 8000;
-        float scale = getResources().getDisplayMetrics().density * distance;
-        mCardFrontLayout.setCameraDistance(scale);
-        mCardBackLayout.setCameraDistance(scale);
-    }
-
-    @SuppressLint("ResourceType")
-    private void loadAnimations() {
-        mSetRightOut = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.anim.animacja);
-        mSetLeftIn = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.anim.animacja2);
-    }
-
-    private void findViews() {
-        mCardBackLayout = findViewById(R.id.card_back);
-        mCardFrontLayout = findViewById(R.id.card_front);
-    }
-
-    public void flipCard(View view) {
-            if (!mIsBackVisible) {
-                mSetRightOut.setTarget(mCardFrontLayout);
-                mSetLeftIn.setTarget(mCardBackLayout);
-                mSetRightOut.start();
-                mSetLeftIn.start();
-                mIsBackVisible = true;
-            } else {
-                mSetRightOut.setTarget(mCardBackLayout);
-                mSetLeftIn.setTarget(mCardFrontLayout);
-                mSetRightOut.start();
-                mSetLeftIn.start();
-                mIsBackVisible = false;
-            }
-        }
+//    private void changeCameraDistance() {
+//        int distance = 8000;
+//        float scale = getResources().getDisplayMetrics().density * distance;
+//        mCardFrontLayout.setCameraDistance(scale);
+//        mCardBackLayout.setCameraDistance(scale);
+//    }
+//
+//    @SuppressLint("ResourceType")
+//    private void loadAnimations() {
+//        mSetRightOut = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.anim.animacja);
+//        mSetLeftIn = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.anim.animacja2);
+//    }
+//
+//    private void findViews() {
+//        mCardBackLayout = findViewById(R.id.card_back);
+//        mCardFrontLayout = findViewById(R.id.card_front);
+//    }
+//
+//    public void flipCard(View view) {
+//            if (!mIsBackVisible) {
+//                mSetRightOut.setTarget(mCardFrontLayout);
+//                mSetLeftIn.setTarget(mCardBackLayout);
+//                mSetRightOut.start();
+//                mSetLeftIn.start();
+//                mIsBackVisible = true;
+//            } else {
+//                mSetRightOut.setTarget(mCardBackLayout);
+//                mSetLeftIn.setTarget(mCardFrontLayout);
+//                mSetRightOut.start();
+//                mSetLeftIn.start();
+//                mIsBackVisible = false;
+//            }
+//        }
     }

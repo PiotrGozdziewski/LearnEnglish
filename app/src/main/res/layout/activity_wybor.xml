@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.m.aplikacja_screen.com.example.aplikacja_screen.Wybor">
+    tools:context="com.example.aplikacja_screen.Wybor">
 
     <Button
         android:id="@+id/button14"
@@ -31,10 +31,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:gravity="center"
-        android:background="@drawable/spinner_border"
         android:layout_alignStart="@+id/button14"
         android:layout_marginStart="112dp"
         android:layout_marginTop="81dp"
+        android:textSize="15dp"
         android:text="TextView" />
 
     <Button

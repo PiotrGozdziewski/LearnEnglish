@@ -57,4 +57,8 @@ public class Main3Activity extends AppCompatActivity implements AdapterView.OnIt
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+    public void onBackPressed(){
+        startActivity(new Intent(Main3Activity.this,MainActivity.class));
+    }
 }

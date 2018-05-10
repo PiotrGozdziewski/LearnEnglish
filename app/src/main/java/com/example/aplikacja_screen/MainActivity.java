@@ -54,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 } else {
                     Toast.makeText(getApplicationContext(), "Nieprawidłowe dane!", Toast.LENGTH_LONG).show();
+                    login.setText("");
+                    haslo.setText("");
                 }
             }
         });

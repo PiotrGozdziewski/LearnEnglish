@@ -46,7 +46,10 @@ public class PlanszaKwadratowa extends AppCompatActivity {
         btn6 = (Button) findViewById(R.id.button35);
         btn7 = (Button) findViewById(R.id.button36);
         btn8 = (Button) findViewById(R.id.button37);
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,10 +58,16 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                 btn1.setText(pl[0]);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                 if(click7==true)
                 {
                     if((btn1.getText()==pl[0]&& btn7.getText()==en[0])||(btn1.getText()==en[0] && btn7.getText()==pl[0]))
                     {
+=======
+
+                if (click7 == true) {
+                    if ((btn1.getText() == pl[0] && btn7.getText() == en[0]) || (btn1.getText() == en[0] && btn7.getText() == pl[0])) {
+>>>>>>> origin/master
 =======
 
                 if (click7 == true) {
@@ -76,11 +85,17 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn1.setClickable(false);
                         btn7.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
                         click1=false;
                         click7=false;
                     }else if((btn1.getText()==pl[2]&& btn7.getText()==en[2])||(btn1.getText()==en[2] && btn7.getText()==pl[2]))
                     {
+=======
+                        click1 = false;
+                        click7 = false;
+                    } else if ((btn1.getText() == pl[2] && btn7.getText() == en[2]) || (btn1.getText() == en[2] && btn7.getText() == pl[2])) {
+>>>>>>> origin/master
 =======
                         click1 = false;
                         click7 = false;
@@ -98,12 +113,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn1.setClickable(false);
                         btn7.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click1=false;
                         click7=false;
                     }else
                     {
                         btn2.setClickable(false);btn3.setClickable(false);btn4.setClickable(false);
                         btn5.setClickable(false);btn6.setClickable(false);btn8.setClickable(false);
+=======
+                        click1 = false;
+                        click7 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click1 = false;
                         click7 = false;
@@ -118,10 +139,13 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click1=false;
                         click7=false;
 =======
+=======
+>>>>>>> origin/master
                         }, 2000);
                         click1 = false;
                         click7 = false;
@@ -156,12 +180,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn1.setClickable(false);
                         btn2.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click2=false;
                         click1=false;
                     }else
                     {
                         btn7.setClickable(false);btn3.setClickable(false);btn4.setClickable(false);
                         btn5.setClickable(false);btn6.setClickable(false);btn8.setClickable(false);
+=======
+                        click2 = false;
+                        click1 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click2 = false;
                         click1 = false;
@@ -176,9 +206,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click2=false;
                         click1=false;
+=======
+                        }, 2000);
+                        click2 = false;
+                        click1 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click2 = false;
@@ -213,12 +249,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn1.setClickable(false);
                         btn3.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click3=false;
                         click1=false;
                     }else
                     {
                         btn2.setClickable(false);btn7.setClickable(false);btn4.setClickable(false);
                         btn5.setClickable(false);btn6.setClickable(false);btn8.setClickable(false);
+=======
+                        click3 = false;
+                        click1 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click3 = false;
                         click1 = false;
@@ -233,9 +275,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click3=false;
                         click1=false;
+=======
+                        }, 2000);
+                        click3 = false;
+                        click1 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click3 = false;
@@ -270,12 +318,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn1.setClickable(false);
                         btn4.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click4=false;
                         click1=false;
                     }else
                     {
                         btn2.setClickable(false);btn3.setClickable(false);btn7.setClickable(false);
                         btn5.setClickable(false);btn6.setClickable(false);btn8.setClickable(false);
+=======
+                        click4 = false;
+                        click1 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click4 = false;
                         click1 = false;
@@ -290,9 +344,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click4=false;
                         click1=false;
+=======
+                        }, 2000);
+                        click4 = false;
+                        click1 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click4 = false;
@@ -327,12 +387,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn1.setClickable(false);
                         btn5.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click5=false;
                         click1=false;
                     }else
                     {
                         btn2.setClickable(false);btn3.setClickable(false);btn4.setClickable(false);
                         btn7.setClickable(false);btn6.setClickable(false);btn8.setClickable(false);
+=======
+                        click5 = false;
+                        click1 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click5 = false;
                         click1 = false;
@@ -347,9 +413,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click5=false;
                         click1=false;
+=======
+                        }, 2000);
+                        click5 = false;
+                        click1 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click5 = false;
@@ -384,12 +456,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn1.setClickable(false);
                         btn6.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click6=false;
                         click1=false;
                     }else
                     {
                         btn2.setClickable(false);btn3.setClickable(false);btn4.setClickable(false);
                         btn5.setClickable(false);btn7.setClickable(false);btn8.setClickable(false);
+=======
+                        click6 = false;
+                        click1 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click6 = false;
                         click1 = false;
@@ -404,9 +482,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click6=false;
                         click1=false;
+=======
+                        }, 2000);
+                        click6 = false;
+                        click1 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click6 = false;
@@ -441,12 +525,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn1.setClickable(false);
                         btn8.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click1=false;
                         click8=false;
                     }else
                     {
                         btn2.setClickable(false);btn3.setClickable(false);btn4.setClickable(false);
                         btn5.setClickable(false);btn6.setClickable(false);btn7.setClickable(false);
+=======
+                        click1 = false;
+                        click8 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click1 = false;
                         click8 = false;
@@ -461,9 +551,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click1=false;
                         click8=false;
+=======
+                        }, 2000);
+                        click1 = false;
+                        click8 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click1 = false;
@@ -509,12 +605,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn2.setClickable(false);
                         btn1.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click2=false;
                         click2=false;
                     }else
                     {
                         btn7.setClickable(false);btn3.setClickable(false);btn4.setClickable(false);
                         btn5.setClickable(false);btn6.setClickable(false);btn8.setClickable(false);
+=======
+                        click2 = false;
+                        click2 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click2 = false;
                         click2 = false;
@@ -529,7 +631,11 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
+=======
+                        }, 2000);
+>>>>>>> origin/master
 =======
                         }, 2000);
 >>>>>>> origin/master
@@ -565,12 +671,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn2.setClickable(false);
                         btn7.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click2=false;
                         click7=false;
                     }else
                     {
                         btn1.setClickable(false);btn3.setClickable(false);btn4.setClickable(false);
                         btn5.setClickable(false);btn6.setClickable(false);btn8.setClickable(false);
+=======
+                        click2 = false;
+                        click7 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click2 = false;
                         click7 = false;
@@ -585,9 +697,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click2=false;
                         click7=false;
+=======
+                        }, 2000);
+                        click2 = false;
+                        click7 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click2 = false;
@@ -622,12 +740,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn2.setClickable(false);
                         btn3.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click3=false;
                         click2=false;
                     }else
                     {
                         btn1.setClickable(false);btn7.setClickable(false);btn4.setClickable(false);
                         btn5.setClickable(false);btn6.setClickable(false);btn8.setClickable(false);
+=======
+                        click3 = false;
+                        click2 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click3 = false;
                         click2 = false;
@@ -642,9 +766,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click3=false;
                         click2=false;
+=======
+                        }, 2000);
+                        click3 = false;
+                        click2 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click3 = false;
@@ -679,12 +809,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn2.setClickable(false);
                         btn4.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click4=false;
                         click2=false;
                     }else
                     {
                         btn1.setClickable(false);btn3.setClickable(false);btn7.setClickable(false);
                         btn5.setClickable(false);btn6.setClickable(false);btn8.setClickable(false);
+=======
+                        click4 = false;
+                        click2 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click4 = false;
                         click2 = false;
@@ -699,9 +835,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click4=false;
                         click2=false;
+=======
+                        }, 2000);
+                        click4 = false;
+                        click2 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click4 = false;
@@ -736,12 +878,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn2.setClickable(false);
                         btn5.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click5=false;
                         click2=false;
                     }else
                     {
                         btn1.setClickable(false);btn3.setClickable(false);btn4.setClickable(false);
                         btn7.setClickable(false);btn6.setClickable(false);btn8.setClickable(false);
+=======
+                        click5 = false;
+                        click2 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click5 = false;
                         click2 = false;
@@ -756,7 +904,11 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
+=======
+                        }, 2000);
+>>>>>>> origin/master
 =======
                         }, 2000);
 >>>>>>> origin/master
@@ -792,12 +944,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn2.setClickable(false);
                         btn6.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click6=false;
                         click2=false;
                     }else
                     {
                         btn1.setClickable(false);btn3.setClickable(false);btn4.setClickable(false);
                         btn5.setClickable(false);btn7.setClickable(false);btn8.setClickable(false);
+=======
+                        click6 = false;
+                        click2 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click6 = false;
                         click2 = false;
@@ -812,9 +970,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click6=false;
                         click2=false;
+=======
+                        }, 2000);
+                        click6 = false;
+                        click2 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click6 = false;
@@ -849,12 +1013,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn2.setClickable(false);
                         btn8.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click7=false;
                         click2=false;
                     }else
                     {
                         btn1.setClickable(false);btn3.setClickable(false);btn4.setClickable(false);
                         btn5.setClickable(false);btn6.setClickable(false);btn7.setClickable(false);
+=======
+                        click7 = false;
+                        click2 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click7 = false;
                         click2 = false;
@@ -869,9 +1039,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click7=false;
                         click2=false;
+=======
+                        }, 2000);
+                        click7 = false;
+                        click2 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click7 = false;
@@ -915,12 +1091,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn3.setClickable(false);
                         btn1.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click1=false;
                         click3=false;
                     }else
                     {
                         btn1.setClickable(false);btn7.setClickable(false);btn4.setClickable(false);
                         btn5.setClickable(false);btn6.setClickable(false);btn8.setClickable(false);
+=======
+                        click1 = false;
+                        click3 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click1 = false;
                         click3 = false;
@@ -935,9 +1117,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click1=false;
                         click3=false;
+=======
+                        }, 2000);
+                        click1 = false;
+                        click3 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click1 = false;
@@ -972,12 +1160,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn3.setClickable(false);
                         btn2.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click2=false;
                         click3=false;
                     }else
                     {
                         btn1.setClickable(false);btn7.setClickable(false);btn4.setClickable(false);
                         btn5.setClickable(false);btn6.setClickable(false);btn8.setClickable(false);
+=======
+                        click2 = false;
+                        click3 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click2 = false;
                         click3 = false;
@@ -992,9 +1186,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click2=false;
                         click3=false;
+=======
+                        }, 2000);
+                        click2 = false;
+                        click3 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click2 = false;
@@ -1029,12 +1229,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn3.setClickable(false);
                         btn7.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click3=false;
                         click7=false;
                     }else
                     {
                         btn1.setClickable(false);btn2.setClickable(false);btn4.setClickable(false);
                         btn5.setClickable(false);btn6.setClickable(false);btn8.setClickable(false);
+=======
+                        click3 = false;
+                        click7 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click3 = false;
                         click7 = false;
@@ -1049,9 +1255,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click3=false;
                         click7=false;
+=======
+                        }, 2000);
+                        click3 = false;
+                        click7 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click3 = false;
@@ -1086,12 +1298,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn3.setClickable(false);
                         btn4.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click4=false;
                         click3=false;
                     }else
                     {
                         btn1.setClickable(false);btn7.setClickable(false);btn2.setClickable(false);
                         btn5.setClickable(false);btn6.setClickable(false);btn8.setClickable(false);
+=======
+                        click4 = false;
+                        click3 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click4 = false;
                         click3 = false;
@@ -1106,9 +1324,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click4=false;
                         click3=false;
+=======
+                        }, 2000);
+                        click4 = false;
+                        click3 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click4 = false;
@@ -1143,12 +1367,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn3.setClickable(false);
                         btn5.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click5=false;
                         click3=false;
                     }else
                     {
                         btn1.setClickable(false);btn7.setClickable(false);btn2.setClickable(false);
                         btn4.setClickable(false);btn6.setClickable(false);btn8.setClickable(false);
+=======
+                        click5 = false;
+                        click3 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click5 = false;
                         click3 = false;
@@ -1163,9 +1393,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click5=false;
                         click3=false;
+=======
+                        }, 2000);
+                        click5 = false;
+                        click3 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click5 = false;
@@ -1200,12 +1436,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn3.setClickable(false);
                         btn6.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click6=false;
                         click3=false;
                     }else
                     {
                         btn1.setClickable(false);btn7.setClickable(false);btn2.setClickable(false);
                         btn5.setClickable(false);btn4.setClickable(false);btn8.setClickable(false);
+=======
+                        click6 = false;
+                        click3 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click6 = false;
                         click3 = false;
@@ -1220,9 +1462,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click6=false;
                         click3=false;
+=======
+                        }, 2000);
+                        click6 = false;
+                        click3 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click6 = false;
@@ -1257,12 +1505,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn3.setClickable(false);
                         btn8.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click3=false;
                         click8=false;
                     }else
                     {
                         btn1.setClickable(false);btn7.setClickable(false);btn2.setClickable(false);
                         btn5.setClickable(false);btn6.setClickable(false);btn4.setClickable(false);
+=======
+                        click3 = false;
+                        click8 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click3 = false;
                         click8 = false;
@@ -1277,9 +1531,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click3=false;
                         click8=false;
+=======
+                        }, 2000);
+                        click3 = false;
+                        click8 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click3 = false;
@@ -1323,12 +1583,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn4.setClickable(false);
                         btn1.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click1=false;
                         click4=false;
                     }else
                     {
                         btn2.setClickable(false);btn3.setClickable(false);btn5.setClickable(false);
                         btn7.setClickable(false);btn6.setClickable(false);btn8.setClickable(false);
+=======
+                        click1 = false;
+                        click4 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click1 = false;
                         click4 = false;
@@ -1343,9 +1609,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click1=false;
                         click4=false;
+=======
+                        }, 2000);
+                        click1 = false;
+                        click4 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click1 = false;
@@ -1380,12 +1652,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn4.setClickable(false);
                         btn2.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click2=false;
                         click4=false;
                     }else
                     {
                         btn1.setClickable(false);btn3.setClickable(false);btn5.setClickable(false);
                         btn7.setClickable(false);btn6.setClickable(false);btn8.setClickable(false);
+=======
+                        click2 = false;
+                        click4 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click2 = false;
                         click4 = false;
@@ -1400,9 +1678,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click2=false;
                         click4=false;
+=======
+                        }, 2000);
+                        click2 = false;
+                        click4 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click2 = false;
@@ -1437,12 +1721,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn4.setClickable(false);
                         btn3.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click3=false;
                         click4=false;
                     }else
                     {
                         btn2.setClickable(false);btn1.setClickable(false);btn5.setClickable(false);
                         btn7.setClickable(false);btn6.setClickable(false);btn8.setClickable(false);
+=======
+                        click3 = false;
+                        click4 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click3 = false;
                         click4 = false;
@@ -1457,9 +1747,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click3=false;
                         click4=false;
+=======
+                        }, 2000);
+                        click3 = false;
+                        click4 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click3 = false;
@@ -1494,12 +1790,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn4.setClickable(false);
                         btn7.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click4=false;
                         click7=false;
                     }else
                     {
                         btn2.setClickable(false);btn3.setClickable(false);btn5.setClickable(false);
                         btn1.setClickable(false);btn6.setClickable(false);btn8.setClickable(false);
+=======
+                        click4 = false;
+                        click7 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click4 = false;
                         click7 = false;
@@ -1514,9 +1816,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click4=false;
                         click7=false;
+=======
+                        }, 2000);
+                        click4 = false;
+                        click7 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click4 = false;
@@ -1551,12 +1859,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn4.setClickable(false);
                         btn5.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click5=false;
                         click4=false;
                     }else
                     {
                         btn2.setClickable(false);btn3.setClickable(false);btn1.setClickable(false);
                         btn7.setClickable(false);btn6.setClickable(false);btn8.setClickable(false);
+=======
+                        click5 = false;
+                        click4 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click5 = false;
                         click4 = false;
@@ -1571,9 +1885,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click5=false;
                         click4=false;
+=======
+                        }, 2000);
+                        click5 = false;
+                        click4 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click5 = false;
@@ -1608,12 +1928,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn4.setClickable(false);
                         btn6.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click6=false;
                         click4=false;
                     }else
                     {
                         btn2.setClickable(false);btn3.setClickable(false);btn5.setClickable(false);
                         btn7.setClickable(false);btn1.setClickable(false);btn8.setClickable(false);
+=======
+                        click6 = false;
+                        click4 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click6 = false;
                         click4 = false;
@@ -1628,9 +1954,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click6=false;
                         click4=false;
+=======
+                        }, 2000);
+                        click6 = false;
+                        click4 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click6 = false;
@@ -1665,12 +1997,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn4.setClickable(false);
                         btn8.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click8=false;
                         click4=false;
                     }else
                     {
                         btn2.setClickable(false);btn3.setClickable(false);btn5.setClickable(false);
                         btn7.setClickable(false);btn6.setClickable(false);btn1.setClickable(false);
+=======
+                        click8 = false;
+                        click4 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click8 = false;
                         click4 = false;
@@ -1685,9 +2023,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click8=false;
                         click4=false;
+=======
+                        }, 2000);
+                        click8 = false;
+                        click4 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click8 = false;
@@ -1731,12 +2075,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn5.setClickable(false);
                         btn1.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click1=false;
                         click5=false;
                     }else
                     {
                         btn2.setClickable(false);btn3.setClickable(false);btn4.setClickable(false);
                         btn7.setClickable(false);btn6.setClickable(false);btn8.setClickable(false);
+=======
+                        click1 = false;
+                        click5 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click1 = false;
                         click5 = false;
@@ -1751,9 +2101,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click1=false;
                         click5=false;
+=======
+                        }, 2000);
+                        click1 = false;
+                        click5 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click1 = false;
@@ -1788,12 +2144,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn5.setClickable(false);
                         btn2.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click2=false;
                         click5=false;
                     }else
                     {
                         btn1.setClickable(false);btn3.setClickable(false);btn4.setClickable(false);
                         btn7.setClickable(false);btn6.setClickable(false);btn8.setClickable(false);
+=======
+                        click2 = false;
+                        click5 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click2 = false;
                         click5 = false;
@@ -1808,9 +2170,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click2=false;
                         click5=false;
+=======
+                        }, 2000);
+                        click2 = false;
+                        click5 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click2 = false;
@@ -1845,12 +2213,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn5.setClickable(false);
                         btn3.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click3=false;
                         click5=false;
                     }else
                     {
                         btn2.setClickable(false);btn1.setClickable(false);btn4.setClickable(false);
                         btn7.setClickable(false);btn6.setClickable(false);btn8.setClickable(false);
+=======
+                        click3 = false;
+                        click5 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click3 = false;
                         click5 = false;
@@ -1865,9 +2239,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click3=false;
                         click5=false;
+=======
+                        }, 2000);
+                        click3 = false;
+                        click5 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click3 = false;
@@ -1902,12 +2282,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn5.setClickable(false);
                         btn4.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click4=false;
                         click5=false;
                     }else
                     {
                         btn2.setClickable(false);btn3.setClickable(false);btn1.setClickable(false);
                         btn7.setClickable(false);btn6.setClickable(false);btn8.setClickable(false);
+=======
+                        click4 = false;
+                        click5 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click4 = false;
                         click5 = false;
@@ -1922,9 +2308,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click4=false;
                         click5=false;
+=======
+                        }, 2000);
+                        click4 = false;
+                        click5 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click4 = false;
@@ -1959,12 +2351,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn5.setClickable(false);
                         btn7.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click5=false;
                         click7=false;
                     }else
                     {
                         btn2.setClickable(false);btn3.setClickable(false);btn1.setClickable(false);
                         btn4.setClickable(false);btn6.setClickable(false);btn8.setClickable(false);
+=======
+                        click5 = false;
+                        click7 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click5 = false;
                         click7 = false;
@@ -1979,9 +2377,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click5=false;
                         click7=false;
+=======
+                        }, 2000);
+                        click5 = false;
+                        click7 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click5 = false;
@@ -2016,12 +2420,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn5.setClickable(false);
                         btn6.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click6=false;
                         click5=false;
                     }else
                     {
                         btn2.setClickable(false);btn3.setClickable(false);btn1.setClickable(false);
                         btn7.setClickable(false);btn4.setClickable(false);btn8.setClickable(false);
+=======
+                        click6 = false;
+                        click5 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click6 = false;
                         click5 = false;
@@ -2036,9 +2446,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click6=false;
                         click5=false;
+=======
+                        }, 2000);
+                        click6 = false;
+                        click5 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click6 = false;
@@ -2073,12 +2489,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn5.setClickable(false);
                         btn8.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click5=false;
                         click8=false;
                     }else
                     {
                         btn2.setClickable(false);btn3.setClickable(false);btn1.setClickable(false);
                         btn7.setClickable(false);btn6.setClickable(false);btn4.setClickable(false);
+=======
+                        click5 = false;
+                        click8 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click5 = false;
                         click8 = false;
@@ -2093,9 +2515,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click5=false;
                         click8=false;
+=======
+                        }, 2000);
+                        click5 = false;
+                        click8 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click5 = false;
@@ -2139,12 +2567,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn6.setClickable(false);
                         btn1.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click1=false;
                         click6=false;
                     }else
                     {
                         btn2.setClickable(false);btn3.setClickable(false);btn5.setClickable(false);
                         btn7.setClickable(false);btn4.setClickable(false);btn8.setClickable(false);
+=======
+                        click1 = false;
+                        click6 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click1 = false;
                         click6 = false;
@@ -2159,9 +2593,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click1=false;
                         click6=false;
+=======
+                        }, 2000);
+                        click1 = false;
+                        click6 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click1 = false;
@@ -2196,12 +2636,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn6.setClickable(false);
                         btn2.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click2=false;
                         click6=false;
                     }else
                     {
                         btn1.setClickable(false);btn3.setClickable(false);btn5.setClickable(false);
                         btn7.setClickable(false);btn4.setClickable(false);btn8.setClickable(false);
+=======
+                        click2 = false;
+                        click6 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click2 = false;
                         click6 = false;
@@ -2216,9 +2662,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click2=false;
                         click6=false;
+=======
+                        }, 2000);
+                        click2 = false;
+                        click6 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click2 = false;
@@ -2253,12 +2705,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn6.setClickable(false);
                         btn3.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click3=false;
                         click6=false;
                     }else
                     {
                         btn2.setClickable(false);btn1.setClickable(false);btn5.setClickable(false);
                         btn7.setClickable(false);btn4.setClickable(false);btn8.setClickable(false);
+=======
+                        click3 = false;
+                        click6 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click3 = false;
                         click6 = false;
@@ -2273,9 +2731,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click3=false;
                         click6=false;
+=======
+                        }, 2000);
+                        click3 = false;
+                        click6 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click3 = false;
@@ -2310,12 +2774,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn6.setClickable(false);
                         btn4.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click4=false;
                         click6=false;
                     }else
                     {
                         btn2.setClickable(false);btn3.setClickable(false);btn5.setClickable(false);
                         btn7.setClickable(false);btn1.setClickable(false);btn8.setClickable(false);
+=======
+                        click4 = false;
+                        click6 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click4 = false;
                         click6 = false;
@@ -2330,9 +2800,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click4=false;
                         click6=false;
+=======
+                        }, 2000);
+                        click4 = false;
+                        click6 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click4 = false;
@@ -2367,12 +2843,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn6.setClickable(false);
                         btn5.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click5=false;
                         click6=false;
                     }else
                     {
                         btn2.setClickable(false);btn3.setClickable(false);btn1.setClickable(false);
                         btn7.setClickable(false);btn4.setClickable(false);btn8.setClickable(false);
+=======
+                        click5 = false;
+                        click6 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click5 = false;
                         click6 = false;
@@ -2387,9 +2869,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click5=false;
                         click6=false;
+=======
+                        }, 2000);
+                        click5 = false;
+                        click6 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click5 = false;
@@ -2424,12 +2912,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn6.setClickable(false);
                         btn7.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click6=false;
                         click7=false;
                     }else
                     {
                         btn2.setClickable(false);btn3.setClickable(false);btn5.setClickable(false);
                         btn1.setClickable(false);btn4.setClickable(false);btn8.setClickable(false);
+=======
+                        click6 = false;
+                        click7 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click6 = false;
                         click7 = false;
@@ -2444,9 +2938,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click6=false;
                         click7=false;
+=======
+                        }, 2000);
+                        click6 = false;
+                        click7 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click6 = false;
@@ -2481,12 +2981,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn6.setClickable(false);
                         btn8.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click6=false;
                         click8=false;
                     }else
                     {
                         btn2.setClickable(false);btn3.setClickable(false);btn5.setClickable(false);
                         btn7.setClickable(false);btn1.setClickable(false);btn4.setClickable(false);
+=======
+                        click6 = false;
+                        click8 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click6 = false;
                         click8 = false;
@@ -2501,9 +3007,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click6=false;
                         click8=false;
+=======
+                        }, 2000);
+                        click6 = false;
+                        click8 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click6 = false;
@@ -2547,12 +3059,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn7.setClickable(false);
                         btn1.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click1=false;
                         click7=false;
                     }else
                     {
                         btn2.setClickable(false);btn3.setClickable(false);btn5.setClickable(false);
                         btn4.setClickable(false);btn6.setClickable(false);btn8.setClickable(false);
+=======
+                        click1 = false;
+                        click7 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click1 = false;
                         click7 = false;
@@ -2567,9 +3085,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click1=false;
                         click7=false;
+=======
+                        }, 2000);
+                        click1 = false;
+                        click7 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click1 = false;
@@ -2604,12 +3128,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn7.setClickable(false);
                         btn2.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click2=false;
                         click7=false;
                     }else
                     {
                         btn1.setClickable(false);btn3.setClickable(false);btn5.setClickable(false);
                         btn4.setClickable(false);btn6.setClickable(false);btn8.setClickable(false);
+=======
+                        click2 = false;
+                        click7 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click2 = false;
                         click7 = false;
@@ -2624,9 +3154,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click2=false;
                         click7=false;
+=======
+                        }, 2000);
+                        click2 = false;
+                        click7 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click2 = false;
@@ -2661,12 +3197,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn7.setClickable(false);
                         btn3.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click3=false;
                         click7=false;
                     }else
                     {
                         btn2.setClickable(false);btn1.setClickable(false);btn5.setClickable(false);
                         btn4.setClickable(false);btn6.setClickable(false);btn8.setClickable(false);
+=======
+                        click3 = false;
+                        click7 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click3 = false;
                         click7 = false;
@@ -2681,9 +3223,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click3=false;
                         click7=false;
+=======
+                        }, 2000);
+                        click3 = false;
+                        click7 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click3 = false;
@@ -2718,12 +3266,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn7.setClickable(false);
                         btn4.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click4=false;
                         click7=false;
                     }else
                     {
                         btn2.setClickable(false);btn3.setClickable(false);btn5.setClickable(false);
                         btn1.setClickable(false);btn6.setClickable(false);btn8.setClickable(false);
+=======
+                        click4 = false;
+                        click7 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click4 = false;
                         click7 = false;
@@ -2738,9 +3292,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click4=false;
                         click7=false;
+=======
+                        }, 2000);
+                        click4 = false;
+                        click7 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click4 = false;
@@ -2775,12 +3335,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn7.setClickable(false);
                         btn5.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click5=false;
                         click7=false;
                     }else
                     {
                         btn2.setClickable(false);btn3.setClickable(false);btn1.setClickable(false);
                         btn4.setClickable(false);btn6.setClickable(false);btn8.setClickable(false);
+=======
+                        click5 = false;
+                        click7 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click5 = false;
                         click7 = false;
@@ -2795,9 +3361,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click5=false;
                         click7=false;
+=======
+                        }, 2000);
+                        click5 = false;
+                        click7 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click5 = false;
@@ -2832,12 +3404,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn7.setClickable(false);
                         btn6.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click6=false;
                         click7=false;
                     }else
                     {
                         btn2.setClickable(false);btn3.setClickable(false);btn5.setClickable(false);
                         btn1.setClickable(false);btn4.setClickable(false);btn8.setClickable(false);
+=======
+                        click6 = false;
+                        click7 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click6 = false;
                         click7 = false;
@@ -2852,9 +3430,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click6=false;
                         click7=false;
+=======
+                        }, 2000);
+                        click6 = false;
+                        click7 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click6 = false;
@@ -2889,12 +3473,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn7.setClickable(false);
                         btn8.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click7=false;
                         click8=false;
                     }else
                     {
                         btn2.setClickable(false);btn3.setClickable(false);btn5.setClickable(false);
                         btn1.setClickable(false);btn6.setClickable(false);btn4.setClickable(false);
+=======
+                        click7 = false;
+                        click8 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click7 = false;
                         click8 = false;
@@ -2909,9 +3499,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click7=false;
                         click8=false;
+=======
+                        }, 2000);
+                        click7 = false;
+                        click8 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click7 = false;
@@ -2955,12 +3551,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn8.setClickable(false);
                         btn1.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click1=false;
                         click8=false;
                     }else
                     {
                         btn2.setClickable(false);btn3.setClickable(false);btn5.setClickable(false);
                         btn7.setClickable(false);btn6.setClickable(false);btn4.setClickable(false);
+=======
+                        click1 = false;
+                        click8 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click1 = false;
                         click8 = false;
@@ -2975,9 +3577,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click1=false;
                         click8=false;
+=======
+                        }, 2000);
+                        click1 = false;
+                        click8 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click1 = false;
@@ -3012,12 +3620,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn8.setClickable(false);
                         btn2.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click2=false;
                         click8=false;
                     }else
                     {
                         btn1.setClickable(false);btn3.setClickable(false);btn5.setClickable(false);
                         btn7.setClickable(false);btn6.setClickable(false);btn4.setClickable(false);
+=======
+                        click2 = false;
+                        click8 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click2 = false;
                         click8 = false;
@@ -3032,9 +3646,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click2=false;
                         click8=false;
+=======
+                        }, 2000);
+                        click2 = false;
+                        click8 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click2 = false;
@@ -3069,12 +3689,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn8.setClickable(false);
                         btn3.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click3=false;
                         click8=false;
                     }else
                     {
                         btn2.setClickable(false);btn1.setClickable(false);btn5.setClickable(false);
                         btn7.setClickable(false);btn6.setClickable(false);btn4.setClickable(false);
+=======
+                        click3 = false;
+                        click8 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click3 = false;
                         click8 = false;
@@ -3089,9 +3715,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click3=false;
                         click8=false;
+=======
+                        }, 2000);
+                        click3 = false;
+                        click8 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click3 = false;
@@ -3126,12 +3758,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn8.setClickable(false);
                         btn4.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click4=false;
                         click8=false;
                     }else
                     {
                         btn2.setClickable(false);btn1.setClickable(false);btn5.setClickable(false);
                         btn7.setClickable(false);btn6.setClickable(false);btn3.setClickable(false);
+=======
+                        click4 = false;
+                        click8 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click4 = false;
                         click8 = false;
@@ -3146,9 +3784,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click4=false;
                         click8=false;
+=======
+                        }, 2000);
+                        click4 = false;
+                        click8 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click4 = false;
@@ -3183,12 +3827,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn8.setClickable(false);
                         btn5.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click5=false;
                         click8=false;
                     }else
                     {
                         btn2.setClickable(false);btn1.setClickable(false);btn3.setClickable(false);
                         btn7.setClickable(false);btn6.setClickable(false);btn4.setClickable(false);
+=======
+                        click5 = false;
+                        click8 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click5 = false;
                         click8 = false;
@@ -3203,9 +3853,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click5=false;
                         click8=false;
+=======
+                        }, 2000);
+                        click5 = false;
+                        click8 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click5 = false;
@@ -3240,12 +3896,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn8.setClickable(false);
                         btn6.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click6=false;
                         click8=false;
                     }else
                     {
                         btn2.setClickable(false);btn1.setClickable(false);btn5.setClickable(false);
                         btn7.setClickable(false);btn3.setClickable(false);btn4.setClickable(false);
+=======
+                        click6 = false;
+                        click8 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click6 = false;
                         click8 = false;
@@ -3260,9 +3922,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click6=false;
                         click8=false;
+=======
+                        }, 2000);
+                        click6 = false;
+                        click8 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click6 = false;
@@ -3297,12 +3965,18 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn8.setClickable(false);
                         btn7.setClickable(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         click7=false;
                         click8=false;
                     }else
                     {
                         btn2.setClickable(false);btn1.setClickable(false);btn5.setClickable(false);
                         btn3.setClickable(false);btn6.setClickable(false);btn4.setClickable(false);
+=======
+                        click7 = false;
+                        click8 = false;
+                    } else {
+>>>>>>> origin/master
 =======
                         click7 = false;
                         click8 = false;
@@ -3317,9 +3991,15 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                                 btn5.setClickable(true);btn6.setClickable(true);btn7.setClickable(true);btn8.setClickable(true);
                             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                         },1000);
                         click7=false;
                         click8=false;
+=======
+                        }, 2000);
+                        click7 = false;
+                        click8 = false;
+>>>>>>> origin/master
 =======
                         }, 2000);
                         click7 = false;

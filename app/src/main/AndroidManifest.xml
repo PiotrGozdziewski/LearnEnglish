@@ -30,19 +30,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.aplikacja_screen.Main2Activity"
+            android:name="com.example.aplikacja_screen.BocznyPasekLewy"
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme" />
-        <activity android:name="com.example.aplikacja_screen.Main3Activity" />
-        <activity android:name="com.example.aplikacja_screen.Wybor_kategorii" />
-        <activity android:name="com.example.aplikacja_screen.Tworzenie_zestawu" />
-        <activity android:name="com.example.aplikacja_screen.Moje_zestawy" />
-        <activity android:name="com.example.aplikacja_screen.Wybor_zadania" />
-        <activity android:name="com.example.aplikacja_screen.Zapomniane_haslo" />
+        <activity android:name="com.example.aplikacja_screen.Rejestracja" />
+        <activity android:name="com.example.aplikacja_screen.WyborKategorii" />
+        <activity android:name="com.example.aplikacja_screen.TworzenieZestawu" />
+        <activity android:name="com.example.aplikacja_screen.MojeZestawy" />
+        <activity android:name="com.example.aplikacja_screen.WyborZadania" />
+        <activity android:name="com.example.aplikacja_screen.ZapomnianeHaslo" />
         <activity android:name="com.example.aplikacja_screen.NoweHaslo" />
-        <activity android:name="com.example.aplikacja_screen.Dodanie_fiszki" />
-        <activity android:name="com.example.aplikacja_screen.Nauka_fiszki" />
-        <activity android:name="com.example.aplikacja_screen.Moj_profil" />
+        <activity android:name="com.example.aplikacja_screen.DodanieFiszki" />
+        <activity android:name="com.example.aplikacja_screen.NaukaFiszki" />
+        <activity android:name="com.example.aplikacja_screen.MojProfil" />
         <activity android:name="com.example.aplikacja_screen.Statystyka" />
         <activity android:name="com.example.aplikacja_screen.EdytowanieZestawu" />
         <activity android:name="com.example.aplikacja_screen.EdytowanieFiszki" />
@@ -59,6 +59,11 @@
         </activity>
         <activity android:name="com.example.aplikacja_screen.PlanszaKwadratowa">
         </activity>
+		
+		<provider
+            android:name="com.example.Database.AppProvider"
+            android:authorities="com.example.Database.provider"
+            android:exported="false" />
     </application>
 
 </manifest>

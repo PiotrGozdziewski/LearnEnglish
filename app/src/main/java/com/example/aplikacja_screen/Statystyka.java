@@ -14,11 +14,12 @@ import com.example.m.aplikacja_screen.R;
 public class Statystyka extends AppCompatActivity {
 
     TableLayout tableLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statystyka);
-        tableLayout=(TableLayout)findViewById(R.id.tableLayout);
+        tableLayout = (TableLayout) findViewById(R.id.tableLayout);
 
         //moze jakis scroll view dorobic
         TableRow row = new TableRow(this);

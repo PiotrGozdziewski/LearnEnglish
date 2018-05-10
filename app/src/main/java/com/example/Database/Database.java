@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.util.Log;
 
+import com.example.Uzytkownik;
 import com.example.aplikacja_screen.MainActivity;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -30,156 +31,75 @@ public class Database {
         this.contentResolver = contentResolver;
     }
 
-    public void loadFromExcelFile(String fileName) {
-        try {
-            POIFSFileSystem fs = new POIFSFileSystem(new FileInputStream(MainActivity.PATH + fileName));
-            HSSFWorkbook wb = new HSSFWorkbook(fs);
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-            int numOfSheets = wb.getNumberOfSheets();
+    // Wszystkie nowe funkcje dajemy pod tym komentarzem
 
-            for (int i = 0; i < numOfSheets; i++) {
-                HSSFSheet sheet = wb.getSheetAt(i);
-                String sheetName = sheet.getSheetName();
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-                HSSFRow row;
-                HSSFCell cell;
+    public Uzytkownik loginUser(String login, String pass) {
+        Uzytkownik uzytkownik = null;
 
-                String[] sheetNameSplit = sheetName.split("-");
-                String tableName = sheetNameSplit[0];
+        String[] projection = {
+                UsersContract.Columns._ID,
+                UsersContract.Columns.USERS_LOGIN,
+                UsersContract.Columns.USERS_PASSWORD,
+                UsersContract.Columns.USERS_NAME};
 
-                String category = "";
-                int categoryId;
+        String selection = UsersContract.Columns.USERS_LOGIN + " = ?";
+        String[] args = {login};
 
-                switch (tableName) {
-                    case "Categories":
-                        for (int j = 0; j < sheet.getPhysicalNumberOfRows(); j++) {
-                            row = sheet.getRow(j);
-                            if (row != null) {
-                                for (int c = 0; c < row.getPhysicalNumberOfCells(); c++) {
-                                    cell = row.getCell((short) c);
-                                    if (cell != null) {
-                                        String categoryName = cell.getStringCellValue();
-                                        insertIntoCategories(categoryName);
-                                    }
-                                }
-                            }
-                        }
-                        break;
+        Cursor cursor = contentResolver.query(UsersContract.CONTENT_URI,
+                projection,
+                selection,
+                args,
+                UsersContract.Columns._ID);
 
-                    case "Words":
-                        category = sheetNameSplit[1];
-                        categoryId = getCategoryId(category);
-
-                        for (int j = 0; j < sheet.getPhysicalNumberOfRows(); j++) {
-                            row = sheet.getRow(j);
-                            if (row != null) {
-                                String wordPl = "";
-                                String wordEn = "";
-                                byte[] image = null;
-                                for (int c = 0; c < row.getPhysicalNumberOfCells(); c++) {
-                                    cell = row.getCell((short) c);
-                                    if (cell != null) {
-                                        if (c == 0) {
-                                            wordPl = cell.getStringCellValue();
-                                        } else if (c == 1) {
-                                            wordEn = cell.getStringCellValue();
-                                        } else if (c == 2) {
-                                            String path = MainActivity.PATH + cell.getStringCellValue();
-                                            File imgFile = new File(path);
-
-                                            if (imgFile.exists()) {
-                                                Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-                                                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                                                myBitmap.compress(Bitmap.CompressFormat.PNG, 0, stream);
-                                                image = stream.toByteArray();
-                                            }
-                                        }
-                                    }
-                                }
-                                insertIntoWords(categoryId, wordPl, wordEn, image);
-                            }
-                        }
-                        break;
-
-                    case "Sentences":
-                        category = sheetNameSplit[1];
-                        categoryId = getCategoryId(category);
-
-                        for (int j = 0; j < sheet.getPhysicalNumberOfRows(); j++) {
-                            row = sheet.getRow(j);
-                            if (row != null) {
-                                String sentencePl = "";
-                                String sentenceEn = "";
-                                for (int c = 0; c < row.getPhysicalNumberOfCells(); c++) {
-                                    cell = row.getCell((short) c);
-                                    if (cell != null) {
-                                        if (c == 0) {
-                                            sentencePl = cell.getStringCellValue();
-                                        } else if (c == 1) {
-                                            sentenceEn = cell.getStringCellValue();
-                                        }
-                                    }
-                                }
-                                insertIntoSentences(categoryId, sentencePl, sentenceEn);
-                            }
-                        }
-                        break;
-
-                    case "ExercisesTypes":
-                        for (int j = 0; j < sheet.getPhysicalNumberOfRows(); j++) {
-                            row = sheet.getRow(j);
-                            if (row != null) {
-                                for (int c = 0; c < row.getPhysicalNumberOfCells(); c++) {
-                                    cell = row.getCell((short) c);
-                                    if (cell != null) {
-                                        String typeName = cell.getStringCellValue();
-                                        insertIntoExercisesTypes(typeName);
-                                    }
-                                }
-                            }
-                        }
-                        break;
-
-                    case "Exercises":
-                        for (int j = 0; j < sheet.getPhysicalNumberOfRows(); j++) {
-                            row = sheet.getRow(j);
-                            if (row != null) {
-                                String exerciseType = "";
-                                int exerciseTypeId;
-
-                                for (int c = 0; c < row.getPhysicalNumberOfCells(); c++) {
-                                    cell = row.getCell((short) c);
-                                    if (cell != null) {
-                                        if (c == 0) {
-                                            category = cell.getStringCellValue();
-                                        } else if (c == 1) {
-                                            exerciseType = cell.getStringCellValue();
-                                        }
-                                    }
-                                }
-                                categoryId = getCategoryId(category);
-                                exerciseTypeId = getExerciseTypeId(exerciseType);
-                                insertIntoExercises(categoryId, exerciseTypeId);
-                            }
-                        }
-                        break;
-
-                    case "Questions":
-                        for (int j = 0; j < sheet.getPhysicalNumberOfRows(); j++) {
-                            row = sheet.getRow(j);
-                            if (row != null) {
-                                cell = row.getCell(0);
-                                String question = cell.getStringCellValue();
-                                insertIntoQuestions(question);
-                            }
-                        }
-                        break;
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                if (cursor.getString(2).equals(pass)) {
+                    uzytkownik = new Uzytkownik(cursor.getInt(0), cursor.getString(1), cursor.getString(3));
                 }
             }
-        } catch (Exception ioe) {
-            ioe.printStackTrace();
+            cursor.close();
         }
+
+        return uzytkownik;
     }
+
+    public Cursor getQuestions() {
+        String[] projection = {
+                QuestionsContract.Columns._ID,
+                QuestionsContract.Columns.QUESTIONS_QUESTION};
+
+        Cursor cursor = contentResolver.query(QuestionsContract.CONTENT_URI,
+                projection,
+                null,
+                null,
+                QuestionsContract.Columns._ID);
+
+        return cursor;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // Wszystkie nowe funkcje dajemy nad tym komentarzem
+
 
     public Uri insertIntoQuestions(String question) {
         ContentValues contentValues = new ContentValues();
@@ -628,6 +548,157 @@ public class Database {
                 Log.d(TAG, "onCreate: ===========================");
             }
             cursor.close();
+        }
+    }
+
+    public void loadFromExcelFile(String fileName) {
+        try {
+            POIFSFileSystem fs = new POIFSFileSystem(new FileInputStream(MainActivity.PATH + fileName));
+            HSSFWorkbook wb = new HSSFWorkbook(fs);
+
+            int numOfSheets = wb.getNumberOfSheets();
+
+            for (int i = 0; i < numOfSheets; i++) {
+                HSSFSheet sheet = wb.getSheetAt(i);
+                String sheetName = sheet.getSheetName();
+
+                HSSFRow row;
+                HSSFCell cell;
+
+                String[] sheetNameSplit = sheetName.split("-");
+                String tableName = sheetNameSplit[0];
+
+                String category = "";
+                int categoryId;
+
+                switch (tableName) {
+                    case "Categories":
+                        for (int j = 0; j < sheet.getPhysicalNumberOfRows(); j++) {
+                            row = sheet.getRow(j);
+                            if (row != null) {
+                                for (int c = 0; c < row.getPhysicalNumberOfCells(); c++) {
+                                    cell = row.getCell((short) c);
+                                    if (cell != null) {
+                                        String categoryName = cell.getStringCellValue();
+                                        insertIntoCategories(categoryName);
+                                    }
+                                }
+                            }
+                        }
+                        break;
+
+                    case "Words":
+                        category = sheetNameSplit[1];
+                        categoryId = getCategoryId(category);
+
+                        for (int j = 0; j < sheet.getPhysicalNumberOfRows(); j++) {
+                            row = sheet.getRow(j);
+                            if (row != null) {
+                                String wordPl = "";
+                                String wordEn = "";
+                                byte[] image = null;
+                                for (int c = 0; c < row.getPhysicalNumberOfCells(); c++) {
+                                    cell = row.getCell((short) c);
+                                    if (cell != null) {
+                                        if (c == 0) {
+                                            wordPl = cell.getStringCellValue();
+                                        } else if (c == 1) {
+                                            wordEn = cell.getStringCellValue();
+                                        } else if (c == 2) {
+                                            String path = MainActivity.PATH + cell.getStringCellValue();
+                                            File imgFile = new File(path);
+
+                                            if (imgFile.exists()) {
+                                                Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+                                                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                                myBitmap.compress(Bitmap.CompressFormat.PNG, 0, stream);
+                                                image = stream.toByteArray();
+                                            }
+                                        }
+                                    }
+                                }
+                                insertIntoWords(categoryId, wordPl, wordEn, image);
+                            }
+                        }
+                        break;
+
+                    case "Sentences":
+                        category = sheetNameSplit[1];
+                        categoryId = getCategoryId(category);
+
+                        for (int j = 0; j < sheet.getPhysicalNumberOfRows(); j++) {
+                            row = sheet.getRow(j);
+                            if (row != null) {
+                                String sentencePl = "";
+                                String sentenceEn = "";
+                                for (int c = 0; c < row.getPhysicalNumberOfCells(); c++) {
+                                    cell = row.getCell((short) c);
+                                    if (cell != null) {
+                                        if (c == 0) {
+                                            sentencePl = cell.getStringCellValue();
+                                        } else if (c == 1) {
+                                            sentenceEn = cell.getStringCellValue();
+                                        }
+                                    }
+                                }
+                                insertIntoSentences(categoryId, sentencePl, sentenceEn);
+                            }
+                        }
+                        break;
+
+                    case "ExercisesTypes":
+                        for (int j = 0; j < sheet.getPhysicalNumberOfRows(); j++) {
+                            row = sheet.getRow(j);
+                            if (row != null) {
+                                for (int c = 0; c < row.getPhysicalNumberOfCells(); c++) {
+                                    cell = row.getCell((short) c);
+                                    if (cell != null) {
+                                        String typeName = cell.getStringCellValue();
+                                        insertIntoExercisesTypes(typeName);
+                                    }
+                                }
+                            }
+                        }
+                        break;
+
+                    case "Exercises":
+                        for (int j = 0; j < sheet.getPhysicalNumberOfRows(); j++) {
+                            row = sheet.getRow(j);
+                            if (row != null) {
+                                String exerciseType = "";
+                                int exerciseTypeId;
+
+                                for (int c = 0; c < row.getPhysicalNumberOfCells(); c++) {
+                                    cell = row.getCell((short) c);
+                                    if (cell != null) {
+                                        if (c == 0) {
+                                            category = cell.getStringCellValue();
+                                        } else if (c == 1) {
+                                            exerciseType = cell.getStringCellValue();
+                                        }
+                                    }
+                                }
+                                categoryId = getCategoryId(category);
+                                exerciseTypeId = getExerciseTypeId(exerciseType);
+                                insertIntoExercises(categoryId, exerciseTypeId);
+                            }
+                        }
+                        break;
+
+                    case "Questions":
+                        for (int j = 0; j < sheet.getPhysicalNumberOfRows(); j++) {
+                            row = sheet.getRow(j);
+                            if (row != null) {
+                                cell = row.getCell(0);
+                                String question = cell.getStringCellValue();
+                                insertIntoQuestions(question);
+                            }
+                        }
+                        break;
+                }
+            }
+        } catch (Exception ioe) {
+            ioe.printStackTrace();
         }
     }
 }

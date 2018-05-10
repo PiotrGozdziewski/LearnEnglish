@@ -9,21 +9,22 @@ import android.widget.ImageButton;
 
 import com.example.m.aplikacja_screen.R;
 
-public class Nauka_fiszki extends AppCompatActivity {
+public class NaukaFiszki extends AppCompatActivity {
 
     Button fiszka;
-    Boolean odwroc=false;
+    Boolean odwroc = false;
     ImageButton next;
-    int i=0;
-    String [] pl={"zakwaterowanie","słońce","pies","kot","makaron","okulary przeciwsłoneczne"};
-    String [] en = {"accomodation", "sun", "dog", "cat", "pasta","sunglasses"};
+    int i = 0;
+    String[] pl = {"zakwaterowanie", "słońce", "pies", "kot", "makaron", "okulary przeciwsłoneczne"};
+    String[] en = {"accomodation", "sun", "dog", "cat", "pasta", "sunglasses"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nauka_fiszki);
 
-        fiszka=(Button)findViewById(R.id.button7);
-        next=(ImageButton)findViewById(R.id.imageButton);
+        fiszka = (Button) findViewById(R.id.button7);
+        next = (ImageButton) findViewById(R.id.imageButton);
 
         fiszka.setText(pl[0]);
         fiszka.setOnClickListener(new View.OnClickListener() {
@@ -31,7 +32,7 @@ public class Nauka_fiszki extends AppCompatActivity {
             public void onClick(View view) {
                 if (odwroc == true) {
                     fiszka.setText(pl[i]);
-                    odwroc=false;
+                    odwroc = false;
                 } else {
                     fiszka.setText(en[i]);
                     odwroc = true;
@@ -43,18 +44,19 @@ public class Nauka_fiszki extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //kolejna fiszka
-                if(i==pl.length-1) {
+                if (i == pl.length - 1) {
                     i = -1;
                 }
-                fiszka.setText(pl[i+1]);
-                odwroc=false;
+                fiszka.setText(pl[i + 1]);
+                odwroc = false;
                 i++;
 
 
             }
         });
     }
-    public void onBackPressed(){
-        startActivity(new Intent(Nauka_fiszki.this,Moje_zestawy.class));
+
+    public void onBackPressed() {
+        startActivity(new Intent(NaukaFiszki.this, MojeZestawy.class));
     }
 }

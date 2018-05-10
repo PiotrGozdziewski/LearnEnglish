@@ -17,7 +17,7 @@ public class NoweHaslo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nowe_haslo);
 
-         ustaw_nowe_haslo = (Button)findViewById(R.id.button5);
+        ustaw_nowe_haslo = (Button) findViewById(R.id.button5);
         ustaw_nowe_haslo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

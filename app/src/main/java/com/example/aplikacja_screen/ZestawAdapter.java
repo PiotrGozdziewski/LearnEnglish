@@ -2,8 +2,10 @@ package com.example.aplikacja_screen;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -65,8 +67,20 @@ public class ZestawAdapter extends RecyclerView.Adapter<ZestawAdapter.ViewHolder
                     public boolean onMenuItemClick(MenuItem menuItem) {
                         switch (menuItem.getItemId()) {
                             case R.id.Dodaj:
+                                Cursor cursor=db.getSets();
+                                while(cursor.moveToNext()){
+                                    String nazwa=cursor.getString(2);
+                                    if(nazwa_zestawu.equals(nazwa))
+                                    {
+                                        int id_zestawu=cursor.getInt(0); //id aktualnego zestawu
+                                        //przeslanie id_zestawu do activity DodanieFiszki
+                                        SharedPreferences p= PreferenceManager.getDefaultSharedPreferences(context);
+                                        SharedPreferences.Editor e=p.edit();
+                                        e.putInt("ID",id_zestawu);
+                                        e.commit();
+                                    }
+                                }
                                 ZestawAdapter.this.context.startActivity(new Intent(ZestawAdapter.this.context, DodanieFiszki.class));
-                                Toast.makeText(context,pozycja,Toast.LENGTH_SHORT).show();
                                 break;
                             case R.id.Edytuj:
                                 ZestawAdapter.this.context.startActivity((new Intent(ZestawAdapter.this.context, EdytowanieZestawu.class)));
@@ -75,16 +89,29 @@ public class ZestawAdapter extends RecyclerView.Adapter<ZestawAdapter.ViewHolder
                                 ZestawAdapter.this.context.startActivity((new Intent(ZestawAdapter.this.context, UsuwanieFiszek.class)));
                                 break;
                             case R.id.Wyświetl:
+                                Cursor cursor2=db.getSets();
+                                while(cursor2.moveToNext()){
+                                    String nazwa=cursor2.getString(2);
+                                    if(nazwa_zestawu.equals(nazwa))
+                                    {
+                                        int id_zestawu=cursor2.getInt(0); //id aktualnego zestawu
+                                        //przeslanie id_zestawu do activity NaukaFiszki
+                                        SharedPreferences p= PreferenceManager.getDefaultSharedPreferences(context);
+                                        SharedPreferences.Editor e=p.edit();
+                                        e.putInt("ID",id_zestawu);
+                                        e.commit();
+                                    }
+                                }
                                 ZestawAdapter.this.context.startActivity(new Intent(ZestawAdapter.this.context, NaukaFiszki.class));
                                 break;
                             case R.id.Usuń_zestaw:
                                 //kod od usuniecia zestawu
-                                Cursor cursor=db.getSets();
-                                while(cursor.moveToNext()){
-                                    String nazwa=cursor.getString(2);
+                                Cursor cursor1=db.getSets();
+                                while(cursor1.moveToNext()){
+                                    String nazwa=cursor1.getString(2);
                                     if(nazwa_zestawu.equals(nazwa))
                                     {
-                                       int nr=cursor.getInt(0);
+                                       int nr=cursor1.getInt(0);
                                        db.deleteFromSets(nr);
                                         Intent intent=new Intent(context,MojeZestawy.class);
                                         context.startActivity(intent);

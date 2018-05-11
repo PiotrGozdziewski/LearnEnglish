@@ -103,8 +103,39 @@ public class Database {
         int count = contentResolver.delete(SetsContract.CONTENT_URI, selection, args);
     }
 
+    //funkcja dla wyświetlania fiszek
+    public Cursor getFlashcards(){
+        String[] projection={
+                FlashcardsContract.Columns._ID,
+                FlashcardsContract.Columns.FLASHCARDS_SET_ID,
+                FlashcardsContract.Columns.FLASHCARDS_WORD_PL,
+                FlashcardsContract.Columns.FLASHCARDS_WORD_EN};
 
+        Cursor cursor = contentResolver.query(FlashcardsContract.CONTENT_URI,
+                projection,
+                null,
+                null,
+                FlashcardsContract.Columns._ID);
+        return cursor;
+    }
+    //usuwanie fiszki o podanym ID
+    public void deleteFromFlashcards(int flashcardID){
+        String selection = FlashcardsContract.Columns._ID + " =?";
+        String[] args = {String.valueOf(flashcardID)};
+        int count = contentResolver.delete(FlashcardsContract.CONTENT_URI,selection,args);
+    }
 
+    //edytowanie fiszek
+    public void updateFlashcards(int flashCardsID,int flashCardsSetID, String wordPL,String wordEN)
+    {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(FlashcardsContract.Columns.FLASHCARDS_SET_ID,flashCardsSetID);
+        contentValues.put(FlashcardsContract.Columns.FLASHCARDS_WORD_PL,wordPL);
+        contentValues.put(FlashcardsContract.Columns.FLASHCARDS_WORD_EN,wordEN);
+        String selection = FlashcardsContract.Columns._ID + " =?";
+        String[] args = {String.valueOf(flashCardsID)};
+        int count = contentResolver.update(FlashcardsContract.CONTENT_URI,contentValues,selection,args);
+    }
 
 
 

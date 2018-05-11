@@ -43,17 +43,18 @@ public class MojeZestawy extends AppCompatActivity {
         list=new ArrayList<>();
         //loadRecyclerViewItem();
         Cursor cursor=db.getSets();
-        String s=cursor.getString(3);
-        //String s=String.valueOf(c);
-        Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
-//        while(cursor.moveToNext()){
-//            Zestaw myList=new Zestaw(cursor.getInt(1),cursor.getInt(2),cursor.getString(3));
-//            list.add(myList);
-//        }
-        cursor.close();
-//        adapter=new ZestawAdapter(list,this);
-//        recyclerView.setAdapter(adapter);
 
+        while(cursor.moveToNext()){
+            int nr=cursor.getInt(0);
+            int nr_uzytkownika=cursor.getInt(1);
+            String nazwa=cursor.getString(2);
+
+            Zestaw myList=new Zestaw(nr,nr_uzytkownika,nazwa);
+            list.add(myList);
+        }
+
+        adapter=new ZestawAdapter(list,this);
+        recyclerView.setAdapter(adapter);
         ///////////////////////////////////////////
         dodaj.setOnClickListener(new View.OnClickListener() {
             @Override

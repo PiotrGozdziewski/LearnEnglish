@@ -40,8 +40,8 @@ public class ZestawAdapter extends RecyclerView.Adapter<ZestawAdapter.ViewHolder
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Zestaw z = list.get(position);
-        holder.nazwa.setText(z.getNazwa());
-        //holder.opis.setText(z.getOpis());
+        holder.nazwa.setText(z.getNazwa()); //nazwa zestawu
+        holder.ilośćFiszek.setText("20"); //przypisanie ilości fiszek w zestawie
 
         holder.opcje.setOnClickListener(new View.OnClickListener() {
 
@@ -68,8 +68,7 @@ public class ZestawAdapter extends RecyclerView.Adapter<ZestawAdapter.ViewHolder
                                 break;
                             case R.id.Usuń_zestaw:
                                 //kod od usuniecia zestawu
-                                //pewnie bd jakas linijka z bazy danych, bo od razu caly zestaw usuwamy
-                                //albo jakas fun
+                                //funkcja z bazy danych, bo od razu caly zestaw usuwamy
                                 Toast.makeText(context.getApplicationContext(), "Usunieto zestaw", Toast.LENGTH_SHORT).show();
                                 break;
                         }
@@ -89,13 +88,13 @@ public class ZestawAdapter extends RecyclerView.Adapter<ZestawAdapter.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView nazwa;
-        public TextView opis;
+        public TextView ilośćFiszek;
         public TextView opcje;
 
         public ViewHolder(View itemView) {
             super(itemView);
             nazwa = (TextView) itemView.findViewById(R.id.textViewHead);
-            opis = (TextView) itemView.findViewById(R.id.textViewDesc);
+            ilośćFiszek = (TextView) itemView.findViewById(R.id.textViewDesc);
             opcje = (TextView) itemView.findViewById(R.id.textViewOptions);
         }
     }

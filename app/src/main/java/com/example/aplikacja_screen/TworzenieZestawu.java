@@ -47,7 +47,5 @@ public class TworzenieZestawu extends AppCompatActivity {
                 startActivity(new Intent(TworzenieZestawu.this, MojeZestawy.class));
             }
         });
-
-
     }
 }

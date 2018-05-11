@@ -78,7 +78,6 @@ public class Database {
                 null,
                 null,
                 QuestionsContract.Columns._ID);
-
         return cursor;
     }
 

@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                     //pobranie wartosci id uzytkownika
                     int id=uzytkownik.getId();
                     String id_uzytkownik=String.valueOf(id);
-                    //przeslanie wartosci id uzytkownika do activity TworzenieZestawu bez wlaczania TworzenieZestawu
+                    //przeslanie wartosci id uzytkownika do innego activity bez otwierania activity
                     SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                     SharedPreferences.Editor editor = prefs.edit();
                     editor.putString("id", id_uzytkownik);

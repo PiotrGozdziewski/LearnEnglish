@@ -1,7 +1,9 @@
 package com.example.aplikacja_screen;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -41,20 +43,20 @@ public class MojeZestawy extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         list=new ArrayList<>();
-        //loadRecyclerViewItem();
-        Cursor cursor=db.getSets();
-
-        while(cursor.moveToNext()){
-            int nr=cursor.getInt(0);
-            int nr_uzytkownika=cursor.getInt(1);
-            String nazwa=cursor.getString(2);
-
-            Zestaw myList=new Zestaw(nr,nr_uzytkownika,nazwa);
-            list.add(myList);
-        }
-
-        adapter=new ZestawAdapter(list,this);
-        recyclerView.setAdapter(adapter);
+        loadRecyclerViewItem();
+//        Cursor cursor=db.getSets();
+//
+//        while(cursor.moveToNext()){
+//            int nr=cursor.getInt(0);
+//            int nr_uzytkownika=cursor.getInt(1);
+//            String nazwa=cursor.getString(2);
+//
+//            Zestaw myList=new Zestaw(nr,nr_uzytkownika,nazwa);
+//            list.add(myList);
+//        }
+//
+//        adapter=new ZestawAdapter(list,this);
+//        recyclerView.setAdapter(adapter);
         ///////////////////////////////////////////
         dodaj.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,14 +68,26 @@ public class MojeZestawy extends AppCompatActivity {
 
     public void loadRecyclerViewItem(){
 
-        for(int i=1;i<=3;i++)
-        {
-            //Zestaw myList=new Zestaw("Zestaw "+ i,"Ilosz fiszek");
-            //list.add(myList);
+        int nr=0;
+        String nazwa="";
+        //pobranie id_uzytkownika aktualnie zalogowanego
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String userID=prefs.getString("id","0"); //id zalogowanego
+
+        Cursor cursor=db.getSets();
+        while(cursor.moveToNext()){
+            int nr_uzytkownika=cursor.getInt(1); //pobranie id z bazy
+            String nr_uzytkownika_baza=String.valueOf(nr_uzytkownika);
+            if(userID.equals(nr_uzytkownika_baza)){
+                nr=cursor.getInt(0);
+                nazwa=cursor.getString(2);
+                Zestaw myList=new Zestaw(nr,nr_uzytkownika,nazwa);
+                list.add(myList);
+            }
         }
+
         adapter=new ZestawAdapter(list,this);
         recyclerView.setAdapter(adapter);
-
     }
 
     public void onBackPressed(){

@@ -2,6 +2,8 @@ package com.example.aplikacja_screen;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -11,6 +13,7 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.Database.Database;
 import com.example.Zestaw;
 import com.example.m.aplikacja_screen.R;
 
@@ -21,11 +24,12 @@ public class ZestawAdapter extends RecyclerView.Adapter<ZestawAdapter.ViewHolder
     private List<Zestaw> list;
     Context context;
 
+
     public ZestawAdapter(List<Zestaw> list, Context c) {
         this.list = list;
         this.context = c;
     }
-
+    Database db;
     public ZestawAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_zestawy, parent, false);
         v.setOnClickListener(new View.OnClickListener() {
@@ -43,6 +47,12 @@ public class ZestawAdapter extends RecyclerView.Adapter<ZestawAdapter.ViewHolder
         holder.nazwa.setText(z.getNazwa()); //nazwa zestawu
         holder.ilośćFiszek.setText("20"); //przypisanie ilości fiszek w zestawie
 
+        final String pozycja=String.valueOf(position);
+        db= new Database(context.getContentResolver());
+
+        //pobranie aktualnej nazwy zestawu
+        final String nazwa_zestawu= z.getNazwa();
+
         holder.opcje.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -56,6 +66,7 @@ public class ZestawAdapter extends RecyclerView.Adapter<ZestawAdapter.ViewHolder
                         switch (menuItem.getItemId()) {
                             case R.id.Dodaj:
                                 ZestawAdapter.this.context.startActivity(new Intent(ZestawAdapter.this.context, DodanieFiszki.class));
+                                Toast.makeText(context,pozycja,Toast.LENGTH_SHORT).show();
                                 break;
                             case R.id.Edytuj:
                                 ZestawAdapter.this.context.startActivity((new Intent(ZestawAdapter.this.context, EdytowanieZestawu.class)));
@@ -68,8 +79,17 @@ public class ZestawAdapter extends RecyclerView.Adapter<ZestawAdapter.ViewHolder
                                 break;
                             case R.id.Usuń_zestaw:
                                 //kod od usuniecia zestawu
-                                //funkcja z bazy danych, bo od razu caly zestaw usuwamy
-                                Toast.makeText(context.getApplicationContext(), "Usunieto zestaw", Toast.LENGTH_SHORT).show();
+                                Cursor cursor=db.getSets();
+                                while(cursor.moveToNext()){
+                                    String nazwa=cursor.getString(2);
+                                    if(nazwa_zestawu.equals(nazwa))
+                                    {
+                                       int nr=cursor.getInt(0);
+                                       db.deleteFromSets(nr);
+                                        Intent intent=new Intent(context,MojeZestawy.class);
+                                        context.startActivity(intent);
+                                    }
+                                }
                                 break;
                         }
                         return false;

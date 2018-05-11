@@ -44,20 +44,7 @@ public class MojeZestawy extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         list=new ArrayList<>();
         loadRecyclerViewItem();
-//        Cursor cursor=db.getSets();
-//
-//        while(cursor.moveToNext()){
-//            int nr=cursor.getInt(0);
-//            int nr_uzytkownika=cursor.getInt(1);
-//            String nazwa=cursor.getString(2);
-//
-//            Zestaw myList=new Zestaw(nr,nr_uzytkownika,nazwa);
-//            list.add(myList);
-//        }
-//
-//        adapter=new ZestawAdapter(list,this);
-//        recyclerView.setAdapter(adapter);
-        ///////////////////////////////////////////
+
         dodaj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

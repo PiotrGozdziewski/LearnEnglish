@@ -81,7 +81,7 @@ public class Database {
         return cursor;
     }
 
-    //funkcja dla zestawu
+    //funkcja dla wyświetlenia zestawów
     public Cursor getSets(){
         String[] projection ={
                 SetsContract.Columns._ID,
@@ -96,6 +96,12 @@ public class Database {
         return cursor;
     }
 
+    //usuwanie zestawu o podanym ID
+    public void deleteFromSets(int setId) {
+        String selection = SetsContract.Columns._ID + " = ?";
+        String[] args = {String.valueOf(setId)};
+        int count = contentResolver.delete(SetsContract.CONTENT_URI, selection, args);
+    }
 
 
 

@@ -35,12 +35,13 @@ public class TworzenieZestawu extends AppCompatActivity {
         tworzenie_zestawu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //doadanie do bazy
+
                 String nazwa_zestaw=nazwa_zestawu.getText().toString();
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 String userID = prefs.getString("id", "0");
 
                 Toast.makeText(getApplicationContext(),userID,Toast.LENGTH_SHORT).show();
+                //doadanie do bazy
                 Uri uri=db.insertIntoSets(Integer.parseInt(userID),nazwa_zestaw);
 
                 //przejscie do listy moich zestawow

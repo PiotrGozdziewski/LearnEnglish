@@ -99,6 +99,19 @@ public class ZestawAdapter extends RecyclerView.Adapter<ZestawAdapter.ViewHolder
                                 ZestawAdapter.this.context.startActivity((new Intent(ZestawAdapter.this.context, EdytowanieZestawu.class)));
                                 break;
                             case R.id.Usuń:
+                                Cursor cursor4=db.getSets();
+                                while(cursor4.moveToNext()){
+                                    String nazwa=cursor4.getString(2);
+                                    if(nazwa_zestawu.equals(nazwa))
+                                    {
+                                        int id_zestawu=cursor4.getInt(0); //id aktualnego zestawu
+                                        //przeslanie id_zestawu do activity EdytowanieZestawu
+                                        SharedPreferences p= PreferenceManager.getDefaultSharedPreferences(context);
+                                        SharedPreferences.Editor e=p.edit();
+                                        e.putInt("ID",id_zestawu);
+                                        e.commit();
+                                    }
+                                }
                                 ZestawAdapter.this.context.startActivity((new Intent(ZestawAdapter.this.context, UsuwanieFiszek.class)));
                                 break;
                             case R.id.Wyświetl:

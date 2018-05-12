@@ -157,8 +157,8 @@ public class Database {
         int count=contentResolver.update(UsersContract.CONTENT_URI,contentValues,selection,args);
     }
 
-    //pobranie hasla od uzytkownika o podanym ID
-    public Cursor getPassword(int userID)
+    //pobranie informaji o uzytkowniku o podanym ID
+    public Cursor getUser(int userID)
     {
         String[] projection={
                 UsersContract.Columns._ID,
@@ -175,6 +175,51 @@ public class Database {
         return cursor;
     }
 
+    //pobranie info o uzytkownikach
+    public Cursor getUsers()
+    {
+        String[] projection={
+                UsersContract.Columns._ID,
+                UsersContract.Columns.USERS_LOGIN,
+                UsersContract.Columns.USERS_PASSWORD,
+                UsersContract.Columns.USERS_NAME};
+        Cursor cursor = contentResolver.query(UsersContract.CONTENT_URI,
+                projection,
+                null,
+                null,
+                UsersContract.Columns._ID);
+        return cursor;
+    }
+
+    //pobranie inf o podpowiedziach
+    public Cursor getHints()
+    {
+        String[] projection = {
+                HintsContract.Columns._ID,
+                HintsContract.Columns.HINTS_QUESTION_ID,
+                HintsContract.Columns.HINTS_USER_ID,
+                HintsContract.Columns.HINTS_ANSWER};
+        Cursor cursor = contentResolver.query(HintsContract.CONTENT_URI,
+                projection,
+                null,
+                null,
+                HintsContract.Columns._ID);
+        return cursor;
+    }
+
+    //pobranie inf o pytaniach
+    public Cursor getQuestion()
+    {
+        String[] projection = {
+                QuestionsContract.Columns._ID,
+                QuestionsContract.Columns.QUESTIONS_QUESTION};
+        Cursor cursor = contentResolver.query(QuestionsContract.CONTENT_URI,
+                projection,
+                null,
+                null,
+                QuestionsContract.Columns._ID);
+        return cursor;
+    }
 
 
 

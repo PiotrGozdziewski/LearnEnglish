@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TabHost;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -87,7 +86,7 @@ public class MojProfil extends AppCompatActivity {
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 String userID = prefs.getString("id", "0");
                 //sprawdzenie czy stare haslo zostalo poprawnie wprowadzone
-                Cursor c=db.getPassword(Integer.parseInt(userID));
+                Cursor c=db.getUser(Integer.parseInt(userID));
                 while(c.moveToNext())
                 {
                     if(c.getString(2).equals(stare_haslo.getText().toString()))

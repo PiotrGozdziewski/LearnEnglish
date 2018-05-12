@@ -19,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.Uzytkownik;
 import com.example.m.aplikacja_screen.R;
@@ -68,6 +69,7 @@ public class BocznyPasekLewy extends AppCompatActivity
         zalogowany_jako = (TextView) headerView.findViewById(R.id.zalogowany_jako);
         Intent intent1 = getIntent();
         Bundle b = intent1.getExtras();
+
         if (b != null) {
             Uzytkownik z = (Uzytkownik) getIntent().getExtras().getSerializable("user");
             //DODATKOWE OPCJE DO WYSWIETLANIA

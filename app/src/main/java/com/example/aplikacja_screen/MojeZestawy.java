@@ -57,6 +57,7 @@ public class MojeZestawy extends AppCompatActivity {
 
         int nr=0;
         String nazwa="";
+        int ilość_fiszek=0;
         //pobranie id_uzytkownika aktualnie zalogowanego
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String userID=prefs.getString("id","0"); //id zalogowanego
@@ -68,7 +69,7 @@ public class MojeZestawy extends AppCompatActivity {
             if(userID.equals(nr_uzytkownika_baza)){
                 nr=cursor.getInt(0);
                 nazwa=cursor.getString(2);
-                Zestaw myList=new Zestaw(nr,nr_uzytkownika,nazwa);
+                Zestaw myList=new Zestaw(nr,nr_uzytkownika,nazwa,ilość_fiszek);
                 list.add(myList);
             }
         }

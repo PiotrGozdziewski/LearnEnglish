@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.Database.Database;
+import com.example.Database.SetsContract;
 import com.example.Zestaw;
 import com.example.m.aplikacja_screen.R;
 
@@ -25,13 +27,13 @@ public class ZestawAdapter extends RecyclerView.Adapter<ZestawAdapter.ViewHolder
 
     private List<Zestaw> list;
     Context context;
-
+    Database db;
 
     public ZestawAdapter(List<Zestaw> list, Context c) {
         this.list = list;
         this.context = c;
     }
-    Database db;
+
     public ZestawAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_zestawy, parent, false);
         v.setOnClickListener(new View.OnClickListener() {
@@ -47,14 +49,16 @@ public class ZestawAdapter extends RecyclerView.Adapter<ZestawAdapter.ViewHolder
     public void onBindViewHolder(ViewHolder holder, int position) {
         Zestaw z = list.get(position);
         holder.nazwa.setText(z.getNazwa()); //nazwa zestawu
-        holder.ilośćFiszek.setText("20"); //przypisanie ilości fiszek w zestawie
 
-        final String pozycja=String.valueOf(position);
         db= new Database(context.getContentResolver());
-
         //pobranie aktualnej nazwy zestawu
         final String nazwa_zestawu= z.getNazwa();
+        //pobranie ilości fiszek w zestawie
 
+//        holder.ilośćFiszek.setText(ilość_fiszek);
+
+
+        Toast.makeText(context, String.valueOf(z.getIlość()), Toast.LENGTH_SHORT).show();
         holder.opcje.setOnClickListener(new View.OnClickListener() {
 
             @Override

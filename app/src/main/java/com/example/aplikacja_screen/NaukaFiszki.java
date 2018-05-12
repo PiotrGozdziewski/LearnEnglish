@@ -36,6 +36,8 @@ public class NaukaFiszki extends AppCompatActivity {
         en=new ArrayList<String>();
         fiszka = (Button) findViewById(R.id.button7);
         next = (ImageButton) findViewById(R.id.imageButton);
+        int ilość_fiszek_zestaw=0;
+        int id_zestawu_aktualnego=0;
 
         //pobranie ID aktualnego zestawu
         SharedPreferences p= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -48,7 +50,8 @@ public class NaukaFiszki extends AppCompatActivity {
             {
                 pl.add(cursor.getString(2));
                 en.add(cursor.getString(3));
-
+                ilość_fiszek_zestaw++;
+                id_zestawu_aktualnego=cursor.getInt(1);
             }
         }
 

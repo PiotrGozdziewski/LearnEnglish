@@ -137,8 +137,25 @@ public class Database {
         int count = contentResolver.update(FlashcardsContract.CONTENT_URI,contentValues,selection,args);
     }
 
+    //edytowanie loginu użytkownika
+    public void updateUserLogin(int usersID, String login)
+    {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(UsersContract.Columns.USERS_LOGIN,login);
+        String selection = UsersContract.Columns._ID + " =?";
+        String[] args = {String.valueOf(usersID)};
+        int count=contentResolver.update(UsersContract.CONTENT_URI,contentValues,selection,args);
+    }
 
-
+    //edytowanie hasła użytkownika
+    public void updateUserPassword(int usersID,String password)
+    {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(UsersContract.Columns.USERS_PASSWORD,password);
+        String selection = UsersContract.Columns._ID + " =?";
+        String[] args = {String.valueOf(usersID)};
+        int count=contentResolver.update(UsersContract.CONTENT_URI,contentValues,selection,args);
+    }
 
 
 

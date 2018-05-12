@@ -1,5 +1,6 @@
 package com.example.aplikacja_screen;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.preference.PreferenceManager;
@@ -41,5 +42,8 @@ public class DodanieFiszki extends AppCompatActivity {
                 en.setText("");
             }
         });
+    }
+    public void onBackPressed() {
+        startActivity(new Intent(DodanieFiszki.this, MojeZestawy.class));
     }
 }

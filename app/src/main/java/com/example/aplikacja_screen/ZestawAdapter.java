@@ -53,12 +53,25 @@ public class ZestawAdapter extends RecyclerView.Adapter<ZestawAdapter.ViewHolder
         db= new Database(context.getContentResolver());
         //pobranie aktualnej nazwy zestawu
         final String nazwa_zestawu= z.getNazwa();
+
         //pobranie ilości fiszek w zestawie
+        Cursor c=db.getFlashcards();
+        Cursor c1=db.getSets();
+        int numer_zestawu=0;
+        int ilość_fiszek=0;
+        while(c1.moveToNext())
+        {
+            if(nazwa_zestawu.equals(c1.getString(2))) {
+                numer_zestawu = c1.getInt(0);
+                while (c.moveToNext()) {
+                    if (numer_zestawu == (c.getInt(1))) {
+                        ilość_fiszek++;
+                    }
+                }
+                holder.ilośćFiszek.setText("Ilość fiszek: "+String.valueOf(ilość_fiszek));
+            }
+        }
 
-//        holder.ilośćFiszek.setText(ilość_fiszek);
-
-
-        Toast.makeText(context, String.valueOf(z.getIlość()), Toast.LENGTH_SHORT).show();
         holder.opcje.setOnClickListener(new View.OnClickListener() {
 
             @Override

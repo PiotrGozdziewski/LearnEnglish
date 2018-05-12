@@ -157,6 +157,23 @@ public class Database {
         int count=contentResolver.update(UsersContract.CONTENT_URI,contentValues,selection,args);
     }
 
+    //pobranie hasla od uzytkownika o podanym ID
+    public Cursor getPassword(int userID)
+    {
+        String[] projection={
+                UsersContract.Columns._ID,
+                UsersContract.Columns.USERS_LOGIN,
+                UsersContract.Columns.USERS_PASSWORD,
+                UsersContract.Columns.USERS_NAME};
+        String selection = UsersContract.Columns._ID + " =?";
+        String[] args = {String.valueOf(userID)};
+        Cursor cursor = contentResolver.query(UsersContract.CONTENT_URI,
+                projection,
+                selection,
+                args,
+                UsersContract.Columns._ID);
+        return cursor;
+    }
 
 
 

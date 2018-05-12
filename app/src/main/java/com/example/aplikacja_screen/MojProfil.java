@@ -68,9 +68,15 @@ public class MojProfil extends AppCompatActivity {
                 String userID = prefs.getString("id", "0");
                 //zmiana loginu
                 String nowy_login=login.getText().toString();
-                db.updateUserLogin(Integer.parseInt(userID),nowy_login);
-                Toast.makeText(getApplicationContext(),"Poprawnie zmieniono login",Toast.LENGTH_SHORT).show();
-                login.setText(" ");
+                if(!nowy_login.equals("")) {
+                    db.updateUserLogin(Integer.parseInt(userID), nowy_login);
+                    Toast.makeText(getApplicationContext(), "Poprawnie zmieniono login", Toast.LENGTH_SHORT).show();
+                    login.setText(" ");
+                    startActivity(new Intent(MojProfil.this,BocznyPasekLewy.class));
+                }else
+                {
+                    Toast.makeText(getApplicationContext(),"Pole nie moze byc puste",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

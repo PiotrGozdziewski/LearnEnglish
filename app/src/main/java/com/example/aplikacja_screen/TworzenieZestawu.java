@@ -41,8 +41,6 @@ public class TworzenieZestawu extends AppCompatActivity {
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 String userID = prefs.getString("id", "0");
 
-
-
                 boolean czy_istnieje=false;
                 Cursor cursor = db.getSets();
                 while (cursor.moveToNext())

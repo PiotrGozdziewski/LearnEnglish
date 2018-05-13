@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.renderscript.ScriptIntrinsicYuvToRGB;
 import android.util.Log;
 
 import com.example.Uzytkownik;
@@ -122,6 +123,13 @@ public class Database {
     public void deleteFromFlashcards(int flashcardID) {
         String selection = FlashcardsContract.Columns._ID + " =?";
         String[] args = {String.valueOf(flashcardID)};
+        int count = contentResolver.delete(FlashcardsContract.CONTENT_URI, selection, args);
+    }
+
+    //usuwanie wszystkich fiszek
+    public void deleteFlashcards(int setID){
+        String selection = FlashcardsContract.Columns.FLASHCARDS_SET_ID + " =?";
+        String[] args = {String.valueOf((setID))};
         int count = contentResolver.delete(FlashcardsContract.CONTENT_URI, selection, args);
     }
 

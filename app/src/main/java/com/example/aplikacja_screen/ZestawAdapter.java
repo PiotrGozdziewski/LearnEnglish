@@ -115,6 +115,9 @@ public class ZestawAdapter extends RecyclerView.Adapter<ZestawAdapter.ViewHolder
                                         }
                                     }
                                     ZestawAdapter.this.context.startActivity((new Intent(ZestawAdapter.this.context, EdytowanieZestawu.class)));
+                                }else
+                                {
+                                    Toast.makeText(context,"Brak fiszek w zestawie",Toast.LENGTH_SHORT).show();
                                 }
                                 break;
                             case R.id.Usuń:
@@ -132,6 +135,8 @@ public class ZestawAdapter extends RecyclerView.Adapter<ZestawAdapter.ViewHolder
                                         }
                                     }
                                     ZestawAdapter.this.context.startActivity((new Intent(ZestawAdapter.this.context, UsuwanieFiszek.class)));
+                                }else{
+                                    Toast.makeText(context,"Brak fiszek w zestawie",Toast.LENGTH_SHORT).show();
                                 }
                                 break;
                             case R.id.Wyświetl:
@@ -149,6 +154,8 @@ public class ZestawAdapter extends RecyclerView.Adapter<ZestawAdapter.ViewHolder
                                         }
                                     }
                                     ZestawAdapter.this.context.startActivity(new Intent(ZestawAdapter.this.context, NaukaFiszki.class));
+                                }else{
+                                    Toast.makeText(context,"Brak fiszek w zestawie",Toast.LENGTH_SHORT).show();
                                 }
                                 break;
                             case R.id.Usuń_zestaw:
@@ -159,9 +166,12 @@ public class ZestawAdapter extends RecyclerView.Adapter<ZestawAdapter.ViewHolder
                                     if(nazwa_zestawu.equals(nazwa))
                                     {
                                        int nr=cursor1.getInt(0);
+                                       //usuwanie fiszek z zestawu
+                                        db.deleteFlashcards(cursor1.getInt(0));
+                                        //usuwanie całego zestawu
                                        db.deleteFromSets(nr);
-                                        Intent intent=new Intent(context,MojeZestawy.class);
-                                        context.startActivity(intent);
+                                       Intent intent=new Intent(context,MojeZestawy.class);
+                                       context.startActivity(intent);
                                     }
                                 }
                                 break;

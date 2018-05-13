@@ -40,25 +40,33 @@ public class TworzenieZestawu extends AppCompatActivity {
                 String nazwa_zestaw=nazwa_zestawu.getText().toString();
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 String userID = prefs.getString("id", "0");
-
+                Toast.makeText(getApplicationContext(), userID, Toast.LENGTH_SHORT).show();
                 boolean czy_istnieje=false;
                 Cursor cursor = db.getSets();
-                while (cursor.moveToNext())
-                {
-                    if(nazwa_zestaw.equalsIgnoreCase(cursor.getString(2))&&cursor.getInt(1)==Integer.parseInt(userID))
-                    {
-                        czy_istnieje=true;
+                Cursor cursor2 = db.getUser(Integer.parseInt(userID));
+                while(cursor2.moveToNext()) {
+                    while (cursor.moveToNext()) {
+                        if(Integer.parseInt(userID)==cursor.getInt(1)) {
+                            if (nazwa_zestaw.equalsIgnoreCase(cursor.getString(2))) {
+                                czy_istnieje = true;
+                            }
+                            Toast.makeText(getApplicationContext(), "id set: " + String.valueOf(cursor.getInt(0)), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "nazwa: " + cursor.getString(2), Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
 
-                if(czy_istnieje==false)
+                if(czy_istnieje==false && !nazwa_zestaw.equals(""))
                 {
                     Uri uri=db.insertIntoSets(Integer.parseInt(userID),nazwa_zestaw);
-                }else{
+                    //przejscie do listy moich zestawow
+                    startActivity(new Intent(TworzenieZestawu.this, MojeZestawy.class));
+                }else if(czy_istnieje==true){
                     Toast.makeText(getApplicationContext(),"Istnieje już zestaw o podanej nazwie.",Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getApplicationContext(),"Pozostawiono puste pole.",Toast.LENGTH_SHORT).show();
                 }
-                //przejscie do listy moich zestawow
-                startActivity(new Intent(TworzenieZestawu.this, MojeZestawy.class));
+
             }
         });
     }

@@ -37,7 +37,11 @@ public class DodanieFiszki extends AppCompatActivity {
                 SharedPreferences p= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 int id_zestawu=p.getInt("ID",0);
                 //dodanie fiszki do bazy
-                Uri uri=db.insertIntoFlashCards(id_zestawu,pl.getText().toString(),en.getText().toString());
+                if(pl.getText().toString().equals("")||en.getText().toString().equals("")) {
+                   Toast.makeText(getApplicationContext(),"Pozostawiono puste pola",Toast.LENGTH_SHORT).show();
+                }else{
+                    Uri uri = db.insertIntoFlashCards(id_zestawu, pl.getText().toString(), en.getText().toString());
+                }
                 pl.setText("");
                 en.setText("");
             }

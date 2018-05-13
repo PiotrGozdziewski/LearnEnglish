@@ -54,22 +54,29 @@ public class ZestawAdapter extends RecyclerView.Adapter<ZestawAdapter.ViewHolder
         db= new Database(context.getContentResolver());
         //pobranie aktualnej nazwy zestawu
         final String nazwa_zestawu= z.getNazwa();
-
+        final int id_zestaw=z.getId();
+        Toast.makeText(context, "id zestawu: "+String.valueOf(id_zestaw), Toast.LENGTH_SHORT).show();
         //pobranie ilości fiszek w zestawie
         Cursor c=db.getFlashcards();
         Cursor c1=db.getSets();
         int numer_zestawu=0;
         ilość_fiszek=0;
+        //pobranie id uzytkownika aktualnie zalogowanego
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        String userID = prefs.getString("id", "0");
+
         while(c1.moveToNext())
         {
-            if(nazwa_zestawu.equals(c1.getString(2))) {
-                numer_zestawu = c1.getInt(0);
-                while (c.moveToNext()) {
-                    if (numer_zestawu == (c.getInt(1))) {
-                        ilość_fiszek++;
+            if(Integer.parseInt(userID)==c1.getInt(1)) {
+                if (nazwa_zestawu.equals(c1.getString(2))) {
+                    numer_zestawu = c1.getInt(0);
+                    while (c.moveToNext()) {
+                        if (numer_zestawu == (c.getInt(1))) {
+                            ilość_fiszek++;
+                        }
                     }
+                    holder.ilośćFiszek.setText("Ilość fiszek: " + String.valueOf(ilość_fiszek));
                 }
-                holder.ilośćFiszek.setText("Ilość fiszek: "+String.valueOf(ilość_fiszek));
             }
         }
 
@@ -85,28 +92,27 @@ public class ZestawAdapter extends RecyclerView.Adapter<ZestawAdapter.ViewHolder
                     public boolean onMenuItemClick(MenuItem menuItem) {
                         switch (menuItem.getItemId()) {
                             case R.id.Dodaj:
-                                Cursor cursor=db.getSets();
-                                while(cursor.moveToNext()){
-                                    String nazwa=cursor.getString(2);
-                                    if(nazwa_zestawu.equals(nazwa))
-                                    {
-                                        int id_zestawu=cursor.getInt(0); //id aktualnego zestawu
+                                Cursor cursor = db.getSets();
+                                while (cursor.moveToNext()) {
+                                    int id_zestawu1 = cursor.getInt(0);
+                                    if (id_zestaw == id_zestawu1){
+                                        int id_zestawu = id_zestawu1;
                                         //przeslanie id_zestawu do activity DodanieFiszki
-                                        SharedPreferences p= PreferenceManager.getDefaultSharedPreferences(context);
-                                        SharedPreferences.Editor e=p.edit();
-                                        e.putInt("ID",id_zestawu);
+                                        SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(context);
+                                        SharedPreferences.Editor e = p.edit();
+                                        e.putInt("ID", id_zestawu);
                                         e.commit();
                                     }
                                 }
                                 ZestawAdapter.this.context.startActivity(new Intent(ZestawAdapter.this.context, DodanieFiszki.class));
                                 break;
                             case R.id.Edytuj:
-                                if(ilość_fiszek!=0) {
+                                if (ilość_fiszek != 0) {
                                     Cursor cursor3 = db.getSets();
                                     while (cursor3.moveToNext()) {
-                                        String nazwa = cursor3.getString(2);
-                                        if (nazwa_zestawu.equals(nazwa)) {
-                                            int id_zestawu = cursor3.getInt(0); //id aktualnego zestawu
+                                        int id_zestawu1 = cursor3.getInt(0);
+                                        if (id_zestaw == id_zestawu1) {
+                                            int id_zestawu = id_zestawu1;
                                             //przeslanie id_zestawu do activity EdytowanieZestawu
                                             SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(context);
                                             SharedPreferences.Editor e = p.edit();
@@ -115,18 +121,17 @@ public class ZestawAdapter extends RecyclerView.Adapter<ZestawAdapter.ViewHolder
                                         }
                                     }
                                     ZestawAdapter.this.context.startActivity((new Intent(ZestawAdapter.this.context, EdytowanieZestawu.class)));
-                                }else
-                                {
-                                    Toast.makeText(context,"Brak fiszek w zestawie",Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(context, "Brak fiszek w zestawie", Toast.LENGTH_SHORT).show();
                                 }
                                 break;
                             case R.id.Usuń:
-                                if(ilość_fiszek!=0) {
+                                if (ilość_fiszek != 0) {
                                     Cursor cursor4 = db.getSets();
                                     while (cursor4.moveToNext()) {
-                                        String nazwa = cursor4.getString(2);
-                                        if (nazwa_zestawu.equals(nazwa)) {
-                                            int id_zestawu = cursor4.getInt(0); //id aktualnego zestawu
+                                        int id_zestawu1 = cursor4.getInt(0);
+                                        if (id_zestaw == id_zestawu1) {
+                                            int id_zestawu = id_zestawu1;
                                             //przeslanie id_zestawu do activity EdytowanieZestawu
                                             SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(context);
                                             SharedPreferences.Editor e = p.edit();
@@ -135,17 +140,17 @@ public class ZestawAdapter extends RecyclerView.Adapter<ZestawAdapter.ViewHolder
                                         }
                                     }
                                     ZestawAdapter.this.context.startActivity((new Intent(ZestawAdapter.this.context, UsuwanieFiszek.class)));
-                                }else{
-                                    Toast.makeText(context,"Brak fiszek w zestawie",Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(context, "Brak fiszek w zestawie", Toast.LENGTH_SHORT).show();
                                 }
                                 break;
                             case R.id.Wyświetl:
-                                if(ilość_fiszek!=0) {
+                                if (ilość_fiszek != 0) {
                                     Cursor cursor2 = db.getSets();
                                     while (cursor2.moveToNext()) {
-                                        String nazwa = cursor2.getString(2);
-                                        if (nazwa_zestawu.equals(nazwa)) {
-                                            int id_zestawu = cursor2.getInt(0); //id aktualnego zestawu
+                                        int id_zestawu1 = cursor2.getInt(0);
+                                        if (id_zestaw == id_zestawu1) {
+                                            int id_zestawu = id_zestawu1;
                                             //przeslanie id_zestawu do activity NaukaFiszki
                                             SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(context);
                                             SharedPreferences.Editor e = p.edit();
@@ -154,30 +159,30 @@ public class ZestawAdapter extends RecyclerView.Adapter<ZestawAdapter.ViewHolder
                                         }
                                     }
                                     ZestawAdapter.this.context.startActivity(new Intent(ZestawAdapter.this.context, NaukaFiszki.class));
-                                }else{
-                                    Toast.makeText(context,"Brak fiszek w zestawie",Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(context, "Brak fiszek w zestawie", Toast.LENGTH_SHORT).show();
                                 }
                                 break;
                             case R.id.Usuń_zestaw:
                                 //kod od usuniecia zestawu
-                                Cursor cursor1=db.getSets();
-                                while(cursor1.moveToNext()){
-                                    String nazwa=cursor1.getString(2);
-                                    if(nazwa_zestawu.equals(nazwa))
-                                    {
-                                       int nr=cursor1.getInt(0);
-                                       //usuwanie fiszek z zestawu
-                                        db.deleteFlashcards(cursor1.getInt(0));
-                                        //usuwanie całego zestawu
-                                       db.deleteFromSets(nr);
-                                       Intent intent=new Intent(context,MojeZestawy.class);
-                                       context.startActivity(intent);
+                                Cursor cursor1 = db.getSets();
+                                while (cursor1.moveToNext()) {
+                                    int id_zestawu1 = cursor1.getInt(0);
+                                    if (id_zestaw == id_zestawu1) {
+                                            int nr = id_zestawu1;
+                                            //usuwanie fiszek z zestawu
+                                            db.deleteFlashcards(cursor1.getInt(0));
+                                            //usuwanie całego zestawu
+                                            db.deleteFromSets(nr);
+                                            Intent intent = new Intent(context, MojeZestawy.class);
+                                            context.startActivity(intent);
+                                        }
                                     }
+                                    break;
                                 }
-                                break;
+                                return false;
                         }
-                        return false;
-                    }
+
                 });
                 p.show();
             }

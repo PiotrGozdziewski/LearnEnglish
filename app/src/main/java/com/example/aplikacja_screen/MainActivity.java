@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         zarejestruj = (CardView) findViewById(R.id.cardView2);
         login = (TextView) findViewById(R.id.editText6);
         haslo = (TextView) findViewById(R.id.editText7);
+        zapomniane_hasło = (TextView) findViewById(R.id.textView5);
 
         zaloguj.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,9 +76,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, Rejestracja.class));
             }
         });
-
-        zapomniane_hasło = (TextView) findViewById(R.id.textView5);
-        zapomniane_hasło.setText("Zapomniałeś hasła?");
 
         zapomniane_hasło.setOnClickListener(new View.OnClickListener() {
             @Override

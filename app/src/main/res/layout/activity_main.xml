@@ -115,6 +115,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="29dp"
         android:textColorLink="#efe1e1"
+        android:text="Zapomniałeś hasła?"
         android:clickable="true"
        />
 </RelativeLayout>

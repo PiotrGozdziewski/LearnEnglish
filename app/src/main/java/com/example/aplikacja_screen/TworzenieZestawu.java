@@ -2,6 +2,7 @@ package com.example.aplikacja_screen;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -40,10 +41,24 @@ public class TworzenieZestawu extends AppCompatActivity {
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 String userID = prefs.getString("id", "0");
 
-                Toast.makeText(getApplicationContext(),userID,Toast.LENGTH_SHORT).show();
-                //doadanie do bazy
-                Uri uri=db.insertIntoSets(Integer.parseInt(userID),nazwa_zestaw);
 
+
+                boolean czy_istnieje=false;
+                Cursor cursor = db.getSets();
+                while (cursor.moveToNext())
+                {
+                    if(nazwa_zestaw.equals(cursor.getString(2))&&cursor.getInt(1)==Integer.parseInt(userID))
+                    {
+                        czy_istnieje=true;
+                    }
+                }
+
+                if(czy_istnieje==false)
+                {
+                    Uri uri=db.insertIntoSets(Integer.parseInt(userID),nazwa_zestaw);
+                }else{
+                    Toast.makeText(getApplicationContext(),"Istnieje już zestaw o podanej nazwie.",Toast.LENGTH_SHORT).show();
+                }
                 //przejscie do listy moich zestawow
                 startActivity(new Intent(TworzenieZestawu.this, MojeZestawy.class));
             }

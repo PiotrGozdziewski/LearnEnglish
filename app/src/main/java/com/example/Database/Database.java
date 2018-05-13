@@ -126,7 +126,7 @@ public class Database {
         int count = contentResolver.delete(FlashcardsContract.CONTENT_URI, selection, args);
     }
 
-    //usuwanie wszystkich fiszek
+    //usuwanie wszystkich fiszek z zestawu o podanym ID
     public void deleteFlashcards(int setID){
         String selection = FlashcardsContract.Columns.FLASHCARDS_SET_ID + " =?";
         String[] args = {String.valueOf((setID))};

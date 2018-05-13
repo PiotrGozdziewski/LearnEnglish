@@ -45,7 +45,7 @@ public class TworzenieZestawu extends AppCompatActivity {
                 Cursor cursor = db.getSets();
                 while (cursor.moveToNext())
                 {
-                    if(nazwa_zestaw.equals(cursor.getString(2))&&cursor.getInt(1)==Integer.parseInt(userID))
+                    if(nazwa_zestaw.equalsIgnoreCase(cursor.getString(2))&&cursor.getInt(1)==Integer.parseInt(userID))
                     {
                         czy_istnieje=true;
                     }

@@ -52,36 +52,22 @@ public class BocznyPasekLewy extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-        //FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        //fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-
         //NAVIGATION VIEW
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         headerView = navigationView.getHeaderView(0);
+
         //ZALOGOWANY JAKO... --POBIERANIE WARTOSCI
         zalogowany_jako = (TextView) headerView.findViewById(R.id.zalogowany_jako);
-        Intent intent1 = getIntent();
-        Bundle b = intent1.getExtras();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String nickname = prefs.getString("nickname", "0");
 
-        if (b != null) {
-            // Uzytkownik z = (Uzytkownik) getIntent().getExtras().getSerializable("user");
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-            String nickname = prefs.getString("nickname", "0");
-            //DODATKOWE OPCJE DO WYSWIETLANIA
-            SpannableString sp = new SpannableString(nickname);
-            //sp.setSpan(new UnderlineSpan(),0,sp.length(),0);
-            sp.setSpan(new StyleSpan(Typeface.BOLD), 0, sp.length(), 0);
-            sp.setSpan(new StyleSpan(Typeface.ITALIC), 0, sp.length(), 0);
-            sp.setSpan(new RelativeSizeSpan(1.5f), 0, sp.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            zalogowany_jako.append(sp);
-        }
+        //DODATKOWE OPCJE DO WYSWIETLANIA
+        SpannableString sp = new SpannableString(nickname);
+        //sp.setSpan(new UnderlineSpan(),0,sp.length(),0);
+        sp.setSpan(new StyleSpan(Typeface.BOLD), 0, sp.length(), 0);
+        sp.setSpan(new StyleSpan(Typeface.ITALIC), 0, sp.length(), 0);
+        sp.setSpan(new RelativeSizeSpan(1.5f), 0, sp.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        zalogowany_jako.append(sp);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -92,19 +78,19 @@ public class BocznyPasekLewy extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        // animacja_przod=(TextView)findViewById(R.id.animacja_przod);
-        // animacja_tyl=(TextView)findViewById(R.id.animacja_tyl);
-
-//      od animacji
-//        findViews();
-//        loadAnimations();
-//        changeCameraDistance();
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//            flipCard(view); //create view
-//            }
-//        },2000);
+        // animacja_przod = (TextView) findViewById(R.id.animacja_przod);
+        // animacja_tyl = (TextView) findViewById(R.id.animacja_tyl);
+        //
+        // od animacji
+        // findViews();
+        // loadAnimations();
+        // changeCameraDistance();
+        // handler.postDelayed(new Runnable() {
+        //     @Override
+        //     public void run() {
+        //         flipCard(view); //create view
+        //     }
+        // }, 2000);
     }
 
     @Override
@@ -162,37 +148,37 @@ public class BocznyPasekLewy extends AppCompatActivity
         return true;
     }
 
-//    private void changeCameraDistance() {
-//        int distance = 8000;
-//        float scale = getResources().getDisplayMetrics().density * distance;
-//        mCardFrontLayout.setCameraDistance(scale);
-//        mCardBackLayout.setCameraDistance(scale);
-//    }
-//
-//    @SuppressLint("ResourceType")
-//    private void loadAnimations() {
-//        mSetRightOut = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.anim.animacja);
-//        mSetLeftIn = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.anim.animacja2);
-//    }
-//
-//    private void findViews() {
-//        mCardBackLayout = findViewById(R.id.card_back);
-//        mCardFrontLayout = findViewById(R.id.card_front);
-//    }
-//
-//    public void flipCard(View view) {
-//            if (!mIsBackVisible) {
-//                mSetRightOut.setTarget(mCardFrontLayout);
-//                mSetLeftIn.setTarget(mCardBackLayout);
-//                mSetRightOut.start();
-//                mSetLeftIn.start();
-//                mIsBackVisible = true;
-//            } else {
-//                mSetRightOut.setTarget(mCardBackLayout);
-//                mSetLeftIn.setTarget(mCardFrontLayout);
-//                mSetRightOut.start();
-//                mSetLeftIn.start();
-//                mIsBackVisible = false;
-//            }
-//        }
+    // private void changeCameraDistance() {
+    //     int distance = 8000;
+    //     float scale = getResources().getDisplayMetrics().density * distance;
+    //     mCardFrontLayout.setCameraDistance(scale);
+    //     mCardBackLayout.setCameraDistance(scale);
+    // }
+    //
+    // @SuppressLint("ResourceType")
+    // private void loadAnimations() {
+    //     mSetRightOut = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.anim.animacja);
+    //     mSetLeftIn = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.anim.animacja2);
+    // }
+    //
+    // private void findViews() {
+    //     mCardBackLayout = findViewById(R.id.card_back);
+    //     mCardFrontLayout = findViewById(R.id.card_front);
+    // }
+    //
+    // public void flipCard(View view) {
+    //     if (!mIsBackVisible) {
+    //         mSetRightOut.setTarget(mCardFrontLayout);
+    //         mSetLeftIn.setTarget(mCardBackLayout);
+    //         mSetRightOut.start();
+    //         mSetLeftIn.start();
+    //         mIsBackVisible = true;
+    //     } else {
+    //         mSetRightOut.setTarget(mCardBackLayout);
+    //         mSetLeftIn.setTarget(mCardFrontLayout);
+    //         mSetRightOut.start();
+    //         mSetLeftIn.start();
+    //         mIsBackVisible = false;
+    //     }
+    // }
 }

@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,20 +14,19 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.example.Database.Database;
+import com.example.SHA256;
 import com.example.m.aplikacja_screen.R;
 
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
 import java.util.regex.Pattern;
 
 //co tu ma byc
 //zmienianie loginu,hasla
 //wybor czy chcemy powiadomieniatry
 public class MojProfil extends AppCompatActivity {
-
+    private static final String TAG = "MojProfil";
     TabHost tabHost;
     ToggleButton tb;
-    EditText login, stare_haslo, nowe_haslo, nowe_haslo2;
+    EditText login, stare_haslo, nowe_haslo, nowe_haslo2, haslo;
     Button zmien_login, zmien_haslo;
     Database db;
 
@@ -41,6 +39,7 @@ public class MojProfil extends AppCompatActivity {
         login = (EditText) findViewById(R.id.textView15);
         zmien_login = (Button) findViewById(R.id.button8);
         stare_haslo = (EditText) findViewById(R.id.textView16);
+        haslo = (EditText) findViewById(R.id.textViewHaslo);
         nowe_haslo = (EditText) findViewById(R.id.textView17);
         nowe_haslo2 = (EditText) findViewById(R.id.textView18);
         zmien_haslo = (Button) findViewById(R.id.button9);
@@ -70,15 +69,42 @@ public class MojProfil extends AppCompatActivity {
                 //pobranie id aktualnego uzytkownika
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 String userID = prefs.getString("id", "0");
-                //zmiana loginu
+                String nickname = prefs.getString("nickname", "0");
                 String nowy_login = login.getText().toString();
-                if (!nowy_login.equals("")) {
-                    db.updateUserLogin(Integer.parseInt(userID), nowy_login);
-                    Toast.makeText(getApplicationContext(), "Poprawnie zmieniono login", Toast.LENGTH_SHORT).show();
-                    login.setText(" ");
-                    startActivity(new Intent(MojProfil.this, BocznyPasekLewy.class));
-                } else {
-                    Toast.makeText(getApplicationContext(), "Pole nie moze byc puste", Toast.LENGTH_SHORT).show();
+                String pass = haslo.getText().toString();
+
+                if (nowy_login.equals("") || pass.equals("")) {
+                    Toast.makeText(getApplicationContext(), "Zostawiono puste pola!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                if (nickname.equals(nowy_login)) {
+                    Toast.makeText(getApplicationContext(), "Wprowadzono istniejacy login", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                //sprawdzenie czy stare haslo zostalo poprawnie wprowadzone
+                Cursor c = db.getUser(Integer.parseInt(userID));
+
+                SHA256 sha256 = new SHA256(pass);
+                pass = sha256.getEncoded();
+
+                while (c.moveToNext()) {
+                    String stareHasloZBazy = c.getString(2);
+                    if (!pass.equals(stareHasloZBazy)) {
+                        Toast.makeText(getApplicationContext(), "Zle hasło!", Toast.LENGTH_LONG).show();
+                    } else {
+                        try {
+                            int count = db.updateUserLogin(Integer.parseInt(userID), nowy_login);
+                            Toast.makeText(getApplicationContext(), "Poprawnie zmieniono login", Toast.LENGTH_SHORT).show();
+                            SharedPreferences.Editor editor = prefs.edit();
+                            editor.putString("nickname", nowy_login);
+                            editor.commit();
+                            login.setText(" ");
+                            startActivity(new Intent(MojProfil.this, BocznyPasekLewy.class));
+                        } catch (Exception e) {
+                            Toast.makeText(getApplicationContext(), "Podany login jest zajety!", Toast.LENGTH_LONG).show();
+                        }
+                    }
                 }
             }
         });
@@ -89,40 +115,50 @@ public class MojProfil extends AppCompatActivity {
                 //pobranie id aktualnego uzytkownika
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 String userID = prefs.getString("id", "0");
+
                 //sprawdzenie czy stare haslo zostalo poprawnie wprowadzone
                 Cursor c = db.getUser(Integer.parseInt(userID));
 
                 String pass = nowe_haslo.getText().toString();
                 String pass2 = nowe_haslo2.getText().toString();
 
+                String stareHasloOdUzytkownika = stare_haslo.getText().toString();
+                SHA256 sha256 = new SHA256(stareHasloOdUzytkownika);
+                stareHasloOdUzytkownika = sha256.getEncoded();
+
                 while (c.moveToNext()) {
+                    String stareHasloZBazy = c.getString(2);
                     if (pass.equals("") || pass2.equals("")) {
                         Toast.makeText(getApplicationContext(), "Zostawiono puste pola!", Toast.LENGTH_LONG).show();
                     } else if (!pass.equals(pass2)) {
                         Toast.makeText(getApplicationContext(), "Podane hasła nie są identyczne!", Toast.LENGTH_LONG).show();
                     } else if (!isPasswordValid(pass)) {
                         Toast.makeText(getApplicationContext(), "Hasło musi składać się z sześciu znaków, zawierać cyfry, małe/duże litery oraz znaki specjalne.", Toast.LENGTH_LONG).show();
+                    } else if (!stareHasloOdUzytkownika.equals(stareHasloZBazy)) {
+                        Toast.makeText(getApplicationContext(), "Zle hasło!", Toast.LENGTH_LONG).show();
                     } else {
                         try {
-                            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-                            byte[] hash = digest.digest(pass.getBytes(StandardCharsets.UTF_8));
-                            String encodedPass = Base64.encodeToString(hash, Base64.DEFAULT);
                             //zmiana hasla w bazie
-                            int count = db.updateUserPassword(Integer.parseInt(userID), encodedPass);
-                            Toast.makeText(getApplicationContext(), "Poprawnie zmieniono haslo", Toast.LENGTH_SHORT).show();
-                            nowe_haslo2.setText("");
-                            nowe_haslo.setText("");
-                            stare_haslo.setText("");
-                            //wylogowanie z aplikacji po zmianie hasla
-                            startActivity(new Intent(MojProfil.this, MainActivity.class));
+                            sha256 = new SHA256(pass);
+                            pass = sha256.getEncoded();
+                            int count = db.updateUserPassword(Integer.parseInt(userID), pass);
 
+                            if (count == 1) {
+                                Toast.makeText(getApplicationContext(), "Poprawnie zmieniono haslo", Toast.LENGTH_SHORT).show();
+                                nowe_haslo2.setText("");
+                                nowe_haslo.setText("");
+                                stare_haslo.setText("");
+
+                                //wylogowanie z aplikacji po zmianie hasla
+                                startActivity(new Intent(MojProfil.this, MainActivity.class));
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Wystąpił błąd", Toast.LENGTH_SHORT).show();
+                            }
                         } catch (Exception e) {
-                            Toast.makeText(getApplicationContext(), "Podany login jest zajety!", Toast.LENGTH_LONG).show();
+
                         }
                     }
                 }
-
-
             }
         });
     }

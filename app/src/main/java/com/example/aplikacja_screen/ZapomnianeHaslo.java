@@ -44,13 +44,6 @@ public class ZapomnianeHaslo extends AppCompatActivity {
         sprawdz_odpowiedz = (Button) findViewById(R.id.button4);
         db = new Database(getContentResolver());
 
-        //sprawdzenie czy podany login istnieje w bazie
-        // cursor = db.getUsers();
-        // cursor2 = db.getHints();
-        // cursor3 = db.getQuestion();
-        // cursor_sprawdz = db.getUsers();
-        // cursor_sprawdz2 = db.getHints();
-
         odzyskaj_haslo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,6 +69,7 @@ public class ZapomnianeHaslo extends AppCompatActivity {
                                 while (cursor3.moveToNext()) {
                                     if (id_pytania_w_podpowiedzi + 1 == cursor3.getInt(0)) {
                                         String pytanie = cursor3.getString(1);
+
                                         //wczytanie pytania wybranego podczas rejestracji
                                         tresc_pytania.setText(pytanie);
                                         tresc_pytania.setVisibility(View.VISIBLE);

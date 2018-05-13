@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
-import android.util.Base64;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,17 +16,14 @@ import android.widget.Toast;
 
 import com.example.Database.Database;
 import com.example.Database.UsersContract;
+import com.example.SHA256;
 import com.example.m.aplikacja_screen.R;
 
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
 public class Rejestracja extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    private static final String TAG = "Rejestracja";
-
     CardView dodaj_uzytkownika;
     CardView wroc_do_logowania;
     TextView wybierz_pytanie;
@@ -73,9 +69,8 @@ public class Rejestracja extends AppCompatActivity implements AdapterView.OnItem
                     Toast.makeText(getApplicationContext(), "Hasło musi składać się z sześciu znaków, zawierać cyfry, małe/duże litery oraz znaki specjalne.", Toast.LENGTH_LONG).show();
                 } else {
                     try {
-                        MessageDigest digest = MessageDigest.getInstance("SHA-256");
-                        byte[] hash = digest.digest(sPass.getBytes(StandardCharsets.UTF_8));
-                        String encodedPass = Base64.encodeToString(hash, Base64.DEFAULT);
+                        SHA256 sha256 = new SHA256(sPass);
+                        String encodedPass = sha256.getEncoded();
                         Uri uri = db.insertIntoUsers(sLogin, encodedPass, sImie);
                         int newId = (int) UsersContract.getUserId(uri);
                         db.insertIntoHints(pytanieId, newId, sOdp);
@@ -114,12 +109,6 @@ public class Rejestracja extends AppCompatActivity implements AdapterView.OnItem
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         pytanie_podpowiedz.setAdapter(adapter);
         pytanie_podpowiedz.setPrompt("Wybierz pytanie");
-
-        //  pytanie_podpowiedz.setOnItemClickListener((AdapterView.OnItemClickListener) this);
-        // ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.pytania, android.R.layout.simple_spinner_item);
-        // adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // pytanie_podpowiedz.setAdapter(adapter);
-        // pytanie_podpowiedz.setPrompt("Wybierz pytanie");
     }
 
     private boolean isPasswordValid(String password) {

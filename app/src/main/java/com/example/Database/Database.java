@@ -137,13 +137,15 @@ public class Database {
     }
 
     //edytowanie loginu użytkownika
-    public void updateUserLogin(int usersID, String login) {
+    public int updateUserLogin(int usersID, String login) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(UsersContract.Columns.USERS_LOGIN, login);
         String selection = UsersContract.Columns._ID + " =?";
         String[] args = {String.valueOf(usersID)};
         int count = contentResolver.update(UsersContract.CONTENT_URI, contentValues, selection, args);
+        return count;
     }
+
 
     //edytowanie hasła użytkownika
     public int updateUserPassword(int usersID, String password) {

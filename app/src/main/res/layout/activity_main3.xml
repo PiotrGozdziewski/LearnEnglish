@@ -13,7 +13,7 @@
         android:layout_height="40dp"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/loginRej"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="25dp"
         android:background="#11000000"
         android:contextClickable="true"
         android:drawableLeft="@drawable/ic_action_name_person"
@@ -28,7 +28,7 @@
         android:layout_height="40dp"
         android:layout_below="@+id/imieRej"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="20dp"
         android:background="#11000000"
         android:contextClickable="true"
         android:drawableLeft="@drawable/ic_action_name_person"
@@ -43,7 +43,7 @@
         android:layout_height="40dp"
         android:layout_alignStart="@+id/loginRej"
         android:layout_below="@+id/loginRej"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="20dp"
         android:background="#11000000"
         android:contextClickable="true"
         android:drawableLeft="@drawable/ic_action_name_lock"
@@ -58,8 +58,8 @@
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:layout_alignStart="@+id/passRej"
-        android:layout_alignTop="@+id/passRej"
-        android:layout_marginTop="66dp"
+        android:layout_below="@+id/passRej"
+        android:layout_marginTop="20dp"
         android:background="#11000000"
         android:contextClickable="true"
         android:drawableLeft="@drawable/ic_action_name_lock"
@@ -84,8 +84,8 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_alignStart="@+id/odpRej"
-        android:layout_alignTop="@+id/odpRej"
-        android:layout_marginTop="68dp"
+        android:layout_below="@+id/odpRej"
+        android:layout_marginTop="20dp"
         app:cardBackgroundColor="#d4f5da"
         app:cardCornerRadius="25dp"
         app:cardElevation="20dp">
@@ -119,7 +119,7 @@
         android:layout_height="20dp"
         android:layout_alignStart="@+id/pass2Rej"
         android:layout_below="@+id/pass2Rej"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:hint=" Wybierz pytanie-podpowiedź"
         android:textColorHint="#ffff" />
 
@@ -129,7 +129,7 @@
         android:layout_height="40dp"
         android:layout_below="@+id/spinnerRej"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="33dp"
+        android:layout_marginTop="20dp"
         android:background="#11000000"
         android:contextClickable="true"
         android:gravity="fill_vertical"
@@ -137,6 +137,39 @@
         android:textColorHint="#dce0e5"
         android:textSize="16dp" />
 
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView4"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_alignStart="@+id/cardView3"
+        android:layout_below="@+id/cardView3"
+        android:layout_marginTop="20dp"
+        app:cardBackgroundColor="#d4f5da"
+        app:cardCornerRadius="25dp"
+        app:cardElevation="20dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignEnd="@+id/cardView4"
+            android:layout_below="@+id/cardView3"
+            android:layout_marginEnd="13dp"
+            android:layout_marginTop="87dp">
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="55dp"
+            android:layout_marginTop="13dp"
+            android:text="WRÓĆ DO LOGOWANIA"
+
+            android:textColor="#000"
+            android:textSize="18sp" />
+
+    </android.support.v7.widget.CardView>
 
 
 </RelativeLayout>

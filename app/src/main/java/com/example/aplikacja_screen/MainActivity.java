@@ -6,14 +6,18 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.util.Base64;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.Database.Database;
-import com.example.Database.UsersContract;
 import com.example.Uzytkownik;
 import com.example.m.aplikacja_screen.R;
+
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,25 +49,34 @@ public class MainActivity extends AppCompatActivity {
                 String l = login.getText().toString();
                 String p = haslo.getText().toString();
 
-                Uzytkownik uzytkownik = db.loginUser(l, p);
-                if (uzytkownik != null) {
-                    Intent intent = new Intent(MainActivity.this, BocznyPasekLewy.class);
-                    intent.putExtra("user", uzytkownik);
-                    //pobranie wartosci id uzytkownika
-                    int id=uzytkownik.getId();
-                    String id_uzytkownik=String.valueOf(id);
-                    //przeslanie wartosci id uzytkownika do innego activity bez otwierania activity
-                    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                    SharedPreferences.Editor editor = prefs.edit();
-                    editor.putString("id", id_uzytkownik);
-                    editor.commit();
+                try {
+                    MessageDigest digest = MessageDigest.getInstance("SHA-256");
+                    byte[] hash = digest.digest(p.getBytes(StandardCharsets.UTF_8));
+                    String encodedPass = Base64.encodeToString(hash, Base64.DEFAULT);
 
-                    Toast.makeText(getApplicationContext(), "good", Toast.LENGTH_LONG).show();
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(getApplicationContext(), "Nieprawidłowe dane!", Toast.LENGTH_LONG).show();
-                    login.setText("");
-                    haslo.setText("");
+                    Uzytkownik uzytkownik = db.loginUser(l, encodedPass);
+                    if (uzytkownik != null) {
+                        Intent intent = new Intent(MainActivity.this, BocznyPasekLewy.class);
+                        intent.putExtra("user", uzytkownik);
+
+                        //pobranie wartosci id uzytkownika
+                        int id = uzytkownik.getId();
+                        String id_uzytkownik = String.valueOf(id);
+                        String nickname = uzytkownik.getLogin();
+                        //przeslanie wartosci id uzytkownika do innego activity bez otwierania activity
+                        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                        SharedPreferences.Editor editor = prefs.edit();
+                        editor.putString("id", id_uzytkownik);
+                        editor.putString("nickname", nickname);
+                        editor.commit();
+
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Nieprawidłowe dane!", Toast.LENGTH_LONG).show();
+                        haslo.setText("");
+                    }
+                } catch (NoSuchAlgorithmException e) {
+                    e.printStackTrace();
                 }
             }
         });
@@ -75,10 +88,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        String x = "login użytkownika";
         zapomniane_hasło = (TextView) findViewById(R.id.textView5);
         zapomniane_hasło.setText("Zapomniałeś hasła ?");
-        //  zapomniane_hasło.setMovementMethod(LinkMovementMethod.getInstance());
 
         zapomniane_hasło.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +97,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, ZapomnianeHaslo.class));
             }
         });
-
-
     }
 }

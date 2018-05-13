@@ -9,7 +9,6 @@ import android.net.Uri;
 import android.util.Log;
 
 import com.example.Uzytkownik;
-import com.example.Zestaw;
 import com.example.aplikacja_screen.MainActivity;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -82,13 +81,13 @@ public class Database {
     }
 
     //funkcja dla wyświetlenia zestawów
-    public Cursor getSets(){
-        String[] projection ={
+    public Cursor getSets() {
+        String[] projection = {
                 SetsContract.Columns._ID,
                 SetsContract.Columns.SETS_USER_ID,
                 SetsContract.Columns.SETS_NAME};
 
-        Cursor cursor=contentResolver.query(SetsContract.CONTENT_URI,
+        Cursor cursor = contentResolver.query(SetsContract.CONTENT_URI,
                 projection,
                 null,
                 null,
@@ -104,8 +103,8 @@ public class Database {
     }
 
     //funkcja dla wyświetlania fiszek
-    public Cursor getFlashcards(){
-        String[] projection={
+    public Cursor getFlashcards() {
+        String[] projection = {
                 FlashcardsContract.Columns._ID,
                 FlashcardsContract.Columns.FLASHCARDS_SET_ID,
                 FlashcardsContract.Columns.FLASHCARDS_WORD_PL,
@@ -118,49 +117,47 @@ public class Database {
                 FlashcardsContract.Columns._ID);
         return cursor;
     }
+
     //usuwanie fiszki o podanym ID
-    public void deleteFromFlashcards(int flashcardID){
+    public void deleteFromFlashcards(int flashcardID) {
         String selection = FlashcardsContract.Columns._ID + " =?";
         String[] args = {String.valueOf(flashcardID)};
-        int count = contentResolver.delete(FlashcardsContract.CONTENT_URI,selection,args);
+        int count = contentResolver.delete(FlashcardsContract.CONTENT_URI, selection, args);
     }
 
     //edytowanie fiszek
-    public void updateFlashcards(int flashCardsID,int flashCardsSetID, String wordPL,String wordEN)
-    {
+    public void updateFlashcards(int flashCardsID, int flashCardsSetID, String wordPL, String wordEN) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(FlashcardsContract.Columns.FLASHCARDS_SET_ID,flashCardsSetID);
-        contentValues.put(FlashcardsContract.Columns.FLASHCARDS_WORD_PL,wordPL);
-        contentValues.put(FlashcardsContract.Columns.FLASHCARDS_WORD_EN,wordEN);
+        contentValues.put(FlashcardsContract.Columns.FLASHCARDS_SET_ID, flashCardsSetID);
+        contentValues.put(FlashcardsContract.Columns.FLASHCARDS_WORD_PL, wordPL);
+        contentValues.put(FlashcardsContract.Columns.FLASHCARDS_WORD_EN, wordEN);
         String selection = FlashcardsContract.Columns._ID + " =?";
         String[] args = {String.valueOf(flashCardsID)};
-        int count = contentResolver.update(FlashcardsContract.CONTENT_URI,contentValues,selection,args);
+        int count = contentResolver.update(FlashcardsContract.CONTENT_URI, contentValues, selection, args);
     }
 
     //edytowanie loginu użytkownika
-    public void updateUserLogin(int usersID, String login)
-    {
+    public void updateUserLogin(int usersID, String login) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(UsersContract.Columns.USERS_LOGIN,login);
+        contentValues.put(UsersContract.Columns.USERS_LOGIN, login);
         String selection = UsersContract.Columns._ID + " =?";
         String[] args = {String.valueOf(usersID)};
-        int count=contentResolver.update(UsersContract.CONTENT_URI,contentValues,selection,args);
+        int count = contentResolver.update(UsersContract.CONTENT_URI, contentValues, selection, args);
     }
 
     //edytowanie hasła użytkownika
-    public void updateUserPassword(int usersID,String password)
-    {
+    public int updateUserPassword(int usersID, String password) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(UsersContract.Columns.USERS_PASSWORD,password);
+        contentValues.put(UsersContract.Columns.USERS_PASSWORD, password);
         String selection = UsersContract.Columns._ID + " =?";
         String[] args = {String.valueOf(usersID)};
-        int count=contentResolver.update(UsersContract.CONTENT_URI,contentValues,selection,args);
+        int count = contentResolver.update(UsersContract.CONTENT_URI, contentValues, selection, args);
+        return count;
     }
 
     //pobranie informaji o uzytkowniku o podanym ID
-    public Cursor getUser(int userID)
-    {
-        String[] projection={
+    public Cursor getUser(int userID) {
+        String[] projection = {
                 UsersContract.Columns._ID,
                 UsersContract.Columns.USERS_LOGIN,
                 UsersContract.Columns.USERS_PASSWORD,
@@ -176,9 +173,8 @@ public class Database {
     }
 
     //pobranie info o uzytkownikach
-    public Cursor getUsers()
-    {
-        String[] projection={
+    public Cursor getUsers() {
+        String[] projection = {
                 UsersContract.Columns._ID,
                 UsersContract.Columns.USERS_LOGIN,
                 UsersContract.Columns.USERS_PASSWORD,
@@ -192,8 +188,7 @@ public class Database {
     }
 
     //pobranie inf o podpowiedziach
-    public Cursor getHints()
-    {
+    public Cursor getHints() {
         String[] projection = {
                 HintsContract.Columns._ID,
                 HintsContract.Columns.HINTS_QUESTION_ID,
@@ -208,8 +203,7 @@ public class Database {
     }
 
     //pobranie inf o pytaniach
-    public Cursor getQuestion()
-    {
+    public Cursor getQuestion() {
         String[] projection = {
                 QuestionsContract.Columns._ID,
                 QuestionsContract.Columns.QUESTIONS_QUESTION};
@@ -220,10 +214,6 @@ public class Database {
                 QuestionsContract.Columns._ID);
         return cursor;
     }
-
-
-
-
 
 
     // Wszystkie nowe funkcje dajemy nad tym komentarzem

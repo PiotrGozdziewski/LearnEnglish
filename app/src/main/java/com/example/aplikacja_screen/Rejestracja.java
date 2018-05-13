@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.util.Base64;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,14 +19,17 @@ import com.example.Database.Database;
 import com.example.Database.UsersContract;
 import com.example.m.aplikacja_screen.R;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class Rejestracja extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-
     private static final String TAG = "Rejestracja";
 
     CardView dodaj_uzytkownika;
+    CardView wroc_do_logowania;
     TextView wybierz_pytanie;
     EditText imie;
     EditText login;
@@ -50,6 +54,7 @@ public class Rejestracja extends AppCompatActivity implements AdapterView.OnItem
         final Database db = new Database(getContentResolver());
 
         dodaj_uzytkownika = (CardView) findViewById(R.id.cardView3);
+        wroc_do_logowania = (CardView) findViewById(R.id.cardView4);
         dodaj_uzytkownika.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,16 +69,28 @@ public class Rejestracja extends AppCompatActivity implements AdapterView.OnItem
                     Toast.makeText(getApplicationContext(), "Zostawiono puste pola!", Toast.LENGTH_LONG).show();
                 } else if (!sPass.equals(sPass2)) {
                     Toast.makeText(getApplicationContext(), "Podane hasła nie są identyczne!", Toast.LENGTH_LONG).show();
+                } else if (!isPasswordValid(sPass)) {
+                    Toast.makeText(getApplicationContext(), "Hasło musi składać się z sześciu znaków, zawierać cyfry, małe/duże litery oraz znaki specjalne.", Toast.LENGTH_LONG).show();
                 } else {
                     try {
-                        Uri uri = db.insertIntoUsers(sLogin, sPass, sImie);
+                        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+                        byte[] hash = digest.digest(sPass.getBytes(StandardCharsets.UTF_8));
+                        String encodedPass = Base64.encodeToString(hash, Base64.DEFAULT);
+                        Uri uri = db.insertIntoUsers(sLogin, encodedPass, sImie);
                         int newId = (int) UsersContract.getUserId(uri);
                         db.insertIntoHints(pytanieId, newId, sOdp);
-                        startActivity(new Intent(Rejestracja.this, MainActivity.class));
+                        Toast.makeText(getApplicationContext(), "Konto zostało utworzone pomyślnie", Toast.LENGTH_LONG).show();
                     } catch (Exception e) {
                         Toast.makeText(getApplicationContext(), "Podany login jest zajety!", Toast.LENGTH_LONG).show();
                     }
                 }
+            }
+        });
+
+        wroc_do_logowania.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Rejestracja.this, MainActivity.class));
             }
         });
 
@@ -103,6 +120,32 @@ public class Rejestracja extends AppCompatActivity implements AdapterView.OnItem
         // adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // pytanie_podpowiedz.setAdapter(adapter);
         // pytanie_podpowiedz.setPrompt("Wybierz pytanie");
+    }
+
+    private boolean isPasswordValid(String password) {
+        Pattern specialCharsPatern = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+        Pattern upperCasePattern = Pattern.compile("[A-Z ]");
+        Pattern lowerCasePatern = Pattern.compile("[a-z ]");
+        Pattern digitsPattern = Pattern.compile("[0-9 ]");
+        int passwordMinLength = 6;
+
+        if (password.length() < passwordMinLength) {
+            return false;
+        }
+        if (!specialCharsPatern.matcher(password).find()) {
+            return false;
+        }
+        if (!upperCasePattern.matcher(password).find()) {
+            return false;
+        }
+        if (!lowerCasePatern.matcher(password).find()) {
+            return false;
+        }
+        if (!digitsPattern.matcher(password).find()) {
+            return false;
+        }
+
+        return true;
     }
 
     @Override

@@ -2,9 +2,11 @@ package com.example.aplikacja_screen;
 
 import android.animation.AnimatorSet;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -19,9 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.Uzytkownik;
 import com.example.m.aplikacja_screen.R;
 
 public class BocznyPasekLewy extends AppCompatActivity
@@ -71,9 +71,11 @@ public class BocznyPasekLewy extends AppCompatActivity
         Bundle b = intent1.getExtras();
 
         if (b != null) {
-            Uzytkownik z = (Uzytkownik) getIntent().getExtras().getSerializable("user");
+            // Uzytkownik z = (Uzytkownik) getIntent().getExtras().getSerializable("user");
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            String nickname = prefs.getString("nickname", "0");
             //DODATKOWE OPCJE DO WYSWIETLANIA
-            SpannableString sp = new SpannableString(z.getImie());
+            SpannableString sp = new SpannableString(nickname);
             //sp.setSpan(new UnderlineSpan(),0,sp.length(),0);
             sp.setSpan(new StyleSpan(Typeface.BOLD), 0, sp.length(), 0);
             sp.setSpan(new StyleSpan(Typeface.ITALIC), 0, sp.length(), 0);

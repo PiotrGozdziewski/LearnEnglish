@@ -45,79 +45,88 @@ public class ZapomnianeHaslo extends AppCompatActivity {
         db = new Database(getContentResolver());
 
         //sprawdzenie czy podany login istnieje w bazie
-        cursor = db.getUsers();
-        cursor2 = db.getHints();
-        cursor3 = db.getQuestion();
-        cursor_sprawdz = db.getUsers();
-        cursor_sprawdz2 = db.getHints();
+        // cursor = db.getUsers();
+        // cursor2 = db.getHints();
+        // cursor3 = db.getQuestion();
+        // cursor_sprawdz = db.getUsers();
+        // cursor_sprawdz2 = db.getHints();
 
         odzyskaj_haslo.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+            @Override
+            public void onClick(View view) {
+                cursor = db.getUsers();
+                cursor2 = db.getHints();
+                cursor3 = db.getQuestion();
 
-            while(cursor.moveToNext())
-            {
-                        login1 = cursor.getString(1);
-                        final int userID = cursor.getInt(0);
-                        if(login1.equals(podaj_login.getText().toString()))
-                        {
-                            while(cursor2.moveToNext())
-                            {
-                                if(cursor2.getInt(2)==userID)
-                                {
-                                    //przeslanie wartosci userID do activity NoweHaslo
-                                    SharedPreferences p= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                                    SharedPreferences.Editor e=p.edit();
-                                    e.putInt("userIDhaslo",userID);
-                                    e.commit();
-                                    int id_pytania_w_podpowiedzi=cursor2.getInt(1);
-                                    while(cursor3.moveToNext())
-                                    {
-                                        if(id_pytania_w_podpowiedzi+1==cursor3.getInt(0))
-                                        {
-                                            String pytanie=cursor3.getString(1);
-                                            //wczytanie pytania wybranego podczas rejestracji
-                                            tresc_pytania.setText(pytanie);
-                                            tresc_pytania.setVisibility(View.VISIBLE);
-                                            odpowiedz_pytanie.setVisibility(View.VISIBLE);
-                                            sprawdz_odpowiedz.setVisibility(View.VISIBLE);
-                                        }
+                boolean correctLogin = false;
+
+                while (cursor.moveToNext()) {
+                    login1 = cursor.getString(1);
+                    final int userID = cursor.getInt(0);
+                    if (login1.equals(podaj_login.getText().toString())) {
+                        correctLogin = true;
+                        while (cursor2.moveToNext()) {
+                            if (cursor2.getInt(2) == userID) {
+                                //przeslanie wartosci userID do activity NoweHaslo
+                                SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                                SharedPreferences.Editor e = p.edit();
+                                e.putInt("userIDhaslo", userID);
+                                e.commit();
+                                int id_pytania_w_podpowiedzi = cursor2.getInt(1);
+                                while (cursor3.moveToNext()) {
+                                    if (id_pytania_w_podpowiedzi + 1 == cursor3.getInt(0)) {
+                                        String pytanie = cursor3.getString(1);
+                                        //wczytanie pytania wybranego podczas rejestracji
+                                        tresc_pytania.setText(pytanie);
+                                        tresc_pytania.setVisibility(View.VISIBLE);
+                                        odpowiedz_pytanie.setVisibility(View.VISIBLE);
+                                        sprawdz_odpowiedz.setVisibility(View.VISIBLE);
                                     }
-                                    cursor3.close();
                                 }
+                                cursor3.close();
                             }
-                            cursor2.close();
                         }
-            }
-                    cursor.close();
+                        cursor2.close();
+                    }
                 }
-            });
+                if (!correctLogin) {
+                    Toast.makeText(getApplicationContext(), "Nie istnieje konto o podanym nicku", Toast.LENGTH_SHORT).show();
+                }
+                cursor.close();
+            }
+        });
 
         sprawdz_odpowiedz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                cursor_sprawdz = db.getUsers();
+                cursor_sprawdz2 = db.getHints();
+
+                boolean correctAnwser = false;
+
                 //sprawdzenie udzielonej odpowiedzi
-                while(cursor_sprawdz.moveToNext())
-                {
+                while (cursor_sprawdz.moveToNext()) {
                     login1 = cursor_sprawdz.getString(1);
                     final int userID = cursor_sprawdz.getInt(0);
 
-                    if(login1.equals(podaj_login.getText().toString()))
-                    {
-                        while(cursor_sprawdz2.moveToNext())
-                        {
-                            if(cursor_sprawdz2.getInt(2)==userID)
-                            {
+                    if (login1.equals(podaj_login.getText().toString())) {
+                        while (cursor_sprawdz2.moveToNext()) {
+                            if (cursor_sprawdz2.getInt(2) == userID) {
                                 String odpowiedz = cursor_sprawdz2.getString(3);
-                                if(odpowiedz_pytanie.getText().toString().equals(odpowiedz))
-                                {
-                                    Toast.makeText(getApplicationContext(),"Poprawna odpowiedz",Toast.LENGTH_SHORT).show();
+                                if (odpowiedz_pytanie.getText().toString().equals(odpowiedz)) {
+                                    correctAnwser = true;
+                                    Toast.makeText(getApplicationContext(), "Poprawna odpowiedz", Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(ZapomnianeHaslo.this, NoweHaslo.class));
                                 }
                             }
                         }
+                        cursor_sprawdz2.close();
                     }
                 }
+                if (!correctAnwser) {
+                    Toast.makeText(getApplicationContext(), "Zla odpowiedz", Toast.LENGTH_SHORT).show();
+                }
+                cursor_sprawdz.close();
             }
         });
     }

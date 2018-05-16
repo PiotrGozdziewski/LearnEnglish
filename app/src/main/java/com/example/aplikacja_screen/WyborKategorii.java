@@ -1,12 +1,15 @@
 package com.example.aplikacja_screen;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import com.example.m.aplikacja_screen.R;
 
@@ -45,10 +48,17 @@ public class WyborKategorii extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 String selectedItem = adapterView.getItemAtPosition(position).toString();
-                //Toast.makeText(getApplicationContext(),"wybrano"+selectedItem,Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(),"wybrano"+ String.valueOf(position),Toast.LENGTH_LONG).show();
+                //przeslanie wybranej pozycji
+                SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                SharedPreferences.Editor e = p.edit();
+                int pozycja=position+1;
+                e.putInt("idKategorii",pozycja);
+                e.commit();
                 startActivity(new Intent(WyborKategorii.this, WyborZadania.class));
             }
         });
+
 
 
     }

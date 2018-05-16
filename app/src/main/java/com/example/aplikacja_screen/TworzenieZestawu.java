@@ -40,7 +40,7 @@ public class TworzenieZestawu extends AppCompatActivity {
                 String nazwa_zestaw=nazwa_zestawu.getText().toString();
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 String userID = prefs.getString("id", "0");
-                Toast.makeText(getApplicationContext(), userID, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), userID, Toast.LENGTH_SHORT).show();
                 boolean czy_istnieje=false;
                 Cursor cursor = db.getSets();
                 Cursor cursor2 = db.getUser(Integer.parseInt(userID));
@@ -50,8 +50,8 @@ public class TworzenieZestawu extends AppCompatActivity {
                             if (nazwa_zestaw.equalsIgnoreCase(cursor.getString(2))) {
                                 czy_istnieje = true;
                             }
-                            Toast.makeText(getApplicationContext(), "id set: " + String.valueOf(cursor.getInt(0)), Toast.LENGTH_SHORT).show();
-                            Toast.makeText(getApplicationContext(), "nazwa: " + cursor.getString(2), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(getApplicationContext(), "id set: " + String.valueOf(cursor.getInt(0)), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(getApplicationContext(), "nazwa: " + cursor.getString(2), Toast.LENGTH_SHORT).show();
                         }
                     }
                 }

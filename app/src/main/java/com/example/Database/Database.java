@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.provider.UserDictionary;
 import android.renderscript.ScriptIntrinsicYuvToRGB;
 import android.util.Log;
 
@@ -225,6 +226,40 @@ public class Database {
         return cursor;
     }
 
+    //pobieranie zdjec z bazy
+    public Cursor getPhoto(int id_kategorii){
+        String[] projection = {
+                WordsContract.Columns._ID,
+                WordsContract.Columns.WORDS_CATEGORY_ID,
+                WordsContract.Columns.WORDS_WORD_PL,
+                WordsContract.Columns.WORDS_WORD_EN,
+                WordsContract.Columns.WORDS_IMAGE};
+        String selection = WordsContract.Columns.WORDS_CATEGORY_ID + " =?";
+        String[] args = {String.valueOf(id_kategorii)};
+        Cursor cursor = contentResolver.query(WordsContract.CONTENT_URI,
+                projection,
+                selection,
+                args,
+                WordsContract.Columns._ID);
+        return cursor;
+    }
+
+    //pobieranie słowka z bazy z danej kategorii
+    public Cursor getWords(int id_kategorii){
+        String[] projection = {
+                WordsContract.Columns._ID,
+                WordsContract.Columns.WORDS_CATEGORY_ID,
+                WordsContract.Columns.WORDS_WORD_PL,
+                WordsContract.Columns.WORDS_WORD_EN};
+        String selection = WordsContract.Columns.WORDS_CATEGORY_ID + " =?";
+        String[] args = {String.valueOf(id_kategorii)};
+        Cursor cursor = contentResolver.query(WordsContract.CONTENT_URI,
+                projection,
+                selection,
+                args,
+                WordsContract.Columns._ID);
+        return cursor;
+    }
 
     // Wszystkie nowe funkcje dajemy nad tym komentarzem
 

@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.Database.Database;
+import com.example.SHA256;
 import com.example.m.aplikacja_screen.R;
 
 import java.nio.charset.StandardCharsets;
@@ -58,9 +59,8 @@ public class NoweHaslo extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Hasło musi składać się z sześciu znaków, zawierać cyfry, małe/duże litery oraz znaki specjalne.", Toast.LENGTH_LONG).show();
                     } else {
                         try {
-                            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-                            byte[] hash = digest.digest(pass.getBytes(StandardCharsets.UTF_8));
-                            String encodedPass = Base64.encodeToString(hash, Base64.DEFAULT);
+                            SHA256 sha256 = new SHA256(pass);
+                            String encodedPass = sha256.getEncoded();
                             db.updateUserPassword(userID, encodedPass);
                             Toast.makeText(getApplicationContext(), "Poprawnie zmieniono haslo", Toast.LENGTH_SHORT).show();
                             nowe_haslo2.setText("");

@@ -55,7 +55,7 @@ public class ZestawAdapter extends RecyclerView.Adapter<ZestawAdapter.ViewHolder
         //pobranie aktualnej nazwy zestawu
         final String nazwa_zestawu= z.getNazwa();
         final int id_zestaw=z.getId();
-        Toast.makeText(context, "id zestawu: "+String.valueOf(id_zestaw), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context, "id zestawu: "+String.valueOf(id_zestaw), Toast.LENGTH_SHORT).show();
         //pobranie ilości fiszek w zestawie
         Cursor c=db.getFlashcards();
         Cursor c1=db.getSets();

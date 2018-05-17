@@ -42,7 +42,7 @@ public class Tlumaczenie extends AppCompatActivity {
         angielskie = new ArrayList<String>();
         db = new Database(getContentResolver());
 
-        Cursor cursor = db.getWords(1);
+        Cursor cursor = db.getWords(7);
         while(cursor.moveToNext())
         {
             polskie.add(cursor.getString(2));
@@ -81,15 +81,18 @@ public class Tlumaczenie extends AppCompatActivity {
         dalej.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(i==9)
+                {
+                    startActivity(new Intent(Tlumaczenie.this,WyborKategorii.class));
+                }
                 en.setText("");
                 sprawdz_poprawnosc.setText("Sprawdź poprawność");
                 sprawdz_poprawnosc.setBackgroundColor(Color.parseColor("#e6e1e1"));
                 i++;
-                wczytaj_slowa(i);
+                if(i<=9){wczytaj_slowa(i);}
                 if(i==9)
                 {
                     dalej.setText("Zakończ lekcje");
-                    startActivity(new Intent(Tlumaczenie.this,WyborKategorii.class));
                 }
             }
         });

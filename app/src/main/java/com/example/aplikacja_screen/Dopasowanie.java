@@ -57,9 +57,11 @@ public class Dopasowanie extends AppCompatActivity {
         sp4 = (Spinner) findViewById(R.id.spinner5);
 
         //pobranie wartości aktualnie wybranej kategorii
-//        SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-//        int idKategorii = p.getInt("idKategorii",0);
-        Cursor cursor = db.getPhoto(5);
+        SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        int idKategorii = p.getInt("idKategorii",0);
+        //Toast.makeText(getApplicationContext(),String.valueOf(idKategorii),Toast.LENGTH_SHORT).show();
+
+        Cursor cursor = db.getPhoto(idKategorii);
         en_randomowe.add("Wybierz");
 
         while(cursor.moveToNext()){
@@ -118,7 +120,6 @@ public class Dopasowanie extends AppCompatActivity {
         for(int i=0;i<4;i++)
         {
             int random = r.nextInt(ilosc)+1;
-            Toast.makeText(getApplicationContext(), String.valueOf(random), Toast.LENGTH_SHORT).show();
             if(photos.get(random)!=null && !lista_randomowych.contains(random)){
                 Bitmap bmp = BitmapFactory.decodeByteArray(photos.get(random), 0, photos.get(random).length);
                 if(i==0)

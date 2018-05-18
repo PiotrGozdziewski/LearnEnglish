@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,6 +23,7 @@ import com.example.m.aplikacja_screen.R;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class Tlumaczenie extends AppCompatActivity {
 
@@ -38,7 +40,9 @@ public class Tlumaczenie extends AppCompatActivity {
     int bledne_odp=0;
     Boolean bledna=false;
     Handler h = new Handler();
-
+    Cursor cursor;
+    Cursor cursor1;
+    int id_typu_zadania;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,13 +60,28 @@ public class Tlumaczenie extends AppCompatActivity {
         SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         int idKategorii = p.getInt("idKategorii",0);
 
-        Cursor cursor = db.getWords(7);
+        SharedPreferences p1 = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String wybranyTypZadania = p1.getString("NazwaTypuZadania","0");
+        Toast.makeText(getApplicationContext(),"nazwa: "+wybranyTypZadania,Toast.LENGTH_SHORT).show();
+        cursor1=db.getExerciceType(wybranyTypZadania);
+        while(cursor1.moveToNext())
+        {
+            String nazwa_baza=cursor1.getString(1);
+            if(wybranyTypZadania.equals(nazwa_baza))
+            {
+                //Toast.makeText(getApplicationContext(),"jest ok",Toast.LENGTH_SHORT).show();
+                id_typu_zadania=cursor1.getInt(0);
+            }
+        }
+
+        Toast.makeText(getApplicationContext(),"id typu: "+String.valueOf(id_typu_zadania),Toast.LENGTH_SHORT).show();
+
+        cursor = db.getWords(7);
         while(cursor.moveToNext())
         {
             polskie.add(cursor.getString(2));
             angielskie.add(cursor.getString(3));
         }
-
 
         pl.setText(polskie.get(0));
         sprawdz_poprawnosc.setOnClickListener(new View.OnClickListener() {
@@ -129,8 +148,9 @@ public class Tlumaczenie extends AppCompatActivity {
         dalej.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(i==9)
+                if(i==3)
                 {
+                    zapisz_statytyski();
                     startActivity(new Intent(Tlumaczenie.this,WyborKategorii.class));
                 }
                 en.setText("");
@@ -140,8 +160,8 @@ public class Tlumaczenie extends AppCompatActivity {
                 i++;
                 bledna=false;
                 dalej.setVisibility(View.INVISIBLE);
-                if(i<=9){wczytaj_slowa(i);}
-                if(i==9)
+                if(i<=3){wczytaj_slowa(i);}
+                if(i==3)
                 {
                     Toast.makeText(getApplicationContext(),String.valueOf(poprawne_odp),Toast.LENGTH_LONG).show();
                     //Toast.makeText(getApplicationContext(),String.valueOf(bledne_odp),Toast.LENGTH_SHORT).show();
@@ -160,14 +180,21 @@ public class Tlumaczenie extends AppCompatActivity {
 
     public void zapisz_statytyski()
     {
+
         //int userId, int exerciseId, String correctAnswer, String wrongAnswer, Str
         //pobrane ID użytkownika
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String userID = prefs.getString("id", "0");
         //pobrane ID zadania
         //pobrana aktualna data
+
         Date currentTime = Calendar.getInstance().getTime();
-        db.insertIntoLessons(Integer.parseInt(userID),1,String.valueOf(poprawne_odp),String.valueOf(bledne_odp),
-                String.valueOf(currentTime));
+
+        Calendar cal = Calendar.getInstance(Locale.ENGLISH);
+        String date = DateFormat.format("yyyy-MM-dd hh:mm:ss", cal).toString();
+
+        Toast.makeText(getApplicationContext(),String.valueOf(currentTime),Toast.LENGTH_SHORT).show();
+        db.insertIntoLessons(Integer.parseInt(userID),id_typu_zadania,String.valueOf(poprawne_odp),String.valueOf(bledne_odp),
+                date);
     }
 }

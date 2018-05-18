@@ -261,6 +261,38 @@ public class Database {
         return cursor;
     }
 
+    public Cursor getExerciceType(String nazwa){
+        String[] projection = {
+                ExercisesTypesContract.Columns._ID,
+                ExercisesTypesContract.Columns.EXERCISESTYPES_NAME};
+        String selection = ExercisesTypesContract.Columns.EXERCISESTYPES_NAME + " =?";
+        String[] args = {String.valueOf(nazwa)};
+        Cursor cursor = contentResolver.query(ExercisesTypesContract.CONTENT_URI,
+                projection,
+                selection,
+                args,
+                ExercisesTypesContract.Columns._ID);
+        return cursor;
+    }
+
+    //pobierz lekcje
+    public Cursor getLessons()
+    {
+        String[] projection = {
+                LessonsContract.Columns._ID,
+                LessonsContract.Columns.LESSONS_USER_ID,
+                LessonsContract.Columns.LESSONS_EXERCISE_ID,
+                LessonsContract.Columns.LESSONS_CORRECT_ANSWER,
+                LessonsContract.Columns.LESSONS_WRONG_ANSWER,
+                LessonsContract.Columns.LESSONS_DATE};
+        Cursor cursor = contentResolver.query(LessonsContract.CONTENT_URI,
+                projection,
+                null,
+                null,
+                LessonsContract.Columns._ID);
+        return cursor;
+    }
+
     // Wszystkie nowe funkcje dajemy nad tym komentarzem
 
 
@@ -468,6 +500,7 @@ public class Database {
             cursor.close();
         }
     }
+
 
     /**
      * Format date = "2007-01-01 10:00:00".

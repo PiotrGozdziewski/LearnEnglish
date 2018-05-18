@@ -1,5 +1,6 @@
 package com.example.aplikacja_screen;
 
+import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
@@ -8,18 +9,28 @@ import android.view.Gravity;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.Database.Database;
 import com.example.m.aplikacja_screen.R;
 
 public class Statystyka extends AppCompatActivity {
 
     TableLayout tableLayout;
+    Database db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statystyka);
         tableLayout = (TableLayout) findViewById(R.id.tableLayout);
+        db = new Database(getContentResolver());
+
+        Cursor cursor=db.getLessons();
+        while(cursor.moveToNext()){
+            int ilosc_poprawnych = cursor.getInt(3);
+            Toast.makeText(getApplicationContext(),String.valueOf(ilosc_poprawnych),Toast.LENGTH_SHORT).show();
+        }
 
         //moze jakis scroll view dorobic
         TableRow row = new TableRow(this);

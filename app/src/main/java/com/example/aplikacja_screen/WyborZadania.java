@@ -1,6 +1,8 @@
 package com.example.aplikacja_screen;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -97,24 +99,48 @@ public class WyborZadania extends AppCompatActivity {
                 if (dopasowanie.isChecked()) {
                     tekst = dopasowanie.getText().toString();
                     //start activity
+                    SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                    SharedPreferences.Editor e = p.edit();
+                    e.putString("NazwaTypuZadania",tekst);
+                    e.commit();
                     startActivity(new Intent(WyborZadania.this, Dopasowanie.class));
                 } else if (wybór.isChecked()) {
                     tekst = wybór.getText().toString();
+                    SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                    SharedPreferences.Editor e = p.edit();
+                    e.putString("NazwaTypuZadania",tekst);
+                    e.commit();
                     startActivity(new Intent(WyborZadania.this, Wybor.class));
                 } else if (łączenie.isChecked()) {
                     tekst = łączenie.getText().toString();
+                    SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                    SharedPreferences.Editor e = p.edit();
+                    e.putString("NazwaTypuZadania",tekst);
+                    e.commit();
                     startActivity(new Intent(WyborZadania.this, Laczenie.class));
                 } else if (plansza_kwadratowa.isChecked()) {
                     tekst = plansza_kwadratowa.getText().toString();
+                    SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                    SharedPreferences.Editor e = p.edit();
+                    e.putString("NazwaTypuZadania",tekst);
+                    e.commit();
                     startActivity(new Intent(WyborZadania.this, PlanszaKwadratowa.class));
                 } else if (tłumaczenie.isChecked()) {
                     tekst = tłumaczenie.getText().toString();
+                    SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                    SharedPreferences.Editor e = p.edit();
+                    e.putString("NazwaTypuZadania",tekst);
+                    e.commit();
                     startActivity(new Intent(WyborZadania.this, Tlumaczenie.class));
                 } else if (uzupełnianie.isChecked()) {
                     tekst = uzupełnianie.getText().toString();
+                    SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                    SharedPreferences.Editor e = p.edit();
+                    e.putString("NazwaTypuZadania",tekst);
+                    e.commit();
                     startActivity(new Intent(WyborZadania.this, Uzupelnianie.class));
                 }
-                Toast.makeText(getApplicationContext(), "Wybrano " + tekst, Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), "Wybrano " + tekst, Toast.LENGTH_LONG).show();
             }
         });
     }

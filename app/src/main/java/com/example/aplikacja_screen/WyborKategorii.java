@@ -26,15 +26,8 @@ public class WyborKategorii extends AppCompatActivity {
         GridView kategorie;
         kategorie = (GridView) findViewById(R.id.gridView1);
 
-<<<<<<< HEAD
-        String[] kat = {"Człowiek", "Dom", "Szkoła", "Praca", "Zdrowie", "Sport", "Kultura", "Świat przyrody",
-                "Podróżowanie", "Żywienie", "Zakupy i usługi", "Życie rodzinne i towarzyskie"};
-        String[] kat_ang = {"Human", "Home", "School", "Work", "Health", "Sport", "Culture", "Nature",
-                "Travel", "Food", "Shopping", "Family life"};
-=======
         String[] kat = {"Człowiek", "Dom", "Szkoła", "Praca", "Żywienie", "Życie rodzinne", "Zakupy i usługi", "Podróżowanie", "Kultura", "Sport", "Zdrowie", "Świat przyrody"};
         String[] kat_ang = {"Human", "Home", "School", "Work","Food",  "Family life", "Shopping", "Travel","Culture", "Sport","Health", "Nature"};
->>>>>>> f94f7fe358f21b3274bda9e63d9881ec9c5969cf
 
         ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
         for (int i = 0; i < kat.length; i++) {

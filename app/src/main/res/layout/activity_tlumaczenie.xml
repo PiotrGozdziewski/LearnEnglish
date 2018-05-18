@@ -46,5 +46,17 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="33dp"
         android:background="#e6e1e1"
+        android:visibility="invisible"
         android:text="Dalej" />
+
+    <Button
+        android:id="@+id/button38"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button20"
+        android:layout_alignBottom="@+id/button20"
+        android:layout_alignStart="@+id/button20"
+        android:background="#e6e1e1"
+        android:visibility="gone"
+        android:text="Pokaż odpowiedź" />
 </RelativeLayout>

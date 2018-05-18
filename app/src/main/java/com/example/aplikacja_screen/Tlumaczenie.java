@@ -43,6 +43,7 @@ public class Tlumaczenie extends AppCompatActivity {
     Cursor cursor;
     Cursor cursor1;
     int id_typu_zadania;
+    int idKategorii;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,11 +59,11 @@ public class Tlumaczenie extends AppCompatActivity {
 
         //pobranie id aktualnej kategorii
         SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        int idKategorii = p.getInt("idKategorii",0);
+        idKategorii = p.getInt("idKategorii",0);
 
         SharedPreferences p1 = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String wybranyTypZadania = p1.getString("NazwaTypuZadania","0");
-        Toast.makeText(getApplicationContext(),"nazwa: "+wybranyTypZadania,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(),"nazwa: "+wybranyTypZadania,Toast.LENGTH_SHORT).show();
         cursor1=db.getExerciceType(wybranyTypZadania);
         while(cursor1.moveToNext())
         {
@@ -74,11 +75,13 @@ public class Tlumaczenie extends AppCompatActivity {
             }
         }
 
-        Toast.makeText(getApplicationContext(),"id typu: "+String.valueOf(id_typu_zadania),Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(),"id typu: "+String.valueOf(id_typu_zadania),Toast.LENGTH_SHORT).show();
 
-        cursor = db.getWords(7);
+        cursor = db.getWords(idKategorii);
         while(cursor.moveToNext())
         {
+//            Toast.makeText(getApplicationContext(),String.valueOf(idKategorii),Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(),String.valueOf(cursor.getInt(1)),Toast.LENGTH_SHORT).show();
             polskie.add(cursor.getString(2));
             angielskie.add(cursor.getString(3));
         }
@@ -180,21 +183,12 @@ public class Tlumaczenie extends AppCompatActivity {
 
     public void zapisz_statytyski()
     {
-
-        //int userId, int exerciseId, String correctAnswer, String wrongAnswer, Str
-        //pobrane ID użytkownika
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String userID = prefs.getString("id", "0");
-        //pobrane ID zadania
-        //pobrana aktualna data
-
         Date currentTime = Calendar.getInstance().getTime();
-
         Calendar cal = Calendar.getInstance(Locale.ENGLISH);
         String date = DateFormat.format("yyyy-MM-dd hh:mm:ss", cal).toString();
-
         Toast.makeText(getApplicationContext(),String.valueOf(currentTime),Toast.LENGTH_SHORT).show();
-        db.insertIntoLessons(Integer.parseInt(userID),id_typu_zadania,String.valueOf(poprawne_odp),String.valueOf(bledne_odp),
-                date);
+        db.insertIntoLessons(Integer.parseInt(userID),id_typu_zadania,String.valueOf(poprawne_odp),String.valueOf(bledne_odp),date);
     }
 }

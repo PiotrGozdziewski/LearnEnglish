@@ -1,5 +1,6 @@
 package com.example.aplikacja_screen;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import java.lang.*;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import android.widget.Toast;
@@ -20,7 +22,7 @@ import com.example.m.aplikacja_screen.R;
 
 public class PlanszaKwadratowa extends AppCompatActivity {
 
-    Button btn1, btn2,btn3,btn4,btn5,btn6,btn7,btn8;
+    Button btn1, btn2,btn3,btn4,btn5,btn6,btn7,btn8,dalej;
     //w tablicy beda zapisane slowa polskie i ich angielskie odpowiedniki
     //String[] pl={"Dom","Pies","Kot","Biurko"};
     //String[] en={"Home","Dog","Cat","Desk"};
@@ -37,6 +39,10 @@ public class PlanszaKwadratowa extends AppCompatActivity {
     boolean click6=false;
     boolean click7=false;
     boolean click8=false;
+    int random0=0;
+    int random1=0;
+    int random2=0;
+    int random3=0;
 
     //od wątków
     Handler handler=new Handler();
@@ -54,6 +60,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
         btn6=(Button)findViewById(R.id.button35);
         btn7=(Button)findViewById(R.id.button36);
         btn8=(Button)findViewById(R.id.button37);
+        dalej=(Button)findViewById(R.id.button38);
         db = new Database(getContentResolver());
         pl = new ArrayList<String>();
         en = new ArrayList<String>();
@@ -67,15 +74,22 @@ public class PlanszaKwadratowa extends AppCompatActivity {
             en.add(cursor.getString(3));
         }
 
+        int ilosc=pl.size();
+        Random r=new Random();
+        random0=r.nextInt(ilosc)+1;
+        random1=r.nextInt(ilosc)+1;
+        random2=r.nextInt(ilosc)+1;
+        random3=r.nextInt(ilosc)+1;
+
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 click1=true;
-                btn1.setText(pl.get(0));
+                btn1.setText(pl.get(random0));
 
                 if(click7==true)
                 {
-                    if((btn1.getText()==pl.get(0)&& btn7.getText()==en.get(0))||(btn1.getText()==en.get(0) && btn7.getText()==pl.get(0)))
+                    if((btn1.getText()==pl.get(random0)&& btn7.getText()==en.get(random0))||(btn1.getText()==en.get(random0) && btn7.getText()==pl.get(random0)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_blue);
                         btn7.setBackgroundResource(R.drawable.button_border_blue);
@@ -83,7 +97,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn7.setClickable(false);
                         click1=false;
                         click7=false;
-                    }else if((btn1.getText()==pl.get(1)&& btn7.getText()==en.get(1))||(btn1.getText()==en.get(1) && btn7.getText()==pl.get(1)))
+                    }else if((btn1.getText()==pl.get(random1)&& btn7.getText()==en.get(random1))||(btn1.getText()==en.get(random1) && btn7.getText()==pl.get(random1)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_pink);
                         btn7.setBackgroundResource(R.drawable.button_border_pink);
@@ -92,7 +106,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
 
                         click1=false;
                         click7=false;
-                    }else if((btn1.getText()==pl.get(2)&& btn7.getText()==en.get(2))||(btn1.getText()==en.get(2) && btn7.getText()==pl.get(2)))
+                    }else if((btn1.getText()==pl.get(random2)&& btn7.getText()==en.get(random2))||(btn1.getText()==en.get(random2) && btn7.getText()==pl.get(random2)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_yellow);
                         btn7.setBackgroundResource(R.drawable.button_border_yellow);
@@ -100,7 +114,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn7.setClickable(false);
                         click1=false;
                         click7=false;
-                    }else if((btn1.getText()==pl.get(3)&& btn7.getText()==en.get(3))||(btn1.getText()==en.get(3) && btn7.getText()==pl.get(3)))
+                    }else if((btn1.getText()==pl.get(random3)&& btn7.getText()==en.get(random3))||(btn1.getText()==en.get(random3) && btn7.getText()==pl.get(random3)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_purple);
                         btn7.setBackgroundResource(R.drawable.button_border_purple);
@@ -126,7 +140,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click2==true)
                 {
-                    if((btn2.getText()==pl.get(0)&& btn1.getText()==en.get(0))||(btn2.getText()==en.get(0) && btn1.getText()==pl.get(0)))
+                    if((btn2.getText()==pl.get(random0)&& btn1.getText()==en.get(random0))||(btn2.getText()==en.get(random0) && btn1.getText()==pl.get(random0)))
                     {
                         btn2.setBackgroundResource(R.drawable.button_border_blue);
                         btn1.setBackgroundResource(R.drawable.button_border_blue);
@@ -134,7 +148,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn2.setClickable(false);
                         click2=false;
                         click1=false;
-                    }else if((btn2.getText()==pl.get(1)&& btn1.getText()==en.get(1))||(btn2.getText()==en.get(1) && btn1.getText()==pl.get(1)))
+                    }else if((btn2.getText()==pl.get(random1)&& btn1.getText()==en.get(random1))||(btn2.getText()==en.get(random1) && btn1.getText()==pl.get(random1)))
                     {
                         btn2.setBackgroundResource(R.drawable.button_border_pink);
                         btn1.setBackgroundResource(R.drawable.button_border_pink);
@@ -142,7 +156,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn2.setClickable(false);
                         click2=false;
                         click1=false;
-                    }else if((btn2.getText()==pl.get(2)&& btn1.getText()==en.get(2))||(btn2.getText()==en.get(2) && btn1.getText()==pl.get(2)))
+                    }else if((btn2.getText()==pl.get(random2)&& btn1.getText()==en.get(random2))||(btn2.getText()==en.get(random2) && btn1.getText()==pl.get(random2)))
                     {
                         btn2.setBackgroundResource(R.drawable.button_border_yellow);
                         btn1.setBackgroundResource(R.drawable.button_border_yellow);
@@ -150,7 +164,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn2.setClickable(false);
                         click2=false;
                         click1=false;
-                    }else if((btn2.getText()==pl.get(3)&& btn1.getText()==en.get(3))||(btn2.getText()==en.get(3) && btn1.getText()==pl.get(3)))
+                    }else if((btn2.getText()==pl.get(random3)&& btn1.getText()==en.get(random3))||(btn2.getText()==en.get(random3) && btn1.getText()==pl.get(random3)))
                     {
                         btn2.setBackgroundResource(R.drawable.button_border_purple);
                         btn1.setBackgroundResource(R.drawable.button_border_purple);
@@ -176,7 +190,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click3==true)
                 {
-                    if((btn3.getText()==pl.get(0)&& btn1.getText()==en.get(0))||(btn3.getText()==en.get(0) && btn1.getText()==pl.get(0)))
+                    if((btn3.getText()==pl.get(random0)&& btn1.getText()==en.get(random0))||(btn3.getText()==en.get(random0) && btn1.getText()==pl.get(random0)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_blue);
                         btn1.setBackgroundResource(R.drawable.button_border_blue);
@@ -184,7 +198,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn3.setClickable(false);
                         click3=false;
                         click1=false;
-                    }else if((btn3.getText()==pl.get(1)&& btn1.getText()==en.get(1))||(btn3.getText()==en.get(1) && btn1.getText()==pl.get(1)))
+                    }else if((btn3.getText()==pl.get(random1)&& btn1.getText()==en.get(random1))||(btn3.getText()==en.get(random1) && btn1.getText()==pl.get(random1)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_pink);
                         btn1.setBackgroundResource(R.drawable.button_border_pink);
@@ -192,7 +206,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn3.setClickable(false);
                         click3=false;
                         click1=false;
-                    }else if((btn3.getText()==pl.get(2)&& btn1.getText()==en.get(2))||(btn3.getText()==en.get(2) && btn1.getText()==pl.get(2)))
+                    }else if((btn3.getText()==pl.get(random2)&& btn1.getText()==en.get(random2))||(btn3.getText()==en.get(random2) && btn1.getText()==pl.get(random2)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_yellow);
                         btn1.setBackgroundResource(R.drawable.button_border_yellow);
@@ -200,7 +214,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn3.setClickable(false);
                         click3=false;
                         click1=false;
-                    }else if((btn3.getText()==pl.get(3)&& btn1.getText()==en.get(3))||(btn3.getText()==en.get(3) && btn1.getText()==pl.get(3)))
+                    }else if((btn3.getText()==pl.get(random3)&& btn1.getText()==en.get(random3))||(btn3.getText()==en.get(random3) && btn1.getText()==pl.get(random3)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_purple);
                         btn1.setBackgroundResource(R.drawable.button_border_purple);
@@ -226,7 +240,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click4==true)
                 {
-                    if((btn4.getText()==pl.get(0)&& btn1.getText()==en.get(0))||(btn4.getText()==en.get(0) && btn1.getText()==pl.get(0)))
+                    if((btn4.getText()==pl.get(random0)&& btn1.getText()==en.get(random0))||(btn4.getText()==en.get(random0) && btn1.getText()==pl.get(random0)))
                     {
                         btn4.setBackgroundResource(R.drawable.button_border_blue);
                         btn1.setBackgroundResource(R.drawable.button_border_blue);
@@ -234,7 +248,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn4.setClickable(false);
                         click4=false;
                         click1=false;
-                    }else if((btn4.getText()==pl.get(1)&& btn1.getText()==en.get(1))||(btn4.getText()==en.get(1) && btn1.getText()==pl.get(1)))
+                    }else if((btn4.getText()==pl.get(random1)&& btn1.getText()==en.get(random1))||(btn4.getText()==en.get(random1) && btn1.getText()==pl.get(random1)))
                     {
                         btn4.setBackgroundResource(R.drawable.button_border_pink);
                         btn1.setBackgroundResource(R.drawable.button_border_pink);
@@ -242,7 +256,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn4.setClickable(false);
                         click4=false;
                         click1=false;
-                    }else if((btn4.getText()==pl.get(2)&& btn1.getText()==en.get(2))||(btn4.getText()==en.get(2) && btn1.getText()==pl.get(2)))
+                    }else if((btn4.getText()==pl.get(random2)&& btn1.getText()==en.get(random2))||(btn4.getText()==en.get(random2) && btn1.getText()==pl.get(random2)))
                     {
                         btn4.setBackgroundResource(R.drawable.button_border_yellow);
                         btn1.setBackgroundResource(R.drawable.button_border_yellow);
@@ -250,7 +264,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn4.setClickable(false);
                         click4=false;
                         click1=false;
-                    }else if((btn4.getText()==pl.get(3)&& btn1.getText()==en.get(3))||(btn4.getText()==en.get(3) && btn1.getText()==pl.get(3)))
+                    }else if((btn4.getText()==pl.get(random3)&& btn1.getText()==en.get(random3))||(btn4.getText()==en.get(random3) && btn1.getText()==pl.get(random3)))
                     {
                         btn4.setBackgroundResource(R.drawable.button_border_purple);
                         btn1.setBackgroundResource(R.drawable.button_border_purple);
@@ -276,7 +290,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click5==true)
                 {
-                    if((btn5.getText()==pl.get(0)&& btn1.getText()==en.get(0))||(btn5.getText()==en.get(0) && btn1.getText()==pl.get(0)))
+                    if((btn5.getText()==pl.get(random0)&& btn1.getText()==en.get(random0))||(btn5.getText()==en.get(random0) && btn1.getText()==pl.get(random0)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_blue);
                         btn1.setBackgroundResource(R.drawable.button_border_blue);
@@ -284,7 +298,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn5.setClickable(false);
                         click5=false;
                         click1=false;
-                    }else if((btn5.getText()==pl.get(1)&& btn1.getText()==en.get(1))||(btn5.getText()==en.get(1) && btn1.getText()==pl.get(1)))
+                    }else if((btn5.getText()==pl.get(random1)&& btn1.getText()==en.get(random1))||(btn5.getText()==en.get(random1) && btn1.getText()==pl.get(random1)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_pink);
                         btn1.setBackgroundResource(R.drawable.button_border_pink);
@@ -292,7 +306,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn5.setClickable(false);
                         click5=false;
                         click1=false;
-                    }else if((btn5.getText()==pl.get(2)&& btn1.getText()==en.get(2))||(btn5.getText()==en.get(2) && btn1.getText()==pl.get(2)))
+                    }else if((btn5.getText()==pl.get(random2)&& btn1.getText()==en.get(random2))||(btn5.getText()==en.get(random2) && btn1.getText()==pl.get(random2)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_yellow);
                         btn1.setBackgroundResource(R.drawable.button_border_yellow);
@@ -300,7 +314,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn5.setClickable(false);
                         click5=false;
                         click1=false;
-                    }else if((btn5.getText()==pl.get(3)&& btn1.getText()==en.get(3))||(btn5.getText()==en.get(3) && btn1.getText()==pl.get(3)))
+                    }else if((btn5.getText()==pl.get(random3)&& btn1.getText()==en.get(random3))||(btn5.getText()==en.get(random3) && btn1.getText()==pl.get(random3)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_purple);
                         btn1.setBackgroundResource(R.drawable.button_border_purple);
@@ -326,7 +340,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click6==true)
                 {
-                    if((btn6.getText()==pl.get(0)&& btn1.getText()==en.get(0))||(btn6.getText()==en.get(0) && btn1.getText()==pl.get(0)))
+                    if((btn6.getText()==pl.get(random0)&& btn1.getText()==en.get(random0))||(btn6.getText()==en.get(random0) && btn1.getText()==pl.get(random0)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_blue);
                         btn1.setBackgroundResource(R.drawable.button_border_blue);
@@ -334,7 +348,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn6.setClickable(false);
                         click6=false;
                         click1=false;
-                    }else if((btn6.getText()==pl.get(1)&& btn1.getText()==en.get(1))||(btn6.getText()==en.get(1) && btn1.getText()==pl.get(1)))
+                    }else if((btn6.getText()==pl.get(random1)&& btn1.getText()==en.get(random1))||(btn6.getText()==en.get(random1) && btn1.getText()==pl.get(random1)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_pink);
                         btn1.setBackgroundResource(R.drawable.button_border_pink);
@@ -342,7 +356,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn6.setClickable(false);
                         click6=false;
                         click1=false;
-                    }else if((btn6.getText()==pl.get(2)&& btn1.getText()==en.get(2))||(btn6.getText()==en.get(2) && btn1.getText()==pl.get(2)))
+                    }else if((btn6.getText()==pl.get(random2)&& btn1.getText()==en.get(random2))||(btn6.getText()==en.get(random2) && btn1.getText()==pl.get(random2)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_yellow);
                         btn1.setBackgroundResource(R.drawable.button_border_yellow);
@@ -350,7 +364,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn6.setClickable(false);
                         click6=false;
                         click1=false;
-                    }else if((btn6.getText()==pl.get(3)&& btn1.getText()==en.get(3))||(btn6.getText()==en.get(3) && btn1.getText()==pl.get(3)))
+                    }else if((btn6.getText()==pl.get(random3)&& btn1.getText()==en.get(random3))||(btn6.getText()==en.get(random3) && btn1.getText()==pl.get(random3)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_purple);
                         btn1.setBackgroundResource(R.drawable.button_border_purple);
@@ -376,7 +390,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click8==true)
                 {
-                    if((btn8.getText()==pl.get(0)&& btn1.getText()==en.get(0))||(btn8.getText()==en.get(0) && btn1.getText()==pl.get(0)))
+                    if((btn8.getText()==pl.get(random0)&& btn1.getText()==en.get(random0))||(btn8.getText()==en.get(random0) && btn1.getText()==pl.get(random0)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_blue);
                         btn8.setBackgroundResource(R.drawable.button_border_blue);
@@ -384,7 +398,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn8.setClickable(false);
                         click1=false;
                         click8=false;
-                    }else if((btn8.getText()==pl.get(1)&& btn1.getText()==en.get(1))||(btn8.getText()==en.get(1) && btn1.getText()==pl.get(1)))
+                    }else if((btn8.getText()==pl.get(random1)&& btn1.getText()==en.get(random1))||(btn8.getText()==en.get(random1) && btn1.getText()==pl.get(random1)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_pink);
                         btn8.setBackgroundResource(R.drawable.button_border_pink);
@@ -392,7 +406,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn8.setClickable(false);
                         click1=false;
                         click8=false;
-                    }else if((btn8.getText()==pl.get(2)&& btn1.getText()==en.get(2))||(btn8.getText()==en.get(2) && btn1.getText()==pl.get(2)))
+                    }else if((btn8.getText()==pl.get(random2)&& btn1.getText()==en.get(random2))||(btn8.getText()==en.get(random2) && btn1.getText()==pl.get(random2)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_yellow);
                         btn8.setBackgroundResource(R.drawable.button_border_yellow);
@@ -400,7 +414,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn8.setClickable(false);
                         click1=false;
                         click8=false;
-                    }else if((btn8.getText()==pl.get(3)&& btn1.getText()==en.get(3))||(btn8.getText()==en.get(3) && btn1.getText()==pl.get(3)))
+                    }else if((btn8.getText()==pl.get(random3)&& btn1.getText()==en.get(random3))||(btn8.getText()==en.get(random3) && btn1.getText()==pl.get(random3)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_purple);
                         btn8.setBackgroundResource(R.drawable.button_border_purple);
@@ -433,11 +447,11 @@ public class PlanszaKwadratowa extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 click2=true;
-                btn2.setText(en.get(2));
+                btn2.setText(en.get(random2));
 
                 if(click1==true)
                 {
-                    if((btn1.getText()==pl.get(0)&& btn2.getText()==en.get(0))||(btn1.getText()==en.get(0) && btn2.getText()==pl.get(0)))
+                    if((btn1.getText()==pl.get(random0)&& btn2.getText()==en.get(random0))||(btn1.getText()==en.get(random0) && btn2.getText()==pl.get(random0)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_blue);
                         btn2.setBackgroundResource(R.drawable.button_border_blue);
@@ -445,7 +459,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn1.setClickable(false);
                         click1=false;
                         click2=false;
-                    }else if((btn1.getText()==pl.get(1)&& btn2.getText()==en.get(1))||(btn1.getText()==en.get(1) && btn2.getText()==pl.get(1)))
+                    }else if((btn1.getText()==pl.get(random1)&& btn2.getText()==en.get(random1))||(btn1.getText()==en.get(random1) && btn2.getText()==pl.get(random1)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_pink);
                         btn2.setBackgroundResource(R.drawable.button_border_pink);
@@ -453,7 +467,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn1.setClickable(false);
                         click1=false;
                         click2=false;
-                    }else if((btn1.getText()==pl.get(2)&& btn2.getText()==en.get(2))||(btn1.getText()==en.get(2) && btn2.getText()==pl.get(2)))
+                    }else if((btn1.getText()==pl.get(random2)&& btn2.getText()==en.get(random2))||(btn1.getText()==en.get(random2) && btn2.getText()==pl.get(random2)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_yellow);
                         btn2.setBackgroundResource(R.drawable.button_border_yellow);
@@ -461,7 +475,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn1.setClickable(false);
                         click1=false;
                         click2=false;
-                    }else if((btn1.getText()==pl.get(3)&& btn2.getText()==en.get(3))||(btn1.getText()==en.get(3) && btn2.getText()==pl.get(3)))
+                    }else if((btn1.getText()==pl.get(random3)&& btn2.getText()==en.get(random3))||(btn1.getText()==en.get(random3) && btn2.getText()==pl.get(random3)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_purple);
                         btn2.setBackgroundResource(R.drawable.button_border_purple);
@@ -488,7 +502,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click7==true)
                 {
-                    if((btn2.getText()==pl.get(0)&& btn7.getText()==en.get(0))||(btn2.getText()==en.get(0) && btn7.getText()==pl.get(0)))
+                    if((btn2.getText()==pl.get(random0)&& btn7.getText()==en.get(random0))||(btn2.getText()==en.get(random0) && btn7.getText()==pl.get(random0)))
                     {
                         btn2.setBackgroundResource(R.drawable.button_border_blue);
                         btn7.setBackgroundResource(R.drawable.button_border_blue);
@@ -496,7 +510,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn7.setClickable(false);
                         click2=false;
                         click7=false;
-                    }else if((btn2.getText()==pl.get(1)&& btn7.getText()==en.get(1))||(btn2.getText()==en.get(1) && btn7.getText()==pl.get(1)))
+                    }else if((btn2.getText()==pl.get(random1)&& btn7.getText()==en.get(random1))||(btn2.getText()==en.get(random1) && btn7.getText()==pl.get(random1)))
                     {
                         btn2.setBackgroundResource(R.drawable.button_border_pink);
                         btn7.setBackgroundResource(R.drawable.button_border_pink);
@@ -504,7 +518,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn7.setClickable(false);
                         click2=false;
                         click7=false;
-                    }else if((btn2.getText()==pl.get(2)&& btn7.getText()==en.get(2))||(btn2.getText()==en.get(2) && btn7.getText()==pl.get(2)))
+                    }else if((btn2.getText()==pl.get(random2)&& btn7.getText()==en.get(random2))||(btn2.getText()==en.get(random2) && btn7.getText()==pl.get(random2)))
                     {
                         btn2.setBackgroundResource(R.drawable.button_border_yellow);
                         btn7.setBackgroundResource(R.drawable.button_border_yellow);
@@ -512,7 +526,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn7.setClickable(false);
                         click2=false;
                         click7=false;
-                    }else if((btn2.getText()==pl.get(3)&& btn7.getText()==en.get(3))||(btn2.getText()==en.get(3) && btn7.getText()==pl.get(3)))
+                    }else if((btn2.getText()==pl.get(random3)&& btn7.getText()==en.get(random3))||(btn2.getText()==en.get(random3) && btn7.getText()==pl.get(random3)))
                     {
                         btn2.setBackgroundResource(R.drawable.button_border_purple);
                         btn7.setBackgroundResource(R.drawable.button_border_purple);
@@ -538,7 +552,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click3==true)
                 {
-                    if((btn3.getText()==pl.get(0)&& btn2.getText()==en.get(0))||(btn3.getText()==en.get(0) && btn2.getText()==pl.get(0)))
+                    if((btn3.getText()==pl.get(random0)&& btn2.getText()==en.get(random0))||(btn3.getText()==en.get(random0) && btn2.getText()==pl.get(random0)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_blue);
                         btn2.setBackgroundResource(R.drawable.button_border_blue);
@@ -546,7 +560,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn3.setClickable(false);
                         click3=false;
                         click2=false;
-                    }else if((btn3.getText()==pl.get(1)&& btn2.getText()==en.get(1))||(btn3.getText()==en.get(1) && btn2.getText()==pl.get(1)))
+                    }else if((btn3.getText()==pl.get(random1)&& btn2.getText()==en.get(random1))||(btn3.getText()==en.get(random1) && btn2.getText()==pl.get(random1)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_pink);
                         btn2.setBackgroundResource(R.drawable.button_border_pink);
@@ -554,7 +568,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn3.setClickable(false);
                         click3=false;
                         click2=false;
-                    }else if((btn3.getText()==pl.get(2)&& btn2.getText()==en.get(2))||(btn3.getText()==en.get(2) && btn2.getText()==pl.get(2)))
+                    }else if((btn3.getText()==pl.get(random2)&& btn2.getText()==en.get(random2))||(btn3.getText()==en.get(random2) && btn2.getText()==pl.get(random2)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_yellow);
                         btn2.setBackgroundResource(R.drawable.button_border_yellow);
@@ -562,7 +576,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn3.setClickable(false);
                         click3=false;
                         click2=false;
-                    }else if((btn3.getText()==pl.get(3)&& btn2.getText()==en.get(3))||(btn3.getText()==en.get(3) && btn2.getText()==pl.get(3)))
+                    }else if((btn3.getText()==pl.get(random3)&& btn2.getText()==en.get(random3))||(btn3.getText()==en.get(random3) && btn2.getText()==pl.get(random3)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_purple);
                         btn2.setBackgroundResource(R.drawable.button_border_purple);
@@ -588,7 +602,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click4==true)
                 {
-                    if((btn4.getText()==pl.get(0)&& btn2.getText()==en.get(0))||(btn4.getText()==en.get(0) && btn2.getText()==pl.get(0)))
+                    if((btn4.getText()==pl.get(random0)&& btn2.getText()==en.get(random0))||(btn4.getText()==en.get(random0) && btn2.getText()==pl.get(random0)))
                     {
                         btn4.setBackgroundResource(R.drawable.button_border_blue);
                         btn2.setBackgroundResource(R.drawable.button_border_blue);
@@ -596,7 +610,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn4.setClickable(false);
                         click4=false;
                         click2=false;
-                    }else if((btn4.getText()==pl.get(1)&& btn2.getText()==en.get(1))||(btn4.getText()==en.get(1) && btn2.getText()==pl.get(1)))
+                    }else if((btn4.getText()==pl.get(random1)&& btn2.getText()==en.get(random1))||(btn4.getText()==en.get(random1) && btn2.getText()==pl.get(random1)))
                     {
                         btn4.setBackgroundResource(R.drawable.button_border_pink);
                         btn2.setBackgroundResource(R.drawable.button_border_pink);
@@ -604,7 +618,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn4.setClickable(false);
                         click4=false;
                         click2=false;
-                    }else if((btn4.getText()==pl.get(2)&& btn2.getText()==en.get(2))||(btn4.getText()==en.get(2) && btn2.getText()==pl.get(2)))
+                    }else if((btn4.getText()==pl.get(random2)&& btn2.getText()==en.get(random2))||(btn4.getText()==en.get(random2) && btn2.getText()==pl.get(random2)))
                     {
                         btn4.setBackgroundResource(R.drawable.button_border_yellow);
                         btn2.setBackgroundResource(R.drawable.button_border_yellow);
@@ -612,7 +626,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn4.setClickable(false);
                         click4=false;
                         click2=false;
-                    }else if((btn4.getText()==pl.get(3)&& btn2.getText()==en.get(3))||(btn4.getText()==en.get(3) && btn2.getText()==pl.get(3)))
+                    }else if((btn4.getText()==pl.get(random3)&& btn2.getText()==en.get(random3))||(btn4.getText()==en.get(random3) && btn2.getText()==pl.get(random3)))
                     {
                         btn4.setBackgroundResource(R.drawable.button_border_purple);
                         btn2.setBackgroundResource(R.drawable.button_border_purple);
@@ -638,7 +652,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click5==true)
                 {
-                    if((btn5.getText()==pl.get(0)&& btn2.getText()==en.get(0))||(btn5.getText()==en.get(0) && btn2.getText()==pl.get(0)))
+                    if((btn5.getText()==pl.get(random0)&& btn2.getText()==en.get(random0))||(btn5.getText()==en.get(random0) && btn2.getText()==pl.get(random0)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_blue);
                         btn2.setBackgroundResource(R.drawable.button_border_blue);
@@ -646,7 +660,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn5.setClickable(false);
                         click5=false;
                         click2=false;
-                    }else if((btn5.getText()==pl.get(1)&& btn2.getText()==en.get(1))||(btn5.getText()==en.get(1) && btn2.getText()==pl.get(1)))
+                    }else if((btn5.getText()==pl.get(random1)&& btn2.getText()==en.get(random1))||(btn5.getText()==en.get(random1) && btn2.getText()==pl.get(random1)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_pink);
                         btn2.setBackgroundResource(R.drawable.button_border_pink);
@@ -654,7 +668,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn5.setClickable(false);
                         click5=false;
                         click2=false;
-                    }else if((btn5.getText()==pl.get(2)&& btn2.getText()==en.get(2))||(btn5.getText()==en.get(2) && btn2.getText()==pl.get(2)))
+                    }else if((btn5.getText()==pl.get(random2)&& btn2.getText()==en.get(random2))||(btn5.getText()==en.get(random2) && btn2.getText()==pl.get(random2)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_yellow);
                         btn2.setBackgroundResource(R.drawable.button_border_yellow);
@@ -662,7 +676,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn5.setClickable(false);
                         click5=false;
                         click2=false;
-                    }else if((btn5.getText()==pl.get(3)&& btn2.getText()==en.get(3))||(btn5.getText()==en.get(3) && btn2.getText()==pl.get(3)))
+                    }else if((btn5.getText()==pl.get(random3)&& btn2.getText()==en.get(random3))||(btn5.getText()==en.get(random3) && btn2.getText()==pl.get(random3)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_purple);
                         btn2.setBackgroundResource(R.drawable.button_border_purple);
@@ -689,7 +703,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click6==true)
                 {
-                    if((btn6.getText()==pl.get(0)&& btn2.getText()==en.get(0))||(btn6.getText()==en.get(0) && btn2.getText()==pl.get(0)))
+                    if((btn6.getText()==pl.get(random0)&& btn2.getText()==en.get(random0))||(btn6.getText()==en.get(random0) && btn2.getText()==pl.get(random0)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_blue);
                         btn2.setBackgroundResource(R.drawable.button_border_blue);
@@ -697,7 +711,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn6.setClickable(false);
                         click6=false;
                         click2=false;
-                    }else if((btn6.getText()==pl.get(1)&& btn2.getText()==en.get(1))||(btn6.getText()==en.get(1) && btn2.getText()==pl.get(1)))
+                    }else if((btn6.getText()==pl.get(random1)&& btn2.getText()==en.get(random1))||(btn6.getText()==en.get(random1) && btn2.getText()==pl.get(random1)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_pink);
                         btn2.setBackgroundResource(R.drawable.button_border_pink);
@@ -705,7 +719,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn6.setClickable(false);
                         click6=false;
                         click2=false;
-                    }else if((btn6.getText()==pl.get(2)&& btn2.getText()==en.get(2))||(btn6.getText()==en.get(2) && btn2.getText()==pl.get(2)))
+                    }else if((btn6.getText()==pl.get(random2)&& btn2.getText()==en.get(random2))||(btn6.getText()==en.get(random2) && btn2.getText()==pl.get(random2)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_yellow);
                         btn2.setBackgroundResource(R.drawable.button_border_yellow);
@@ -713,7 +727,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn6.setClickable(false);
                         click6=false;
                         click2=false;
-                    }else if((btn6.getText()==pl.get(3)&& btn2.getText()==en.get(3))||(btn6.getText()==en.get(3) && btn2.getText()==pl.get(3)))
+                    }else if((btn6.getText()==pl.get(random3)&& btn2.getText()==en.get(random3))||(btn6.getText()==en.get(random3) && btn2.getText()==pl.get(random3)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_purple);
                         btn2.setBackgroundResource(R.drawable.button_border_purple);
@@ -739,7 +753,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click8==true)
                 {
-                    if((btn8.getText()==pl.get(0)&& btn2.getText()==en.get(0))||(btn8.getText()==en.get(0) && btn2.getText()==pl.get(0)))
+                    if((btn8.getText()==pl.get(random0)&& btn2.getText()==en.get(random0))||(btn8.getText()==en.get(random0) && btn2.getText()==pl.get(random0)))
                     {
                         btn7.setBackgroundResource(R.drawable.button_border_blue);
                         btn2.setBackgroundResource(R.drawable.button_border_blue);
@@ -747,7 +761,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn8.setClickable(false);
                         click7=false;
                         click2=false;
-                    }else if((btn8.getText()==pl.get(1)&& btn2.getText()==en.get(1))||(btn8.getText()==en.get(1) && btn2.getText()==pl.get(1)))
+                    }else if((btn8.getText()==pl.get(random1)&& btn2.getText()==en.get(random1))||(btn8.getText()==en.get(random1) && btn2.getText()==pl.get(random1)))
                     {
                         btn7.setBackgroundResource(R.drawable.button_border_pink);
                         btn2.setBackgroundResource(R.drawable.button_border_pink);
@@ -755,7 +769,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn8.setClickable(false);
                         click7=false;
                         click2=false;
-                    }else if((btn8.getText()==pl.get(2)&& btn2.getText()==en.get(2))||(btn8.getText()==en.get(2) && btn2.getText()==pl.get(2)))
+                    }else if((btn8.getText()==pl.get(random2)&& btn2.getText()==en.get(random2))||(btn8.getText()==en.get(random2) && btn2.getText()==pl.get(random2)))
                     {
                         btn7.setBackgroundResource(R.drawable.button_border_yellow);
                         btn2.setBackgroundResource(R.drawable.button_border_yellow);
@@ -763,7 +777,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn8.setClickable(false);
                         click7=false;
                         click2=false;
-                    }else if((btn8.getText()==pl.get(3)&& btn2.getText()==en.get(3))||(btn8.getText()==en.get(3) && btn2.getText()==pl.get(3)))
+                    }else if((btn8.getText()==pl.get(random3)&& btn2.getText()==en.get(random3))||(btn8.getText()==en.get(random3) && btn2.getText()==pl.get(random3)))
                     {
                         btn7.setBackgroundResource(R.drawable.button_border_purple);
                         btn2.setBackgroundResource(R.drawable.button_border_purple);
@@ -794,11 +808,11 @@ public class PlanszaKwadratowa extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 click3=true;
-                btn3.setText(pl.get(3));
+                btn3.setText(pl.get(random3));
 
                 if(click1==true)
                 {
-                    if((btn1.getText()==pl.get(0)&& btn3.getText()==en.get(0))||(btn1.getText()==en.get(0) && btn3.getText()==pl.get(0)))
+                    if((btn1.getText()==pl.get(random0)&& btn3.getText()==en.get(random0))||(btn1.getText()==en.get(random0) && btn3.getText()==pl.get(random0)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_blue);
                         btn3.setBackgroundResource(R.drawable.button_border_blue);
@@ -806,7 +820,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn1.setClickable(false);
                         click1=false;
                         click3=false;
-                    }else if((btn1.getText()==pl.get(1)&& btn3.getText()==en.get(1))||(btn1.getText()==en.get(1) && btn3.getText()==pl.get(1)))
+                    }else if((btn1.getText()==pl.get(random1)&& btn3.getText()==en.get(random1))||(btn1.getText()==en.get(random1) && btn3.getText()==pl.get(random1)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_pink);
                         btn3.setBackgroundResource(R.drawable.button_border_pink);
@@ -814,7 +828,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn1.setClickable(false);
                         click1=false;
                         click3=false;
-                    }else if((btn1.getText()==pl.get(2)&& btn3.getText()==en.get(2))||(btn1.getText()==en.get(2) && btn3.getText()==pl.get(2)))
+                    }else if((btn1.getText()==pl.get(random2)&& btn3.getText()==en.get(random2))||(btn1.getText()==en.get(random2) && btn3.getText()==pl.get(random2)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_yellow);
                         btn3.setBackgroundResource(R.drawable.button_border_yellow);
@@ -822,7 +836,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn1.setClickable(false);
                         click1=false;
                         click3=false;
-                    }else if((btn1.getText()==pl.get(3)&& btn3.getText()==en.get(3))||(btn1.getText()==en.get(3) && btn3.getText()==pl.get(3)))
+                    }else if((btn1.getText()==pl.get(random3)&& btn3.getText()==en.get(random3))||(btn1.getText()==en.get(random3) && btn3.getText()==pl.get(random3)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_purple);
                         btn3.setBackgroundResource(R.drawable.button_border_purple);
@@ -848,7 +862,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click2==true)
                 {
-                    if((btn2.getText()==pl.get(0)&& btn3.getText()==en.get(0))||(btn2.getText()==en.get(0) && btn3.getText()==pl.get(0)))
+                    if((btn2.getText()==pl.get(random0)&& btn3.getText()==en.get(random0))||(btn2.getText()==en.get(random0) && btn3.getText()==pl.get(random0)))
                     {
                         btn2.setBackgroundResource(R.drawable.button_border_blue);
                         btn3.setBackgroundResource(R.drawable.button_border_blue);
@@ -856,7 +870,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn2.setClickable(false);
                         click2=false;
                         click3=false;
-                    }else if((btn2.getText()==pl.get(1)&& btn3.getText()==en.get(1))||(btn2.getText()==en.get(1) && btn3.getText()==pl.get(1)))
+                    }else if((btn2.getText()==pl.get(random1)&& btn3.getText()==en.get(random1))||(btn2.getText()==en.get(random1) && btn3.getText()==pl.get(random1)))
                     {
                         btn2.setBackgroundResource(R.drawable.button_border_pink);
                         btn3.setBackgroundResource(R.drawable.button_border_pink);
@@ -864,7 +878,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn2.setClickable(false);
                         click2=false;
                         click3=false;
-                    }else if((btn2.getText()==pl.get(2)&& btn3.getText()==en.get(2))||(btn2.getText()==en.get(2) && btn3.getText()==pl.get(2)))
+                    }else if((btn2.getText()==pl.get(random2)&& btn3.getText()==en.get(random2))||(btn2.getText()==en.get(random2) && btn3.getText()==pl.get(random2)))
                     {
                         btn2.setBackgroundResource(R.drawable.button_border_yellow);
                         btn3.setBackgroundResource(R.drawable.button_border_yellow);
@@ -872,7 +886,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn2.setClickable(false);
                         click2=false;
                         click3=false;
-                    }else if((btn2.getText()==pl.get(3)&& btn3.getText()==en.get(3))||(btn2.getText()==en.get(3) && btn3.getText()==pl.get(3)))
+                    }else if((btn2.getText()==pl.get(random3)&& btn3.getText()==en.get(random3))||(btn2.getText()==en.get(random3) && btn3.getText()==pl.get(random3)))
                     {
                         btn2.setBackgroundResource(R.drawable.button_border_purple);
                         btn3.setBackgroundResource(R.drawable.button_border_purple);
@@ -898,7 +912,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click7==true)
                 {
-                    if((btn3.getText()==pl.get(0)&& btn7.getText()==en.get(0))||(btn3.getText()==en.get(0) && btn7.getText()==pl.get(0)))
+                    if((btn3.getText()==pl.get(random0)&& btn7.getText()==en.get(random0))||(btn3.getText()==en.get(random0) && btn7.getText()==pl.get(random0)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_blue);
                         btn7.setBackgroundResource(R.drawable.button_border_blue);
@@ -906,7 +920,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn7.setClickable(false);
                         click3=false;
                         click7=false;
-                    }else if((btn3.getText()==pl.get(1)&& btn7.getText()==en.get(1))||(btn3.getText()==en.get(1) && btn7.getText()==pl.get(1)))
+                    }else if((btn3.getText()==pl.get(random1)&& btn7.getText()==en.get(random1))||(btn3.getText()==en.get(random1) && btn7.getText()==pl.get(random1)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_pink);
                         btn7.setBackgroundResource(R.drawable.button_border_pink);
@@ -914,7 +928,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn7.setClickable(false);
                         click3=false;
                         click7=false;
-                    }else if((btn3.getText()==pl.get(2)&& btn7.getText()==en.get(2))||(btn3.getText()==en.get(2) && btn7.getText()==pl.get(2)))
+                    }else if((btn3.getText()==pl.get(random2)&& btn7.getText()==en.get(random2))||(btn3.getText()==en.get(random2) && btn7.getText()==pl.get(random2)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_yellow);
                         btn7.setBackgroundResource(R.drawable.button_border_yellow);
@@ -922,7 +936,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn7.setClickable(false);
                         click3=false;
                         click7=false;
-                    }else if((btn3.getText()==pl.get(3)&& btn7.getText()==en.get(3))||(btn3.getText()==en.get(3) && btn7.getText()==pl.get(3)))
+                    }else if((btn3.getText()==pl.get(random3)&& btn7.getText()==en.get(random3))||(btn3.getText()==en.get(random3) && btn7.getText()==pl.get(random3)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_purple);
                         btn7.setBackgroundResource(R.drawable.button_border_purple);
@@ -948,7 +962,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click4==true)
                 {
-                    if((btn4.getText()==pl.get(0)&& btn3.getText()==en.get(0))||(btn4.getText()==en.get(0) && btn3.getText()==pl.get(0)))
+                    if((btn4.getText()==pl.get(random0)&& btn3.getText()==en.get(random0))||(btn4.getText()==en.get(random0) && btn3.getText()==pl.get(random0)))
                     {
                         btn4.setBackgroundResource(R.drawable.button_border_blue);
                         btn3.setBackgroundResource(R.drawable.button_border_blue);
@@ -956,7 +970,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn4.setClickable(false);
                         click4=false;
                         click3=false;
-                    }else if((btn4.getText()==pl.get(1)&& btn3.getText()==en.get(1))||(btn4.getText()==en.get(1) && btn3.getText()==pl.get(1)))
+                    }else if((btn4.getText()==pl.get(random1)&& btn3.getText()==en.get(random1))||(btn4.getText()==en.get(random1) && btn3.getText()==pl.get(random1)))
                     {
                         btn4.setBackgroundResource(R.drawable.button_border_pink);
                         btn3.setBackgroundResource(R.drawable.button_border_pink);
@@ -964,7 +978,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn4.setClickable(false);
                         click4=false;
                         click3=false;
-                    }else if((btn4.getText()==pl.get(2)&& btn3.getText()==en.get(2))||(btn4.getText()==en.get(2) && btn3.getText()==pl.get(2)))
+                    }else if((btn4.getText()==pl.get(random2)&& btn3.getText()==en.get(random2))||(btn4.getText()==en.get(random2) && btn3.getText()==pl.get(random2)))
                     {
                         btn4.setBackgroundResource(R.drawable.button_border_yellow);
                         btn3.setBackgroundResource(R.drawable.button_border_yellow);
@@ -972,7 +986,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn4.setClickable(false);
                         click4=false;
                         click3=false;
-                    }else if((btn4.getText()==pl.get(3)&& btn3.getText()==en.get(3))||(btn4.getText()==en.get(3) && btn3.getText()==pl.get(3)))
+                    }else if((btn4.getText()==pl.get(random3)&& btn3.getText()==en.get(random3))||(btn4.getText()==en.get(random3) && btn3.getText()==pl.get(random3)))
                     {
                         btn4.setBackgroundResource(R.drawable.button_border_purple);
                         btn3.setBackgroundResource(R.drawable.button_border_purple);
@@ -998,7 +1012,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click5==true)
                 {
-                    if((btn5.getText()==pl.get(0)&& btn3.getText()==en.get(0))||(btn5.getText()==en.get(0) && btn3.getText()==pl.get(0)))
+                    if((btn5.getText()==pl.get(random0)&& btn3.getText()==en.get(random0))||(btn5.getText()==en.get(random0) && btn3.getText()==pl.get(random0)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_blue);
                         btn3.setBackgroundResource(R.drawable.button_border_blue);
@@ -1006,7 +1020,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn5.setClickable(false);
                         click5=false;
                         click3=false;
-                    }else if((btn5.getText()==pl.get(1)&& btn3.getText()==en.get(1))||(btn5.getText()==en.get(1) && btn3.getText()==pl.get(1)))
+                    }else if((btn5.getText()==pl.get(random1)&& btn3.getText()==en.get(random1))||(btn5.getText()==en.get(random1) && btn3.getText()==pl.get(random1)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_pink);
                         btn3.setBackgroundResource(R.drawable.button_border_pink);
@@ -1014,7 +1028,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn5.setClickable(false);
                         click5=false;
                         click3=false;
-                    }else if((btn5.getText()==pl.get(2)&& btn3.getText()==en.get(2))||(btn5.getText()==en.get(2) && btn3.getText()==pl.get(2)))
+                    }else if((btn5.getText()==pl.get(random2)&& btn3.getText()==en.get(random2))||(btn5.getText()==en.get(random2) && btn3.getText()==pl.get(random2)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_yellow);
                         btn3.setBackgroundResource(R.drawable.button_border_yellow);
@@ -1022,7 +1036,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn5.setClickable(false);
                         click5=false;
                         click3=false;
-                    }else if((btn5.getText()==pl.get(3)&& btn3.getText()==en.get(3))||(btn5.getText()==en.get(3) && btn3.getText()==pl.get(3)))
+                    }else if((btn5.getText()==pl.get(random3)&& btn3.getText()==en.get(random3))||(btn5.getText()==en.get(random3) && btn3.getText()==pl.get(random3)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_purple);
                         btn3.setBackgroundResource(R.drawable.button_border_purple);
@@ -1048,7 +1062,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click6==true)
                 {
-                    if((btn6.getText()==pl.get(0)&& btn3.getText()==en.get(0))||(btn6.getText()==en.get(0) && btn3.getText()==pl.get(0)))
+                    if((btn6.getText()==pl.get(random0)&& btn3.getText()==en.get(random0))||(btn6.getText()==en.get(random0) && btn3.getText()==pl.get(random0)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_blue);
                         btn3.setBackgroundResource(R.drawable.button_border_blue);
@@ -1056,7 +1070,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn6.setClickable(false);
                         click6=false;
                         click3=false;
-                    }else if((btn6.getText()==pl.get(1)&& btn3.getText()==en.get(1))||(btn6.getText()==en.get(1) && btn3.getText()==pl.get(1)))
+                    }else if((btn6.getText()==pl.get(random1)&& btn3.getText()==en.get(random1))||(btn6.getText()==en.get(random1) && btn3.getText()==pl.get(random1)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_pink);
                         btn3.setBackgroundResource(R.drawable.button_border_pink);
@@ -1064,7 +1078,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn6.setClickable(false);
                         click6=false;
                         click3=false;
-                    }else if((btn6.getText()==pl.get(2)&& btn3.getText()==en.get(2))||(btn6.getText()==en.get(2) && btn3.getText()==pl.get(2)))
+                    }else if((btn6.getText()==pl.get(random2)&& btn3.getText()==en.get(random2))||(btn6.getText()==en.get(random2) && btn3.getText()==pl.get(random2)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_yellow);
                         btn3.setBackgroundResource(R.drawable.button_border_yellow);
@@ -1072,7 +1086,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn6.setClickable(false);
                         click6=false;
                         click3=false;
-                    }else if((btn6.getText()==pl.get(3)&& btn3.getText()==en.get(3))||(btn6.getText()==en.get(3) && btn3.getText()==pl.get(3)))
+                    }else if((btn6.getText()==pl.get(random3)&& btn3.getText()==en.get(random3))||(btn6.getText()==en.get(random3) && btn3.getText()==pl.get(random3)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_purple);
                         btn3.setBackgroundResource(R.drawable.button_border_purple);
@@ -1098,7 +1112,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click8==true)
                 {
-                    if((btn8.getText()==pl.get(0)&& btn3.getText()==en.get(0))||(btn8.getText()==en.get(0) && btn3.getText()==pl.get(0)))
+                    if((btn8.getText()==pl.get(random0)&& btn3.getText()==en.get(random0))||(btn8.getText()==en.get(random0) && btn3.getText()==pl.get(random0)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_blue);
                         btn8.setBackgroundResource(R.drawable.button_border_blue);
@@ -1106,7 +1120,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn8.setClickable(false);
                         click3=false;
                         click8=false;
-                    }else if((btn8.getText()==pl.get(1)&& btn3.getText()==en.get(1))||(btn8.getText()==en.get(1) && btn3.getText()==pl.get(1)))
+                    }else if((btn8.getText()==pl.get(random1)&& btn3.getText()==en.get(random1))||(btn8.getText()==en.get(random1) && btn3.getText()==pl.get(random1)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_pink);
                         btn8.setBackgroundResource(R.drawable.button_border_pink);
@@ -1114,7 +1128,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn8.setClickable(false);
                         click3=false;
                         click8=false;
-                    }else if((btn8.getText()==pl.get(2)&& btn3.getText()==en.get(2))||(btn8.getText()==en.get(2) && btn3.getText()==pl.get(2)))
+                    }else if((btn8.getText()==pl.get(random2)&& btn3.getText()==en.get(random2))||(btn8.getText()==en.get(random2) && btn3.getText()==pl.get(random2)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_yellow);
                         btn8.setBackgroundResource(R.drawable.button_border_yellow);
@@ -1122,7 +1136,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn8.setClickable(false);
                         click3=false;
                         click8=false;
-                    }else if((btn8.getText()==pl.get(3)&& btn3.getText()==en.get(3))||(btn8.getText()==en.get(3) && btn3.getText()==pl.get(3)))
+                    }else if((btn8.getText()==pl.get(random3)&& btn3.getText()==en.get(random3))||(btn8.getText()==en.get(random3) && btn3.getText()==pl.get(random3)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_purple);
                         btn8.setBackgroundResource(R.drawable.button_border_purple);
@@ -1153,11 +1167,11 @@ public class PlanszaKwadratowa extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 click4=true;
-                btn4.setText(en.get(3));
+                btn4.setText(en.get(random3));
 
                 if(click1==true)
                 {
-                    if((btn1.getText()==pl.get(0)&& btn4.getText()==en.get(0))||(btn1.getText()==en.get(0) && btn4.getText()==pl.get(0)))
+                    if((btn1.getText()==pl.get(random0)&& btn4.getText()==en.get(random0))||(btn1.getText()==en.get(random0) && btn4.getText()==pl.get(random0)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_blue);
                         btn4.setBackgroundResource(R.drawable.button_border_blue);
@@ -1165,7 +1179,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn1.setClickable(false);
                         click1=false;
                         click4=false;
-                    }else if((btn1.getText()==pl.get(1)&& btn4.getText()==en.get(1))||(btn1.getText()==en.get(1) && btn4.getText()==pl.get(1)))
+                    }else if((btn1.getText()==pl.get(random1)&& btn4.getText()==en.get(random1))||(btn1.getText()==en.get(random1) && btn4.getText()==pl.get(random1)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_pink);
                         btn4.setBackgroundResource(R.drawable.button_border_pink);
@@ -1173,7 +1187,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn1.setClickable(false);
                         click1=false;
                         click4=false;
-                    }else if((btn1.getText()==pl.get(2)&& btn4.getText()==en.get(2))||(btn1.getText()==en.get(2) && btn4.getText()==pl.get(2)))
+                    }else if((btn1.getText()==pl.get(random2)&& btn4.getText()==en.get(random2))||(btn1.getText()==en.get(random2) && btn4.getText()==pl.get(random2)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_yellow);
                         btn4.setBackgroundResource(R.drawable.button_border_yellow);
@@ -1181,7 +1195,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn1.setClickable(false);
                         click1=false;
                         click4=false;
-                    }else if((btn1.getText()==pl.get(3)&& btn4.getText()==en.get(3))||(btn1.getText()==en.get(3) && btn4.getText()==pl.get(3)))
+                    }else if((btn1.getText()==pl.get(random3)&& btn4.getText()==en.get(random3))||(btn1.getText()==en.get(random3) && btn4.getText()==pl.get(random3)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_purple);
                         btn4.setBackgroundResource(R.drawable.button_border_purple);
@@ -1207,7 +1221,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click2==true)
                 {
-                    if((btn2.getText()==pl.get(0)&& btn4.getText()==en.get(0))||(btn2.getText()==en.get(0) && btn4.getText()==pl.get(0)))
+                    if((btn2.getText()==pl.get(random0)&& btn4.getText()==en.get(random0))||(btn2.getText()==en.get(random0) && btn4.getText()==pl.get(random0)))
                     {
                         btn2.setBackgroundResource(R.drawable.button_border_blue);
                         btn4.setBackgroundResource(R.drawable.button_border_blue);
@@ -1215,7 +1229,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn2.setClickable(false);
                         click2=false;
                         click4=false;
-                    }else if((btn2.getText()==pl.get(1)&& btn4.getText()==en.get(1))||(btn2.getText()==en.get(1) && btn4.getText()==pl.get(1)))
+                    }else if((btn2.getText()==pl.get(random1)&& btn4.getText()==en.get(random1))||(btn2.getText()==en.get(random1) && btn4.getText()==pl.get(random1)))
                     {
                         btn2.setBackgroundResource(R.drawable.button_border_pink);
                         btn4.setBackgroundResource(R.drawable.button_border_pink);
@@ -1223,7 +1237,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn2.setClickable(false);
                         click2=false;
                         click4=false;
-                    }else if((btn2.getText()==pl.get(2)&& btn4.getText()==en.get(2))||(btn2.getText()==en.get(2) && btn4.getText()==pl.get(2)))
+                    }else if((btn2.getText()==pl.get(random2)&& btn4.getText()==en.get(random2))||(btn2.getText()==en.get(random2) && btn4.getText()==pl.get(random2)))
                     {
                         btn2.setBackgroundResource(R.drawable.button_border_yellow);
                         btn4.setBackgroundResource(R.drawable.button_border_yellow);
@@ -1231,7 +1245,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn2.setClickable(false);
                         click2=false;
                         click4=false;
-                    }else if((btn2.getText()==pl.get(3)&& btn4.getText()==en.get(3))||(btn2.getText()==en.get(3) && btn4.getText()==pl.get(3)))
+                    }else if((btn2.getText()==pl.get(random3)&& btn4.getText()==en.get(random3))||(btn2.getText()==en.get(random3) && btn4.getText()==pl.get(random3)))
                     {
                         btn2.setBackgroundResource(R.drawable.button_border_purple);
                         btn4.setBackgroundResource(R.drawable.button_border_purple);
@@ -1257,7 +1271,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click3==true)
                 {
-                    if((btn3.getText()==pl.get(0)&& btn4.getText()==en.get(0))||(btn3.getText()==en.get(0) && btn4.getText()==pl.get(0)))
+                    if((btn3.getText()==pl.get(random0)&& btn4.getText()==en.get(random0))||(btn3.getText()==en.get(random0) && btn4.getText()==pl.get(random0)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_blue);
                         btn4.setBackgroundResource(R.drawable.button_border_blue);
@@ -1265,7 +1279,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn3.setClickable(false);
                         click3=false;
                         click4=false;
-                    }else if((btn3.getText()==pl.get(1)&& btn4.getText()==en.get(1)||(btn3.getText()==en.get(1) && btn4.getText()==pl.get(1))))
+                    }else if((btn3.getText()==pl.get(random1)&& btn4.getText()==en.get(random1)||(btn3.getText()==en.get(random1) && btn4.getText()==pl.get(random1))))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_pink);
                         btn4.setBackgroundResource(R.drawable.button_border_pink);
@@ -1273,7 +1287,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn3.setClickable(false);
                         click3=false;
                         click4=false;
-                    }else if((btn3.getText()==pl.get(2)&& btn4.getText()==en.get(2))||(btn3.getText()==en.get(2) && btn4.getText()==pl.get(2)))
+                    }else if((btn3.getText()==pl.get(random2)&& btn4.getText()==en.get(random2))||(btn3.getText()==en.get(random2) && btn4.getText()==pl.get(random2)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_yellow);
                         btn4.setBackgroundResource(R.drawable.button_border_yellow);
@@ -1281,7 +1295,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn3.setClickable(false);
                         click3=false;
                         click4=false;
-                    }else if((btn3.getText()==pl.get(3)&& btn4.getText()==en.get(3))||(btn3.getText()==en.get(3) && btn4.getText()==pl.get(3)))
+                    }else if((btn3.getText()==pl.get(random3)&& btn4.getText()==en.get(random3))||(btn3.getText()==en.get(random3) && btn4.getText()==pl.get(random3)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_purple);
                         btn4.setBackgroundResource(R.drawable.button_border_purple);
@@ -1307,7 +1321,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click7==true)
                 {
-                    if((btn4.getText()==pl.get(0)&& btn7.getText()==en.get(0))||(btn4.getText()==en.get(0) && btn7.getText()==pl.get(0)))
+                    if((btn4.getText()==pl.get(random0)&& btn7.getText()==en.get(random0))||(btn4.getText()==en.get(random0) && btn7.getText()==pl.get(random0)))
                     {
                         btn4.setBackgroundResource(R.drawable.button_border_blue);
                         btn7.setBackgroundResource(R.drawable.button_border_blue);
@@ -1315,7 +1329,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn7.setClickable(false);
                         click4=false;
                         click7=false;
-                    }else if((btn4.getText()==pl.get(1)&& btn7.getText()==en.get(1))||(btn4.getText()==en.get(1) && btn7.getText()==pl.get(1)))
+                    }else if((btn4.getText()==pl.get(random1)&& btn7.getText()==en.get(random1))||(btn4.getText()==en.get(random1) && btn7.getText()==pl.get(random1)))
                     {
                         btn4.setBackgroundResource(R.drawable.button_border_pink);
                         btn7.setBackgroundResource(R.drawable.button_border_pink);
@@ -1323,7 +1337,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn7.setClickable(false);
                         click4=false;
                         click7=false;
-                    }else if((btn4.getText()==pl.get(2)&& btn7.getText()==en.get(2))||(btn4.getText()==en.get(2) && btn7.getText()==pl.get(2)))
+                    }else if((btn4.getText()==pl.get(random2)&& btn7.getText()==en.get(random2))||(btn4.getText()==en.get(random2) && btn7.getText()==pl.get(random2)))
                     {
                         btn4.setBackgroundResource(R.drawable.button_border_yellow);
                         btn7.setBackgroundResource(R.drawable.button_border_yellow);
@@ -1331,7 +1345,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn7.setClickable(false);
                         click4=false;
                         click7=false;
-                    }else if((btn4.getText()==pl.get(3)&& btn7.getText()==en.get(3))||(btn4.getText()==en.get(3) && btn7.getText()==pl.get(3)))
+                    }else if((btn4.getText()==pl.get(random3)&& btn7.getText()==en.get(random3))||(btn4.getText()==en.get(random3) && btn7.getText()==pl.get(random3)))
                     {
                         btn4.setBackgroundResource(R.drawable.button_border_purple);
                         btn7.setBackgroundResource(R.drawable.button_border_purple);
@@ -1357,7 +1371,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click5==true)
                 {
-                    if((btn5.getText()==pl.get(0)&& btn4.getText()==en.get(0))||(btn5.getText()==en.get(0) && btn4.getText()==pl.get(0)))
+                    if((btn5.getText()==pl.get(random0)&& btn4.getText()==en.get(random0))||(btn5.getText()==en.get(random0) && btn4.getText()==pl.get(random0)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_blue);
                         btn4.setBackgroundResource(R.drawable.button_border_blue);
@@ -1365,7 +1379,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn5.setClickable(false);
                         click5=false;
                         click4=false;
-                    }else if((btn5.getText()==pl.get(1)&& btn4.getText()==en.get(1))||(btn5.getText()==en.get(1) && btn4.getText()==pl.get(1)))
+                    }else if((btn5.getText()==pl.get(random1)&& btn4.getText()==en.get(random1))||(btn5.getText()==en.get(random1) && btn4.getText()==pl.get(random1)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_pink);
                         btn4.setBackgroundResource(R.drawable.button_border_pink);
@@ -1373,7 +1387,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn5.setClickable(false);
                         click5=false;
                         click4=false;
-                    }else if((btn5.getText()==pl.get(2)&& btn4.getText()==en.get(2))||(btn5.getText()==en.get(2) && btn4.getText()==pl.get(2)))
+                    }else if((btn5.getText()==pl.get(random2)&& btn4.getText()==en.get(random2))||(btn5.getText()==en.get(random2) && btn4.getText()==pl.get(random2)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_yellow);
                         btn4.setBackgroundResource(R.drawable.button_border_yellow);
@@ -1381,7 +1395,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn5.setClickable(false);
                         click5=false;
                         click4=false;
-                    }else if((btn5.getText()==pl.get(3)&& btn4.getText()==en.get(3))||(btn5.getText()==en.get(3) && btn4.getText()==pl.get(3)))
+                    }else if((btn5.getText()==pl.get(random3)&& btn4.getText()==en.get(random3))||(btn5.getText()==en.get(random3) && btn4.getText()==pl.get(random3)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_purple);
                         btn4.setBackgroundResource(R.drawable.button_border_purple);
@@ -1407,7 +1421,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click6==true)
                 {
-                    if((btn6.getText()==pl.get(0)&& btn4.getText()==en.get(0))||(btn6.getText()==en.get(0) && btn4.getText()==pl.get(0)))
+                    if((btn6.getText()==pl.get(random0)&& btn4.getText()==en.get(random0))||(btn6.getText()==en.get(random0) && btn4.getText()==pl.get(random0)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_blue);
                         btn4.setBackgroundResource(R.drawable.button_border_blue);
@@ -1415,7 +1429,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn6.setClickable(false);
                         click6=false;
                         click4=false;
-                    }else if((btn6.getText()==pl.get(1)&& btn4.getText()==en.get(1))||(btn6.getText()==en.get(1) && btn4.getText()==pl.get(1)))
+                    }else if((btn6.getText()==pl.get(random1)&& btn4.getText()==en.get(random1))||(btn6.getText()==en.get(random1) && btn4.getText()==pl.get(random1)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_pink);
                         btn4.setBackgroundResource(R.drawable.button_border_pink);
@@ -1423,7 +1437,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn6.setClickable(false);
                         click6=false;
                         click4=false;
-                    }else if((btn6.getText()==pl.get(2)&& btn4.getText()==en.get(2))||(btn6.getText()==en.get(2)&& btn4.getText()==pl.get(2)))
+                    }else if((btn6.getText()==pl.get(random2)&& btn4.getText()==en.get(random2))||(btn6.getText()==en.get(random2)&& btn4.getText()==pl.get(random2)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_yellow);
                         btn4.setBackgroundResource(R.drawable.button_border_yellow);
@@ -1431,7 +1445,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn6.setClickable(false);
                         click6=false;
                         click4=false;
-                    }else if((btn6.getText()==pl.get(3)&& btn4.getText()==en.get(3))||(btn6.getText()==en.get(3) && btn4.getText()==pl.get(3)))
+                    }else if((btn6.getText()==pl.get(random3)&& btn4.getText()==en.get(random3))||(btn6.getText()==en.get(random3) && btn4.getText()==pl.get(random3)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_purple);
                         btn4.setBackgroundResource(R.drawable.button_border_purple);
@@ -1457,7 +1471,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click8==true)
                 {
-                    if((btn8.getText()==pl.get(0)&& btn4.getText()==en.get(0))||(btn8.getText()==en.get(0) && btn4.getText()==pl.get(0)))
+                    if((btn8.getText()==pl.get(random0)&& btn4.getText()==en.get(random0))||(btn8.getText()==en.get(random0) && btn4.getText()==pl.get(random0)))
                     {
                         btn8.setBackgroundResource(R.drawable.button_border_blue);
                         btn4.setBackgroundResource(R.drawable.button_border_blue);
@@ -1465,7 +1479,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn8.setClickable(false);
                         click8=false;
                         click4=false;
-                    }else if((btn8.getText()==pl.get(1)&& btn4.getText()==en.get(1))||(btn8.getText()==en.get(1) && btn4.getText()==pl.get(1)))
+                    }else if((btn8.getText()==pl.get(random1)&& btn4.getText()==en.get(random1))||(btn8.getText()==en.get(random1) && btn4.getText()==pl.get(random1)))
                     {
                         btn8.setBackgroundResource(R.drawable.button_border_pink);
                         btn4.setBackgroundResource(R.drawable.button_border_pink);
@@ -1473,7 +1487,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn8.setClickable(false);
                         click8=false;
                         click4=false;
-                    }else if((btn8.getText()==pl.get(2)&& btn4.getText()==en.get(2))||(btn8.getText()==en.get(2) && btn4.getText()==pl.get(2)))
+                    }else if((btn8.getText()==pl.get(random2)&& btn4.getText()==en.get(random2))||(btn8.getText()==en.get(random2) && btn4.getText()==pl.get(random2)))
                     {
                         btn8.setBackgroundResource(R.drawable.button_border_yellow);
                         btn4.setBackgroundResource(R.drawable.button_border_yellow);
@@ -1481,7 +1495,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn8.setClickable(false);
                         click8=false;
                         click4=false;
-                    }else if((btn8.getText()==pl.get(3)&& btn4.getText()==en.get(3))||(btn8.getText()==en.get(3) && btn4.getText()==pl.get(3)))
+                    }else if((btn8.getText()==pl.get(random3)&& btn4.getText()==en.get(random3))||(btn8.getText()==en.get(random3) && btn4.getText()==pl.get(random3)))
                     {
                         btn8.setBackgroundResource(R.drawable.button_border_purple);
                         btn4.setBackgroundResource(R.drawable.button_border_purple);
@@ -1512,11 +1526,11 @@ public class PlanszaKwadratowa extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 click5=true;
-                btn5.setText(pl.get(1));
+                btn5.setText(pl.get(random1));
 
                 if(click1==true)
                 {
-                    if((btn1.getText()==pl.get(0)&& btn5.getText()==en.get(0))||(btn1.getText()==en.get(0) && btn5.getText()==pl.get(0)))
+                    if((btn1.getText()==pl.get(random0)&& btn5.getText()==en.get(random0))||(btn1.getText()==en.get(random0) && btn5.getText()==pl.get(random0)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_blue);
                         btn5.setBackgroundResource(R.drawable.button_border_blue);
@@ -1524,7 +1538,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn1.setClickable(false);
                         click1=false;
                         click5=false;
-                    }else if((btn1.getText()==pl.get(1)&& btn5.getText()==en.get(1))||(btn1.getText()==en.get(1) && btn5.getText()==pl.get(1)))
+                    }else if((btn1.getText()==pl.get(random1)&& btn5.getText()==en.get(random1))||(btn1.getText()==en.get(random1) && btn5.getText()==pl.get(random1)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_pink);
                         btn5.setBackgroundResource(R.drawable.button_border_pink);
@@ -1532,7 +1546,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn1.setClickable(false);
                         click1=false;
                         click5=false;
-                    }else if((btn1.getText()==pl.get(2)&& btn5.getText()==en.get(2))||(btn1.getText()==en.get(2) && btn5.getText()==pl.get(2)))
+                    }else if((btn1.getText()==pl.get(random2)&& btn5.getText()==en.get(random2))||(btn1.getText()==en.get(random2) && btn5.getText()==pl.get(random2)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_yellow);
                         btn5.setBackgroundResource(R.drawable.button_border_yellow);
@@ -1540,7 +1554,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn1.setClickable(false);
                         click1=false;
                         click5=false;
-                    }else if((btn1.getText()==pl.get(3)&& btn5.getText()==en.get(3))||(btn1.getText()==en.get(3) && btn5.getText()==pl.get(3)))
+                    }else if((btn1.getText()==pl.get(random3)&& btn5.getText()==en.get(random3))||(btn1.getText()==en.get(random3) && btn5.getText()==pl.get(random3)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_purple);
                         btn5.setBackgroundResource(R.drawable.button_border_purple);
@@ -1566,7 +1580,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click2==true)
                 {
-                    if((btn2.getText()==pl.get(0)&& btn5.getText()==en.get(0))||(btn2.getText()==en.get(0) && btn5.getText()==pl.get(0)))
+                    if((btn2.getText()==pl.get(random0)&& btn5.getText()==en.get(random0))||(btn2.getText()==en.get(random0) && btn5.getText()==pl.get(random0)))
                     {
                         btn2.setBackgroundResource(R.drawable.button_border_blue);
                         btn5.setBackgroundResource(R.drawable.button_border_blue);
@@ -1574,7 +1588,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn2.setClickable(false);
                         click2=false;
                         click5=false;
-                    }else if((btn2.getText()==pl.get(1)&& btn5.getText()==en.get(1))||(btn2.getText()==en.get(1) && btn5.getText()==pl.get(1)))
+                    }else if((btn2.getText()==pl.get(random1)&& btn5.getText()==en.get(random1))||(btn2.getText()==en.get(random1) && btn5.getText()==pl.get(random1)))
                     {
                         btn2.setBackgroundResource(R.drawable.button_border_pink);
                         btn5.setBackgroundResource(R.drawable.button_border_pink);
@@ -1582,7 +1596,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn2.setClickable(false);
                         click2=false;
                         click5=false;
-                    }else if((btn2.getText()==pl.get(2)&& btn5.getText()==en.get(2))||(btn2.getText()==en.get(2) && btn5.getText()==pl.get(2)))
+                    }else if((btn2.getText()==pl.get(random2)&& btn5.getText()==en.get(random2))||(btn2.getText()==en.get(random2) && btn5.getText()==pl.get(random2)))
                     {
                         btn2.setBackgroundResource(R.drawable.button_border_yellow);
                         btn5.setBackgroundResource(R.drawable.button_border_yellow);
@@ -1590,7 +1604,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn2.setClickable(false);
                         click2=false;
                         click5=false;
-                    }else if((btn2.getText()==pl.get(3)&& btn5.getText()==en.get(3))||(btn2.getText()==en.get(3) && btn5.getText()==pl.get(3)))
+                    }else if((btn2.getText()==pl.get(random3)&& btn5.getText()==en.get(random3))||(btn2.getText()==en.get(random3) && btn5.getText()==pl.get(random3)))
                     {
                         btn2.setBackgroundResource(R.drawable.button_border_purple);
                         btn5.setBackgroundResource(R.drawable.button_border_purple);
@@ -1616,7 +1630,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click3==true)
                 {
-                    if((btn3.getText()==pl.get(0)&& btn5.getText()==en.get(0))||(btn3.getText()==en.get(0) && btn5.getText()==pl.get(0)))
+                    if((btn3.getText()==pl.get(random0)&& btn5.getText()==en.get(random0))||(btn3.getText()==en.get(random0) && btn5.getText()==pl.get(random0)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_blue);
                         btn5.setBackgroundResource(R.drawable.button_border_blue);
@@ -1624,7 +1638,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn3.setClickable(false);
                         click3=false;
                         click5=false;
-                    }else if((btn3.getText()==pl.get(1)&& btn5.getText()==en.get(1))||(btn3.getText()==en.get(1) && btn5.getText()==pl.get(1)))
+                    }else if((btn3.getText()==pl.get(random1)&& btn5.getText()==en.get(random1))||(btn3.getText()==en.get(random1) && btn5.getText()==pl.get(random1)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_pink);
                         btn5.setBackgroundResource(R.drawable.button_border_pink);
@@ -1632,7 +1646,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn3.setClickable(false);
                         click3=false;
                         click5=false;
-                    }else if((btn3.getText()==pl.get(2)&& btn5.getText()==en.get(2))||(btn3.getText()==en.get(2) && btn5.getText()==pl.get(2)))
+                    }else if((btn3.getText()==pl.get(random2)&& btn5.getText()==en.get(random2))||(btn3.getText()==en.get(random2) && btn5.getText()==pl.get(random2)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_yellow);
                         btn5.setBackgroundResource(R.drawable.button_border_yellow);
@@ -1640,7 +1654,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn3.setClickable(false);
                         click3=false;
                         click5=false;
-                    }else if((btn3.getText()==pl.get(3)&& btn5.getText()==en.get(3))||(btn3.getText()==en.get(3) && btn5.getText()==pl.get(3)))
+                    }else if((btn3.getText()==pl.get(random3)&& btn5.getText()==en.get(random3))||(btn3.getText()==en.get(random3) && btn5.getText()==pl.get(random3)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_purple);
                         btn5.setBackgroundResource(R.drawable.button_border_purple);
@@ -1666,7 +1680,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click4==true)
                 {
-                    if((btn4.getText()==pl.get(0)&& btn5.getText()==en.get(0))||(btn4.getText()==en.get(0) && btn5.getText()==pl.get(0)))
+                    if((btn4.getText()==pl.get(random0)&& btn5.getText()==en.get(random0))||(btn4.getText()==en.get(random0) && btn5.getText()==pl.get(random0)))
                     {
                         btn4.setBackgroundResource(R.drawable.button_border_blue);
                         btn5.setBackgroundResource(R.drawable.button_border_blue);
@@ -1674,7 +1688,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn4.setClickable(false);
                         click4=false;
                         click5=false;
-                    }else if((btn4.getText()==pl.get(1)&& btn5.getText()==en.get(1))||(btn4.getText()==en.get(1) && btn5.getText()==pl.get(1)))
+                    }else if((btn4.getText()==pl.get(random1)&& btn5.getText()==en.get(random1))||(btn4.getText()==en.get(random1) && btn5.getText()==pl.get(random1)))
                     {
                         btn4.setBackgroundResource(R.drawable.button_border_pink);
                         btn5.setBackgroundResource(R.drawable.button_border_pink);
@@ -1682,7 +1696,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn4.setClickable(false);
                         click4=false;
                         click5=false;
-                    }else if((btn4.getText()==pl.get(2)&& btn5.getText()==en.get(2))||(btn4.getText()==en.get(2) && btn5.getText()==pl.get(2)))
+                    }else if((btn4.getText()==pl.get(random2)&& btn5.getText()==en.get(random2))||(btn4.getText()==en.get(random2) && btn5.getText()==pl.get(random2)))
                     {
                         btn4.setBackgroundResource(R.drawable.button_border_yellow);
                         btn5.setBackgroundResource(R.drawable.button_border_yellow);
@@ -1690,7 +1704,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn4.setClickable(false);
                         click4=false;
                         click5=false;
-                    }else if((btn4.getText()==pl.get(3)&& btn5.getText()==en.get(3))||(btn4.getText()==en.get(3) && btn5.getText()==pl.get(3)))
+                    }else if((btn4.getText()==pl.get(random3)&& btn5.getText()==en.get(random3))||(btn4.getText()==en.get(random3) && btn5.getText()==pl.get(random3)))
                     {
                         btn4.setBackgroundResource(R.drawable.button_border_purple);
                         btn5.setBackgroundResource(R.drawable.button_border_purple);
@@ -1716,7 +1730,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click7==true)
                 {
-                    if((btn5.getText()==pl.get(0)&& btn7.getText()==en.get(0))||(btn5.getText()==en.get(0) && btn7.getText()==pl.get(0)))
+                    if((btn5.getText()==pl.get(random0)&& btn7.getText()==en.get(random0))||(btn5.getText()==en.get(random0) && btn7.getText()==pl.get(random0)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_blue);
                         btn7.setBackgroundResource(R.drawable.button_border_blue);
@@ -1724,7 +1738,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn7.setClickable(false);
                         click5=false;
                         click7=false;
-                    }else if((btn5.getText()==pl.get(1)&& btn7.getText()==en.get(1))||(btn5.getText()==en.get(1) && btn7.getText()==pl.get(1)))
+                    }else if((btn5.getText()==pl.get(random1)&& btn7.getText()==en.get(random1))||(btn5.getText()==en.get(random1) && btn7.getText()==pl.get(random1)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_pink);
                         btn7.setBackgroundResource(R.drawable.button_border_pink);
@@ -1732,7 +1746,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn7.setClickable(false);
                         click5=false;
                         click7=false;
-                    }else if((btn5.getText()==pl.get(2)&& btn7.getText()==en.get(2))||(btn5.getText()==en.get(2) && btn7.getText()==pl.get(2)))
+                    }else if((btn5.getText()==pl.get(random2)&& btn7.getText()==en.get(random2))||(btn5.getText()==en.get(random2) && btn7.getText()==pl.get(random2)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_yellow);
                         btn7.setBackgroundResource(R.drawable.button_border_yellow);
@@ -1740,7 +1754,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn7.setClickable(false);
                         click5=false;
                         click7=false;
-                    }else if((btn5.getText()==pl.get(3)&& btn7.getText()==en.get(3))||(btn5.getText()==en.get(3) && btn7.getText()==pl.get(3)))
+                    }else if((btn5.getText()==pl.get(random3)&& btn7.getText()==en.get(random3))||(btn5.getText()==en.get(random3) && btn7.getText()==pl.get(random3)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_purple);
                         btn7.setBackgroundResource(R.drawable.button_border_purple);
@@ -1766,7 +1780,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click6==true)
                 {
-                    if((btn6.getText()==pl.get(0)&& btn5.getText()==en.get(0))||(btn6.getText()==en.get(0) && btn5.getText()==pl.get(0)))
+                    if((btn6.getText()==pl.get(random0)&& btn5.getText()==en.get(random0))||(btn6.getText()==en.get(random0) && btn5.getText()==pl.get(random0)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_blue);
                         btn5.setBackgroundResource(R.drawable.button_border_blue);
@@ -1774,7 +1788,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn6.setClickable(false);
                         click6=false;
                         click5=false;
-                    }else if((btn6.getText()==pl.get(1)&& btn5.getText()==en.get(1))||(btn6.getText()==en.get(1) && btn5.getText()==pl.get(1)))
+                    }else if((btn6.getText()==pl.get(random1)&& btn5.getText()==en.get(random1))||(btn6.getText()==en.get(random1) && btn5.getText()==pl.get(random1)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_pink);
                         btn5.setBackgroundResource(R.drawable.button_border_pink);
@@ -1782,7 +1796,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn6.setClickable(false);
                         click6=false;
                         click5=false;
-                    }else if((btn6.getText()==pl.get(2)&& btn5.getText()==en.get(2))||(btn6.getText()==en.get(2) && btn5.getText()==pl.get(2)))
+                    }else if((btn6.getText()==pl.get(random2)&& btn5.getText()==en.get(random2))||(btn6.getText()==en.get(random2) && btn5.getText()==pl.get(random2)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_yellow);
                         btn5.setBackgroundResource(R.drawable.button_border_yellow);
@@ -1790,7 +1804,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn6.setClickable(false);
                         click6=false;
                         click5=false;
-                    }else if((btn6.getText()==pl.get(3)&& btn5.getText()==en.get(3))||(btn6.getText()==en.get(3) && btn5.getText()==pl.get(3)))
+                    }else if((btn6.getText()==pl.get(random3)&& btn5.getText()==en.get(random3))||(btn6.getText()==en.get(random3) && btn5.getText()==pl.get(random3)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_purple);
                         btn5.setBackgroundResource(R.drawable.button_border_purple);
@@ -1816,7 +1830,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click8==true)
                 {
-                    if((btn8.getText()==pl.get(0)&& btn5.getText()==en.get(0))||(btn8.getText()==en.get(0) && btn5.getText()==pl.get(0)))
+                    if((btn8.getText()==pl.get(random0)&& btn5.getText()==en.get(random0))||(btn8.getText()==en.get(random0) && btn5.getText()==pl.get(random0)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_blue);
                         btn8.setBackgroundResource(R.drawable.button_border_blue);
@@ -1824,7 +1838,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn8.setClickable(false);
                         click5=false;
                         click8=false;
-                    }else if((btn8.getText()==pl.get(1)&& btn5.getText()==en.get(1))||(btn8.getText()==en.get(1) && btn5.getText()==pl.get(1)))
+                    }else if((btn8.getText()==pl.get(random1)&& btn5.getText()==en.get(random1))||(btn8.getText()==en.get(random1) && btn5.getText()==pl.get(random1)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_pink);
                         btn8.setBackgroundResource(R.drawable.button_border_pink);
@@ -1832,7 +1846,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn8.setClickable(false);
                         click5=false;
                         click8=false;
-                    }else if((btn8.getText()==pl.get(2)&& btn5.getText()==en.get(2))||(btn8.getText()==en.get(2) && btn5.getText()==pl.get(2)))
+                    }else if((btn8.getText()==pl.get(random2)&& btn5.getText()==en.get(random2))||(btn8.getText()==en.get(random2) && btn5.getText()==pl.get(random2)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_yellow);
                         btn8.setBackgroundResource(R.drawable.button_border_yellow);
@@ -1840,7 +1854,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn8.setClickable(false);
                         click5=false;
                         click8=false;
-                    }else if((btn8.getText()==pl.get(3)&& btn5.getText()==en.get(3))||(btn8.getText()==en.get(3) && btn5.getText()==pl.get(3)))
+                    }else if((btn8.getText()==pl.get(random3)&& btn5.getText()==en.get(random3))||(btn8.getText()==en.get(random3) && btn5.getText()==pl.get(random3)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_purple);
                         btn8.setBackgroundResource(R.drawable.button_border_purple);
@@ -1871,11 +1885,11 @@ public class PlanszaKwadratowa extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 click6=true;
-                btn6.setText(en.get(0));
+                btn6.setText(en.get(random0));
 
                 if(click1==true)
                 {
-                    if((btn1.getText()==pl.get(0)&& btn6.getText()==en.get(0))||(btn1.getText()==en.get(0) && btn6.getText()==pl.get(0)))
+                    if((btn1.getText()==pl.get(random0)&& btn6.getText()==en.get(random0))||(btn1.getText()==en.get(random0) && btn6.getText()==pl.get(random0)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_blue);
                         btn6.setBackgroundResource(R.drawable.button_border_blue);
@@ -1883,7 +1897,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn1.setClickable(false);
                         click1=false;
                         click6=false;
-                    }else if((btn1.getText()==pl.get(1)&& btn6.getText()==en.get(1))||(btn1.getText()==en.get(1) && btn6.getText()==pl.get(1)))
+                    }else if((btn1.getText()==pl.get(random1)&& btn6.getText()==en.get(random1))||(btn1.getText()==en.get(random1) && btn6.getText()==pl.get(random1)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_pink);
                         btn6.setBackgroundResource(R.drawable.button_border_pink);
@@ -1891,7 +1905,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn1.setClickable(false);
                         click1=false;
                         click6=false;
-                    }else if((btn1.getText()==pl.get(2)&& btn6.getText()==en.get(2))||(btn1.getText()==en.get(2) && btn6.getText()==pl.get(2)))
+                    }else if((btn1.getText()==pl.get(random2)&& btn6.getText()==en.get(random2))||(btn1.getText()==en.get(random2) && btn6.getText()==pl.get(random2)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_yellow);
                         btn6.setBackgroundResource(R.drawable.button_border_yellow);
@@ -1899,7 +1913,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn1.setClickable(false);
                         click1=false;
                         click6=false;
-                    }else if((btn1.getText()==pl.get(3)&& btn6.getText()==en.get(3))||(btn1.getText()==en.get(3) && btn6.getText()==pl.get(3)))
+                    }else if((btn1.getText()==pl.get(random3)&& btn6.getText()==en.get(random3))||(btn1.getText()==en.get(random3) && btn6.getText()==pl.get(random3)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_purple);
                         btn6.setBackgroundResource(R.drawable.button_border_purple);
@@ -1925,7 +1939,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click2==true)
                 {
-                    if((btn2.getText()==pl.get(0)&& btn6.getText()==en.get(0))||(btn2.getText()==en.get(0) && btn6.getText()==pl.get(0)))
+                    if((btn2.getText()==pl.get(random0)&& btn6.getText()==en.get(random0))||(btn2.getText()==en.get(random0) && btn6.getText()==pl.get(random0)))
                     {
                         btn2.setBackgroundResource(R.drawable.button_border_blue);
                         btn6.setBackgroundResource(R.drawable.button_border_blue);
@@ -1933,7 +1947,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn2.setClickable(false);
                         click2=false;
                         click6=false;
-                    }else if((btn2.getText()==pl.get(1)&& btn6.getText()==en.get(1))||(btn2.getText()==en.get(1) && btn6.getText()==pl.get(1)))
+                    }else if((btn2.getText()==pl.get(random1)&& btn6.getText()==en.get(random1))||(btn2.getText()==en.get(random1) && btn6.getText()==pl.get(random1)))
                     {
                         btn2.setBackgroundResource(R.drawable.button_border_pink);
                         btn6.setBackgroundResource(R.drawable.button_border_pink);
@@ -1941,7 +1955,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn2.setClickable(false);
                         click2=false;
                         click6=false;
-                    }else if((btn2.getText()==pl.get(2)&& btn6.getText()==en.get(2))||(btn2.getText()==en.get(2) && btn6.getText()==pl.get(2)))
+                    }else if((btn2.getText()==pl.get(random2)&& btn6.getText()==en.get(random2))||(btn2.getText()==en.get(random2) && btn6.getText()==pl.get(random2)))
                     {
                         btn2.setBackgroundResource(R.drawable.button_border_yellow);
                         btn6.setBackgroundResource(R.drawable.button_border_yellow);
@@ -1949,7 +1963,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn2.setClickable(false);
                         click2=false;
                         click6=false;
-                    }else if((btn2.getText()==pl.get(3)&& btn6.getText()==en.get(3))||(btn2.getText()==en.get(3) && btn6.getText()==pl.get(3)))
+                    }else if((btn2.getText()==pl.get(random3)&& btn6.getText()==en.get(random3))||(btn2.getText()==en.get(random3) && btn6.getText()==pl.get(random3)))
                     {
                         btn2.setBackgroundResource(R.drawable.button_border_purple);
                         btn6.setBackgroundResource(R.drawable.button_border_purple);
@@ -1975,7 +1989,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click3==true)
                 {
-                    if((btn3.getText()==pl.get(0)&& btn6.getText()==en.get(0))||(btn3.getText()==en.get(0) && btn6.getText()==pl.get(0)))
+                    if((btn3.getText()==pl.get(random0)&& btn6.getText()==en.get(random0))||(btn3.getText()==en.get(random0) && btn6.getText()==pl.get(random0)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_blue);
                         btn6.setBackgroundResource(R.drawable.button_border_blue);
@@ -1983,7 +1997,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn3.setClickable(false);
                         click3=false;
                         click6=false;
-                    }else if((btn3.getText()==pl.get(1)&& btn6.getText()==en.get(1))||(btn3.getText()==en.get(1) && btn6.getText()==pl.get(1)))
+                    }else if((btn3.getText()==pl.get(random1)&& btn6.getText()==en.get(random1))||(btn3.getText()==en.get(random1) && btn6.getText()==pl.get(random1)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_pink);
                         btn6.setBackgroundResource(R.drawable.button_border_pink);
@@ -1991,7 +2005,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn3.setClickable(false);
                         click3=false;
                         click6=false;
-                    }else if((btn3.getText()==pl.get(2)&& btn6.getText()==en.get(2))||(btn3.getText()==en.get(2) && btn6.getText()==pl.get(2)))
+                    }else if((btn3.getText()==pl.get(random2)&& btn6.getText()==en.get(random2))||(btn3.getText()==en.get(random2) && btn6.getText()==pl.get(random2)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_yellow);
                         btn6.setBackgroundResource(R.drawable.button_border_yellow);
@@ -1999,7 +2013,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn3.setClickable(false);
                         click3=false;
                         click6=false;
-                    }else if((btn3.getText()==pl.get(3)&& btn6.getText()==en.get(3))||(btn3.getText()==en.get(3) && btn6.getText()==pl.get(3)))
+                    }else if((btn3.getText()==pl.get(random3)&& btn6.getText()==en.get(random3))||(btn3.getText()==en.get(random3) && btn6.getText()==pl.get(random3)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_purple);
                         btn6.setBackgroundResource(R.drawable.button_border_purple);
@@ -2025,7 +2039,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click4==true)
                 {
-                    if((btn4.getText()==pl.get(0)&& btn6.getText()==en.get(0))||(btn4.getText()==en.get(0) && btn6.getText()==pl.get(0)))
+                    if((btn4.getText()==pl.get(random0)&& btn6.getText()==en.get(random0))||(btn4.getText()==en.get(random0) && btn6.getText()==pl.get(random0)))
                     {
                         btn4.setBackgroundResource(R.drawable.button_border_blue);
                         btn6.setBackgroundResource(R.drawable.button_border_blue);
@@ -2033,7 +2047,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn4.setClickable(false);
                         click4=false;
                         click6=false;
-                    }else if((btn4.getText()==pl.get(1)&& btn6.getText()==en.get(1))||(btn4.getText()==en.get(1) && btn6.getText()==pl.get(1)))
+                    }else if((btn4.getText()==pl.get(random1)&& btn6.getText()==en.get(random1))||(btn4.getText()==en.get(random1) && btn6.getText()==pl.get(random1)))
                     {
                         btn4.setBackgroundResource(R.drawable.button_border_pink);
                         btn6.setBackgroundResource(R.drawable.button_border_pink);
@@ -2041,7 +2055,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn4.setClickable(false);
                         click4=false;
                         click6=false;
-                    }else if((btn4.getText()==pl.get(2)&& btn6.getText()==en.get(2))||(btn4.getText()==en.get(2) && btn6.getText()==pl.get(2)))
+                    }else if((btn4.getText()==pl.get(random2)&& btn6.getText()==en.get(random2))||(btn4.getText()==en.get(random2) && btn6.getText()==pl.get(random2)))
                     {
                         btn4.setBackgroundResource(R.drawable.button_border_yellow);
                         btn6.setBackgroundResource(R.drawable.button_border_yellow);
@@ -2049,7 +2063,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn4.setClickable(false);
                         click4=false;
                         click6=false;
-                    }else if((btn4.getText()==pl.get(3)&& btn6.getText()==en.get(3))||(btn4.getText()==en.get(3) && btn6.getText()==pl.get(3)))
+                    }else if((btn4.getText()==pl.get(random3)&& btn6.getText()==en.get(random3))||(btn4.getText()==en.get(random3) && btn6.getText()==pl.get(random3)))
                     {
                         btn4.setBackgroundResource(R.drawable.button_border_purple);
                         btn6.setBackgroundResource(R.drawable.button_border_purple);
@@ -2075,7 +2089,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click5==true)
                 {
-                    if((btn5.getText()==pl.get(0)&& btn6.getText()==en.get(0))||(btn5.getText()==en.get(0) && btn6.getText()==pl.get(0)))
+                    if((btn5.getText()==pl.get(random0)&& btn6.getText()==en.get(random0))||(btn5.getText()==en.get(random0) && btn6.getText()==pl.get(random0)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_blue);
                         btn6.setBackgroundResource(R.drawable.button_border_blue);
@@ -2083,7 +2097,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn5.setClickable(false);
                         click5=false;
                         click6=false;
-                    }else if((btn5.getText()==pl.get(1)&& btn6.getText()==en.get(1))||(btn5.getText()==en.get(1) && btn6.getText()==pl.get(1)))
+                    }else if((btn5.getText()==pl.get(random1)&& btn6.getText()==en.get(random1))||(btn5.getText()==en.get(random1) && btn6.getText()==pl.get(random1)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_pink);
                         btn6.setBackgroundResource(R.drawable.button_border_pink);
@@ -2091,7 +2105,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn5.setClickable(false);
                         click5=false;
                         click6=false;
-                    }else if((btn5.getText()==pl.get(2)&& btn6.getText()==en.get(2))||(btn5.getText()==en.get(2) && btn6.getText()==pl.get(2)))
+                    }else if((btn5.getText()==pl.get(random2)&& btn6.getText()==en.get(random2))||(btn5.getText()==en.get(random2) && btn6.getText()==pl.get(random2)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_yellow);
                         btn6.setBackgroundResource(R.drawable.button_border_yellow);
@@ -2099,7 +2113,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn5.setClickable(false);
                         click5=false;
                         click6=false;
-                    }else if((btn5.getText()==pl.get(3)&& btn6.getText()==en.get(3))||(btn5.getText()==en.get(3) && btn6.getText()==pl.get(3)))
+                    }else if((btn5.getText()==pl.get(random3)&& btn6.getText()==en.get(random3))||(btn5.getText()==en.get(random3) && btn6.getText()==pl.get(random3)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_purple);
                         btn6.setBackgroundResource(R.drawable.button_border_purple);
@@ -2125,7 +2139,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click7==true)
                 {
-                    if((btn7.getText()==pl.get(0)&& btn6.getText()==en.get(0))||(btn7.getText()==en.get(0) && btn6.getText()==pl.get(0)))
+                    if((btn7.getText()==pl.get(random0)&& btn6.getText()==en.get(random0))||(btn7.getText()==en.get(random0) && btn6.getText()==pl.get(random0)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_blue);
                         btn7.setBackgroundResource(R.drawable.button_border_blue);
@@ -2133,7 +2147,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn7.setClickable(false);
                         click6=false;
                         click7=false;
-                    }else if((btn7.getText()==pl.get(1)&& btn6.getText()==en.get(1))||(btn7.getText()==en.get(1) && btn6.getText()==pl.get(1)))
+                    }else if((btn7.getText()==pl.get(random1)&& btn6.getText()==en.get(random1))||(btn7.getText()==en.get(random1) && btn6.getText()==pl.get(random1)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_pink);
                         btn7.setBackgroundResource(R.drawable.button_border_pink);
@@ -2141,7 +2155,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn7.setClickable(false);
                         click6=false;
                         click7=false;
-                    }else if((btn7.getText()==pl.get(2)&& btn6.getText()==en.get(2))||(btn7.getText()==en.get(2) && btn6.getText()==pl.get(2)))
+                    }else if((btn7.getText()==pl.get(random2)&& btn6.getText()==en.get(random2))||(btn7.getText()==en.get(random2) && btn6.getText()==pl.get(random2)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_yellow);
                         btn7.setBackgroundResource(R.drawable.button_border_yellow);
@@ -2149,7 +2163,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn7.setClickable(false);
                         click6=false;
                         click7=false;
-                    }else if((btn7.getText()==pl.get(3)&& btn6.getText()==en.get(3))||(btn7.getText()==en.get(3) && btn6.getText()==pl.get(3)))
+                    }else if((btn7.getText()==pl.get(random3)&& btn6.getText()==en.get(random3))||(btn7.getText()==en.get(random3) && btn6.getText()==pl.get(random3)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_purple);
                         btn7.setBackgroundResource(R.drawable.button_border_purple);
@@ -2175,7 +2189,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click8==true)
                 {
-                    if((btn8.getText()==pl.get(0)&& btn6.getText()==en.get(0))||(btn8.getText()==en.get(0) && btn6.getText()==pl.get(0)))
+                    if((btn8.getText()==pl.get(random0)&& btn6.getText()==en.get(random0))||(btn8.getText()==en.get(random0) && btn6.getText()==pl.get(random0)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_blue);
                         btn8.setBackgroundResource(R.drawable.button_border_blue);
@@ -2183,7 +2197,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn8.setClickable(false);
                         click6=false;
                         click8=false;
-                    }else if((btn8.getText()==pl.get(1)&& btn6.getText()==en.get(1))||(btn8.getText()==en.get(1) && btn6.getText()==pl.get(1)))
+                    }else if((btn8.getText()==pl.get(random1)&& btn6.getText()==en.get(random1))||(btn8.getText()==en.get(random1) && btn6.getText()==pl.get(random1)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_pink);
                         btn8.setBackgroundResource(R.drawable.button_border_pink);
@@ -2191,7 +2205,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn8.setClickable(false);
                         click6=false;
                         click8=false;
-                    }else if((btn8.getText()==pl.get(2)&& btn6.getText()==en.get(2))||(btn8.getText()==en.get(2) && btn6.getText()==pl.get(2)))
+                    }else if((btn8.getText()==pl.get(random2)&& btn6.getText()==en.get(random2))||(btn8.getText()==en.get(random2) && btn6.getText()==pl.get(random2)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_yellow);
                         btn8.setBackgroundResource(R.drawable.button_border_yellow);
@@ -2199,7 +2213,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn8.setClickable(false);
                         click6=false;
                         click8=false;
-                    }else if((btn8.getText()==pl.get(3)&& btn6.getText()==en.get(3))||(btn8.getText()==en.get(3) && btn6.getText()==pl.get(3)))
+                    }else if((btn8.getText()==pl.get(random3)&& btn6.getText()==en.get(random3))||(btn8.getText()==en.get(random3) && btn6.getText()==pl.get(random3)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_purple);
                         btn8.setBackgroundResource(R.drawable.button_border_purple);
@@ -2230,11 +2244,11 @@ public class PlanszaKwadratowa extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 click7=true;
-                btn7.setText(pl.get(2));
+                btn7.setText(pl.get(random2));
 
                 if(click1==true)
                 {
-                    if((btn1.getText()==pl.get(0)&& btn7.getText()==en.get(0))||(btn1.getText()==en.get(0) && btn7.getText()==pl.get(0)))
+                    if((btn1.getText()==pl.get(random0)&& btn7.getText()==en.get(random0))||(btn1.getText()==en.get(random0) && btn7.getText()==pl.get(random0)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_blue);
                         btn7.setBackgroundResource(R.drawable.button_border_blue);
@@ -2242,7 +2256,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn1.setClickable(false);
                         click1=false;
                         click7=false;
-                    }else if((btn1.getText()==pl.get(1)&& btn7.getText()==en.get(1))||(btn1.getText()==en.get(1)&& btn7.getText()==pl.get(1)))
+                    }else if((btn1.getText()==pl.get(random1)&& btn7.getText()==en.get(random1))||(btn1.getText()==en.get(random1)&& btn7.getText()==pl.get(random1)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_pink);
                         btn7.setBackgroundResource(R.drawable.button_border_pink);
@@ -2250,7 +2264,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn1.setClickable(false);
                         click1=false;
                         click7=false;
-                    }else if((btn1.getText()==pl.get(2)&& btn7.getText()==en.get(2))||(btn1.getText()==en.get(2) && btn7.getText()==pl.get(2)))
+                    }else if((btn1.getText()==pl.get(random2)&& btn7.getText()==en.get(random2))||(btn1.getText()==en.get(random2) && btn7.getText()==pl.get(random2)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_yellow);
                         btn7.setBackgroundResource(R.drawable.button_border_yellow);
@@ -2258,7 +2272,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn1.setClickable(false);
                         click1=false;
                         click7=false;
-                    }else if((btn1.getText()==pl.get(3)&& btn7.getText()==en.get(3))||(btn1.getText()==en.get(3) && btn7.getText()==pl.get(3)))
+                    }else if((btn1.getText()==pl.get(random3)&& btn7.getText()==en.get(random3))||(btn1.getText()==en.get(random3) && btn7.getText()==pl.get(random3)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_purple);
                         btn7.setBackgroundResource(R.drawable.button_border_purple);
@@ -2284,7 +2298,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click2==true)
                 {
-                    if((btn2.getText()==pl.get(0)&& btn7.getText()==en.get(0))||(btn2.getText()==en.get(0) && btn7.getText()==pl.get(0)))
+                    if((btn2.getText()==pl.get(random0)&& btn7.getText()==en.get(random0))||(btn2.getText()==en.get(random0) && btn7.getText()==pl.get(random0)))
                     {
                         btn2.setBackgroundResource(R.drawable.button_border_blue);
                         btn7.setBackgroundResource(R.drawable.button_border_blue);
@@ -2292,7 +2306,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn2.setClickable(false);
                         click2=false;
                         click7=false;
-                    }else if((btn2.getText()==pl.get(1)&& btn7.getText()==en.get(1))||(btn2.getText()==en.get(1) && btn7.getText()==pl.get(1)))
+                    }else if((btn2.getText()==pl.get(random1)&& btn7.getText()==en.get(random1))||(btn2.getText()==en.get(random1) && btn7.getText()==pl.get(random1)))
                     {
                         btn2.setBackgroundResource(R.drawable.button_border_pink);
                         btn7.setBackgroundResource(R.drawable.button_border_pink);
@@ -2300,7 +2314,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn2.setClickable(false);
                         click2=false;
                         click7=false;
-                    }else if((btn2.getText()==pl.get(2)&& btn7.getText()==en.get(2))||(btn2.getText()==en.get(2) && btn7.getText()==pl.get(2)))
+                    }else if((btn2.getText()==pl.get(random2)&& btn7.getText()==en.get(random2))||(btn2.getText()==en.get(random2) && btn7.getText()==pl.get(random2)))
                     {
                         btn2.setBackgroundResource(R.drawable.button_border_yellow);
                         btn7.setBackgroundResource(R.drawable.button_border_yellow);
@@ -2308,7 +2322,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn2.setClickable(false);
                         click2=false;
                         click7=false;
-                    }else if((btn2.getText()==pl.get(3)&& btn7.getText()==en.get(3))||(btn2.getText()==en.get(3) && btn7.getText()==pl.get(3)))
+                    }else if((btn2.getText()==pl.get(random3)&& btn7.getText()==en.get(random3))||(btn2.getText()==en.get(random3) && btn7.getText()==pl.get(random3)))
                     {
                         btn2.setBackgroundResource(R.drawable.button_border_purple);
                         btn7.setBackgroundResource(R.drawable.button_border_purple);
@@ -2334,7 +2348,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click3==true)
                 {
-                    if((btn3.getText()==pl.get(0)&& btn7.getText()==en.get(0))||(btn3.getText()==en.get(0) && btn7.getText()==pl.get(0)))
+                    if((btn3.getText()==pl.get(random0)&& btn7.getText()==en.get(random0))||(btn3.getText()==en.get(random0) && btn7.getText()==pl.get(random0)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_blue);
                         btn7.setBackgroundResource(R.drawable.button_border_blue);
@@ -2342,7 +2356,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn3.setClickable(false);
                         click3=false;
                         click7=false;
-                    }else if((btn3.getText()==pl.get(1)&& btn7.getText()==en.get(1))||(btn3.getText()==en.get(1) && btn7.getText()==pl.get(1)))
+                    }else if((btn3.getText()==pl.get(random1)&& btn7.getText()==en.get(random1))||(btn3.getText()==en.get(random1) && btn7.getText()==pl.get(random1)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_pink);
                         btn7.setBackgroundResource(R.drawable.button_border_pink);
@@ -2350,7 +2364,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn3.setClickable(false);
                         click3=false;
                         click7=false;
-                    }else if((btn3.getText()==pl.get(2)&& btn7.getText()==en.get(2))||(btn3.getText()==en.get(2) && btn7.getText()==pl.get(2)))
+                    }else if((btn3.getText()==pl.get(random2)&& btn7.getText()==en.get(random2))||(btn3.getText()==en.get(random2) && btn7.getText()==pl.get(random2)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_yellow);
                         btn7.setBackgroundResource(R.drawable.button_border_yellow);
@@ -2358,7 +2372,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn3.setClickable(false);
                         click3=false;
                         click7=false;
-                    }else if((btn3.getText()==pl.get(3)&& btn7.getText()==en.get(3))||(btn3.getText()==en.get(3) && btn7.getText()==pl.get(3)))
+                    }else if((btn3.getText()==pl.get(random3)&& btn7.getText()==en.get(random3))||(btn3.getText()==en.get(random3) && btn7.getText()==pl.get(random3)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_purple);
                         btn7.setBackgroundResource(R.drawable.button_border_purple);
@@ -2384,7 +2398,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click4==true)
                 {
-                    if((btn4.getText()==pl.get(0)&& btn7.getText()==en.get(0))||(btn4.getText()==en.get(0) && btn7.getText()==pl.get(0)))
+                    if((btn4.getText()==pl.get(random0)&& btn7.getText()==en.get(random0))||(btn4.getText()==en.get(random0) && btn7.getText()==pl.get(random0)))
                     {
                         btn4.setBackgroundResource(R.drawable.button_border_blue);
                         btn7.setBackgroundResource(R.drawable.button_border_blue);
@@ -2392,7 +2406,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn4.setClickable(false);
                         click4=false;
                         click7=false;
-                    }else if((btn4.getText()==pl.get(1)&& btn7.getText()==en.get(1))||(btn4.getText()==en.get(1) && btn7.getText()==pl.get(1)))
+                    }else if((btn4.getText()==pl.get(random1)&& btn7.getText()==en.get(random1))||(btn4.getText()==en.get(random1) && btn7.getText()==pl.get(random1)))
                     {
                         btn4.setBackgroundResource(R.drawable.button_border_pink);
                         btn7.setBackgroundResource(R.drawable.button_border_pink);
@@ -2400,7 +2414,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn4.setClickable(false);
                         click4=false;
                         click7=false;
-                    }else if((btn4.getText()==pl.get(2)&& btn7.getText()==en.get(2))||(btn4.getText()==en.get(2) && btn7.getText()==pl.get(2)))
+                    }else if((btn4.getText()==pl.get(random2)&& btn7.getText()==en.get(random2))||(btn4.getText()==en.get(random2) && btn7.getText()==pl.get(random2)))
                     {
                         btn4.setBackgroundResource(R.drawable.button_border_yellow);
                         btn7.setBackgroundResource(R.drawable.button_border_yellow);
@@ -2408,7 +2422,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn4.setClickable(false);
                         click4=false;
                         click7=false;
-                    }else if((btn4.getText()==pl.get(3)&& btn7.getText()==en.get(3))||(btn4.getText()==en.get(3)&& btn7.getText()==pl.get(3)))
+                    }else if((btn4.getText()==pl.get(random3)&& btn7.getText()==en.get(random3))||(btn4.getText()==en.get(random3)&& btn7.getText()==pl.get(random3)))
                     {
                         btn4.setBackgroundResource(R.drawable.button_border_purple);
                         btn7.setBackgroundResource(R.drawable.button_border_purple);
@@ -2434,7 +2448,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click5==true)
                 {
-                    if((btn5.getText()==pl.get(0)&& btn7.getText()==en.get(0))||(btn5.getText()==en.get(0) && btn7.getText()==pl.get(0)))
+                    if((btn5.getText()==pl.get(random0)&& btn7.getText()==en.get(random0))||(btn5.getText()==en.get(random0) && btn7.getText()==pl.get(random0)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_blue);
                         btn7.setBackgroundResource(R.drawable.button_border_blue);
@@ -2442,7 +2456,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn5.setClickable(false);
                         click5=false;
                         click7=false;
-                    }else if((btn5.getText()==pl.get(1)&& btn7.getText()==en.get(1))||(btn5.getText()==en.get(1) && btn7.getText()==pl.get(1)))
+                    }else if((btn5.getText()==pl.get(random1)&& btn7.getText()==en.get(random1))||(btn5.getText()==en.get(random1) && btn7.getText()==pl.get(random1)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_pink);
                         btn7.setBackgroundResource(R.drawable.button_border_pink);
@@ -2450,7 +2464,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn5.setClickable(false);
                         click5=false;
                         click7=false;
-                    }else if((btn5.getText()==pl.get(2)&& btn7.getText()==en.get(2))||(btn5.getText()==en.get(2) && btn7.getText()==pl.get(2)))
+                    }else if((btn5.getText()==pl.get(random2)&& btn7.getText()==en.get(random2))||(btn5.getText()==en.get(random2) && btn7.getText()==pl.get(random2)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_yellow);
                         btn7.setBackgroundResource(R.drawable.button_border_yellow);
@@ -2458,7 +2472,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn5.setClickable(false);
                         click5=false;
                         click7=false;
-                    }else if((btn5.getText()==pl.get(3)&& btn7.getText()==en.get(3))||(btn5.getText()==en.get(3) && btn7.getText()==pl.get(3)))
+                    }else if((btn5.getText()==pl.get(random3)&& btn7.getText()==en.get(random3))||(btn5.getText()==en.get(random3) && btn7.getText()==pl.get(random3)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_purple);
                         btn7.setBackgroundResource(R.drawable.button_border_purple);
@@ -2484,7 +2498,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click6==true)
                 {
-                    if((btn6.getText()==pl.get(0)&& btn7.getText()==en.get(0))||(btn6.getText()==en.get(0) && btn7.getText()==pl.get(0)))
+                    if((btn6.getText()==pl.get(random0)&& btn7.getText()==en.get(random0))||(btn6.getText()==en.get(random0) && btn7.getText()==pl.get(random0)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_blue);
                         btn7.setBackgroundResource(R.drawable.button_border_blue);
@@ -2492,7 +2506,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn6.setClickable(false);
                         click6=false;
                         click7=false;
-                    }else if((btn6.getText()==pl.get(1)&& btn7.getText()==en.get(1))||(btn6.getText()==en.get(1) && btn7.getText()==pl.get(1)))
+                    }else if((btn6.getText()==pl.get(random1)&& btn7.getText()==en.get(random1))||(btn6.getText()==en.get(random1) && btn7.getText()==pl.get(random1)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_pink);
                         btn7.setBackgroundResource(R.drawable.button_border_pink);
@@ -2500,7 +2514,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn6.setClickable(false);
                         click6=false;
                         click7=false;
-                    }else if((btn6.getText()==pl.get(2)&& btn7.getText()==en.get(2))||(btn6.getText()==en.get(2) && btn7.getText()==pl.get(2)))
+                    }else if((btn6.getText()==pl.get(random2)&& btn7.getText()==en.get(random2))||(btn6.getText()==en.get(random2) && btn7.getText()==pl.get(random2)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_yellow);
                         btn7.setBackgroundResource(R.drawable.button_border_yellow);
@@ -2508,7 +2522,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn6.setClickable(false);
                         click6=false;
                         click7=false;
-                    }else if((btn6.getText()==pl.get(3)&& btn7.getText()==en.get(3))||(btn6.getText()==en.get(3) && btn7.getText()==pl.get(3)))
+                    }else if((btn6.getText()==pl.get(random3)&& btn7.getText()==en.get(random3))||(btn6.getText()==en.get(random3) && btn7.getText()==pl.get(random3)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_purple);
                         btn7.setBackgroundResource(R.drawable.button_border_purple);
@@ -2534,7 +2548,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click8==true)
                 {
-                    if((btn8.getText()==pl.get(0)&& btn7.getText()==en.get(0))||(btn8.getText()==en.get(0) && btn7.getText()==pl.get(0)))
+                    if((btn8.getText()==pl.get(random0)&& btn7.getText()==en.get(random0))||(btn8.getText()==en.get(random0) && btn7.getText()==pl.get(random0)))
                     {
                         btn7.setBackgroundResource(R.drawable.button_border_blue);
                         btn8.setBackgroundResource(R.drawable.button_border_blue);
@@ -2542,7 +2556,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn8.setClickable(false);
                         click7=false;
                         click8=false;
-                    }else if((btn8.getText()==pl.get(1)&& btn7.getText()==en.get(1))||(btn8.getText()==en.get(1) && btn7.getText()==pl.get(1)))
+                    }else if((btn8.getText()==pl.get(random1)&& btn7.getText()==en.get(random1))||(btn8.getText()==en.get(random1) && btn7.getText()==pl.get(random1)))
                     {
                         btn7.setBackgroundResource(R.drawable.button_border_pink);
                         btn8.setBackgroundResource(R.drawable.button_border_pink);
@@ -2550,7 +2564,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn8.setClickable(false);
                         click7=false;
                         click8=false;
-                    }else if((btn8.getText()==pl.get(2)&& btn7.getText()==en.get(2))||(btn8.getText()==en.get(2) && btn7.getText()==pl.get(2)))
+                    }else if((btn8.getText()==pl.get(random2)&& btn7.getText()==en.get(random2))||(btn8.getText()==en.get(random2) && btn7.getText()==pl.get(random2)))
                     {
                         btn7.setBackgroundResource(R.drawable.button_border_yellow);
                         btn8.setBackgroundResource(R.drawable.button_border_yellow);
@@ -2558,7 +2572,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn8.setClickable(false);
                         click7=false;
                         click8=false;
-                    }else if((btn8.getText()==pl.get(3)&& btn7.getText()==en.get(3))||(btn8.getText()==en.get(3) && btn7.getText()==pl.get(3)))
+                    }else if((btn8.getText()==pl.get(random3)&& btn7.getText()==en.get(random3))||(btn8.getText()==en.get(random3) && btn7.getText()==pl.get(random3)))
                     {
                         btn7.setBackgroundResource(R.drawable.button_border_purple);
                         btn8.setBackgroundResource(R.drawable.button_border_purple);
@@ -2589,11 +2603,11 @@ public class PlanszaKwadratowa extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 click8=true;
-                btn8.setText(en.get(1));
+                btn8.setText(en.get(random1));
 
                 if(click1==true)
                 {
-                    if((btn1.getText()==pl.get(0)&& btn8.getText()==en.get(0))||(btn1.getText()==en.get(0) && btn8.getText()==pl.get(0)))
+                    if((btn1.getText()==pl.get(random0)&& btn8.getText()==en.get(random0))||(btn1.getText()==en.get(random0) && btn8.getText()==pl.get(random0)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_blue);
                         btn8.setBackgroundResource(R.drawable.button_border_blue);
@@ -2601,7 +2615,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn1.setClickable(false);
                         click1=false;
                         click8=false;
-                    }else if((btn1.getText()==pl.get(1)&& btn8.getText()==en.get(1))||(btn1.getText()==en.get(1) && btn8.getText()==pl.get(1)))
+                    }else if((btn1.getText()==pl.get(random1)&& btn8.getText()==en.get(random1))||(btn1.getText()==en.get(random1) && btn8.getText()==pl.get(random1)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_pink);
                         btn8.setBackgroundResource(R.drawable.button_border_pink);
@@ -2609,7 +2623,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn1.setClickable(false);
                         click1=false;
                         click8=false;
-                    }else if((btn1.getText()==pl.get(2)&& btn8.getText()==en.get(2))||(btn1.getText()==en.get(2) && btn8.getText()==pl.get(2)))
+                    }else if((btn1.getText()==pl.get(random2)&& btn8.getText()==en.get(random2))||(btn1.getText()==en.get(random2) && btn8.getText()==pl.get(random2)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_yellow);
                         btn8.setBackgroundResource(R.drawable.button_border_yellow);
@@ -2617,7 +2631,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn1.setClickable(false);
                         click1=false;
                         click8=false;
-                    }else if((btn1.getText()==pl.get(3)&& btn8.getText()==en.get(3))||(btn1.getText()==en.get(3) && btn8.getText()==pl.get(3)))
+                    }else if((btn1.getText()==pl.get(random3)&& btn8.getText()==en.get(random3))||(btn1.getText()==en.get(random3) && btn8.getText()==pl.get(random3)))
                     {
                         btn1.setBackgroundResource(R.drawable.button_border_purple);
                         btn8.setBackgroundResource(R.drawable.button_border_purple);
@@ -2643,7 +2657,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click2==true)
                 {
-                    if((btn2.getText()==pl.get(0)&& btn8.getText()==en.get(0))||(btn2.getText()==en.get(0) && btn8.getText()==pl.get(0)))
+                    if((btn2.getText()==pl.get(random0)&& btn8.getText()==en.get(random0))||(btn2.getText()==en.get(random0) && btn8.getText()==pl.get(random0)))
                     {
                         btn2.setBackgroundResource(R.drawable.button_border_blue);
                         btn8.setBackgroundResource(R.drawable.button_border_blue);
@@ -2651,7 +2665,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn2.setClickable(false);
                         click2=false;
                         click8=false;
-                    }else if((btn2.getText()==pl.get(1)&& btn8.getText()==en.get(1))||(btn2.getText()==en.get(1) && btn8.getText()==pl.get(1)))
+                    }else if((btn2.getText()==pl.get(random1)&& btn8.getText()==en.get(random1))||(btn2.getText()==en.get(random1) && btn8.getText()==pl.get(random1)))
                     {
                         btn2.setBackgroundResource(R.drawable.button_border_pink);
                         btn8.setBackgroundResource(R.drawable.button_border_pink);
@@ -2659,7 +2673,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn2.setClickable(false);
                         click2=false;
                         click8=false;
-                    }else if((btn2.getText()==pl.get(2)&& btn8.getText()==en.get(2))||(btn2.getText()==en.get(2) && btn8.getText()==pl.get(2)))
+                    }else if((btn2.getText()==pl.get(random2)&& btn8.getText()==en.get(random2))||(btn2.getText()==en.get(random2) && btn8.getText()==pl.get(random2)))
                     {
                         btn2.setBackgroundResource(R.drawable.button_border_yellow);
                         btn8.setBackgroundResource(R.drawable.button_border_yellow);
@@ -2667,7 +2681,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn2.setClickable(false);
                         click2=false;
                         click8=false;
-                    }else if((btn2.getText()==pl.get(3)&& btn8.getText()==en.get(3))||(btn2.getText()==en.get(3) && btn8.getText()==pl.get(3)))
+                    }else if((btn2.getText()==pl.get(random3)&& btn8.getText()==en.get(random3))||(btn2.getText()==en.get(random3) && btn8.getText()==pl.get(random3)))
                     {
                         btn2.setBackgroundResource(R.drawable.button_border_purple);
                         btn8.setBackgroundResource(R.drawable.button_border_purple);
@@ -2693,7 +2707,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click3==true)
                 {
-                    if((btn3.getText()==pl.get(0)&& btn8.getText()==en.get(0))||(btn3.getText()==en.get(0) && btn8.getText()==pl.get(0)))
+                    if((btn3.getText()==pl.get(random0)&& btn8.getText()==en.get(random0))||(btn3.getText()==en.get(random0) && btn8.getText()==pl.get(random0)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_blue);
                         btn8.setBackgroundResource(R.drawable.button_border_blue);
@@ -2701,7 +2715,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn3.setClickable(false);
                         click3=false;
                         click8=false;
-                    }else if((btn3.getText()==pl.get(1)&& btn8.getText()==en.get(1))||(btn3.getText()==en.get(1) && btn8.getText()==pl.get(1)))
+                    }else if((btn3.getText()==pl.get(random1)&& btn8.getText()==en.get(random1))||(btn3.getText()==en.get(random1) && btn8.getText()==pl.get(random1)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_pink);
                         btn8.setBackgroundResource(R.drawable.button_border_pink);
@@ -2709,7 +2723,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn3.setClickable(false);
                         click3=false;
                         click8=false;
-                    }else if((btn3.getText()==pl.get(2)&& btn8.getText()==en.get(2))||(btn3.getText()==en.get(2) && btn8.getText()==pl.get(2)))
+                    }else if((btn3.getText()==pl.get(random2)&& btn8.getText()==en.get(random2))||(btn3.getText()==en.get(random2) && btn8.getText()==pl.get(random2)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_yellow);
                         btn8.setBackgroundResource(R.drawable.button_border_yellow);
@@ -2717,7 +2731,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn3.setClickable(false);
                         click3=false;
                         click8=false;
-                    }else if((btn3.getText()==pl.get(3)&& btn8.getText()==en.get(3))||(btn3.getText()==en.get(3) && btn8.getText()==pl.get(3)))
+                    }else if((btn3.getText()==pl.get(random3)&& btn8.getText()==en.get(random3))||(btn3.getText()==en.get(random3) && btn8.getText()==pl.get(random3)))
                     {
                         btn3.setBackgroundResource(R.drawable.button_border_purple);
                         btn8.setBackgroundResource(R.drawable.button_border_purple);
@@ -2743,7 +2757,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click4==true)
                 {
-                    if((btn4.getText()==pl.get(0)&& btn8.getText()==en.get(0))||(btn4.getText()==en.get(0) && btn8.getText()==pl.get(0)))
+                    if((btn4.getText()==pl.get(random0)&& btn8.getText()==en.get(random0))||(btn4.getText()==en.get(random0) && btn8.getText()==pl.get(random0)))
                     {
                         btn4.setBackgroundResource(R.drawable.button_border_blue);
                         btn8.setBackgroundResource(R.drawable.button_border_blue);
@@ -2751,7 +2765,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn4.setClickable(false);
                         click4=false;
                         click8=false;
-                    }else if((btn4.getText()==pl.get(1)&& btn8.getText()==en.get(1))||(btn4.getText()==en.get(1) && btn8.getText()==pl.get(1)))
+                    }else if((btn4.getText()==pl.get(random1)&& btn8.getText()==en.get(random1))||(btn4.getText()==en.get(random1) && btn8.getText()==pl.get(random1)))
                     {
                         btn4.setBackgroundResource(R.drawable.button_border_pink);
                         btn8.setBackgroundResource(R.drawable.button_border_pink);
@@ -2759,7 +2773,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn4.setClickable(false);
                         click4=false;
                         click8=false;
-                    }else if((btn4.getText()==pl.get(2)&& btn8.getText()==en.get(2))||(btn4.getText()==en.get(2) && btn8.getText()==pl.get(2)))
+                    }else if((btn4.getText()==pl.get(random2)&& btn8.getText()==en.get(random2))||(btn4.getText()==en.get(random2) && btn8.getText()==pl.get(random2)))
                     {
                         btn4.setBackgroundResource(R.drawable.button_border_yellow);
                         btn8.setBackgroundResource(R.drawable.button_border_yellow);
@@ -2767,7 +2781,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn4.setClickable(false);
                         click4=false;
                         click8=false;
-                    }else if((btn4.getText()==pl.get(3)&& btn8.getText()==en.get(3))||(btn4.getText()==en.get(3) && btn8.getText()==pl.get(3)))
+                    }else if((btn4.getText()==pl.get(random3)&& btn8.getText()==en.get(random3))||(btn4.getText()==en.get(random3) && btn8.getText()==pl.get(random3)))
                     {
                         btn4.setBackgroundResource(R.drawable.button_border_purple);
                         btn8.setBackgroundResource(R.drawable.button_border_purple);
@@ -2793,7 +2807,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click5==true)
                 {
-                    if((btn5.getText()==pl.get(0)&& btn8.getText()==en.get(0))||(btn5.getText()==en.get(0) && btn8.getText()==pl.get(0)))
+                    if((btn5.getText()==pl.get(random0)&& btn8.getText()==en.get(random0))||(btn5.getText()==en.get(random0) && btn8.getText()==pl.get(random0)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_blue);
                         btn8.setBackgroundResource(R.drawable.button_border_blue);
@@ -2801,7 +2815,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn5.setClickable(false);
                         click5=false;
                         click8=false;
-                    }else if((btn5.getText()==pl.get(1)&& btn8.getText()==en.get(1))||(btn5.getText()==en.get(1) && btn8.getText()==pl.get(1)))
+                    }else if((btn5.getText()==pl.get(random1)&& btn8.getText()==en.get(random1))||(btn5.getText()==en.get(random1) && btn8.getText()==pl.get(random1)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_pink);
                         btn8.setBackgroundResource(R.drawable.button_border_pink);
@@ -2809,7 +2823,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn5.setClickable(false);
                         click5=false;
                         click8=false;
-                    }else if((btn5.getText()==pl.get(2)&& btn8.getText()==en.get(2))||(btn5.getText()==en.get(2) && btn8.getText()==pl.get(2)))
+                    }else if((btn5.getText()==pl.get(random2)&& btn8.getText()==en.get(random2))||(btn5.getText()==en.get(random2) && btn8.getText()==pl.get(random2)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_yellow);
                         btn8.setBackgroundResource(R.drawable.button_border_yellow);
@@ -2817,7 +2831,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn5.setClickable(false);
                         click5=false;
                         click8=false;
-                    }else if((btn5.getText()==pl.get(3)&& btn8.getText()==en.get(3))||(btn5.getText()==en.get(3) && btn8.getText()==pl.get(3)))
+                    }else if((btn5.getText()==pl.get(random3)&& btn8.getText()==en.get(random3))||(btn5.getText()==en.get(random3) && btn8.getText()==pl.get(random3)))
                     {
                         btn5.setBackgroundResource(R.drawable.button_border_purple);
                         btn8.setBackgroundResource(R.drawable.button_border_purple);
@@ -2843,7 +2857,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click6==true)
                 {
-                    if((btn6.getText()==pl.get(0)&& btn8.getText()==en.get(0))||(btn6.getText()==en.get(0) && btn8.getText()==pl.get(0)))
+                    if((btn6.getText()==pl.get(random0)&& btn8.getText()==en.get(random0))||(btn6.getText()==en.get(random0) && btn8.getText()==pl.get(random0)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_blue);
                         btn8.setBackgroundResource(R.drawable.button_border_blue);
@@ -2851,7 +2865,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn6.setClickable(false);
                         click6=false;
                         click8=false;
-                    }else if((btn6.getText()==pl.get(1)&& btn8.getText()==en.get(1))||(btn6.getText()==en.get(1) && btn8.getText()==pl.get(1)))
+                    }else if((btn6.getText()==pl.get(random1)&& btn8.getText()==en.get(random1))||(btn6.getText()==en.get(random1) && btn8.getText()==pl.get(random1)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_pink);
                         btn8.setBackgroundResource(R.drawable.button_border_pink);
@@ -2859,7 +2873,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn6.setClickable(false);
                         click6=false;
                         click8=false;
-                    }else if((btn6.getText()==pl.get(2)&& btn8.getText()==en.get(2))||(btn6.getText()==en.get(2) && btn8.getText()==pl.get(2)))
+                    }else if((btn6.getText()==pl.get(random2)&& btn8.getText()==en.get(random2))||(btn6.getText()==en.get(random2) && btn8.getText()==pl.get(random2)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_yellow);
                         btn8.setBackgroundResource(R.drawable.button_border_yellow);
@@ -2867,7 +2881,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn6.setClickable(false);
                         click6=false;
                         click8=false;
-                    }else if((btn6.getText()==pl.get(3)&& btn8.getText()==en.get(3))||(btn6.getText()==en.get(3) && btn8.getText()==pl.get(3)))
+                    }else if((btn6.getText()==pl.get(random3)&& btn8.getText()==en.get(random3))||(btn6.getText()==en.get(random3) && btn8.getText()==pl.get(random3)))
                     {
                         btn6.setBackgroundResource(R.drawable.button_border_purple);
                         btn8.setBackgroundResource(R.drawable.button_border_purple);
@@ -2893,7 +2907,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                     }
                 }else if(click7==true)
                 {
-                    if((btn7.getText()==pl.get(0)&& btn8.getText()==en.get(0))||(btn7.getText()==en.get(0) && btn8.getText()==pl.get(0)))
+                    if((btn7.getText()==pl.get(random0)&& btn8.getText()==en.get(random0))||(btn7.getText()==en.get(random0) && btn8.getText()==pl.get(random0)))
                     {
                         btn7.setBackgroundResource(R.drawable.button_border_blue);
                         btn8.setBackgroundResource(R.drawable.button_border_blue);
@@ -2901,7 +2915,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn7.setClickable(false);
                         click7=false;
                         click8=false;
-                    }else if((btn7.getText()==pl.get(1)&& btn8.getText()==en.get(1))||(btn7.getText()==en.get(1) && btn8.getText()==pl.get(1)))
+                    }else if((btn7.getText()==pl.get(random1)&& btn8.getText()==en.get(random1))||(btn7.getText()==en.get(random1) && btn8.getText()==pl.get(random1)))
                     {
                         btn7.setBackgroundResource(R.drawable.button_border_pink);
                         btn8.setBackgroundResource(R.drawable.button_border_pink);
@@ -2909,7 +2923,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn7.setClickable(false);
                         click7=false;
                         click8=false;
-                    }else if((btn7.getText()==pl.get(2)&& btn8.getText()==en.get(2))||(btn7.getText()==en.get(2) && btn8.getText()==pl.get(2)))
+                    }else if((btn7.getText()==pl.get(random2)&& btn8.getText()==en.get(random2))||(btn7.getText()==en.get(random2) && btn8.getText()==pl.get(random2)))
                     {
                         btn7.setBackgroundResource(R.drawable.button_border_yellow);
                         btn8.setBackgroundResource(R.drawable.button_border_yellow);
@@ -2917,7 +2931,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         btn7.setClickable(false);
                         click7=false;
                         click8=false;
-                    }else if((btn7.getText()==pl.get(3)&& btn8.getText()==en.get(3))||(btn7.getText()==en.get(3) && btn8.getText()==pl.get(3)))
+                    }else if((btn7.getText()==pl.get(random3)&& btn8.getText()==en.get(random3))||(btn7.getText()==en.get(random3) && btn8.getText()==pl.get(random3)))
                     {
                         btn7.setBackgroundResource(R.drawable.button_border_purple);
                         btn8.setBackgroundResource(R.drawable.button_border_purple);
@@ -2942,6 +2956,13 @@ public class PlanszaKwadratowa extends AppCompatActivity {
                         click8=false;
                     }
                 }
+            }
+        });
+
+        dalej.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(PlanszaKwadratowa.this,PlanszaKwadratowa.class));
             }
         });
     }

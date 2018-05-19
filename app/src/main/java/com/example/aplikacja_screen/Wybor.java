@@ -37,7 +37,7 @@ public class Wybor extends AppCompatActivity {
     int index_pl;
     int index_en;
     ArrayList<Integer> randomowe_ustawienie_en;
-
+    int ilosc_iteracji=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,13 +88,16 @@ public class Wybor extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //blokowanie przyciskow
+                b1.setClickable(false);
+                b2.setClickable(false);
+                b3.setClickable(false);
+                b4.setClickable(false);
+
                 index_en=en.indexOf(b1.getText().toString()); //liczony od zera
                 index_pl=pl.indexOf(t1.getText().toString());
                 if(index_en==index_pl) {
-                    b1.setBackgroundResource(R.drawable.button_border_green);
-                    b2.setBackgroundResource(R.drawable.button_border_red);
-                    b3.setBackgroundResource(R.drawable.button_border_red);
-                    b4.setBackgroundResource(R.drawable.button_border_red);
+                    b1.setBackgroundResource(R.drawable.zielony_gradient);
                 }else{
                     //co zrobic w przypadku zlej odpowiedzi
                     b1.setBackgroundResource(R.drawable.button_border_red);
@@ -103,11 +106,11 @@ public class Wybor extends AppCompatActivity {
                     int index_btn4=en.indexOf(b4.getText().toString());
                     if(index_pl==index_btn2)
                     {
-                        b2.setBackgroundResource(R.drawable.button_border_green);
+                        b2.setBackgroundResource(R.drawable.zielony_gradient);
                     }else if(index_pl==index_btn3){
-                        b3.setBackgroundResource(R.drawable.button_border_green);
+                        b3.setBackgroundResource(R.drawable.zielony_gradient);
                     }else if(index_pl==index_btn4){
-                        b4.setBackgroundResource(R.drawable.button_border_green);
+                        b4.setBackgroundResource(R.drawable.zielony_gradient);
                     }
                 }
             }
@@ -116,13 +119,15 @@ public class Wybor extends AppCompatActivity {
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //blokowanie przyciskow
+                b1.setClickable(false);
+                b2.setClickable(false);
+                b3.setClickable(false);
+                b4.setClickable(false);
                 index_en=en.indexOf(b2.getText().toString()); //liczony od zera
                 index_pl=pl.indexOf(t1.getText().toString());
                 if(index_en==index_pl) {
-                    b2.setBackgroundResource(R.drawable.button_border_green);
-                    b1.setBackgroundResource(R.drawable.button_border_red);
-                    b3.setBackgroundResource(R.drawable.button_border_red);
-                    b4.setBackgroundResource(R.drawable.button_border_red);
+                    b2.setBackgroundResource(R.drawable.zielony_gradient);
                 }else{
                     b2.setBackgroundResource(R.drawable.button_border_red);
                     int index_btn1=en.indexOf(b1.getText().toString());
@@ -130,11 +135,11 @@ public class Wybor extends AppCompatActivity {
                     int index_btn4=en.indexOf(b4.getText().toString());
                     if(index_pl==index_btn1)
                     {
-                        b1.setBackgroundResource(R.drawable.button_border_green);
+                        b1.setBackgroundResource(R.drawable.zielony_gradient);
                     }else if(index_pl==index_btn3){
-                        b3.setBackgroundResource(R.drawable.button_border_green);
+                        b3.setBackgroundResource(R.drawable.zielony_gradient);
                     }else if(index_pl==index_btn4){
-                        b4.setBackgroundResource(R.drawable.button_border_green);
+                        b4.setBackgroundResource(R.drawable.zielony_gradient);
                     }
                 }
             }
@@ -143,13 +148,15 @@ public class Wybor extends AppCompatActivity {
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //blokowanie przyciskow
+                b1.setClickable(false);
+                b2.setClickable(false);
+                b3.setClickable(false);
+                b4.setClickable(false);
                 index_en=en.indexOf(b3.getText().toString()); //liczony od zera
                 index_pl=pl.indexOf(t1.getText().toString());
                 if(index_en==index_pl) {
-                    b3.setBackgroundResource(R.drawable.button_border_green);
-                    b2.setBackgroundResource(R.drawable.button_border_red);
-                    b1.setBackgroundResource(R.drawable.button_border_red);
-                    b4.setBackgroundResource(R.drawable.button_border_red);
+                    b3.setBackgroundResource(R.drawable.zielony_gradient);
                 }else{
                     b3.setBackgroundResource(R.drawable.button_border_red);
                     int index_btn2=en.indexOf(b2.getText().toString());
@@ -157,11 +164,11 @@ public class Wybor extends AppCompatActivity {
                     int index_btn4=en.indexOf(b4.getText().toString());
                     if(index_pl==index_btn2)
                     {
-                        b2.setBackgroundResource(R.drawable.button_border_green);
+                        b2.setBackgroundResource(R.drawable.zielony_gradient);
                     }else if(index_pl==index_btn1){
-                        b1.setBackgroundResource(R.drawable.button_border_green);
+                        b1.setBackgroundResource(R.drawable.zielony_gradient);
                     }else if(index_pl==index_btn4){
-                        b4.setBackgroundResource(R.drawable.button_border_green);
+                        b4.setBackgroundResource(R.drawable.zielony_gradient);
                     }
                 }
             }
@@ -170,13 +177,15 @@ public class Wybor extends AppCompatActivity {
         b4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //blokowanie przyciskow
+                b1.setClickable(false);
+                b2.setClickable(false);
+                b3.setClickable(false);
+                b4.setClickable(false);
                 index_en=en.indexOf(b4.getText().toString()); //liczony od zera
                 index_pl=pl.indexOf(t1.getText().toString());
                 if(index_en==index_pl) {
-                    b4.setBackgroundResource(R.drawable.button_border_green);
-                    b2.setBackgroundResource(R.drawable.button_border_red);
-                    b3.setBackgroundResource(R.drawable.button_border_red);
-                    b1.setBackgroundResource(R.drawable.button_border_red);
+                    b4.setBackgroundResource(R.drawable.zielony_gradient);
                 }else{
                     b4.setBackgroundResource(R.drawable.button_border_red);
                     int index_btn2=en.indexOf(b2.getText().toString());
@@ -184,11 +193,11 @@ public class Wybor extends AppCompatActivity {
                     int index_btn1=en.indexOf(b1.getText().toString());
                     if(index_pl==index_btn1)
                     {
-                        b1.setBackgroundResource(R.drawable.button_border_green);
+                        b1.setBackgroundResource(R.drawable.zielony_gradient);
                     }else if(index_pl==index_btn3){
-                        b3.setBackgroundResource(R.drawable.button_border_green);
+                        b3.setBackgroundResource(R.drawable.zielony_gradient);
                     }else if(index_pl==index_btn2){
-                        b2.setBackgroundResource(R.drawable.button_border_green);
+                        b2.setBackgroundResource(R.drawable.zielony_gradient);
                     }
                 }
             }
@@ -196,62 +205,71 @@ public class Wybor extends AppCompatActivity {
         nastepne_slowo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                random_pl = r.nextInt(ilosc_slow);
-                random_en1 = r.nextInt(ilosc_slow);
-                if(random_en1==random_pl) {
-                    do {
-                        random_en1 = r.nextInt(ilosc_slow);
-                    } while (random_pl == random_en1);
-                }
-                random_en2 = r.nextInt(ilosc_slow);
-                if(random_en2==random_pl | random_en2==random_en1) {
-                    do {
-                        random_en2 = r.nextInt(ilosc_slow);
-                    } while (random_pl == random_en2 & random_en2 ==random_en1);
-                }
-                random_en3 = r.nextInt(ilosc_slow);
-                if(random_en3==random_pl | random_en3==random_en1 | random_en3==random_en2) {
-                    do {
-                        random_en3 = r.nextInt(ilosc_slow);
-                    } while (random_pl == random_en3 & random_en3 == random_en1 & random_en3 == random_en2);
-                }
-                random_en4 = random_pl;
+                //blokowanie przyciskow
+                b1.setClickable(true);
+                b2.setClickable(true);
+                b3.setClickable(true);
+                b4.setClickable(true);
+                if(ilosc_iteracji<15) {
+                    random_pl = r.nextInt(ilosc_slow);
+                    random_en1 = r.nextInt(ilosc_slow);
+                    if (random_en1 == random_pl) {
+                        do {
+                            random_en1 = r.nextInt(ilosc_slow);
+                        } while (random_pl == random_en1);
+                    }
+                    random_en2 = r.nextInt(ilosc_slow);
+                    if (random_en2 == random_pl | random_en2 == random_en1) {
+                        do {
+                            random_en2 = r.nextInt(ilosc_slow);
+                        } while (random_pl == random_en2 & random_en2 == random_en1);
+                    }
+                    random_en3 = r.nextInt(ilosc_slow);
+                    if (random_en3 == random_pl | random_en3 == random_en1 | random_en3 == random_en2) {
+                        do {
+                            random_en3 = r.nextInt(ilosc_slow);
+                        }
+                        while (random_pl == random_en3 & random_en3 == random_en1 & random_en3 == random_en2);
+                    }
+                    random_en4 = random_pl;
 
-                randomowe_ustawienie_en.add(random_en1);
-                randomowe_ustawienie_en.add(random_en2);
-                randomowe_ustawienie_en.add(random_en3);
-                randomowe_ustawienie_en.add(random_en4);
-                int a,b,c,d;
-                a=r.nextInt(4);
-                b=r.nextInt(4);
-                if(b==a){
-                    do{
-                        b=r.nextInt(4);
-                    }while(b==a);
+                    randomowe_ustawienie_en.add(random_en1);
+                    randomowe_ustawienie_en.add(random_en2);
+                    randomowe_ustawienie_en.add(random_en3);
+                    randomowe_ustawienie_en.add(random_en4);
+                    int a, b, c, d;
+                    a = r.nextInt(4);
+                    b = r.nextInt(4);
+                    if (b == a) {
+                        do {
+                            b = r.nextInt(4);
+                        } while (b == a);
+                    }
+                    c = r.nextInt(4);
+                    if (c == b | c == a) {
+                        do {
+                            c = r.nextInt(4);
+                        } while (c == a | c == b);
+                    }
+                    d = r.nextInt(4);
+                    if (d == c | d == b | d == a) {
+                        do {
+                            d = r.nextInt(4);
+                        } while (d == a | d == b | d == c);
+                    }
+                    //czyszczenie buttonow background
+                    b1.setBackgroundColor(Color.parseColor("#e6dcdc"));
+                    b2.setBackgroundColor(Color.parseColor("#e6dcdc"));
+                    b3.setBackgroundColor(Color.parseColor("#e6dcdc"));
+                    b4.setBackgroundColor(Color.parseColor("#e6dcdc"));
+                    t1.setText(pl.get(random_pl).toString());
+                    b1.setText(en.get(randomowe_ustawienie_en.get(b)).toString());
+                    b2.setText(en.get(randomowe_ustawienie_en.get(c)).toString());
+                    b3.setText(en.get(randomowe_ustawienie_en.get(d)).toString());
+                    b4.setText(en.get(randomowe_ustawienie_en.get(a)).toString());
+                    randomowe_ustawienie_en.clear();
+                    ilosc_iteracji++;
                 }
-                c=r.nextInt(4);
-                if(c==b | c==a){
-                    do{
-                        c=r.nextInt(4);
-                    }while(c==a | c==b);
-                }
-                d=r.nextInt(4);
-                if(d==c | d==b | d==a){
-                    do{
-                        d=r.nextInt(4);
-                    }while(d==a | d==b | d==c);
-                }
-                //czyszczenie buttonow background
-                b1.setBackgroundColor(Color.parseColor("#e6dcdc"));
-                b2.setBackgroundColor(Color.parseColor("#e6dcdc"));
-                b3.setBackgroundColor(Color.parseColor("#e6dcdc"));
-                b4.setBackgroundColor(Color.parseColor("#e6dcdc"));
-                t1.setText(pl.get(random_pl).toString());
-                b1.setText(en.get(randomowe_ustawienie_en.get(b)).toString());
-                b2.setText(en.get(randomowe_ustawienie_en.get(c)).toString());
-                b3.setText(en.get(randomowe_ustawienie_en.get(d)).toString());
-                b4.setText(en.get(randomowe_ustawienie_en.get(a)).toString());
-                randomowe_ustawienie_en.clear();
             }
         });
     }

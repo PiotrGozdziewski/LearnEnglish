@@ -109,7 +109,11 @@ public class Dopasowanie extends AppCompatActivity {
         dalej.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(ilosc_iteracji<2) {
+                if(ilosc_iteracji==3){
+                    Toast.makeText(getApplicationContext(), "tu2", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(Dopasowanie.this, BocznyPasekLewy.class));
+                }
+                if(ilosc_iteracji<=2) {
                     en_randomowe.clear();
                     en_randomowe.add(0," ");
                     wyswietl_zdjecia();
@@ -120,9 +124,10 @@ public class Dopasowanie extends AppCompatActivity {
                     sp3.setAdapter(adapter);
                     sp4.setAdapter(adapter);
                     ilosc_iteracji++;
-                }else{
+                }
+                if(ilosc_iteracji==3){
+                    Toast.makeText(getApplicationContext(), "tu3", Toast.LENGTH_SHORT).show();
                     dalej.setText("Zakończ lekcję");
-                    startActivity(new Intent(Dopasowanie.this, BocznyPasekLewy.class));
                 }
             }
         });

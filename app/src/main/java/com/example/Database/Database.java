@@ -290,6 +290,7 @@ public class Database {
         return cursor;
     }
 
+
     //pobierz lekcje danego uzytkownika
     public Cursor getLessons(int id)
     {
@@ -309,6 +310,71 @@ public class Database {
                 LessonsContract.Columns._ID);
         return cursor;
     }
+    //pobierz ID kategorii po ID Zadania
+    public Cursor getIDCategorie(int id)
+    {
+        String[] projection = {
+                ExercisesContract.Columns._ID,
+                ExercisesContract.Columns.EXERCISES_CATEGORY_ID,
+                ExercisesContract.Columns.EXERCISES_TYPE_ID};
+        String selection = ExercisesContract.Columns._ID+ " =?";
+        String[] args = {String.valueOf(id)};
+        Cursor cursor = contentResolver.query(ExercisesContract.CONTENT_URI,
+                projection,
+                selection,
+                args,
+                ExercisesContract.Columns.EXERCISES_CATEGORY_ID);
+        return cursor;
+    }
+
+    //pobierz ID Typu Zadania po ID ZADANIA
+    public Cursor getIDExerciseType(int id)
+    {
+        String[] projection = {
+                ExercisesContract.Columns._ID,
+                ExercisesContract.Columns.EXERCISES_CATEGORY_ID,
+                ExercisesContract.Columns.EXERCISES_TYPE_ID};
+        String selection = ExercisesContract.Columns._ID+ " =?";
+        String[] args = {String.valueOf(id)};
+        Cursor cursor = contentResolver.query(ExercisesContract.CONTENT_URI,
+                projection,
+                selection,
+                args,
+                ExercisesContract.Columns.EXERCISES_TYPE_ID);
+        return cursor;
+    }
+
+    //pobierz nazwe Kategorii po ID
+    public Cursor getCategorieName(int id)
+    {
+        String[] projection = {
+                CategoriesContract.Columns._ID,
+                CategoriesContract.Columns.CATEGORIES_NAME};
+        String selection = CategoriesContract.Columns._ID+ " =?";
+        String[] args = {String.valueOf(id)};
+        Cursor cursor = contentResolver.query(CategoriesContract.CONTENT_URI,
+                projection,
+                selection,
+                args,
+                CategoriesContract.Columns.CATEGORIES_NAME);
+        return cursor;
+    }
+    //pobierz nazwe Typu zadania po ID
+    public Cursor getExerciceTypeName(int id){
+        String[] projection = {
+                ExercisesTypesContract.Columns._ID,
+                ExercisesTypesContract.Columns.EXERCISESTYPES_NAME};
+        String selection = ExercisesTypesContract.Columns._ID + " =?";
+        String[] args = {String.valueOf(id)};
+        Cursor cursor = contentResolver.query(ExercisesTypesContract.CONTENT_URI,
+                projection,
+                selection,
+                args,
+                ExercisesTypesContract.Columns.EXERCISESTYPES_NAME);
+        return cursor;
+    }
+
+
 
     // Wszystkie nowe funkcje dajemy nad tym komentarzem
 

@@ -42,8 +42,10 @@ public class Tlumaczenie extends AppCompatActivity {
     Handler h = new Handler();
     Cursor cursor;
     Cursor cursor1;
+    Cursor cursor2;
     int id_typu_zadania;
     int idKategorii;
+    int id_zadania;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,27 +72,29 @@ public class Tlumaczenie extends AppCompatActivity {
             String nazwa_baza=cursor1.getString(1);
             if(wybranyTypZadania.equals(nazwa_baza))
             {
-                //Toast.makeText(getApplicationContext(),"jest ok",Toast.LENGTH_SHORT).show();
                 id_typu_zadania=cursor1.getInt(0);
             }
         }
-
-        //Toast.makeText(getApplicationContext(),"id typu: "+String.valueOf(id_typu_zadania),Toast.LENGTH_SHORT).show();
-
         cursor = db.getWords(idKategorii);
         while(cursor.moveToNext())
         {
-//            Toast.makeText(getApplicationContext(),String.valueOf(idKategorii),Toast.LENGTH_SHORT).show();
-//            Toast.makeText(getApplicationContext(),String.valueOf(cursor.getInt(1)),Toast.LENGTH_SHORT).show();
             polskie.add(cursor.getString(2));
             angielskie.add(cursor.getString(3));
         }
+
+        //pobranie id zadania
+        SharedPreferences p2 = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        cursor2=db.getExercise(idKategorii,id_typu_zadania);
+        while(cursor2.moveToNext())
+        {
+            id_zadania=cursor2.getInt(0);
+        }
+
 
         pl.setText(polskie.get(0));
         sprawdz_poprawnosc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // Toast.makeText(getApplicationContext(),en.getText().toString(),Toast.LENGTH_SHORT).show();
                 if (en.getText().toString().equals(angielskie.get(i).toString())) {
 
                     sprawdz.setVisibility(View.INVISIBLE);
@@ -103,8 +107,6 @@ public class Tlumaczenie extends AppCompatActivity {
                     sprawdz_poprawnosc.setClickable(false);
                     dalej.setVisibility(View.VISIBLE);
                 } else {
-                    // dialogAlertNegative();
-                    //Toast.makeText(getApplicationContext(),"Niepoprawna odpowiedź",Toast.LENGTH_SHORT).show();
                     sprawdz_poprawnosc.setText("Niepoprawna odpowiedź");
                     sprawdz_poprawnosc.setBackgroundColor(Color.parseColor("#d11f34"));
                     if(bledna==false)
@@ -142,16 +144,14 @@ public class Tlumaczenie extends AppCompatActivity {
                             sprawdz_poprawnosc.setBackgroundColor(Color.parseColor("#e6e1e1"));
                         }
                     },3000);
-
                 }
-
             }
         });
 
         dalej.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(i==3)
+                if(i==9)
                 {
                     zapisz_statytyski();
                     startActivity(new Intent(Tlumaczenie.this,WyborKategorii.class));
@@ -163,11 +163,9 @@ public class Tlumaczenie extends AppCompatActivity {
                 i++;
                 bledna=false;
                 dalej.setVisibility(View.INVISIBLE);
-                if(i<=3){wczytaj_slowa(i);}
-                if(i==3)
+                if(i<=9){wczytaj_slowa(i);}
+                if(i==9)
                 {
-                    Toast.makeText(getApplicationContext(),String.valueOf(poprawne_odp),Toast.LENGTH_LONG).show();
-                    //Toast.makeText(getApplicationContext(),String.valueOf(bledne_odp),Toast.LENGTH_SHORT).show();
                     dalej.setText("Zakończ lekcje");
                 }
             }
@@ -188,8 +186,7 @@ public class Tlumaczenie extends AppCompatActivity {
         Date currentTime = Calendar.getInstance().getTime();
         Calendar cal = Calendar.getInstance(Locale.ENGLISH);
         String date = DateFormat.format("yyyy-MM-dd hh:mm:ss", cal).toString();
-        Toast.makeText(getApplicationContext(),String.valueOf(currentTime),Toast.LENGTH_SHORT).show();
-        db.insertIntoLessons(Integer.parseInt(userID),id_typu_zadania,String.valueOf(poprawne_odp),String.valueOf(bledne_odp),date);
+        db.insertIntoLessons(Integer.parseInt(userID),id_zadania,String.valueOf(poprawne_odp),String.valueOf(bledne_odp),date);
     }
 
     public void onBackPressed(){

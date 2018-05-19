@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,6 +17,9 @@ import com.example.Database.Database;
 import com.example.m.aplikacja_screen.R;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Random;
 
 public class Wybor extends AppCompatActivity {
@@ -24,6 +28,8 @@ public class Wybor extends AppCompatActivity {
     Button t1;
     Database db;
     Cursor cursor;
+    Cursor cursor1;
+    Cursor cursor2;
     int idKategorii;
     ArrayList<String> pl;
     ArrayList<String> en;
@@ -38,6 +44,10 @@ public class Wybor extends AppCompatActivity {
     int index_en;
     ArrayList<Integer> randomowe_ustawienie_en;
     int ilosc_iteracji=0;
+    int id_typu_zadania;
+    int id_zadania;
+    int poprawne_odp=0;
+    int bledne_odp=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +68,19 @@ public class Wybor extends AppCompatActivity {
 
         r = new Random();
 
+        //pobranie id wybranego zadania
+        SharedPreferences p1 = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String wybranyTypZadania = p1.getString("NazwaTypuZadania","0");
+        cursor1=db.getExerciceType(wybranyTypZadania);
+        while(cursor1.moveToNext())
+        {
+            String nazwa_baza=cursor1.getString(1);
+            if(wybranyTypZadania.equals(nazwa_baza))
+            {
+                id_typu_zadania=cursor1.getInt(0);
+            }
+        }
+
         //pobranie id wybranej kategorii
         SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         idKategorii = p.getInt("idKategorii",0);
@@ -69,9 +92,16 @@ public class Wybor extends AppCompatActivity {
             en.add(cursor.getString(3));
         }
 
+        //pobranie id zadania
+        SharedPreferences p2 = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        cursor2=db.getExercise(idKategorii,id_typu_zadania);
+        while(cursor2.moveToNext())
+        {
+            id_zadania=cursor2.getInt(0);
+        }
+
         ilosc_slow = pl.size();
         //ustawianie na początku
-        Toast.makeText(getApplicationContext(),String.valueOf(ilosc_slow),Toast.LENGTH_SHORT).show();
         random_pl = r.nextInt(ilosc_slow)+1;
         random_en1 = r.nextInt(ilosc_slow)+1;
         random_en2 = r.nextInt(ilosc_slow)+1;
@@ -98,7 +128,9 @@ public class Wybor extends AppCompatActivity {
                 index_pl=pl.indexOf(t1.getText().toString());
                 if(index_en==index_pl) {
                     b1.setBackgroundResource(R.drawable.zielony_gradient);
+                    poprawne_odp++;
                 }else{
+                    bledne_odp++;
                     //co zrobic w przypadku zlej odpowiedzi
                     b1.setBackgroundResource(R.drawable.button_border_red);
                     int index_btn2=en.indexOf(b2.getText().toString());
@@ -128,7 +160,9 @@ public class Wybor extends AppCompatActivity {
                 index_pl=pl.indexOf(t1.getText().toString());
                 if(index_en==index_pl) {
                     b2.setBackgroundResource(R.drawable.zielony_gradient);
+                    poprawne_odp++;
                 }else{
+                    bledne_odp++;
                     b2.setBackgroundResource(R.drawable.button_border_red);
                     int index_btn1=en.indexOf(b1.getText().toString());
                     int index_btn3=en.indexOf(b3.getText().toString());
@@ -157,7 +191,9 @@ public class Wybor extends AppCompatActivity {
                 index_pl=pl.indexOf(t1.getText().toString());
                 if(index_en==index_pl) {
                     b3.setBackgroundResource(R.drawable.zielony_gradient);
+                    poprawne_odp++;
                 }else{
+                    bledne_odp++;
                     b3.setBackgroundResource(R.drawable.button_border_red);
                     int index_btn2=en.indexOf(b2.getText().toString());
                     int index_btn1=en.indexOf(b1.getText().toString());
@@ -185,8 +221,10 @@ public class Wybor extends AppCompatActivity {
                 index_en=en.indexOf(b4.getText().toString()); //liczony od zera
                 index_pl=pl.indexOf(t1.getText().toString());
                 if(index_en==index_pl) {
+                    poprawne_odp++;
                     b4.setBackgroundResource(R.drawable.zielony_gradient);
                 }else{
+                    bledne_odp++;
                     b4.setBackgroundResource(R.drawable.button_border_red);
                     int index_btn2=en.indexOf(b2.getText().toString());
                     int index_btn3=en.indexOf(b3.getText().toString());
@@ -210,7 +248,17 @@ public class Wybor extends AppCompatActivity {
                 b2.setClickable(true);
                 b3.setClickable(true);
                 b4.setClickable(true);
-                if(ilosc_iteracji<15) {
+
+                if(ilosc_iteracji==13)
+                {
+                    nastepne_slowo.setText("Zakończ lekcję");
+                }
+                if(ilosc_iteracji==14)
+                {
+                    zapisz_statytyski();
+                    startActivity(new Intent(Wybor.this,WyborKategorii.class));
+                }
+                if(ilosc_iteracji<14) {
                     random_pl = r.nextInt(ilosc_slow);
                     random_en1 = r.nextInt(ilosc_slow);
                     if (random_en1 == random_pl) {
@@ -275,5 +323,15 @@ public class Wybor extends AppCompatActivity {
     }
     public void onBackPressed(){
         startActivity(new Intent(Wybor.this,BocznyPasekLewy.class));
+    }
+
+    public void zapisz_statytyski()
+    {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String userID = prefs.getString("id", "0");
+        Date currentTime = Calendar.getInstance().getTime();
+        Calendar cal = Calendar.getInstance(Locale.ENGLISH);
+        String date = DateFormat.format("yyyy-MM-dd hh:mm:ss", cal).toString();
+        db.insertIntoLessons(Integer.parseInt(userID),id_zadania,String.valueOf(poprawne_odp),String.valueOf(bledne_odp),date);
     }
 }

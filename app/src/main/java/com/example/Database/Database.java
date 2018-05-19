@@ -260,6 +260,21 @@ public class Database {
                 WordsContract.Columns._ID);
         return cursor;
     }
+    //pobranie id Zadania - do stat
+    public Cursor getExercise(int id_kategorii, int id_typu){
+        String[] projection = {
+                ExercisesContract.Columns._ID,
+                ExercisesContract.Columns.EXERCISES_CATEGORY_ID,
+                ExercisesContract.Columns.EXERCISES_TYPE_ID};
+        String selection = ExercisesContract.Columns.EXERCISES_CATEGORY_ID + " =?"+ " AND " +ExercisesContract.Columns.EXERCISES_TYPE_ID+ " =?";
+        String[] args = {String.valueOf(id_kategorii),String.valueOf(id_typu)};
+        Cursor cursor = contentResolver.query(ExercisesContract.CONTENT_URI,
+                projection,
+                selection,
+                args,
+                ExercisesContract.Columns._ID);
+        return cursor;
+    }
 
     public Cursor getExerciceType(String nazwa){
         String[] projection = {

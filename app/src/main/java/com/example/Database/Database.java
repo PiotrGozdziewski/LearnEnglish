@@ -376,6 +376,22 @@ public class Database {
 
 
 
+    public Cursor getSentences(int idKategorii){
+        String[] projection = {
+                SentencesContract.Columns._ID,
+                SentencesContract.Columns.SENTENCES_CATEGORY_ID,
+                SentencesContract.Columns.SENTENCES_SENTENCE_PL,
+                SentencesContract.Columns.SENTENCES_SENTENCE_EN};
+        String[] args = {String.valueOf(idKategorii)};
+        String selection = SentencesContract.Columns.SENTENCES_CATEGORY_ID + " =?";
+        Cursor cursor = contentResolver.query(SentencesContract.CONTENT_URI,
+                projection,
+                selection,
+                args,
+                SentencesContract.Columns._ID);
+        return cursor;
+    }
+
     // Wszystkie nowe funkcje dajemy nad tym komentarzem
 
 

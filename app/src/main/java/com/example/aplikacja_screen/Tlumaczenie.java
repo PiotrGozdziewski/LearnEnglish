@@ -191,4 +191,8 @@ public class Tlumaczenie extends AppCompatActivity {
         Toast.makeText(getApplicationContext(),String.valueOf(currentTime),Toast.LENGTH_SHORT).show();
         db.insertIntoLessons(Integer.parseInt(userID),id_typu_zadania,String.valueOf(poprawne_odp),String.valueOf(bledne_odp),date);
     }
+
+    public void onBackPressed(){
+        startActivity(new Intent(Tlumaczenie.this,BocznyPasekLewy.class));
+    }
 }

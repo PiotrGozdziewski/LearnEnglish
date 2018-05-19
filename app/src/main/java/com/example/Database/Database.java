@@ -290,8 +290,8 @@ public class Database {
         return cursor;
     }
 
-    //pobierz lekcje
-    public Cursor getLessons()
+    //pobierz lekcje danego uzytkownika
+    public Cursor getLessons(int id)
     {
         String[] projection = {
                 LessonsContract.Columns._ID,
@@ -300,10 +300,12 @@ public class Database {
                 LessonsContract.Columns.LESSONS_CORRECT_ANSWER,
                 LessonsContract.Columns.LESSONS_WRONG_ANSWER,
                 LessonsContract.Columns.LESSONS_DATE};
+        String[] args = {String.valueOf(id)};
+        String selection = LessonsContract.Columns.LESSONS_USER_ID+ " =?";
         Cursor cursor = contentResolver.query(LessonsContract.CONTENT_URI,
                 projection,
-                null,
-                null,
+                selection,
+                args,
                 LessonsContract.Columns._ID);
         return cursor;
     }

@@ -9,7 +9,27 @@
     <TableLayout
         android:id="@+id/tableLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="25dp">
+        android:layout_height="150dp"
+        android:layout_marginTop="50dp">
     </TableLayout>
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/IdPieChart"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp"></com.github.mikephil.charting.charts.PieChart>
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:textSize="25dp"
+        android:textColor="#25383C"
+        android:text="5 ostatnich lekcji" />
+
 </RelativeLayout>

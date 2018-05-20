@@ -110,7 +110,6 @@ public class Dopasowanie extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(ilosc_iteracji==3){
-                    Toast.makeText(getApplicationContext(), "tu2", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(Dopasowanie.this, BocznyPasekLewy.class));
                 }
                 if(ilosc_iteracji<=2) {
@@ -126,7 +125,6 @@ public class Dopasowanie extends AppCompatActivity {
                     ilosc_iteracji++;
                 }
                 if(ilosc_iteracji==3){
-                    Toast.makeText(getApplicationContext(), "tu3", Toast.LENGTH_SHORT).show();
                     dalej.setText("Zakończ lekcję");
                 }
             }

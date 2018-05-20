@@ -1,5 +1,6 @@
 package com.example.aplikacja_screen;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -261,11 +262,17 @@ public class Uzupelnianie extends AppCompatActivity {
                 ilość_słów_w_zdaniu=0;
                 ilość_iteracji++;
                 dalej.setVisibility(View.VISIBLE);
+                if(ilość_iteracji==16){
+                    dalej.setText("Zakończ lekcję");
+                }
             }
         });
     }
 
     public void uzupelnij() {
+        if(ilość_iteracji==16){
+            startActivity(new Intent(Uzupelnianie.this, BocznyPasekLewy.class));
+        }
         //utworzenie randoma do wartości do długości listy słowa_ze_zdanie_en
         int rozmiar=0;
         Random r = new Random();
@@ -278,7 +285,8 @@ public class Uzupelnianie extends AppCompatActivity {
         btn6.setClickable(true);
         btn7.setClickable(true);
         btn8.setClickable(true);
-        if (ilość_iteracji <= zdania_en.size()) {
+        if (ilość_iteracji <= 15) {
+        //if (ilość_iteracji <= zdania_en.size()) {
             zdanie_pl.setText(zdania_pl.get(ilość_iteracji));
             słowa_ze_zdania_en = pobierzSłowa(zdania_en.get(ilość_iteracji));
             rozmiar = słowa_ze_zdania_en.size();
@@ -318,7 +326,6 @@ public class Uzupelnianie extends AppCompatActivity {
                 btn3.setVisibility(View.VISIBLE);
                 btn4.setVisibility(View.VISIBLE);
                 index1=r.nextInt(rozmiar)+0;
-                Toast.makeText(getApplicationContext(), String.valueOf(index1), Toast.LENGTH_SHORT).show();
                 btn1.setText(słowa_ze_zdania_en.get(index1));
                 do{
                     index2=r.nextInt(rozmiar)+0;

@@ -25,7 +25,7 @@ import java.util.regex.Pattern;
 
 public class Uzupelnianie extends AppCompatActivity {
 
-    Button btn1, btn2, btn3,btn4, btn5,btn6,btn7, btn8,dalej, zdanie_pl, sprawdź;
+    Button btn1, btn2, btn3,btn4, btn5,btn6,btn7, btn8,dalej, zdanie_pl, sprawdź,clear;
     EditText wprowadz;
     Database db;
     int idKategorii;
@@ -53,6 +53,7 @@ public class Uzupelnianie extends AppCompatActivity {
         btn8 = (Button)findViewById(R.id.button50);
         dalej = (Button)findViewById(R.id.button46);
         sprawdź = (Button)findViewById(R.id.button48);
+        clear = (Button)findViewById(R.id.button51);
         db = new Database(getContentResolver());
         zdania_en = new ArrayList<String>();
         zdania_pl = new ArrayList<String>();
@@ -265,6 +266,22 @@ public class Uzupelnianie extends AppCompatActivity {
                 if(ilość_iteracji==16){
                     dalej.setText("Zakończ lekcję");
                 }
+            }
+        });
+
+        clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btn1.setClickable(true);
+                btn2.setClickable(true);
+                btn3.setClickable(true);
+                btn4.setClickable(true);
+                btn5.setClickable(true);
+                btn6.setClickable(true);
+                btn7.setClickable(true);
+                btn8.setClickable(true);
+
+                wprowadz.setText("");
             }
         });
     }

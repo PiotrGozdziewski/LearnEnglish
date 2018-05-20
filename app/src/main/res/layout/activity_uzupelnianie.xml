@@ -127,5 +127,13 @@
         android:visibility="invisible"
         android:layout_alignTop="@+id/button49" />
 
+    <Button
+        android:id="@+id/button51"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/button48"
+        android:layout_below="@+id/button49"
+        android:text="Wyczyść" />
+
 
 </RelativeLayout>

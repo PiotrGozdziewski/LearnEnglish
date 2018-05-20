@@ -2,6 +2,7 @@ package com.example.aplikacja_screen;
 
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,7 +23,7 @@ import java.util.regex.Pattern;
 
 public class Uzupelnianie extends AppCompatActivity {
 
-    Button btn1, btn2, btn3,btn4, btn5,btn6,dalej, zdanie_pl, sprawdź;
+    Button btn1, btn2, btn3,btn4, btn5,btn6,btn7, btn8,dalej, zdanie_pl, sprawdź;
     EditText wprowadz;
     Database db;
     int idKategorii;
@@ -31,7 +32,7 @@ public class Uzupelnianie extends AppCompatActivity {
     ArrayList<String> słowa_ze_zdania_en;
     int ilość_iteracji=0;
     int ilość_słów_w_zdaniu=0;
-    boolean b1ON,b2ON,b3ON,b4ON,b5ON, b6ON = false;
+    boolean b1ON,b2ON,b3ON,b4ON,b5ON, b6ON, b7ON, b8ON = false;
 
 
     @Override
@@ -46,6 +47,8 @@ public class Uzupelnianie extends AppCompatActivity {
         btn4 = (Button)findViewById(R.id.button44);
         btn5 = (Button)findViewById(R.id.button45);
         btn6 = (Button)findViewById(R.id.button19);
+        btn7 = (Button)findViewById(R.id.button49);
+        btn8 = (Button)findViewById(R.id.button50);
         dalej = (Button)findViewById(R.id.button46);
         sprawdź = (Button)findViewById(R.id.button48);
         db = new Database(getContentResolver());
@@ -70,6 +73,8 @@ public class Uzupelnianie extends AppCompatActivity {
         dalej.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                sprawdź.setText("Sprawdź");
+                sprawdź.setBackgroundColor(Color.parseColor("#e7e2e2"));
                 wprowadz.setText("");
                 btn1.setVisibility(View.INVISIBLE);
                 btn2.setVisibility(View.INVISIBLE);
@@ -77,6 +82,8 @@ public class Uzupelnianie extends AppCompatActivity {
                 btn4.setVisibility(View.INVISIBLE);
                 btn5.setVisibility(View.INVISIBLE);
                 btn6.setVisibility(View.INVISIBLE);
+                btn7.setVisibility(View.INVISIBLE);
+                btn8.setVisibility(View.INVISIBLE);
                 uzupelnij();
                 dalej.setVisibility(View.INVISIBLE);
               }
@@ -90,7 +97,9 @@ public class Uzupelnianie extends AppCompatActivity {
                     wprowadz.setText(btn1.getText().toString());
                 }else if(btn1.getText().toString()=="?"){
                     wprowadz.append(btn1.getText().toString());
-                }else if(b2ON==true | b3ON==true | b4ON==true | b5ON==true | b6ON==true ){
+                }else if(btn1.getText().toString()=="."){
+                    wprowadz.append(btn1.getText().toString());
+                } else if(b2ON==true | b3ON==true | b4ON==true | b5ON==true | b6ON==true | b7ON==true | b8ON==true){
                     wprowadz.append(" ");
                     wprowadz.append(btn1.getText().toString());
                 }
@@ -107,7 +116,9 @@ public class Uzupelnianie extends AppCompatActivity {
                     wprowadz.setText(btn2.getText().toString());
                 }else if(btn2.getText().toString()=="?"){
                     wprowadz.append(btn2.getText().toString());
-                }else if(b5ON==true | b3ON==true | b4ON==true | b1ON==true | b6ON==true ){
+                }else if(btn2.getText().toString()=="."){
+                    wprowadz.append(btn2.getText().toString());
+                } else if(b5ON==true | b3ON==true | b4ON==true | b1ON==true | b6ON==true | b7ON==true | b8ON==true ){
                     wprowadz.append(" ");
                     wprowadz.append(btn2.getText().toString());
                 }
@@ -125,7 +136,9 @@ public class Uzupelnianie extends AppCompatActivity {
                     wprowadz.setText(btn3.getText().toString());
                 }else if(btn3.getText().toString()=="?"){
                     wprowadz.append(btn3.getText().toString());
-                }else if(b2ON==true | b5ON==true | b4ON==true | b1ON==true | b6ON==true ){
+                }else if(btn3.getText().toString()=="."){
+                    wprowadz.append(btn3.getText().toString());
+                }else if(b2ON==true | b5ON==true | b4ON==true | b1ON==true | b6ON==true | b7ON==true | b8ON==true ){
                     wprowadz.append(" ");
                     wprowadz.append(btn3.getText().toString());
                 }
@@ -142,7 +155,9 @@ public class Uzupelnianie extends AppCompatActivity {
                     wprowadz.setText(btn4.getText().toString());
                 }else if(btn4.getText().toString()=="?"){
                     wprowadz.append(btn4.getText().toString());
-                }else if(b2ON==true | b3ON==true | b5ON==true | b1ON==true | b6ON==true ){
+                }else if(btn4.getText().toString()=="."){
+                    wprowadz.append(btn4.getText().toString());
+                }else if(b2ON==true | b3ON==true | b5ON==true | b1ON==true | b6ON==true | b7ON==true | b8ON==true ){
                     wprowadz.append(" ");
                     wprowadz.append(btn4.getText().toString());
                 }
@@ -159,7 +174,9 @@ public class Uzupelnianie extends AppCompatActivity {
                     wprowadz.setText(btn5.getText().toString());
                 }else if(btn5.getText().toString()=="?"){
                     wprowadz.append(btn5.getText().toString());
-                }else if(b2ON==true | b3ON==true | b4ON==true | b1ON==true | b6ON==true ){
+                }else if(btn5.getText().toString()=="."){
+                    wprowadz.append(btn5.getText().toString());
+                }else if(b2ON==true | b3ON==true | b4ON==true | b1ON==true | b6ON==true | b7ON==true | b8ON==true ){
                     wprowadz.append(" ");
                     wprowadz.append(btn5.getText().toString());
                 }
@@ -176,12 +193,53 @@ public class Uzupelnianie extends AppCompatActivity {
                     wprowadz.setText(btn6.getText().toString());
                 }else if(btn6.getText().toString()=="?"){
                     wprowadz.append(btn6.getText().toString());
-                }else if(b2ON==true | b3ON==true | b4ON==true | b1ON==true | b5ON ){
+                }else if(btn6.getText().toString()=="."){
+                    wprowadz.append(btn6.getText().toString());
+                }else if(b2ON==true | b3ON==true | b4ON==true | b1ON==true | b5ON==true | b7ON==true | b8ON==true){
                     wprowadz.append(" ");
                     wprowadz.append(btn6.getText().toString());
                 }
                 if(b6ON==true){
                     btn6.setClickable(false);
+                }
+            }
+        });
+        btn7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                b7ON=true;
+                if(wprowadz.getText().toString().isEmpty() ){
+                    wprowadz.setText(btn7.getText().toString());
+                }else if(btn7.getText().toString()=="?"){
+                    wprowadz.append(btn7.getText().toString());
+                }else if(btn7.getText().toString()=="."){
+                    wprowadz.append(btn7.getText().toString());
+                }else if(b2ON==true | b3ON==true | b4ON==true | b1ON==true | b5ON==true | b6ON==true | b8ON==true ){
+                    wprowadz.append(" ");
+                    wprowadz.append(btn7.getText().toString());
+                }
+                if(b7ON==true){
+                    btn7.setClickable(false);
+                }
+            }
+        });
+
+        btn8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                b8ON=true;
+                if(wprowadz.getText().toString().isEmpty() ){
+                    wprowadz.setText(btn8.getText().toString());
+                }else if(btn8.getText().toString()=="?"){
+                    wprowadz.append(btn8.getText().toString());
+                }else if(btn8.getText().toString()=="."){
+                    wprowadz.append(btn8.getText().toString());
+                }else if(b2ON==true | b3ON==true | b4ON==true | b1ON==true | b5ON | b6ON==true | b7ON==true ){
+                    wprowadz.append(" ");
+                    wprowadz.append(btn8.getText().toString());
+                }
+                if(b8ON==true){
+                    btn8.setClickable(false);
                 }
             }
         });
@@ -191,9 +249,11 @@ public class Uzupelnianie extends AppCompatActivity {
                 String napisane_zdanie=wprowadz.getText().toString();
                 String zdanie_z_bazy=zdania_en.get(ilość_iteracji).toString();
                 if(napisane_zdanie.toString().equals(zdanie_z_bazy.toString())){
-                    Toast.makeText(getApplicationContext(),"Poprawne",Toast.LENGTH_SHORT).show();
+                    sprawdź.setText("Poprawnie");
+                    sprawdź.setBackgroundColor(Color.parseColor("#38ea3e"));
                 }else{
-                    Toast.makeText(getApplicationContext(),"Błędne",Toast.LENGTH_SHORT).show();
+                    sprawdź.setText("Błędnie");
+                    sprawdź.setBackgroundColor(Color.parseColor("#d11f34"));
                 }
 
                 słowa_ze_zdania_en.clear();
@@ -211,6 +271,8 @@ public class Uzupelnianie extends AppCompatActivity {
         btn4.setClickable(true);
         btn5.setClickable(true);
         btn6.setClickable(true);
+        btn7.setClickable(true);
+        btn8.setClickable(true);
         if (ilość_iteracji <= zdania_en.size()) {
             zdanie_pl.setText(zdania_pl.get(ilość_iteracji));
             słowa_ze_zdania_en = pobierzSłowa(zdania_en.get(ilość_iteracji));
@@ -263,6 +325,38 @@ public class Uzupelnianie extends AppCompatActivity {
                 btn4.setText(słowa_ze_zdania_en.get(3));
                 btn5.setText(słowa_ze_zdania_en.get(4));
                 btn6.setText(słowa_ze_zdania_en.get(5));
+            }else if(ilość_słów_w_zdaniu == 7){
+                btn1.setVisibility(View.VISIBLE);
+                btn2.setVisibility(View.VISIBLE);
+                btn3.setVisibility(View.VISIBLE);
+                btn4.setVisibility(View.VISIBLE);
+                btn5.setVisibility(View.VISIBLE);
+                btn6.setVisibility(View.VISIBLE);
+                btn7.setVisibility(View.VISIBLE);
+                btn1.setText(słowa_ze_zdania_en.get(0));
+                btn2.setText(słowa_ze_zdania_en.get(1));
+                btn3.setText(słowa_ze_zdania_en.get(2));
+                btn4.setText(słowa_ze_zdania_en.get(3));
+                btn5.setText(słowa_ze_zdania_en.get(4));
+                btn6.setText(słowa_ze_zdania_en.get(5));
+                btn7.setText(słowa_ze_zdania_en.get(6));
+            }else if(ilość_słów_w_zdaniu ==8){
+                btn1.setVisibility(View.VISIBLE);
+                btn2.setVisibility(View.VISIBLE);
+                btn3.setVisibility(View.VISIBLE);
+                btn4.setVisibility(View.VISIBLE);
+                btn5.setVisibility(View.VISIBLE);
+                btn6.setVisibility(View.VISIBLE);
+                btn7.setVisibility(View.VISIBLE);
+                btn8.setVisibility(View.VISIBLE);
+                btn1.setText(słowa_ze_zdania_en.get(0));
+                btn2.setText(słowa_ze_zdania_en.get(1));
+                btn3.setText(słowa_ze_zdania_en.get(2));
+                btn4.setText(słowa_ze_zdania_en.get(3));
+                btn5.setText(słowa_ze_zdania_en.get(4));
+                btn6.setText(słowa_ze_zdania_en.get(5));
+                btn7.setText(słowa_ze_zdania_en.get(6));
+                btn8.setText(słowa_ze_zdania_en.get(7));
             }else{
                 Toast.makeText(getApplicationContext(), "Jeszcze inaczej", Toast.LENGTH_SHORT).show();
             }

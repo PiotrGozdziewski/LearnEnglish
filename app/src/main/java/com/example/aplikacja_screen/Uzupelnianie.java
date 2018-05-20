@@ -18,6 +18,7 @@ import com.example.m.aplikacja_screen.R;
 import java.lang.reflect.Array;
 import java.text.BreakIterator;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -265,6 +266,10 @@ public class Uzupelnianie extends AppCompatActivity {
     }
 
     public void uzupelnij() {
+        //utworzenie randoma do wartości do długości listy słowa_ze_zdanie_en
+        int rozmiar=0;
+        Random r = new Random();
+        int index1,index2, index3, index4, index5, index6, index7, index8=0;
         btn1.setClickable(true);
         btn2.setClickable(true);
         btn3.setClickable(true);
@@ -276,42 +281,81 @@ public class Uzupelnianie extends AppCompatActivity {
         if (ilość_iteracji <= zdania_en.size()) {
             zdanie_pl.setText(zdania_pl.get(ilość_iteracji));
             słowa_ze_zdania_en = pobierzSłowa(zdania_en.get(ilość_iteracji));
+            rozmiar = słowa_ze_zdania_en.size();
             ilość_słów_w_zdaniu = słowa_ze_zdania_en.size();
+            //przypisywanie słów do buttonów
             if (ilość_słów_w_zdaniu == 1) {
                 btn1.setVisibility(View.VISIBLE);
-                btn1.setText(słowa_ze_zdania_en.get(0));
+                index1=r.nextInt(rozmiar)+0;
+                btn1.setText(słowa_ze_zdania_en.get(index1));
             } else if (ilość_słów_w_zdaniu == 2) {
                 btn1.setVisibility(View.VISIBLE);
                 btn2.setVisibility(View.VISIBLE);
-                btn1.setText(słowa_ze_zdania_en.get(0));
-                btn2.setText(słowa_ze_zdania_en.get(1));
+                index1=r.nextInt(rozmiar)+0;
+                btn1.setText(słowa_ze_zdania_en.get(index1));
+                do{
+                    index2=r.nextInt(rozmiar)+0;
+                }while(index1==index2);
+                btn2.setText(słowa_ze_zdania_en.get(index2));
             } else if (ilość_słów_w_zdaniu == 3) {
                 btn1.setVisibility(View.VISIBLE);
                 btn2.setVisibility(View.VISIBLE);
                 btn3.setVisibility(View.VISIBLE);
-                btn1.setText(słowa_ze_zdania_en.get(0));
-                btn2.setText(słowa_ze_zdania_en.get(1));
-                btn3.setText(słowa_ze_zdania_en.get(2));
+                index1=r.nextInt(rozmiar)+0;
+
+                btn1.setText(słowa_ze_zdania_en.get(index1));
+                do{
+                    index2=r.nextInt(rozmiar)+0;
+                }while(index1==index2);
+                btn2.setText(słowa_ze_zdania_en.get(index2));
+                do{
+                    index3=r.nextInt(rozmiar)+0;
+                }while(index3==index2 | index3==index1);
+                btn3.setText(słowa_ze_zdania_en.get(index3));
             } else if (ilość_słów_w_zdaniu == 4) {
                 btn1.setVisibility(View.VISIBLE);
                 btn2.setVisibility(View.VISIBLE);
                 btn3.setVisibility(View.VISIBLE);
                 btn4.setVisibility(View.VISIBLE);
-                btn1.setText(słowa_ze_zdania_en.get(0));
-                btn2.setText(słowa_ze_zdania_en.get(1));
-                btn3.setText(słowa_ze_zdania_en.get(2));
-                btn4.setText(słowa_ze_zdania_en.get(3));
+                index1=r.nextInt(rozmiar)+0;
+                Toast.makeText(getApplicationContext(), String.valueOf(index1), Toast.LENGTH_SHORT).show();
+                btn1.setText(słowa_ze_zdania_en.get(index1));
+                do{
+                    index2=r.nextInt(rozmiar)+0;
+                }while(index1==index2);
+                btn2.setText(słowa_ze_zdania_en.get(index2));
+                do{
+                    index3=r.nextInt(rozmiar)+0;
+                }while(index3==index2 | index3==index1);
+                btn3.setText(słowa_ze_zdania_en.get(index3));
+                do{
+                    index4=r.nextInt(rozmiar)+0;
+                }while(index4==index3 | index4==index2 | index4==index1);
+                btn4.setText(słowa_ze_zdania_en.get(index4));
             } else if (ilość_słów_w_zdaniu == 5) {
                 btn1.setVisibility(View.VISIBLE);
                 btn2.setVisibility(View.VISIBLE);
                 btn3.setVisibility(View.VISIBLE);
                 btn4.setVisibility(View.VISIBLE);
                 btn5.setVisibility(View.VISIBLE);
-                btn1.setText(słowa_ze_zdania_en.get(0));
-                btn2.setText(słowa_ze_zdania_en.get(1));
-                btn3.setText(słowa_ze_zdania_en.get(2));
-                btn4.setText(słowa_ze_zdania_en.get(3));
-                btn5.setText(słowa_ze_zdania_en.get(4));
+                index1=r.nextInt(rozmiar)+0;
+                btn1.setText(słowa_ze_zdania_en.get(index1));
+                do{
+                    index2=r.nextInt(rozmiar)+0;
+                }while(index1==index2);
+                btn2.setText(słowa_ze_zdania_en.get(index2));
+                do{
+                    index3=r.nextInt(rozmiar)+0;
+                }while(index3==index2 | index3==index1);
+                btn3.setText(słowa_ze_zdania_en.get(index3));
+                do{
+                    index4=r.nextInt(rozmiar)+0;
+                }while(index4==index3 | index4==index2 | index4==index1);
+                btn4.setText(słowa_ze_zdania_en.get(index4));
+                do{
+                    index5=r.nextInt(rozmiar)+0;
+                }while(index5==index4 | index5==index3 | index5==index2 | index5==index1);
+                btn5.setText(słowa_ze_zdania_en.get(index5));
             } else if(ilość_słów_w_zdaniu == 6){
                 btn1.setVisibility(View.VISIBLE);
                 btn2.setVisibility(View.VISIBLE);
@@ -319,12 +363,28 @@ public class Uzupelnianie extends AppCompatActivity {
                 btn4.setVisibility(View.VISIBLE);
                 btn5.setVisibility(View.VISIBLE);
                 btn6.setVisibility(View.VISIBLE);
-                btn1.setText(słowa_ze_zdania_en.get(0));
-                btn2.setText(słowa_ze_zdania_en.get(1));
-                btn3.setText(słowa_ze_zdania_en.get(2));
-                btn4.setText(słowa_ze_zdania_en.get(3));
-                btn5.setText(słowa_ze_zdania_en.get(4));
-                btn6.setText(słowa_ze_zdania_en.get(5));
+                index1=r.nextInt(rozmiar)+0;
+                btn1.setText(słowa_ze_zdania_en.get(index1));
+                do{
+                    index2=r.nextInt(rozmiar)+0;
+                }while(index1==index2);
+                btn2.setText(słowa_ze_zdania_en.get(index2));
+                do{
+                    index3=r.nextInt(rozmiar)+0;
+                }while(index3==index2 | index3==index1);
+                btn3.setText(słowa_ze_zdania_en.get(index3));
+                do{
+                    index4=r.nextInt(rozmiar)+0;
+                }while(index4==index3 | index4==index2 | index4==index1);
+                btn4.setText(słowa_ze_zdania_en.get(index4));
+                do{
+                    index5=r.nextInt(rozmiar)+0;
+                }while(index5==index4 | index5==index3 | index5==index2 | index5==index1);
+                btn5.setText(słowa_ze_zdania_en.get(index5));
+                do{
+                    index6=r.nextInt(rozmiar)+0;
+                }while(index6==index5 | index6==index4 | index6==index3 | index6==index2 | index6==index1);
+                btn6.setText(słowa_ze_zdania_en.get(index6));
             }else if(ilość_słów_w_zdaniu == 7){
                 btn1.setVisibility(View.VISIBLE);
                 btn2.setVisibility(View.VISIBLE);
@@ -333,13 +393,33 @@ public class Uzupelnianie extends AppCompatActivity {
                 btn5.setVisibility(View.VISIBLE);
                 btn6.setVisibility(View.VISIBLE);
                 btn7.setVisibility(View.VISIBLE);
-                btn1.setText(słowa_ze_zdania_en.get(0));
-                btn2.setText(słowa_ze_zdania_en.get(1));
-                btn3.setText(słowa_ze_zdania_en.get(2));
-                btn4.setText(słowa_ze_zdania_en.get(3));
-                btn5.setText(słowa_ze_zdania_en.get(4));
-                btn6.setText(słowa_ze_zdania_en.get(5));
-                btn7.setText(słowa_ze_zdania_en.get(6));
+                index1=r.nextInt(rozmiar)+0;
+                btn1.setText(słowa_ze_zdania_en.get(index1));
+                do{
+                    index2=r.nextInt(rozmiar)+0;
+                }while(index1==index2);
+                btn2.setText(słowa_ze_zdania_en.get(index2));
+                do{
+                    index3=r.nextInt(rozmiar)+0;
+                }while(index3==index2 | index3==index1);
+                btn3.setText(słowa_ze_zdania_en.get(index3));
+                do{
+                    index4=r.nextInt(rozmiar)+0;
+                }while(index4==index3 | index4==index2 | index4==index1);
+                btn4.setText(słowa_ze_zdania_en.get(index4));
+                do{
+                    index5=r.nextInt(rozmiar)+0;
+                }while(index5==index4 | index5==index3 | index5==index2 | index5==index1);
+                btn5.setText(słowa_ze_zdania_en.get(index5));
+                do{
+                    index6=r.nextInt(rozmiar)+0;
+                }while(index6==index5 | index6==index4 | index6==index3 | index6==index2 | index6==index1);
+                btn6.setText(słowa_ze_zdania_en.get(index6));
+                do{
+                    index7=r.nextInt(rozmiar)+0;
+                }while(index7==index6 | index7==index5 | index7==index4 | index7==index3 | index7==index2 | index7==index1);
+                btn7.setText(słowa_ze_zdania_en.get(index7));
+
             }else if(ilość_słów_w_zdaniu ==8){
                 btn1.setVisibility(View.VISIBLE);
                 btn2.setVisibility(View.VISIBLE);
@@ -349,14 +429,36 @@ public class Uzupelnianie extends AppCompatActivity {
                 btn6.setVisibility(View.VISIBLE);
                 btn7.setVisibility(View.VISIBLE);
                 btn8.setVisibility(View.VISIBLE);
-                btn1.setText(słowa_ze_zdania_en.get(0));
-                btn2.setText(słowa_ze_zdania_en.get(1));
-                btn3.setText(słowa_ze_zdania_en.get(2));
-                btn4.setText(słowa_ze_zdania_en.get(3));
-                btn5.setText(słowa_ze_zdania_en.get(4));
-                btn6.setText(słowa_ze_zdania_en.get(5));
-                btn7.setText(słowa_ze_zdania_en.get(6));
-                btn8.setText(słowa_ze_zdania_en.get(7));
+                index1=r.nextInt(rozmiar)+0;
+                btn1.setText(słowa_ze_zdania_en.get(index1));
+                do{
+                    index2=r.nextInt(rozmiar)+0;
+                }while(index1==index2);
+                btn2.setText(słowa_ze_zdania_en.get(index2));
+                do{
+                    index3=r.nextInt(rozmiar)+0;
+                }while(index3==index2 | index3==index1);
+                btn3.setText(słowa_ze_zdania_en.get(index3));
+                do{
+                    index4=r.nextInt(rozmiar)+0;
+                }while(index4==index3 | index4==index2 | index4==index1);
+                btn4.setText(słowa_ze_zdania_en.get(index4));
+                do{
+                    index5=r.nextInt(rozmiar)+0;
+                }while(index5==index4 | index5==index3 | index5==index2 | index5==index1);
+                btn5.setText(słowa_ze_zdania_en.get(index5));
+                do{
+                    index6=r.nextInt(rozmiar)+0;
+                }while(index6==index5 | index6==index4 | index6==index3 | index6==index2 | index6==index1);
+                btn6.setText(słowa_ze_zdania_en.get(index6));
+                do{
+                    index7=r.nextInt(rozmiar)+0;
+                }while(index7==index6 | index7==index5 | index7==index4 | index7==index3 | index7==index2 | index7==index1);
+                btn7.setText(słowa_ze_zdania_en.get(index7));
+                do{
+                    index8=r.nextInt(rozmiar)+0;
+                }while(index8==index7 | index8==index6 | index8==index5 | index8==index4 | index8==index3 | index8==index2 | index8==index1);
+                btn8.setText(słowa_ze_zdania_en.get(index8));
             }else{
                 Toast.makeText(getApplicationContext(), "Jeszcze inaczej", Toast.LENGTH_SHORT).show();
             }

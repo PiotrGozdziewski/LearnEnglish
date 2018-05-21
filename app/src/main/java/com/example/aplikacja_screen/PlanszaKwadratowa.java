@@ -23,9 +23,7 @@ import com.example.m.aplikacja_screen.R;
 public class PlanszaKwadratowa extends AppCompatActivity {
 
     Button btn1, btn2,btn3,btn4,btn5,btn6,btn7,btn8,dalej;
-    //w tablicy beda zapisane slowa polskie i ich angielskie odpowiedniki
-    //String[] pl={"Dom","Pies","Kot","Biurko"};
-    //String[] en={"Home","Dog","Cat","Desk"};
+
     ArrayList<String> pl;
     ArrayList<String>en;
 
@@ -44,8 +42,67 @@ public class PlanszaKwadratowa extends AppCompatActivity {
     int random2=0;
     int random3=0;
 
+    int b1,b2,b3,b4,b5,b6,b7,b8=0;
+
+    int index_lista_randomowych;
+    ArrayList<Integer> lista_randomowych;
+    ArrayList<Integer> lista_wykorzystanych_pl;
+    ArrayList<Integer> lista_wykorzystanych_en;
+    Random random_lista;
     //od wątków
     Handler handler=new Handler();
+
+
+    public void ustawWartosci(){
+        do{
+            index_lista_randomowych = random_lista.nextInt(lista_randomowych.size())+0;
+        }while(lista_wykorzystanych_pl.contains(index_lista_randomowych));
+        lista_wykorzystanych_pl.add(index_lista_randomowych);
+        b1=index_lista_randomowych;
+
+        do{
+            index_lista_randomowych = random_lista.nextInt(lista_randomowych.size())+0;
+        }while(lista_wykorzystanych_en.contains(index_lista_randomowych));
+        lista_wykorzystanych_en.add(index_lista_randomowych);
+        b2=index_lista_randomowych;
+
+        do{
+            index_lista_randomowych = random_lista.nextInt(lista_randomowych.size())+0;
+        }while(lista_wykorzystanych_pl.contains(index_lista_randomowych));
+        lista_wykorzystanych_pl.add(index_lista_randomowych);
+        b3=index_lista_randomowych;
+
+        do{
+            index_lista_randomowych = random_lista.nextInt(lista_randomowych.size())+0;
+        }while(lista_wykorzystanych_en.contains(index_lista_randomowych));
+        lista_wykorzystanych_en.add(index_lista_randomowych);
+        b4=index_lista_randomowych;
+
+        do{
+            index_lista_randomowych = random_lista.nextInt(lista_randomowych.size())+0;
+        }while(lista_wykorzystanych_pl.contains(index_lista_randomowych));
+        lista_wykorzystanych_pl.add(index_lista_randomowych);
+        b5=index_lista_randomowych;
+
+        do{
+            index_lista_randomowych = random_lista.nextInt(lista_randomowych.size())+0;
+        }while(lista_wykorzystanych_en.contains(index_lista_randomowych));
+        lista_wykorzystanych_en.add(index_lista_randomowych);
+        b6=index_lista_randomowych;
+
+        do{
+            index_lista_randomowych = random_lista.nextInt(lista_randomowych.size())+0;
+        }while(lista_wykorzystanych_pl.contains(index_lista_randomowych));
+        lista_wykorzystanych_pl.add(index_lista_randomowych);
+        b7=index_lista_randomowych;
+
+        do{
+            index_lista_randomowych = random_lista.nextInt(lista_randomowych.size())+0;
+        }while(lista_wykorzystanych_en.contains(index_lista_randomowych));
+        lista_wykorzystanych_en.add(index_lista_randomowych);
+        b8=index_lista_randomowych;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,11 +138,24 @@ public class PlanszaKwadratowa extends AppCompatActivity {
         random2=r.nextInt(ilosc)+1;
         random3=r.nextInt(ilosc)+1;
 
+        lista_randomowych = new ArrayList<Integer>();
+        lista_wykorzystanych_pl = new ArrayList<Integer>();
+        lista_wykorzystanych_en = new ArrayList<Integer>();
+        index_lista_randomowych=0;
+        lista_randomowych.add(random0);
+        lista_randomowych.add(random1);
+        lista_randomowych.add(random2);
+        lista_randomowych.add(random3);
+
+        random_lista = new Random();
+        ustawWartosci();
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 click1=true;
-                btn1.setText(pl.get(random0));
+                btn1.setText(pl.get(lista_randomowych.get(b1)));
+
+               // btn1.setText(pl.get(random0));
 
                 if(click7==true)
                 {
@@ -447,7 +517,10 @@ public class PlanszaKwadratowa extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 click2=true;
-                btn2.setText(en.get(random2));
+
+                btn2.setText(en.get(lista_randomowych.get(b2)));
+
+                //btn2.setText(en.get(random2));
 
                 if(click1==true)
                 {
@@ -808,7 +881,10 @@ public class PlanszaKwadratowa extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 click3=true;
-                btn3.setText(pl.get(random3));
+
+                btn3.setText(pl.get(lista_randomowych.get(b3)));
+
+                //btn3.setText(pl.get(random3));
 
                 if(click1==true)
                 {
@@ -1167,7 +1243,10 @@ public class PlanszaKwadratowa extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 click4=true;
-                btn4.setText(en.get(random3));
+
+                btn4.setText(en.get(lista_randomowych.get(b4)));
+
+               //btn4.setText(en.get(random3));
 
                 if(click1==true)
                 {
@@ -1526,7 +1605,10 @@ public class PlanszaKwadratowa extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 click5=true;
-                btn5.setText(pl.get(random1));
+
+                btn5.setText(pl.get(lista_randomowych.get(b5)));
+
+                //btn5.setText(pl.get(random1));
 
                 if(click1==true)
                 {
@@ -1885,7 +1967,10 @@ public class PlanszaKwadratowa extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 click6=true;
-                btn6.setText(en.get(random0));
+
+                btn6.setText(en.get(lista_randomowych.get(b6)));
+
+                //btn6.setText(en.get(random0));
 
                 if(click1==true)
                 {
@@ -2244,7 +2329,10 @@ public class PlanszaKwadratowa extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 click7=true;
-                btn7.setText(pl.get(random2));
+
+                btn7.setText(pl.get(lista_randomowych.get(b7)));
+
+                //btn7.setText(pl.get(random2));
 
                 if(click1==true)
                 {
@@ -2603,7 +2691,10 @@ public class PlanszaKwadratowa extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 click8=true;
-                btn8.setText(en.get(random1));
+
+                btn8.setText(en.get(lista_randomowych.get(b8)));
+
+                //btn8.setText(en.get(random1));
 
                 if(click1==true)
                 {

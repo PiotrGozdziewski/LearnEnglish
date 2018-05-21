@@ -143,56 +143,88 @@ public class Statystyka extends AppCompatActivity {
         kategoria.setTypeface(null, Typeface.BOLD);
         kategoria.setTextSize(17);
         kategoria.setTextColor(Color.parseColor("#FF991C1E"));
-        kategoria.setText(" Kategoria ");
+        kategoria.setText("   Kategoria   ");
         kategoria.setGravity(Gravity.CENTER);
         row.addView(kategoria);
         TextView typ_zadania = new TextView(this);
         typ_zadania.setTypeface(null, Typeface.BOLD);
         typ_zadania.setTextSize(17);
         typ_zadania.setTextColor(Color.parseColor("#FF991C1E"));
-        typ_zadania.setText(" Typ ");
+        typ_zadania.setText("   Typ   ");
         typ_zadania.setGravity(Gravity.CENTER);
         row.addView(typ_zadania);
         TextView poprawna = new TextView(this);
         poprawna.setTypeface(null, Typeface.BOLD);
         poprawna.setTextSize(17);
         poprawna.setTextColor(Color.parseColor("#FF991C1E"));
-        poprawna.setText(" Poprawne ");
+        poprawna.setText("  Poprawne   ");
         poprawna.setGravity(Gravity.CENTER);
         row.addView(poprawna);
         TextView błędna = new TextView(this);
         błędna.setTypeface(null, Typeface.BOLD);
         błędna.setTextSize(17);
         błędna.setTextColor(Color.parseColor("#FF991C1E"));
-        błędna.setText(" Błędne ");
+        błędna.setText("   Błędne   ");
         błędna.setGravity(Gravity.CENTER);
         row.addView(błędna);
 
         tableLayout.addView(row);
 
-        for (int i = lekcja.size()-1; i > lekcja.size()-6; i--) {
-            TableRow row1 = new TableRow(this);
-            TextView kategoria1 = new TextView(this);
-            kategoria1.setText(String.valueOf(lekcja.get(i).kategoria));
-            kategoria1.setGravity(Gravity.CENTER);
-            kategoria1.setTextSize(15);
-            row1.addView(kategoria1);
-            TextView typ_zadania1 = new TextView(this);
-            typ_zadania1.setText(String.valueOf(lekcja.get(i).typ));
-            typ_zadania1.setGravity(Gravity.CENTER);
-            typ_zadania1.setTextSize(15);
-            row1.addView(typ_zadania1);
-            TextView poprawna1 = new TextView(this);
-            poprawna1.setText(String.valueOf(lekcja.get(i).poprawne));
-            poprawna1.setGravity(Gravity.CENTER);
-            poprawna1.setTextSize(15);
-            row1.addView(poprawna1);
-            TextView błędna1 = new TextView(this);
-            błędna1.setText(String.valueOf(lekcja.get(i).bledne));
-            błędna1.setGravity(Gravity.CENTER);
-            błędna1.setTextSize(15);
-            row1.addView(błędna1);
-            tableLayout.addView(row1);
+        int ilosc_lekcji = lekcja.size();
+
+        if(ilosc_lekcji>0&&ilosc_lekcji<5)
+        {
+            for (int i = lekcja.size()-1; i > -1; i--) {
+                TableRow row1 = new TableRow(this);
+                TextView kategoria1 = new TextView(this);
+                kategoria1.setText(String.valueOf(lekcja.get(i).kategoria));
+                kategoria1.setGravity(Gravity.CENTER);
+                kategoria1.setTextSize(15);
+                row1.addView(kategoria1);
+                TextView typ_zadania1 = new TextView(this);
+                typ_zadania1.setText(String.valueOf(lekcja.get(i).typ));
+                typ_zadania1.setGravity(Gravity.CENTER);
+                typ_zadania1.setTextSize(15);
+                row1.addView(typ_zadania1);
+                TextView poprawna1 = new TextView(this);
+                poprawna1.setText(String.valueOf(lekcja.get(i).poprawne));
+                poprawna1.setGravity(Gravity.CENTER);
+                poprawna1.setTextSize(15);
+                row1.addView(poprawna1);
+                TextView błędna1 = new TextView(this);
+                błędna1.setText(String.valueOf(lekcja.get(i).bledne));
+                błędna1.setGravity(Gravity.CENTER);
+                błędna1.setTextSize(15);
+                row1.addView(błędna1);
+                tableLayout.addView(row1);
+            }
+        }
+        if(ilosc_lekcji>=5)
+        {
+            for (int i = lekcja.size()-1; i > lekcja.size()-6; i--) {
+                TableRow row1 = new TableRow(this);
+                TextView kategoria1 = new TextView(this);
+                kategoria1.setText(String.valueOf(lekcja.get(i).kategoria));
+                kategoria1.setGravity(Gravity.CENTER);
+                kategoria1.setTextSize(15);
+                row1.addView(kategoria1);
+                TextView typ_zadania1 = new TextView(this);
+                typ_zadania1.setText(String.valueOf(lekcja.get(i).typ));
+                typ_zadania1.setGravity(Gravity.CENTER);
+                typ_zadania1.setTextSize(15);
+                row1.addView(typ_zadania1);
+                TextView poprawna1 = new TextView(this);
+                poprawna1.setText(String.valueOf(lekcja.get(i).poprawne));
+                poprawna1.setGravity(Gravity.CENTER);
+                poprawna1.setTextSize(15);
+                row1.addView(poprawna1);
+                TextView błędna1 = new TextView(this);
+                błędna1.setText(String.valueOf(lekcja.get(i).bledne));
+                błędna1.setGravity(Gravity.CENTER);
+                błędna1.setTextSize(15);
+                row1.addView(błędna1);
+                tableLayout.addView(row1);
+            }
         }
     }
 

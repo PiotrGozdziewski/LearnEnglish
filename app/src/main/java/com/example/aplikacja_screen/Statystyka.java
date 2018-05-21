@@ -26,7 +26,9 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 public class Statystyka extends AppCompatActivity {
 
@@ -66,6 +68,13 @@ public class Statystyka extends AppCompatActivity {
         db = new Database(getContentResolver());
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String userID = prefs.getString("id", "0");
+
+        Calendar cal = Calendar.getInstance(Locale.ENGLISH);
+        String date = DateFormat.format("yyyy-MM-dd hh:mm:ss", cal).toString();
+        cal.add(Calendar.DATE,-7);
+        String date1 = DateFormat.format("yyyy-MM-dd hh:mm:ss", cal).toString();
+        Toast.makeText(getApplicationContext(),"7 before: "+ date1,Toast.LENGTH_SHORT).show();
+
 
 
         Cursor cursor=db.getLessons(Integer.parseInt(userID));

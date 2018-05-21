@@ -7,8 +7,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -20,6 +22,9 @@ import com.example.Database.Database;
 import com.example.m.aplikacja_screen.R;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Random;
 
 public class Dopasowanie extends AppCompatActivity {
@@ -40,6 +45,15 @@ public class Dopasowanie extends AppCompatActivity {
     Database db;
     int ilosc_iteracji=0;
     Bitmap bmp;
+    Handler h = new Handler();
+
+    ///Statystyki
+    Cursor cursor1,cursor2;
+    int poprawne=0;
+    int bledne=0;
+    boolean bl=false;
+    int id_typu_zadania;
+    int id_zadania;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +73,9 @@ public class Dopasowanie extends AppCompatActivity {
         sp2 = (Spinner) findViewById(R.id.spinner3);
         sp3 = (Spinner) findViewById(R.id.spinner4);
         sp4 = (Spinner) findViewById(R.id.spinner5);
+
+        dalej = (Button) findViewById(R.id.button33);
+        sprawdz = (Button) findViewById(R.id.button32);
 
         //pobranie wartości aktualnie wybranej kategorii
         SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -83,9 +100,8 @@ public class Dopasowanie extends AppCompatActivity {
         sp2.setAdapter(adapter);
         sp3.setAdapter(adapter);
         sp4.setAdapter(adapter);
+        dalej.setEnabled(false);
 
-
-        sprawdz = (Button) findViewById(R.id.button32);
         sprawdz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,22 +110,27 @@ public class Dopasowanie extends AppCompatActivity {
                         && sp2.getSelectedItem().toString() == en.get(random_sp2).toString()
                         && sp3.getSelectedItem().toString() == en.get(random_sp3).toString()
                         && sp4.getSelectedItem().toString() == en.get(random_sp4).toString()) {
+                    if(bl==false)poprawne++;
+                    bl=true;
                     Toast.makeText(getApplicationContext(), "Zgadza się", Toast.LENGTH_SHORT).show();
-                }else if(sp1.getSelectedItem().toString()==" "|sp2.getSelectedItem().toString()==" "
+                    dalej.setEnabled(true);
+                }
+                else if(sp1.getSelectedItem().toString()==" "|sp2.getSelectedItem().toString()==" "
                         |sp3.getSelectedItem().toString()==" "|sp4.getSelectedItem().toString()==" "){
                     Toast.makeText(getApplicationContext(),"Pozostawiono puste pola",Toast.LENGTH_LONG).show();
                 }
                 else {
                     Toast.makeText(getApplicationContext(), "Nie zgadza sie", Toast.LENGTH_SHORT).show();
+                    bledne++;
                 }
             }
         });
 
-        dalej = (Button) findViewById(R.id.button33);
         dalej.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(ilosc_iteracji==3){
+                    zapisz_statytyski();
                     startActivity(new Intent(Dopasowanie.this, BocznyPasekLewy.class));
                 }
                 if(ilosc_iteracji<=2) {
@@ -127,8 +148,31 @@ public class Dopasowanie extends AppCompatActivity {
                 if(ilosc_iteracji==3){
                     dalej.setText("Zakończ lekcję");
                 }
+                bl=false;
+                dalej.setEnabled(false);
             }
         });
+
+        //pobranie id wybranego zadania
+        SharedPreferences p1 = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String wybranyTypZadania = p1.getString("NazwaTypuZadania","0");
+        cursor1=db.getExerciceType(wybranyTypZadania);
+        while(cursor1.moveToNext())
+        {
+            String nazwa_baza=cursor1.getString(1);
+            if(wybranyTypZadania.equals(nazwa_baza))
+            {
+                id_typu_zadania=cursor1.getInt(0);
+            }
+        }
+
+        //pobranie id zadania
+        SharedPreferences p2 = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        cursor2=db.getExercise(idKategorii,id_typu_zadania);
+        while(cursor2.moveToNext())
+        {
+            id_zadania=cursor2.getInt(0);
+        }
     }
 
     public void wyswietl_zdjecia()
@@ -190,5 +234,18 @@ public class Dopasowanie extends AppCompatActivity {
         lista_randomowych.clear();
         lista_random_dla_slow.clear();
         i=0;
+
+
+
+    }
+
+    public void zapisz_statytyski()
+    {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String userID = prefs.getString("id", "0");
+        Date currentTime = Calendar.getInstance().getTime();
+        Calendar cal = Calendar.getInstance(Locale.ENGLISH);
+        String date = DateFormat.format("yyyy-MM-dd", cal).toString();
+        db.insertIntoLessons(Integer.parseInt(userID),id_zadania,String.valueOf(poprawne),String.valueOf(bledne),date);
     }
 }

@@ -331,7 +331,7 @@ public class Wybor extends AppCompatActivity {
         String userID = prefs.getString("id", "0");
         Date currentTime = Calendar.getInstance().getTime();
         Calendar cal = Calendar.getInstance(Locale.ENGLISH);
-        String date = DateFormat.format("yyyy-MM-dd hh:mm:ss", cal).toString();
+        String date = DateFormat.format("yyyy-MM-dd", cal).toString();
         db.insertIntoLessons(Integer.parseInt(userID),id_zadania,String.valueOf(poprawne_odp),String.valueOf(bledne_odp),date);
     }
 }

@@ -30,6 +30,7 @@
         android:background="#11000000"
         android:drawableLeft="@drawable/ic_action_name_person"
         android:ems="10"
+        android:maxLength="40"
         android:inputType="textPersonName"
         android:hint="Login"
         android:textColorHint="#e9ece9"

@@ -88,9 +88,6 @@ public class Statystyka extends AppCompatActivity {
 
         datyLekcji = pobierz_daty(); //przypisanie dat do tablicy od 0-6 --> 0 to dzisiejsza data
         ilośćLekcji = pobierzIloscLekcji();
-        for(int i=0;i<7;i++){
-            Toast.makeText(getApplication(),datyLekcji.get(i).toString()+"  "+ilośćLekcji.get(i).toString(),Toast.LENGTH_LONG).show();
-        }
 
         Cursor cursor=db.getLessons(Integer.parseInt(userID));
         while(cursor.moveToNext()){
@@ -277,28 +274,28 @@ public class Statystyka extends AppCompatActivity {
         //lista do przechowywania dat
         ArrayList<String>daty = new ArrayList<String>();
         Calendar cal = Calendar.getInstance(Locale.ENGLISH); //pobranie daty dzisiejszej
-        String dt0 = DateFormat.format("yyyy-MM-dd", cal).toString();
+        dt0 = DateFormat.format("yyyy-MM-dd", cal).toString();
         daty.add(dt0);
         cal.add(Calendar.DATE,-1);
-        String dt1 = DateFormat.format("yyyy-MM-dd", cal).toString();
+        dt1 = DateFormat.format("yyyy-MM-dd", cal).toString();
         daty.add(dt1);
         cal.add(Calendar.DATE,-1);
-        String dt2 = DateFormat.format("yyyy-MM-dd", cal).toString();
+        dt2 = DateFormat.format("yyyy-MM-dd", cal).toString();
         daty.add(dt2);
         cal.add(Calendar.DATE,-1);
-        String dt3 = DateFormat.format("yyyy-MM-dd", cal).toString();
+        dt3 = DateFormat.format("yyyy-MM-dd", cal).toString();
         daty.add(dt3);
         cal.add(Calendar.DATE,-1);
-        String dt4 = DateFormat.format("yyyy-MM-dd", cal).toString();
+        dt4 = DateFormat.format("yyyy-MM-dd", cal).toString();
         daty.add(dt4);
         cal.add(Calendar.DATE,-1);
-        String dt5 = DateFormat.format("yyyy-MM-dd", cal).toString();
+        dt5 = DateFormat.format("yyyy-MM-dd", cal).toString();
         daty.add(dt5);
         cal.add(Calendar.DATE,-1);
-        String dt6 = DateFormat.format("yyyy-MM-dd", cal).toString();
+        dt6 = DateFormat.format("yyyy-MM-dd", cal).toString();
         daty.add(dt6);
         cal.add(Calendar.DATE,-1);
-        String dt7 = DateFormat.format("yyyy-MM-dd", cal).toString();
+        dt7 = DateFormat.format("yyyy-MM-dd", cal).toString();
         daty.add(dt7);
 
         return daty;

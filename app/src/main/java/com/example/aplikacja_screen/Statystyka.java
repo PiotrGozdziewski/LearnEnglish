@@ -56,7 +56,6 @@ public class Statystyka extends AppCompatActivity {
     //lista do przechowywania ilości lekcji
     ArrayList<Integer> ilośćLekcji;
     Cursor cursorIloscLekcji;
-    int ilość_lekcji=0;
 
     public class Lekcja
     {
@@ -308,6 +307,7 @@ public class Statystyka extends AppCompatActivity {
     public ArrayList<Integer> pobierzIloscLekcji(){
         //lista do przechowywania ilości lekcji
         ArrayList<Integer>ilosc = new ArrayList<Integer>();
+        int ilość_lekcji=0;
         for(int i=0;i<7;i++) {
             cursorIloscLekcji = db.getLessonsUser(Integer.parseInt(userID));
             while (cursorIloscLekcji.moveToNext()) {

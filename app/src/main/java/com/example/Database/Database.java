@@ -374,8 +374,6 @@ public class Database {
         return cursor;
     }
 
-
-
     public Cursor getSentences(int idKategorii){
         String[] projection = {
                 SentencesContract.Columns._ID,
@@ -392,6 +390,23 @@ public class Database {
         return cursor;
     }
 
+    public Cursor getLessonsUser(int idUser){
+        String[] projection = {
+                LessonsContract.Columns._ID,
+                LessonsContract.Columns.LESSONS_CORRECT_ANSWER,
+                LessonsContract.Columns.LESSONS_WRONG_ANSWER,
+                LessonsContract.Columns.LESSONS_EXERCISE_ID,
+                LessonsContract.Columns.LESSONS_USER_ID,
+                LessonsContract.Columns.LESSONS_DATE};
+        String[] args = {String.valueOf(idUser)};
+        String selection = LessonsContract.Columns.LESSONS_USER_ID + " =?";
+        Cursor cursor = contentResolver.query(LessonsContract.CONTENT_URI,
+                projection,
+                selection,
+                args,
+                LessonsContract.Columns._ID);
+        return cursor;
+    }
     // Wszystkie nowe funkcje dajemy nad tym komentarzem
 
 

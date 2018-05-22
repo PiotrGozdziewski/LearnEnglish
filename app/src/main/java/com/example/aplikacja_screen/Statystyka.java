@@ -25,8 +25,11 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.lang.reflect.Array;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -44,6 +47,16 @@ public class Statystyka extends AppCompatActivity {
     int ID_type;
     String Cat_name;
     String Type_name;
+    String userID;
+
+    //zmienne od dat
+    String dt0,dt1,dt2,dt3,dt4,dt5,dt6,dt7="";
+    //lista do przechowywania dat
+    ArrayList<String> datyLekcji;
+    //lista do przechowywania ilości lekcji
+    ArrayList<Integer> ilośćLekcji;
+    Cursor cursorIloscLekcji;
+    int ilość_lekcji=0;
 
     public class Lekcja
     {
@@ -66,16 +79,19 @@ public class Statystyka extends AppCompatActivity {
         setContentView(R.layout.activity_statystyka);
         tableLayout = (TableLayout) findViewById(R.id.tableLayout);
         db = new Database(getContentResolver());
+        //pobranie idUżytkownika
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        String userID = prefs.getString("id", "0");
-
-        Calendar cal = Calendar.getInstance(Locale.ENGLISH);
-        String date = DateFormat.format("yyyy-MM-dd hh:mm:ss", cal).toString();
-        cal.add(Calendar.DATE,-7);
-        String date1 = DateFormat.format("yyyy-MM-dd hh:mm:ss", cal).toString();
-        Toast.makeText(getApplicationContext(),"7 before: "+ date1,Toast.LENGTH_SHORT).show();
+        userID = prefs.getString("id", "0");
 
 
+        datyLekcji = new ArrayList<String>();
+        ilośćLekcji = new ArrayList<Integer>();
+
+        datyLekcji = pobierz_daty(); //przypisanie dat do tablicy od 0-6 --> 0 to dzisiejsza data
+        ilośćLekcji = pobierzIloscLekcji();
+        for(int i=0;i<7;i++){
+            Toast.makeText(getApplication(),datyLekcji.get(i).toString()+"  "+ilośćLekcji.get(i).toString(),Toast.LENGTH_LONG).show();
+        }
 
         Cursor cursor=db.getLessons(Integer.parseInt(userID));
         while(cursor.moveToNext()){
@@ -85,7 +101,6 @@ public class Statystyka extends AppCompatActivity {
                 int ilosc_poprawnych = cursor.getInt(3);
                 poprawne+=ilosc_poprawnych;
             }
-
         }
 
         Cursor cursor1=db.getLessons(Integer.parseInt(userID));
@@ -257,5 +272,63 @@ public class Statystyka extends AppCompatActivity {
         PieData pieData = new PieData(pieDataSet);
         pieChart.setData(pieData);
         pieChart.invalidate();
+    }
+
+    public ArrayList<String> pobierz_daty(){
+        //lista do przechowywania dat
+        ArrayList<String>daty = new ArrayList<String>();
+        Calendar cal = Calendar.getInstance(Locale.ENGLISH); //pobranie daty dzisiejszej
+        String dt0 = DateFormat.format("yyyy-MM-dd", cal).toString();
+        daty.add(dt0);
+        cal.add(Calendar.DATE,-1);
+        String dt1 = DateFormat.format("yyyy-MM-dd", cal).toString();
+        daty.add(dt1);
+        cal.add(Calendar.DATE,-1);
+        String dt2 = DateFormat.format("yyyy-MM-dd", cal).toString();
+        daty.add(dt2);
+        cal.add(Calendar.DATE,-1);
+        String dt3 = DateFormat.format("yyyy-MM-dd", cal).toString();
+        daty.add(dt3);
+        cal.add(Calendar.DATE,-1);
+        String dt4 = DateFormat.format("yyyy-MM-dd", cal).toString();
+        daty.add(dt4);
+        cal.add(Calendar.DATE,-1);
+        String dt5 = DateFormat.format("yyyy-MM-dd", cal).toString();
+        daty.add(dt5);
+        cal.add(Calendar.DATE,-1);
+        String dt6 = DateFormat.format("yyyy-MM-dd", cal).toString();
+        daty.add(dt6);
+        cal.add(Calendar.DATE,-1);
+        String dt7 = DateFormat.format("yyyy-MM-dd", cal).toString();
+        daty.add(dt7);
+
+        return daty;
+    }
+
+    public ArrayList<Integer> pobierzIloscLekcji(){
+        //lista do przechowywania ilości lekcji
+        ArrayList<Integer>ilosc = new ArrayList<Integer>();
+        for(int i=0;i<7;i++) {
+            cursorIloscLekcji = db.getLessonsUser(Integer.parseInt(userID));
+            while (cursorIloscLekcji.moveToNext()) {
+                String id = cursorIloscLekcji.getString(4);
+                String d = cursorIloscLekcji.getString(5);
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                Date dt = null;
+                try {
+                    dt = sdf.parse(d);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                String przekonwertowane = sdf.format(dt).toString();
+                if (userID.equals(id) & przekonwertowane.equals(datyLekcji.get(i).toString())) {
+                    ilość_lekcji++;
+                }
+            }
+            ilosc.add(ilość_lekcji);
+            ilość_lekcji=0;
+        }
+
+        return ilosc;
     }
 }

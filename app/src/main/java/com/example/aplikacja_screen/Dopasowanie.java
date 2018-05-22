@@ -229,14 +229,13 @@ public class Dopasowanie extends AppCompatActivity {
                 }
                 lista_random_dla_slow.add(random_dla_slow);
                 i++;
+            }else{
+                Toast.makeText(getApplicationContext(),"Zdjęcie == null", Toast.LENGTH_SHORT).show();
             }
         }
         lista_randomowych.clear();
         lista_random_dla_slow.clear();
         i=0;
-
-
-
     }
 
     public void zapisz_statytyski()

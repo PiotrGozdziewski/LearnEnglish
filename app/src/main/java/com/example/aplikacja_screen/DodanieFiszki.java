@@ -25,7 +25,7 @@ public class DodanieFiszki extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dodanie_fiszki);
-        db=new Database(getContentResolver());
+        db = new Database(getContentResolver());
 
         dodaj_fiszke = (Button) findViewById(R.id.button6);
         pl = (EditText) findViewById(R.id.editText9);
@@ -34,12 +34,12 @@ public class DodanieFiszki extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //pobranie id aktualnego zestawu
-                SharedPreferences p= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                int id_zestawu=p.getInt("ID",0);
+                SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                int id_zestawu = p.getInt("ID", 0);
                 //dodanie fiszki do bazy
-                if(pl.getText().toString().equals("")||en.getText().toString().equals("")) {
-                   Toast.makeText(getApplicationContext(),"Pozostawiono puste pola",Toast.LENGTH_SHORT).show();
-                }else{
+                if (pl.getText().toString().equals("") || en.getText().toString().equals("")) {
+                    Toast.makeText(getApplicationContext(), "Pozostawiono puste pola", Toast.LENGTH_SHORT).show();
+                } else {
                     Uri uri = db.insertIntoFlashCards(id_zestawu, pl.getText().toString(), en.getText().toString());
                 }
                 pl.setText("");
@@ -47,6 +47,7 @@ public class DodanieFiszki extends AppCompatActivity {
             }
         });
     }
+
     public void onBackPressed() {
         startActivity(new Intent(DodanieFiszki.this, MojeZestawy.class));
     }

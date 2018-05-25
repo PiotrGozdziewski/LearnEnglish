@@ -2,14 +2,13 @@ package com.example.aplikacja_screen;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 import com.example.m.aplikacja_screen.R;
 
@@ -27,7 +26,7 @@ public class WyborKategorii extends AppCompatActivity {
         kategorie = (GridView) findViewById(R.id.gridView1);
 
         String[] kat = {"Człowiek", "Dom", "Szkoła", "Praca", "Żywienie", "Życie rodzinne", "Zakupy i usługi", "Podróżowanie", "Kultura", "Sport", "Zdrowie", "Świat przyrody"};
-        String[] kat_ang = {"Human", "Home", "School", "Work","Food",  "Family life", "Shopping", "Travel","Culture", "Sport","Health", "Nature"};
+        String[] kat_ang = {"Human", "Home", "School", "Work", "Food", "Family life", "Shopping", "Travel", "Culture", "Sport", "Health", "Nature"};
 
         ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
         for (int i = 0; i < kat.length; i++) {
@@ -50,13 +49,12 @@ public class WyborKategorii extends AppCompatActivity {
                 //przeslanie wybranej pozycji
                 SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 SharedPreferences.Editor e = p.edit();
-                int pozycja=position+1;
-                e.putInt("idKategorii",pozycja);
+                int pozycja = position + 1;
+                e.putInt("idKategorii", pozycja);
                 e.commit();
                 startActivity(new Intent(WyborKategorii.this, WyborZadania.class));
             }
         });
-
 
 
     }

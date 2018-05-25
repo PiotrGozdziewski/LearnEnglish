@@ -4,93 +4,72 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity=""
     tools:context="com.example.aplikacja_screen.Laczenie">
 
-    <Button
-        android:id="@+id/button21"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/slowoPolskie"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="51dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="59dp"
+        android:gravity="center"
+        android:hint="Słowo "
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/slowoZakreskowane"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="105dp"
+        android:layout_alignStart="@+id/brakujaceLitery"
+        android:layout_below="@+id/slowoPolskie"
+        android:gravity="center"
+        android:hint="Słowo "
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/brakujaceLitery"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/sprPoprawnoscButton"
+        android:layout_below="@+id/slowoZakreskowane"
+        android:layout_marginTop="53dp"
+        android:hint="Wprowadź przetłumaczone słowo"
+        android:textSize="18dp" />
+
+    <Button
+        android:id="@+id/sprPoprawnoscButton"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/brakujaceLitery"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="84dp"
+        android:background="#e6e1e1"
+        android:text="Sprawdź poprawność " />
+
+    <Button
+        android:id="@+id/dalejButton"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sprPoprawnoscButton"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="33dp"
-        android:text="Button" />
+        android:background="#e6e1e1"
+        android:visibility="invisible"
+        android:text="Dalej" />
 
     <Button
-        android:id="@+id/button22"
-        android:layout_width="wrap_content"
+        android:id="@+id/podpowiedzButton"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button21"
-        android:layout_alignBottom="@+id/button21"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="67dp"
-        android:text="Button" />
-
-    <Button
-        android:id="@+id/button23"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/button21"
-        android:layout_below="@+id/button21"
-        android:layout_marginTop="62dp"
-        android:text="Button" />
-
-    <Button
-        android:id="@+id/button24"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/button23"
-        android:layout_below="@+id/button23"
-        android:layout_marginTop="72dp"
-        android:text="Button" />
-
-    <Button
-        android:id="@+id/button25"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/button24"
-        android:layout_below="@+id/button24"
-        android:layout_marginTop="68dp"
-        android:text="Button" />
-
-    <Button
-        android:id="@+id/button26"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/button25"
-        android:layout_below="@+id/button25"
-        android:layout_marginTop="68dp"
-        android:text="Button" />
-
-    <Button
-        android:id="@+id/button27"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/button22"
-        android:layout_alignTop="@+id/button23"
-        android:text="Button" />
-
-    <Button
-        android:id="@+id/button28"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/button27"
-        android:layout_alignTop="@+id/button24"
-        android:text="Button" />
-
-    <Button
-        android:id="@+id/button29"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button26"
-        android:layout_alignEnd="@+id/button28"
-        android:text="Button" />
-
-    <Button
-        android:id="@+id/button30"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/button26"
-        android:layout_alignEnd="@+id/button29"
-        android:text="Button" />
+        android:layout_alignBaseline="@+id/dalejButton"
+        android:layout_alignBottom="@+id/dalejButton"
+        android:layout_alignStart="@+id/dalejButton"
+        android:background="#e6e1e1"
+        android:visibility="gone"
+        android:text="Pokaż odpowiedź" />
 </RelativeLayout>

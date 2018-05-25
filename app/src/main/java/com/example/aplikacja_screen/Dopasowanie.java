@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -32,26 +31,26 @@ public class Dopasowanie extends AppCompatActivity {
     ImageView img1, img2, img3, img4;
     Spinner sp1, sp2, sp3, sp4;
     Button sprawdz, dalej;
-    ArrayList<String>en;
+    ArrayList<String> en;
     ArrayList<String> en_randomowe;
     ArrayList<byte[]> photos;
     ArrayAdapter<String> adapter;
-    int i=0;
+    int i = 0;
     //wartosci od wybranego item w spinerze
     int random_sp1 = 0;
     int random_sp2 = 0;
     int random_sp3 = 0;
     int random_sp4 = 0;
     Database db;
-    int ilosc_iteracji=0;
+    int ilosc_iteracji = 0;
     Bitmap bmp;
     Handler h = new Handler();
 
     ///Statystyki
-    Cursor cursor1,cursor2;
-    int poprawne=0;
-    int bledne=0;
-    boolean bl=false;
+    Cursor cursor1, cursor2;
+    int poprawne = 0;
+    int bledne = 0;
+    boolean bl = false;
     int id_typu_zadania;
     int id_zadania;
 
@@ -79,16 +78,15 @@ public class Dopasowanie extends AppCompatActivity {
 
         //pobranie wartości aktualnie wybranej kategorii
         SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        int idKategorii = p.getInt("idKategorii",0);
+        int idKategorii = p.getInt("idKategorii", 0);
 
         Cursor cursor = db.getPhoto(idKategorii);
-        en_randomowe.add(0," ");
-        while(cursor.moveToNext()){
-                if(cursor.getBlob(4)!=null)
-                {
-                    photos.add(cursor.getBlob(4));
-                    en.add(cursor.getString(3));
-                }
+        en_randomowe.add(0, " ");
+        while (cursor.moveToNext()) {
+            if (cursor.getBlob(4) != null) {
+                photos.add(cursor.getBlob(4));
+                en.add(cursor.getString(3));
+            }
         }
 
         //wyświetlanie zdjęć
@@ -110,16 +108,14 @@ public class Dopasowanie extends AppCompatActivity {
                         && sp2.getSelectedItem().toString() == en.get(random_sp2).toString()
                         && sp3.getSelectedItem().toString() == en.get(random_sp3).toString()
                         && sp4.getSelectedItem().toString() == en.get(random_sp4).toString()) {
-                    if(bl==false)poprawne++;
-                    bl=true;
+                    if (bl == false) poprawne++;
+                    bl = true;
                     Toast.makeText(getApplicationContext(), "Zgadza się", Toast.LENGTH_SHORT).show();
                     dalej.setEnabled(true);
-                }
-                else if(sp1.getSelectedItem().toString()==" "|sp2.getSelectedItem().toString()==" "
-                        |sp3.getSelectedItem().toString()==" "|sp4.getSelectedItem().toString()==" "){
-                    Toast.makeText(getApplicationContext(),"Pozostawiono puste pola",Toast.LENGTH_LONG).show();
-                }
-                else {
+                } else if (sp1.getSelectedItem().toString() == " " | sp2.getSelectedItem().toString() == " "
+                        | sp3.getSelectedItem().toString() == " " | sp4.getSelectedItem().toString() == " ") {
+                    Toast.makeText(getApplicationContext(), "Pozostawiono puste pola", Toast.LENGTH_LONG).show();
+                } else {
                     Toast.makeText(getApplicationContext(), "Nie zgadza sie", Toast.LENGTH_SHORT).show();
                     bledne++;
                 }
@@ -129,13 +125,13 @@ public class Dopasowanie extends AppCompatActivity {
         dalej.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(ilosc_iteracji==3){
+                if (ilosc_iteracji == 3) {
                     zapisz_statytyski();
                     startActivity(new Intent(Dopasowanie.this, BocznyPasekLewy.class));
                 }
-                if(ilosc_iteracji<=2) {
+                if (ilosc_iteracji <= 2) {
                     en_randomowe.clear();
-                    en_randomowe.add(0," ");
+                    en_randomowe.add(0, " ");
                     wyswietl_zdjecia();
                     adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, en_randomowe);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -145,65 +141,61 @@ public class Dopasowanie extends AppCompatActivity {
                     sp4.setAdapter(adapter);
                     ilosc_iteracji++;
                 }
-                if(ilosc_iteracji==3){
+                if (ilosc_iteracji == 3) {
                     dalej.setText("Zakończ lekcję");
                 }
-                bl=false;
+                bl = false;
                 dalej.setEnabled(false);
             }
         });
 
         //pobranie id wybranego zadania
         SharedPreferences p1 = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        String wybranyTypZadania = p1.getString("NazwaTypuZadania","0");
-        cursor1=db.getExerciceType(wybranyTypZadania);
-        while(cursor1.moveToNext())
-        {
-            String nazwa_baza=cursor1.getString(1);
-            if(wybranyTypZadania.equals(nazwa_baza))
-            {
-                id_typu_zadania=cursor1.getInt(0);
+        String wybranyTypZadania = p1.getString("NazwaTypuZadania", "0");
+        cursor1 = db.getExerciceType(wybranyTypZadania);
+        while (cursor1.moveToNext()) {
+            String nazwa_baza = cursor1.getString(1);
+            if (wybranyTypZadania.equals(nazwa_baza)) {
+                id_typu_zadania = cursor1.getInt(0);
             }
         }
 
         //pobranie id zadania
         SharedPreferences p2 = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        cursor2=db.getExercise(idKategorii,id_typu_zadania);
-        while(cursor2.moveToNext())
-        {
-            id_zadania=cursor2.getInt(0);
+        cursor2 = db.getExercise(idKategorii, id_typu_zadania);
+        while (cursor2.moveToNext()) {
+            id_zadania = cursor2.getInt(0);
         }
     }
 
-    public void wyswietl_zdjecia()
-    {
-        int ilosc=photos.size();
-        int random=0;
-        int random_en0=0;
-        int random_en1=0;
-        int random_en2=0;
-        int random_en3=0;
+    public void wyswietl_zdjecia() {
+        int ilosc = photos.size();
+        int random = 0;
+        int random_en0 = 0;
+        int random_en1 = 0;
+        int random_en2 = 0;
+        int random_en3 = 0;
         Random r = new Random();
-        ArrayList<Integer> lista_randomowych=new ArrayList<Integer>();
-        ArrayList<Integer> lista_random_dla_slow=new ArrayList<Integer>();
-        for(int i=0;i<4;i++) {
+        ArrayList<Integer> lista_randomowych = new ArrayList<Integer>();
+        ArrayList<Integer> lista_random_dla_slow = new ArrayList<Integer>();
+        for (int i = 0; i < 4; i++) {
             do {
                 random = r.nextInt(ilosc) + 1;
             } while (lista_randomowych.contains(random));
             lista_randomowych.add(random);
         }
 
-        int random_dla_slow=0;
+        int random_dla_slow = 0;
         en_randomowe.add("a");
         en_randomowe.add("b");
         en_randomowe.add("c");
         en_randomowe.add("d");
-        while(i<4) {
+        while (i < 4) {
             do {
                 random_dla_slow = r.nextInt(4) + 1; // od 1 do 4
-            }while(lista_random_dla_slow.contains(random_dla_slow));
+            } while (lista_random_dla_slow.contains(random_dla_slow));
             if (photos.get(lista_randomowych.get(i)) != null) {
-                 if (i == 0) {
+                if (i == 0) {
                     Bitmap bmp = BitmapFactory.decodeByteArray(photos.get(lista_randomowych.get(0)), 0, photos.get(lista_randomowych.get(0)).length);
                     en_randomowe.set(random_dla_slow, en.get(lista_randomowych.get(0)));
                     img1.setImageBitmap(bmp);
@@ -229,22 +221,21 @@ public class Dopasowanie extends AppCompatActivity {
                 }
                 lista_random_dla_slow.add(random_dla_slow);
                 i++;
-            }else{
-                Toast.makeText(getApplicationContext(),"Zdjęcie == null", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getApplicationContext(), "Zdjęcie == null", Toast.LENGTH_SHORT).show();
             }
         }
         lista_randomowych.clear();
         lista_random_dla_slow.clear();
-        i=0;
+        i = 0;
     }
 
-    public void zapisz_statytyski()
-    {
+    public void zapisz_statytyski() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String userID = prefs.getString("id", "0");
         Date currentTime = Calendar.getInstance().getTime();
         Calendar cal = Calendar.getInstance(Locale.ENGLISH);
         String date = DateFormat.format("yyyy-MM-dd", cal).toString();
-        db.insertIntoLessons(Integer.parseInt(userID),id_zadania,String.valueOf(poprawne),String.valueOf(bledne),date);
+        db.insertIntoLessons(Integer.parseInt(userID), id_zadania, String.valueOf(poprawne), String.valueOf(bledne), date);
     }
 }

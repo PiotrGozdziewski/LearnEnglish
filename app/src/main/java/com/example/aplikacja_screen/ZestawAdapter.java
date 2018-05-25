@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.database.DatabaseUtils;
-import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,7 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.Database.Database;
-import com.example.Database.SetsContract;
 import com.example.Zestaw;
 import com.example.m.aplikacja_screen.R;
 
@@ -51,23 +48,22 @@ public class ZestawAdapter extends RecyclerView.Adapter<ZestawAdapter.ViewHolder
         Zestaw z = list.get(position);
         holder.nazwa.setText(z.getNazwa()); //nazwa zestawu
 
-        db= new Database(context.getContentResolver());
+        db = new Database(context.getContentResolver());
         //pobranie aktualnej nazwy zestawu
-        final String nazwa_zestawu= z.getNazwa();
-        final int id_zestaw=z.getId();
+        final String nazwa_zestawu = z.getNazwa();
+        final int id_zestaw = z.getId();
         //Toast.makeText(context, "id zestawu: "+String.valueOf(id_zestaw), Toast.LENGTH_SHORT).show();
         //pobranie ilości fiszek w zestawie
-        Cursor c=db.getFlashcards();
-        Cursor c1=db.getSets();
-        int numer_zestawu=0;
-        ilość_fiszek=0;
+        Cursor c = db.getFlashcards();
+        Cursor c1 = db.getSets();
+        int numer_zestawu = 0;
+        ilość_fiszek = 0;
         //pobranie id uzytkownika aktualnie zalogowanego
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         String userID = prefs.getString("id", "0");
 
-        while(c1.moveToNext())
-        {
-            if(Integer.parseInt(userID)==c1.getInt(1)) {
+        while (c1.moveToNext()) {
+            if (Integer.parseInt(userID) == c1.getInt(1)) {
                 if (nazwa_zestawu.equals(c1.getString(2))) {
                     numer_zestawu = c1.getInt(0);
                     while (c.moveToNext()) {
@@ -95,7 +91,7 @@ public class ZestawAdapter extends RecyclerView.Adapter<ZestawAdapter.ViewHolder
                                 Cursor cursor = db.getSets();
                                 while (cursor.moveToNext()) {
                                     int id_zestawu1 = cursor.getInt(0);
-                                    if (id_zestaw == id_zestawu1){
+                                    if (id_zestaw == id_zestawu1) {
                                         int id_zestawu = id_zestawu1;
                                         //przeslanie id_zestawu do activity DodanieFiszki
                                         SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(context);
@@ -169,19 +165,19 @@ public class ZestawAdapter extends RecyclerView.Adapter<ZestawAdapter.ViewHolder
                                 while (cursor1.moveToNext()) {
                                     int id_zestawu1 = cursor1.getInt(0);
                                     if (id_zestaw == id_zestawu1) {
-                                            int nr = id_zestawu1;
-                                            //usuwanie fiszek z zestawu
-                                            db.deleteFlashcards(cursor1.getInt(0));
-                                            //usuwanie całego zestawu
-                                            db.deleteFromSets(nr);
-                                            Intent intent = new Intent(context, MojeZestawy.class);
-                                            context.startActivity(intent);
-                                        }
+                                        int nr = id_zestawu1;
+                                        //usuwanie fiszek z zestawu
+                                        db.deleteFlashcards(cursor1.getInt(0));
+                                        //usuwanie całego zestawu
+                                        db.deleteFromSets(nr);
+                                        Intent intent = new Intent(context, MojeZestawy.class);
+                                        context.startActivity(intent);
                                     }
-                                    break;
                                 }
-                                return false;
+                                break;
                         }
+                        return false;
+                    }
 
                 });
                 p.show();

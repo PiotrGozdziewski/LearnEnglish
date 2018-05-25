@@ -15,7 +15,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.Database.Database;
 import com.example.m.aplikacja_screen.R;
@@ -35,10 +34,10 @@ public class Tlumaczenie extends AppCompatActivity {
     ArrayList<String> angielskie;
 
     Database db;
-    int i=0;
-    int poprawne_odp=0;
-    int bledne_odp=0;
-    Boolean bledna=false;
+    int i = 0;
+    int poprawne_odp = 0;
+    int bledne_odp = 0;
+    Boolean bledna = false;
     Handler h = new Handler();
     Cursor cursor;
     Cursor cursor1;
@@ -46,6 +45,7 @@ public class Tlumaczenie extends AppCompatActivity {
     int id_typu_zadania;
     int idKategorii;
     int id_zadania;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,33 +61,29 @@ public class Tlumaczenie extends AppCompatActivity {
 
         //pobranie id aktualnej kategorii
         SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        idKategorii = p.getInt("idKategorii",0);
+        idKategorii = p.getInt("idKategorii", 0);
 
         SharedPreferences p1 = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        String wybranyTypZadania = p1.getString("NazwaTypuZadania","0");
+        String wybranyTypZadania = p1.getString("NazwaTypuZadania", "0");
         //Toast.makeText(getApplicationContext(),"nazwa: "+wybranyTypZadania,Toast.LENGTH_SHORT).show();
-        cursor1=db.getExerciceType(wybranyTypZadania);
-        while(cursor1.moveToNext())
-        {
-            String nazwa_baza=cursor1.getString(1);
-            if(wybranyTypZadania.equals(nazwa_baza))
-            {
-                id_typu_zadania=cursor1.getInt(0);
+        cursor1 = db.getExerciceType(wybranyTypZadania);
+        while (cursor1.moveToNext()) {
+            String nazwa_baza = cursor1.getString(1);
+            if (wybranyTypZadania.equals(nazwa_baza)) {
+                id_typu_zadania = cursor1.getInt(0);
             }
         }
         cursor = db.getWords(idKategorii);
-        while(cursor.moveToNext())
-        {
+        while (cursor.moveToNext()) {
             polskie.add(cursor.getString(2));
             angielskie.add(cursor.getString(3));
         }
 
         //pobranie id zadania
         SharedPreferences p2 = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        cursor2=db.getExercise(idKategorii,id_typu_zadania);
-        while(cursor2.moveToNext())
-        {
-            id_zadania=cursor2.getInt(0);
+        cursor2 = db.getExercise(idKategorii, id_typu_zadania);
+        while (cursor2.moveToNext()) {
+            id_zadania = cursor2.getInt(0);
         }
 
 
@@ -100,8 +96,7 @@ public class Tlumaczenie extends AppCompatActivity {
                     sprawdz.setVisibility(View.INVISIBLE);
                     sprawdz_poprawnosc.setText("Poprawna odpowiedź");
                     sprawdz_poprawnosc.setBackgroundColor(Color.parseColor("#38ea3e"));
-                    if(bledna==false)
-                    {
+                    if (bledna == false) {
                         poprawne_odp++;
                     }
                     sprawdz_poprawnosc.setClickable(false);
@@ -109,10 +104,9 @@ public class Tlumaczenie extends AppCompatActivity {
                 } else {
                     sprawdz_poprawnosc.setText("Niepoprawna odpowiedź");
                     sprawdz_poprawnosc.setBackgroundColor(Color.parseColor("#d11f34"));
-                    if(bledna==false)
-                    {
+                    if (bledna == false) {
                         bledne_odp++;
-                        bledna=true;
+                        bledna = true;
                     }
                     sprawdz.setVisibility(View.VISIBLE);
                     sprawdz_poprawnosc.setClickable(false);
@@ -121,7 +115,7 @@ public class Tlumaczenie extends AppCompatActivity {
                         public void onClick(View view) {
                             AlertDialog alertDialog = new AlertDialog.Builder(Tlumaczenie.this).create();
                             alertDialog.setTitle("Poprawna odpowiedz");
-                            alertDialog.setMessage(polskie.get(i)+" - "+angielskie.get(i));
+                            alertDialog.setMessage(polskie.get(i) + " - " + angielskie.get(i));
                             alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                                     new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int which) {
@@ -138,12 +132,12 @@ public class Tlumaczenie extends AppCompatActivity {
                         @Override
                         public void run() {
                             sprawdz_poprawnosc.setText("Sprawdź poprawność");
-                            //sprawdz.setVisibility(View.VISIBLE);
+                            //podpowiedzButton.setVisibility(View.VISIBLE);
                             sprawdz_poprawnosc.setVisibility(View.VISIBLE);
                             sprawdz_poprawnosc.setClickable(true);
                             sprawdz_poprawnosc.setBackgroundColor(Color.parseColor("#e6e1e1"));
                         }
-                    },3000);
+                    }, 3000);
                 }
             }
         });
@@ -151,21 +145,21 @@ public class Tlumaczenie extends AppCompatActivity {
         dalej.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(i==9)
-                {
+                if (i == 9) {
                     zapisz_statytyski();
-                    startActivity(new Intent(Tlumaczenie.this,WyborKategorii.class));
+                    startActivity(new Intent(Tlumaczenie.this, WyborKategorii.class));
                 }
                 en.setText("");
                 sprawdz_poprawnosc.setClickable(true);
                 sprawdz_poprawnosc.setText("Sprawdź poprawność");
                 sprawdz_poprawnosc.setBackgroundColor(Color.parseColor("#e6e1e1"));
                 i++;
-                bledna=false;
+                bledna = false;
                 dalej.setVisibility(View.INVISIBLE);
-                if(i<=9){wczytaj_slowa(i);}
-                if(i==9)
-                {
+                if (i <= 9) {
+                    wczytaj_slowa(i);
+                }
+                if (i == 9) {
                     dalej.setText("Zakończ lekcje");
                 }
             }
@@ -174,22 +168,20 @@ public class Tlumaczenie extends AppCompatActivity {
 
     }
 
-    public void wczytaj_slowa(int index)
-    {
+    public void wczytaj_slowa(int index) {
         pl.setText(polskie.get(index));
     }
 
-    public void zapisz_statytyski()
-    {
+    public void zapisz_statytyski() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String userID = prefs.getString("id", "0");
         Date currentTime = Calendar.getInstance().getTime();
         Calendar cal = Calendar.getInstance(Locale.ENGLISH);
         String date = DateFormat.format("yyyy-MM-dd hh:mm:ss", cal).toString();
-        db.insertIntoLessons(Integer.parseInt(userID),id_zadania,String.valueOf(poprawne_odp),String.valueOf(bledne_odp),date);
+        db.insertIntoLessons(Integer.parseInt(userID), id_zadania, String.valueOf(poprawne_odp), String.valueOf(bledne_odp), date);
     }
 
-    public void onBackPressed(){
-        startActivity(new Intent(Tlumaczenie.this,BocznyPasekLewy.class));
+    public void onBackPressed() {
+        startActivity(new Intent(Tlumaczenie.this, BocznyPasekLewy.class));
     }
 }

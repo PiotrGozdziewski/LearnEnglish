@@ -20,6 +20,7 @@ import android.text.style.StyleSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.m.aplikacja_screen.R;
@@ -42,6 +43,8 @@ public class BocznyPasekLewy extends AppCompatActivity
     TextView animacja_przod, animacja_tyl;
     View view;
 
+    Button zestawy, kategorie, statystyki;
+    TextView nazwa_uzytkownika;
     //od wątków
     Handler handler = new Handler();
 
@@ -77,6 +80,38 @@ public class BocznyPasekLewy extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+    //ekran główny
+        zestawy = (Button)findViewById(R.id.button21);
+        kategorie = (Button)findViewById(R.id.button22);
+        statystyki = (Button)findViewById(R.id.button23);
+        nazwa_uzytkownika = (TextView)findViewById(R.id.textView27);
+        nazwa_uzytkownika.setText("Witaj, "+nickname);
+
+        kategorie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(BocznyPasekLewy.this,WyborKategorii.class));
+            }
+        });
+
+        zestawy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(BocznyPasekLewy.this,MojeZestawy.class));
+            }
+        });
+
+        statystyki.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(BocznyPasekLewy.this,Statystyka.class));
+            }
+        });
+
+
+
 
         // animacja_przod = (TextView) findViewById(R.id.animacja_przod);
         // animacja_tyl = (TextView) findViewById(R.id.animacja_tyl);

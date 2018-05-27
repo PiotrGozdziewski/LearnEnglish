@@ -12,6 +12,7 @@ import android.view.Gravity;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.Database.Database;
 import com.example.m.aplikacja_screen.R;
@@ -43,6 +44,7 @@ public class Statystyka extends AppCompatActivity {
     String Cat_name;
     String Type_name;
     String userID;
+    TextView ilość_lekcji;
 
     //zmienne od dat
     String dt0, dt1, dt2, dt3, dt4, dt5, dt6, dt7 = "";
@@ -73,6 +75,7 @@ public class Statystyka extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statystyka);
         tableLayout = (TableLayout) findViewById(R.id.tableLayout);
+        ilość_lekcji = (TextView)findViewById(R.id.textView23);
         db = new Database(getContentResolver());
         //pobranie idUżytkownika
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -233,6 +236,13 @@ public class Statystyka extends AppCompatActivity {
                 row1.addView(błędna1);
                 tableLayout.addView(row1);
             }
+        }
+        ///////// wyświetlanie ilości lekcji w ciągu 7 ostatnich dni
+        for(int i=0;i<7;i++){
+            ilość_lekcji.append("Data:  "+datyLekcji.get(i).toString()+"  \t");
+            ilość_lekcji.append("Ilość:  "+ilośćLekcji.get(i).toString());
+            ilość_lekcji.append("\n");
+
         }
     }
 

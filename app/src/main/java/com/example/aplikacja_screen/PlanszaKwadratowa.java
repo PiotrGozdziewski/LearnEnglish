@@ -3282,4 +3282,8 @@ public class PlanszaKwadratowa extends AppCompatActivity {
             }
         });
     }
+
+    public void onBackPressed() {
+        startActivity(new Intent(PlanszaKwadratowa.this, WyborKategorii.class));
+    }
 }

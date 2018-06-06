@@ -54,7 +54,7 @@
         </activity>
         <activity android:name="com.example.aplikacja_screen.Tlumaczenie">
         </activity>
-        <activity android:name="com.example.aplikacja_screen.Laczenie">
+        <activity android:name="com.example.aplikacja_screen.Rozsypanka">
         </activity>
         <activity android:name="com.example.aplikacja_screen.Uzupelnianie">
         </activity>

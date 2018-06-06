@@ -311,7 +311,7 @@ public class Wybor extends AppCompatActivity {
     }
 
     public void onBackPressed() {
-        startActivity(new Intent(Wybor.this, BocznyPasekLewy.class));
+        startActivity(new Intent(Wybor.this, WyborKategorii.class));
     }
 
     public void zapisz_statytyski() {

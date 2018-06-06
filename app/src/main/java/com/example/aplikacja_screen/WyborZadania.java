@@ -15,7 +15,7 @@ import com.example.m.aplikacja_screen.R;
 
 public class WyborZadania extends AppCompatActivity {
 
-    RadioButton dopasowanie, wybór, łączenie, plansza_kwadratowa, tłumaczenie, uzupełnianie;
+    RadioButton dopasowanie, wybór, rozsypanka, plansza_kwadratowa, tłumaczenie, uzupełnianie;
     Button rozpocznij_lekcję;
     String tekst;
     TextView multiLine;
@@ -28,7 +28,7 @@ public class WyborZadania extends AppCompatActivity {
 
         dopasowanie = (RadioButton) findViewById(R.id.dopasowanie);
         wybór = (RadioButton) findViewById(R.id.wybór);
-        łączenie = (RadioButton) findViewById(R.id.łączenie);
+        rozsypanka = (RadioButton) findViewById(R.id.rozsypanka);
         plansza_kwadratowa = (RadioButton) findViewById(R.id.plansza_kwadratowa);
         tłumaczenie = (RadioButton) findViewById(R.id.tłumaczenie);
         uzupełnianie = (RadioButton) findViewById(R.id.uzupełnianie);
@@ -53,12 +53,12 @@ public class WyborZadania extends AppCompatActivity {
                 }
             }
         });
-        łączenie.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        rozsypanka.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                if (łączenie.isChecked()) {
+                if (rozsypanka.isChecked()) {
                     multiLine.setVisibility(View.VISIBLE);
-                    multiLine.setText("\tŁączenie\n\tZadanie polega na  połączeniu słowa\nw języku polskim wraz z jego\nodpowiednikiem w języku angielskim.");
+                    multiLine.setText("\tRozsypanka\n\tZadanie polega na utworzeniu zdania\nz rozsypanki wyrazowej.");
                 }
             }
         });
@@ -67,17 +67,18 @@ public class WyborZadania extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (tłumaczenie.isChecked()) {
                     multiLine.setVisibility(View.VISIBLE);
-                    multiLine.setText("\tTłumaczenie\n\tZadanie polega na przetłumaczeniu słowa\nnapisanego w języku polskim na jego\nodpowiednik w języku angielskim i na odwrót.");
+                    multiLine.setText("\tTłumaczenie\n\tZadanie polega na przetłumaczeniu słowa\nnapisanego w języku polskim na jego\nodpowiednik w języku angielskim.");
                 }
             }
         });
+
 
         plansza_kwadratowa.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (plansza_kwadratowa.isChecked()) {
                     multiLine.setVisibility(View.VISIBLE);
-                    multiLine.setText("\tZadanie polega na znalezieniu\nodpowiednich słów.");
+                    multiLine.setText("\tPlansza kwadratowa\n\tZadanie polega na znalezieniu\nodpowiednich słów.");
                 }
             }
         });
@@ -86,7 +87,7 @@ public class WyborZadania extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (uzupełnianie.isChecked()) {
                     multiLine.setVisibility(View.VISIBLE);
-                    multiLine.setText("\tUzupełnianie\n\tZadanie polega na uzupełnieniu brakujących liter w słowie.");
+                    multiLine.setText("\tUzupełnianie\n\tZadanie polega na uzupełnieniu brakujących liter\nw słowie.");
                 }
             }
         });
@@ -110,13 +111,13 @@ public class WyborZadania extends AppCompatActivity {
                     e.putString("NazwaTypuZadania", tekst);
                     e.commit();
                     startActivity(new Intent(WyborZadania.this, Wybor.class));
-                } else if (łączenie.isChecked()) {
-                    tekst = łączenie.getText().toString();
+                } else if (rozsypanka.isChecked()) {
+                    tekst = rozsypanka.getText().toString();
                     SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                     SharedPreferences.Editor e = p.edit();
                     e.putString("NazwaTypuZadania", tekst);
                     e.commit();
-                    startActivity(new Intent(WyborZadania.this, Laczenie.class));
+                    startActivity(new Intent(WyborZadania.this, Rozsypanka.class));
                 } else if (plansza_kwadratowa.isChecked()) {
                     tekst = plansza_kwadratowa.getText().toString();
                     SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());

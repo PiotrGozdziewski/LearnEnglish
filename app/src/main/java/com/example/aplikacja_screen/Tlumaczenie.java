@@ -182,6 +182,6 @@ public class Tlumaczenie extends AppCompatActivity {
     }
 
     public void onBackPressed() {
-        startActivity(new Intent(Tlumaczenie.this, BocznyPasekLewy.class));
+        startActivity(new Intent(Tlumaczenie.this, WyborKategorii.class));
     }
 }

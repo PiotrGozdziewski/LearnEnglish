@@ -232,4 +232,8 @@ public class Dopasowanie extends AppCompatActivity {
         String date = DateFormat.format("yyyy-MM-dd", cal).toString();
         db.insertIntoLessons(Integer.parseInt(userID), id_zadania, String.valueOf(poprawne), String.valueOf(bledne), date);
     }
+
+    public void onBackPressed() {
+        startActivity(new Intent(Dopasowanie.this, WyborKategorii.class));
+    }
 }

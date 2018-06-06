@@ -55,7 +55,8 @@ public class WyborKategorii extends AppCompatActivity {
                 startActivity(new Intent(WyborKategorii.this, WyborZadania.class));
             }
         });
-
-
+    }
+    public void onBackPressed() {
+        startActivity(new Intent(WyborKategorii.this, BocznyPasekLewy.class));
     }
 }

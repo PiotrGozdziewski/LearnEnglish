@@ -10,13 +10,17 @@ import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
 import android.text.InputFilter;
+import android.text.TextWatcher;
 import android.text.format.DateFormat;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.Database.Database;
 import com.example.m.aplikacja_screen.R;
@@ -38,6 +42,7 @@ public class Uzupelnianie extends AppCompatActivity {
 
     TextView zakreskowaneSlowoTV;
     TextView polskieSlowoTV;
+    TextView poprawnaEN;
     EditText brakujaceLiteryET;
 
     ArrayList<String> polskie;
@@ -63,6 +68,9 @@ public class Uzupelnianie extends AppCompatActivity {
     String wylosowanePl;
     String wylosowaneEn;
 
+    ArrayList<Integer>kreski_index;
+    int zmienna=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,10 +81,12 @@ public class Uzupelnianie extends AppCompatActivity {
         podpowiedzButton = (Button) findViewById(R.id.podpowiedzButton);
         zakreskowaneSlowoTV = (TextView) findViewById(R.id.slowoZakreskowane);
         polskieSlowoTV = (TextView) findViewById(R.id.slowoPolskie);
+        poprawnaEN = (TextView)findViewById(R.id.poprawnaEN);
         brakujaceLiteryET = (EditText) findViewById(R.id.brakujaceLitery);
 
         polskie = new ArrayList<>();
         angielskie = new ArrayList<>();
+        kreski_index = new ArrayList<Integer>();
         db = new Database(getContentResolver());
 
         // pobranie id aktualnej kategorii
@@ -105,6 +115,46 @@ public class Uzupelnianie extends AppCompatActivity {
             id_zadania = cursor.getInt(0);
         }
 
+
+        brakujaceLiteryET.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String str = zakreskowaneSlowoTV.getText().toString();
+                if(charSequence.length()!=0 && zmienna<= str.length()){
+                    String literka=charSequence.toString();
+                    String nowy_literka=String.valueOf(literka.charAt(zmienna));
+                    String nowy=str.substring(0,kreski_index.get(zmienna))+nowy_literka+str.substring(kreski_index.get(zmienna)+1);
+                    zakreskowaneSlowoTV.setText(nowy);
+                   zmienna++;
+                   literka="";
+                }else{
+                    zmienna=0;
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        brakujaceLiteryET.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                if(i==KeyEvent.KEYCODE_DEL){
+                    brakujaceLiteryET.setText("");
+                    zakreskowaneSlowoTV.setText(slowoZakreskowane);
+                }
+                return false;
+            }
+        });
+
+
         wylosujSlowo();
 
         zakreskowaneSlowoTV.setText(slowoZakreskowane);
@@ -121,6 +171,8 @@ public class Uzupelnianie extends AppCompatActivity {
                     if (bledna == false) {
                         poprawne_odp++;
                     }
+                    poprawnaEN.setVisibility(View.VISIBLE);
+                    poprawnaEN.setText(wylosowaneEn.toString());
                     sprawdzPoprawnoscButton.setClickable(false);
                     dalejButton.setVisibility(View.VISIBLE);
                 } else {
@@ -167,6 +219,8 @@ public class Uzupelnianie extends AppCompatActivity {
         dalejButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                poprawnaEN.setVisibility(View.INVISIBLE);
+                kreski_index.clear();
                 if (i == 9) {
                     zapisz_statytyski();
                     startActivity(new Intent(Uzupelnianie.this, WyborKategorii.class));
@@ -241,6 +295,8 @@ public class Uzupelnianie extends AppCompatActivity {
         for (int i = 0; i < ileZakreskowac; i++) {
             sb.setCharAt(uzyteIdx.get(i), '-');
             brakujaceLitery += wylosowaneEn.charAt(uzyteIdx.get(i));
+            kreski_index.add(uzyteIdx.get(i));
+           // Toast.makeText(getApplicationContext(),uzyteIdx.get(i).toString(),Toast.LENGTH_SHORT).show();
         }
 
         slowoZakreskowane = sb.toString();

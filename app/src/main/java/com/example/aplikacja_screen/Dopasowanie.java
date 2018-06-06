@@ -133,8 +133,6 @@ public class Dopasowanie extends AppCompatActivity {
                     en_randomowe.clear();
                     en_randomowe.add(0, " ");
                     wyswietl_zdjecia();
-                    adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, en_randomowe);
-                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     sp1.setAdapter(adapter);
                     sp2.setAdapter(adapter);
                     sp3.setAdapter(adapter);
@@ -169,20 +167,16 @@ public class Dopasowanie extends AppCompatActivity {
     }
 
     public void wyswietl_zdjecia() {
-        int ilosc = photos.size();
+        int ilosc = photos.size(); //ilość zdjęć
         int random = 0;
-        int random_en0 = 0;
-        int random_en1 = 0;
-        int random_en2 = 0;
-        int random_en3 = 0;
         Random r = new Random();
         ArrayList<Integer> lista_randomowych = new ArrayList<Integer>();
         ArrayList<Integer> lista_random_dla_slow = new ArrayList<Integer>();
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 4; i++) {  //mamy 4 zdjęcia
             do {
-                random = r.nextInt(ilosc) + 1;
+                random = r.nextInt(ilosc-1) + 1;
             } while (lista_randomowych.contains(random));
-            lista_randomowych.add(random);
+            lista_randomowych.add(random); // lista_randomowych przchowuje 4 wartosc z ilosci dostepnych zdjec
         }
 
         int random_dla_slow = 0;

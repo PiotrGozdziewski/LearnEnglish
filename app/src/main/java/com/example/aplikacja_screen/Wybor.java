@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import com.example.Database.Database;
 import com.example.m.aplikacja_screen.R;
@@ -46,6 +47,8 @@ public class Wybor extends AppCompatActivity {
     int id_zadania;
     int poprawne_odp = 0;
     int bledne_odp = 0;
+    ProgressBar pb;
+    int progress=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +60,8 @@ public class Wybor extends AppCompatActivity {
         b4 = (Button) findViewById(R.id.button43);
         t1 = (Button) findViewById(R.id.button14);
         nastepne_slowo = (Button) findViewById(R.id.button39);
-
+        pb = (ProgressBar)findViewById(R.id.progressBar5);
+        pb.setMax(14);
         db = new Database(getContentResolver());
 
         pl = new ArrayList<String>();
@@ -96,10 +100,10 @@ public class Wybor extends AppCompatActivity {
 
         ilosc_slow = pl.size();
         //ustawianie na początku
-        random_pl = r.nextInt(ilosc_slow) + 1;
-        random_en1 = r.nextInt(ilosc_slow) + 1;
-        random_en2 = r.nextInt(ilosc_slow) + 1;
-        random_en3 = r.nextInt(ilosc_slow) + 1;
+        random_pl = r.nextInt(ilosc_slow);
+        random_en1 = r.nextInt(ilosc_slow);
+        random_en2 = r.nextInt(ilosc_slow);
+        random_en3 = r.nextInt(ilosc_slow);
         random_en4 = random_pl;
 
 
@@ -233,6 +237,8 @@ public class Wybor extends AppCompatActivity {
         nastepne_slowo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progress++;
+                pb.setProgress(progress);
                 //blokowanie przyciskow
                 b1.setClickable(true);
                 b2.setClickable(true);

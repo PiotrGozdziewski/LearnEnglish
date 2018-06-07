@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -54,6 +55,9 @@ public class Dopasowanie extends AppCompatActivity {
     int id_typu_zadania;
     int id_zadania;
 
+    ProgressBar pb;
+    int progress=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +79,9 @@ public class Dopasowanie extends AppCompatActivity {
 
         dalej = (Button) findViewById(R.id.button33);
         sprawdz = (Button) findViewById(R.id.button32);
+
+        pb = (ProgressBar)findViewById(R.id.progressBar2);
+        pb.setMax(3);
 
         //pobranie wartości aktualnie wybranej kategorii
         SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -125,6 +132,8 @@ public class Dopasowanie extends AppCompatActivity {
         dalej.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progress++;
+                pb.setProgress(progress);
                 if (ilosc_iteracji == 3) {
                     zapisz_statytyski();
                     startActivity(new Intent(Dopasowanie.this, BocznyPasekLewy.class));

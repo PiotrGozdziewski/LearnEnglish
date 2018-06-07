@@ -134,10 +134,10 @@ public class PlanszaKwadratowa extends AppCompatActivity {
 
         int ilosc = pl.size();
         Random r = new Random();
-        random0 = r.nextInt(ilosc) + 1;
-        random1 = r.nextInt(ilosc) + 1;
-        random2 = r.nextInt(ilosc) + 1;
-        random3 = r.nextInt(ilosc) + 1;
+        random0 = r.nextInt(ilosc) + 0;
+        random1 = r.nextInt(ilosc) + 0;
+        random2 = r.nextInt(ilosc) + 0;
+        random3 = r.nextInt(ilosc) + 0;
 
         lista_randomowych = new ArrayList<Integer>();
         lista_wykorzystanych_pl = new ArrayList<Integer>();

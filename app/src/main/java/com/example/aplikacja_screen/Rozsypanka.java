@@ -12,6 +12,7 @@ import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.Database.Database;
@@ -46,7 +47,8 @@ public class Rozsypanka extends AppCompatActivity {
     boolean b1ON, b2ON, b3ON, b4ON, b5ON, b6ON, b7ON, b8ON = false;
     //od wątków
     Handler handler = new Handler();
-
+    ProgressBar pb;
+    int progress=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,10 +66,13 @@ public class Rozsypanka extends AppCompatActivity {
         dalej = (Button) findViewById(R.id.button46);
         sprawdź = (Button) findViewById(R.id.button48);
         clear = (Button) findViewById(R.id.button51);
+        pb = (ProgressBar)findViewById(R.id.progressBar3);
         db = new Database(getContentResolver());
         zdania_en = new ArrayList<String>();
         zdania_pl = new ArrayList<String>();
         słowa_ze_zdania_en = new ArrayList<String>();
+
+        pb.setMax(4);
 
         //pobranie id aktualnej kategorii
         SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -105,11 +110,21 @@ public class Rozsypanka extends AppCompatActivity {
         dalej.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progress++;
+                pb.setProgress(progress);
                 if(ilość_iteracji==5)
                 {
                     zapisz_statytyski();
                     startActivity(new Intent(Rozsypanka.this, WyborKategorii.class));
                 }
+                btn1.setBackgroundColor(Color.parseColor("#e7e2e2"));
+                btn2.setBackgroundColor(Color.parseColor("#e7e2e2"));
+                btn3.setBackgroundColor(Color.parseColor("#e7e2e2"));
+                btn4.setBackgroundColor(Color.parseColor("#e7e2e2"));
+                btn5.setBackgroundColor(Color.parseColor("#e7e2e2"));
+                btn6.setBackgroundColor(Color.parseColor("#e7e2e2"));
+                btn7.setBackgroundColor(Color.parseColor("#e7e2e2"));
+                btn8.setBackgroundColor(Color.parseColor("#e7e2e2"));
                 sprawdź.setText("Sprawdź");
                 sprawdź.setBackgroundColor(Color.parseColor("#e7e2e2"));
                 wprowadz.setText("");
@@ -144,6 +159,7 @@ public class Rozsypanka extends AppCompatActivity {
                 }
                 if (b1ON == true) {
                     btn1.setClickable(false);
+                    btn1.setBackgroundColor(Color.parseColor("#c1c1c1"));
                 }
             }
         });
@@ -163,6 +179,7 @@ public class Rozsypanka extends AppCompatActivity {
                 }
                 if (b2ON == true) {
                     btn2.setClickable(false);
+                    btn2.setBackgroundColor(Color.parseColor("#c1c1c1"));
                 }
 
             }
@@ -183,6 +200,7 @@ public class Rozsypanka extends AppCompatActivity {
                 }
                 if (b3ON == true) {
                     btn3.setClickable(false);
+                    btn3.setBackgroundColor(Color.parseColor("#c1c1c1"));
                 }
             }
         });
@@ -202,6 +220,7 @@ public class Rozsypanka extends AppCompatActivity {
                 }
                 if (b4ON == true) {
                     btn4.setClickable(false);
+                    btn4.setBackgroundColor(Color.parseColor("#c1c1c1"));
                 }
             }
         });
@@ -221,6 +240,7 @@ public class Rozsypanka extends AppCompatActivity {
                 }
                 if (b5ON == true) {
                     btn5.setClickable(false);
+                    btn5.setBackgroundColor(Color.parseColor("#c1c1c1"));
                 }
             }
         });
@@ -240,6 +260,7 @@ public class Rozsypanka extends AppCompatActivity {
                 }
                 if (b6ON == true) {
                     btn6.setClickable(false);
+                    btn6.setBackgroundColor(Color.parseColor("#c1c1c1"));
                 }
             }
         });
@@ -259,6 +280,7 @@ public class Rozsypanka extends AppCompatActivity {
                 }
                 if (b7ON == true) {
                     btn7.setClickable(false);
+                    btn7.setBackgroundColor(Color.parseColor("#c1c1c1"));
                 }
             }
         });
@@ -279,6 +301,7 @@ public class Rozsypanka extends AppCompatActivity {
                 }
                 if (b8ON == true) {
                     btn8.setClickable(false);
+                    btn8.setBackgroundColor(Color.parseColor("#c1c1c1"));
                 }
             }
         });
@@ -333,11 +356,23 @@ public class Rozsypanka extends AppCompatActivity {
                 btn8.setClickable(true);
 
                 wprowadz.getText().clear();
+
+                btn1.setBackgroundColor(Color.parseColor("#e7e2e2"));
+                btn2.setBackgroundColor(Color.parseColor("#e7e2e2"));
+                btn3.setBackgroundColor(Color.parseColor("#e7e2e2"));
+                btn4.setBackgroundColor(Color.parseColor("#e7e2e2"));
+                btn5.setBackgroundColor(Color.parseColor("#e7e2e2"));
+                btn6.setBackgroundColor(Color.parseColor("#e7e2e2"));
+                btn7.setBackgroundColor(Color.parseColor("#e7e2e2"));
+                btn8.setBackgroundColor(Color.parseColor("#e7e2e2"));
+
+
             }
         });
     }
 
     public void uzupelnij() {
+
         if (ilość_iteracji == 16) {
             startActivity(new Intent(Rozsypanka.this, BocznyPasekLewy.class));
         }

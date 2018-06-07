@@ -85,4 +85,23 @@
         android:textColor="#0bcc35"
         android:textStyle="bold"
         android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/clear"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/dalejButton"
+        android:layout_below="@+id/dalejButton"
+        android:layout_marginTop="26dp"
+        android:background="#e6e1e1"
+        android:text="Wyczyść" />
+
+    <ProgressBar
+        android:id="@+id/progressBar4"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="280dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/clear"
+        android:layout_marginBottom="13dp" />
 </RelativeLayout>

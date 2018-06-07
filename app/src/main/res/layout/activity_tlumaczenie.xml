@@ -59,4 +59,15 @@
         android:background="#e6e1e1"
         android:visibility="gone"
         android:text="Pokaż odpowiedź" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="280dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/button20"
+        android:layout_marginBottom="40dp" />
+
+
 </RelativeLayout>

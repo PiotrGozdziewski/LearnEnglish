@@ -14,7 +14,9 @@ import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.Database.Database;
 import com.example.m.aplikacja_screen.R;
@@ -46,6 +48,10 @@ public class Tlumaczenie extends AppCompatActivity {
     int idKategorii;
     int id_zadania;
 
+
+    ProgressBar pb;
+    int progress=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,9 +61,12 @@ public class Tlumaczenie extends AppCompatActivity {
         sprawdz = (Button) findViewById(R.id.button38);
         pl = (TextView) findViewById(R.id.textView21);
         en = (EditText) findViewById(R.id.textView22);
+        pb=(ProgressBar)findViewById(R.id.progressBar);
         polskie = new ArrayList<String>();
         angielskie = new ArrayList<String>();
         db = new Database(getContentResolver());
+
+        pb.setMax(9);
 
         //pobranie id aktualnej kategorii
         SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -145,6 +154,11 @@ public class Tlumaczenie extends AppCompatActivity {
         dalej.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                progress++;
+                //postep
+                pb.setProgress(progress);
+
                 if (i == 9) {
                     zapisz_statytyski();
                     startActivity(new Intent(Tlumaczenie.this, WyborKategorii.class));
@@ -162,6 +176,7 @@ public class Tlumaczenie extends AppCompatActivity {
                 if (i == 9) {
                     dalej.setText("Zakończ lekcje");
                 }
+                Toast.makeText(getApplicationContext(),String.valueOf(progress),Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -184,4 +199,5 @@ public class Tlumaczenie extends AppCompatActivity {
     public void onBackPressed() {
         startActivity(new Intent(Tlumaczenie.this, WyborKategorii.class));
     }
+
 }

@@ -11,14 +11,20 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
+import android.text.Html;
 import android.text.InputFilter;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.text.TextWatcher;
 import android.text.format.DateFormat;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +45,7 @@ public class Uzupelnianie extends AppCompatActivity {
     Button sprawdzPoprawnoscButton;
     Button dalejButton;
     Button podpowiedzButton;
+    Button clear;
 
     TextView zakreskowaneSlowoTV;
     TextView polskieSlowoTV;
@@ -71,6 +78,9 @@ public class Uzupelnianie extends AppCompatActivity {
     ArrayList<Integer>kreski_index;
     int zmienna=0;
 
+    ProgressBar pb;
+    int progress=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,10 +89,13 @@ public class Uzupelnianie extends AppCompatActivity {
         sprawdzPoprawnoscButton = (Button) findViewById(R.id.sprPoprawnoscButton);
         dalejButton = (Button) findViewById(R.id.dalejButton);
         podpowiedzButton = (Button) findViewById(R.id.podpowiedzButton);
+        clear = (Button)findViewById(R.id.clear);
         zakreskowaneSlowoTV = (TextView) findViewById(R.id.slowoZakreskowane);
         polskieSlowoTV = (TextView) findViewById(R.id.slowoPolskie);
         poprawnaEN = (TextView)findViewById(R.id.poprawnaEN);
         brakujaceLiteryET = (EditText) findViewById(R.id.brakujaceLitery);
+        pb = (ProgressBar)findViewById(R.id.progressBar4);
+        pb.setMax(9);
 
         polskie = new ArrayList<>();
         angielskie = new ArrayList<>();
@@ -119,7 +132,6 @@ public class Uzupelnianie extends AppCompatActivity {
         brakujaceLiteryET.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
 
             @Override
@@ -127,22 +139,50 @@ public class Uzupelnianie extends AppCompatActivity {
                 String str = zakreskowaneSlowoTV.getText().toString();
                 if(charSequence.length()!=0 && zmienna<= str.length()){
                     String literka=charSequence.toString();
-                    String nowy_literka=String.valueOf(literka.charAt(zmienna));
-                    String nowy=str.substring(0,kreski_index.get(zmienna))+nowy_literka+str.substring(kreski_index.get(zmienna)+1);
-                    zakreskowaneSlowoTV.setText(nowy);
-                   zmienna++;
-                   literka="";
+                    String nowy_literka_poprawna=String.valueOf(literka.charAt(zmienna));
+                    String nowy_literka_bledna=String.valueOf(literka.charAt(zmienna));
+
+                    Spanned kolorowa_lieterka_poprawna=null;
+                    Spanned kolorowa_lieterka_bledna=null;
+                    Boolean poprawna=false;
+                    Boolean bledna=false;
+
+                   if(String.valueOf(brakujaceLitery.charAt(zmienna)).equals(nowy_literka_poprawna)){
+                       nowy_literka_poprawna="<font color=#1de535>"+nowy_literka_poprawna+"</font>";
+                       kolorowa_lieterka_poprawna=Html.fromHtml(nowy_literka_poprawna);
+                       poprawna=true;
+
+                   }else{
+                       nowy_literka_bledna="<font color=#db0f38>"+nowy_literka_bledna+"</font>";
+                       kolorowa_lieterka_bledna=Html.fromHtml(nowy_literka_bledna);
+                        bledna=true;
+                   }
+
+                    zakreskowaneSlowoTV.setText(str.substring(0,kreski_index.get(zmienna)));
+                   if(poprawna==true){
+                       zakreskowaneSlowoTV.append(kolorowa_lieterka_poprawna);
+                       poprawna=false;
+                   }else if(bledna==true){
+                       zakreskowaneSlowoTV.append(kolorowa_lieterka_bledna);
+                       poprawna=false;
+                   }
+                    zakreskowaneSlowoTV.append(str.substring(kreski_index.get(zmienna)+1));
+                    zmienna++;
+                    literka="";
+
                 }else{
                     zmienna=0;
                 }
-            }
 
+            }
             @Override
             public void afterTextChanged(Editable editable) {
 
             }
         });
 
+
+//backspace
         brakujaceLiteryET.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
@@ -151,6 +191,14 @@ public class Uzupelnianie extends AppCompatActivity {
                     zakreskowaneSlowoTV.setText(slowoZakreskowane);
                 }
                 return false;
+            }
+        });
+
+        clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                brakujaceLiteryET.setText("");
+                zakreskowaneSlowoTV.setText(slowoZakreskowane);
             }
         });
 
@@ -219,6 +267,8 @@ public class Uzupelnianie extends AppCompatActivity {
         dalejButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progress++;
+                pb.setProgress(progress);
                 poprawnaEN.setVisibility(View.INVISIBLE);
                 kreski_index.clear();
                 if (i == 9) {
@@ -293,7 +343,7 @@ public class Uzupelnianie extends AppCompatActivity {
         Collections.sort(uzyteIdx);
 
         for (int i = 0; i < ileZakreskowac; i++) {
-            sb.setCharAt(uzyteIdx.get(i), '-');
+            sb.setCharAt(uzyteIdx.get(i), '_');
             brakujaceLitery += wylosowaneEn.charAt(uzyteIdx.get(i));
             kreski_index.add(uzyteIdx.get(i));
            // Toast.makeText(getApplicationContext(),uzyteIdx.get(i).toString(),Toast.LENGTH_SHORT).show();

@@ -17,11 +17,20 @@
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="200dp"
+        android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/button7"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp"
+        android:layout_alignEnd="@+id/button7"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="12dp"
         app:srcCompat="@drawable/arrow_next" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_alignStart="@+id/button7"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="13dp"
+        app:srcCompat="?attr/homeAsUpIndicator" />
 
 </RelativeLayout>

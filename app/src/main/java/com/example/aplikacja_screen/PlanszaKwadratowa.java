@@ -52,6 +52,8 @@ public class PlanszaKwadratowa extends AppCompatActivity {
     Random random_lista;
     //od wątków
     Handler handler = new Handler();
+    Handler handler1 = new Handler();
+    static int i=0;
 
 
     public void ustawWartosci() {
@@ -132,6 +134,14 @@ public class PlanszaKwadratowa extends AppCompatActivity {
             en.add(cursor.getString(3));
         }
 
+        if(i<=4)
+        {
+            dalej.setText("Dalej");
+        }
+        if(i==5)
+        {
+            dalej.setText("Zakończ");
+        }
         int ilosc = pl.size();
         Random r = new Random();
         random0 = r.nextInt(ilosc) + 0;
@@ -3278,7 +3288,19 @@ public class PlanszaKwadratowa extends AppCompatActivity {
         dalej.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(PlanszaKwadratowa.this, PlanszaKwadratowa.class));
+                if(i==5){
+                    startActivity(new Intent(PlanszaKwadratowa.this,WyborKategorii.class));
+                    handler1.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            i=0;
+                        }
+                    }, 300);
+                }
+                if(i<=4) {
+                    startActivity(new Intent(PlanszaKwadratowa.this, PlanszaKwadratowa.class));
+                }
+                i++;
             }
         });
     }

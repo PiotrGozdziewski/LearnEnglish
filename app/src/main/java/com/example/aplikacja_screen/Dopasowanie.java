@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -15,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -32,6 +34,7 @@ public class Dopasowanie extends AppCompatActivity {
     ImageView img1, img2, img3, img4;
     Spinner sp1, sp2, sp3, sp4;
     Button sprawdz, dalej;
+
     ArrayList<String> en;
     ArrayList<String> en_randomowe;
     ArrayList<byte[]> photos;
@@ -58,6 +61,9 @@ public class Dopasowanie extends AppCompatActivity {
     ProgressBar pb;
     int progress=0;
 
+    Handler handler=new Handler();
+    RelativeLayout r1,r2,r3,r4;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +85,11 @@ public class Dopasowanie extends AppCompatActivity {
 
         dalej = (Button) findViewById(R.id.button33);
         sprawdz = (Button) findViewById(R.id.button32);
+
+        r1 = (RelativeLayout)findViewById(R.id.relative1);
+        r2 = (RelativeLayout)findViewById(R.id.relative2);
+        r3 = (RelativeLayout)findViewById(R.id.relative3);
+        r4 = (RelativeLayout)findViewById(R.id.relative4);
 
         pb = (ProgressBar)findViewById(R.id.progressBar2);
         pb.setMax(3);
@@ -111,19 +122,66 @@ public class Dopasowanie extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //sprawdzenie czy poprawnie wybrano
+                if(sp1.getSelectedItem().toString() == en.get(random_sp1).toString())
+                {
+                    r1.setBackgroundColor(Color.parseColor("#a5f49c"));
+                }
+                else
+                {
+                    r1.setBackgroundColor(Color.parseColor("#fc7171"));
+                }
+                if(sp2.getSelectedItem().toString() == en.get(random_sp2).toString())
+                {
+                    r2.setBackgroundColor(Color.parseColor("#a5f49c"));
+                }
+                else
+                {
+                    r2.setBackgroundColor(Color.parseColor("#fc7171"));
+                }
+                if(sp3.getSelectedItem().toString() == en.get(random_sp3).toString())
+                {
+                    r3.setBackgroundColor(Color.parseColor("#a5f49c"));
+                }
+                else
+                {
+                    r3.setBackgroundColor(Color.parseColor("#fc7171"));
+                }
+                if(sp4.getSelectedItem().toString() == en.get(random_sp4).toString())
+                {
+                    r4.setBackgroundColor(Color.parseColor("#a5f49c"));
+                }
+                else
+                {
+                    r4.setBackgroundColor(Color.parseColor("#fc7171"));
+                }
+
                 if (sp1.getSelectedItem().toString() == en.get(random_sp1).toString()
                         && sp2.getSelectedItem().toString() == en.get(random_sp2).toString()
                         && sp3.getSelectedItem().toString() == en.get(random_sp3).toString()
                         && sp4.getSelectedItem().toString() == en.get(random_sp4).toString()) {
                     if (bl == false) poprawne++;
                     bl = true;
-                    Toast.makeText(getApplicationContext(), "Zgadza się", Toast.LENGTH_SHORT).show();
+                    sprawdz.setText("Poprawna odpowiedź");
+                    sprawdz.setClickable(false);
+                    sp1.setEnabled(false);
+                    sp2.setEnabled(false);
+                    sp3.setEnabled(false);
+                    sp4.setEnabled(false);
+                    sprawdz.setBackgroundColor(Color.parseColor("#38ea3e"));
                     dalej.setEnabled(true);
                 } else if (sp1.getSelectedItem().toString() == " " | sp2.getSelectedItem().toString() == " "
                         | sp3.getSelectedItem().toString() == " " | sp4.getSelectedItem().toString() == " ") {
                     Toast.makeText(getApplicationContext(), "Pozostawiono puste pola", Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Nie zgadza sie", Toast.LENGTH_SHORT).show();
+                    sprawdz.setText("Niepoprawna odpowiedź");
+                    sprawdz.setBackgroundColor(Color.parseColor("#d11f34"));
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            sprawdz.setText("Sprawdź");
+                            sprawdz.setBackgroundColor(Color.parseColor("#e6e1e1"));
+                        }
+                    }, 3000);
                     bledne++;
                 }
             }
@@ -134,6 +192,18 @@ public class Dopasowanie extends AppCompatActivity {
             public void onClick(View v) {
                 progress++;
                 pb.setProgress(progress);
+                sprawdz.setText("Sprawdź");
+                sprawdz.setClickable(true);
+                sp1.setEnabled(true);
+                sp2.setEnabled(true);
+                sp3.setEnabled(true);
+                sp4.setEnabled(true);
+                sprawdz.setBackgroundColor(Color.parseColor("#e6e1e1"));
+                r1.setBackgroundColor(Color.parseColor("#eae9e7"));
+                r2.setBackgroundColor(Color.parseColor("#eae9e7"));
+                r3.setBackgroundColor(Color.parseColor("#eae9e7"));
+                r4.setBackgroundColor(Color.parseColor("#eae9e7"));
+
                 if (ilosc_iteracji == 3) {
                     zapisz_statytyski();
                     startActivity(new Intent(Dopasowanie.this, BocznyPasekLewy.class));
@@ -153,6 +223,8 @@ public class Dopasowanie extends AppCompatActivity {
                 }
                 bl = false;
                 dalej.setEnabled(false);
+
+
             }
         });
 

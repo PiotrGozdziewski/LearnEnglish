@@ -176,7 +176,6 @@ public class Tlumaczenie extends AppCompatActivity {
                 if (i == 9) {
                     dalej.setText("Zakończ lekcje");
                 }
-                Toast.makeText(getApplicationContext(),String.valueOf(progress),Toast.LENGTH_SHORT).show();
             }
         });
 

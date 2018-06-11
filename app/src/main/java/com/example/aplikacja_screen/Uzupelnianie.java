@@ -212,7 +212,7 @@ public class Uzupelnianie extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (brakujaceLiteryET.getText().toString().equals(brakujaceLitery)) {
-
+                    clear.setVisibility(View.INVISIBLE);
                     podpowiedzButton.setVisibility(View.INVISIBLE);
                     sprawdzPoprawnoscButton.setText("Poprawna odpowiedź");
                     sprawdzPoprawnoscButton.setBackgroundColor(Color.parseColor("#38ea3e"));
@@ -267,6 +267,7 @@ public class Uzupelnianie extends AppCompatActivity {
         dalejButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                clear.setVisibility(View.VISIBLE);
                 progress++;
                 pb.setProgress(progress);
                 poprawnaEN.setVisibility(View.INVISIBLE);

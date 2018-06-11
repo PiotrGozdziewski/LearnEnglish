@@ -21,11 +21,11 @@
         android:id="@+id/button39"
         android:layout_width="150dp"
         android:layout_height="40dp"
+        android:background="#e6dcdc"
         android:layout_alignStart="@+id/button14"
         android:layout_below="@+id/button42"
-        android:layout_marginTop="40dp"
-        android:background="#e6dcdc"
-        android:text="Kolejne słowo" />
+        android:layout_marginTop="70dp"
+        android:text="Dalej" />
 
     <Button
         android:id="@+id/button40"
@@ -74,6 +74,6 @@
         android:layout_width="280dp"
         android:layout_height="30dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="21dp" />
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

@@ -1,5 +1,6 @@
 package com.example.aplikacja_screen;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -7,6 +8,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateFormat;
 import android.view.View;
@@ -29,7 +31,7 @@ import java.util.regex.Pattern;
 
 public class Rozsypanka extends AppCompatActivity {
 
-    Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, dalej, zdanie_pl, sprawdź, clear;
+    Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, dalej, zdanie_pl, sprawdź, clear,odpowiedz;
     EditText wprowadz;
     Database db;
     Cursor cursor1;
@@ -66,6 +68,7 @@ public class Rozsypanka extends AppCompatActivity {
         dalej = (Button) findViewById(R.id.button46);
         sprawdź = (Button) findViewById(R.id.button48);
         clear = (Button) findViewById(R.id.button51);
+        odpowiedz = (Button)findViewById(R.id.button24);
         pb = (ProgressBar)findViewById(R.id.progressBar3);
         db = new Database(getContentResolver());
         zdania_en = new ArrayList<String>();
@@ -110,6 +113,8 @@ public class Rozsypanka extends AppCompatActivity {
         dalej.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                odpowiedz.setVisibility(View.INVISIBLE);
+                clear.setVisibility(View.VISIBLE);
                 progress++;
                 pb.setProgress(progress);
                 if(ilość_iteracji==5)
@@ -312,13 +317,17 @@ public class Rozsypanka extends AppCompatActivity {
                 String napisane_zdanie = wprowadz.getText().toString();
                 String zdanie_z_bazy = zdania_en.get(ilość_iteracji).toString();
                 if (napisane_zdanie.toString().equals(zdanie_z_bazy.toString())) {
+                    odpowiedz.setVisibility(View.INVISIBLE);
+                    clear.setVisibility(View.INVISIBLE);
                     sprawdź.setText("Poprawnie");
                     sprawdź.setBackgroundColor(Color.parseColor("#38ea3e"));
                     sprawdź.setClickable(false);
                     clear.setClickable(false);
                     poprawne_odp++;
                     ilość_iteracji++;
+                    dalej.setVisibility(View.VISIBLE);
                 } else {
+                    odpowiedz.setVisibility(View.VISIBLE);
                     sprawdź.setText("Błędnie");
                     sprawdź.setBackgroundColor(Color.parseColor("#d11f34"));
                     sprawdź.setClickable(false);
@@ -335,7 +344,6 @@ public class Rozsypanka extends AppCompatActivity {
 
                 słowa_ze_zdania_en.clear();
                 ilość_słów_w_zdaniu = 0;
-                dalej.setVisibility(View.VISIBLE);
                 if (ilość_iteracji == 5) {
                     dalej.setText("Zakończ lekcję");
                 }
@@ -355,6 +363,7 @@ public class Rozsypanka extends AppCompatActivity {
                 btn7.setClickable(true);
                 btn8.setClickable(true);
 
+
                 wprowadz.getText().clear();
 
                 btn1.setBackgroundColor(Color.parseColor("#e7e2e2"));
@@ -365,8 +374,22 @@ public class Rozsypanka extends AppCompatActivity {
                 btn6.setBackgroundColor(Color.parseColor("#e7e2e2"));
                 btn7.setBackgroundColor(Color.parseColor("#e7e2e2"));
                 btn8.setBackgroundColor(Color.parseColor("#e7e2e2"));
+            }
+        });
 
-
+        odpowiedz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog alertDialog = new AlertDialog.Builder(Rozsypanka.this).create();
+                alertDialog.setTitle("Poprawna odpowiedz");
+                alertDialog.setMessage(zdania_en.get(ilość_iteracji).toString());
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                alertDialog.show();
             }
         });
     }

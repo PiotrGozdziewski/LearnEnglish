@@ -13,21 +13,20 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/editText8"
         android:layout_below="@+id/editText8"
-        android:layout_marginTop="31dp"
-        android:text=""
+        android:layout_marginTop="13dp"
         android:background="#e7e2e2"
+        android:text=""
         android:visibility="invisible" />
 
     <Button
         android:id="@+id/button16"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button15"
-        android:layout_alignBottom="@+id/button15"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="13dp"
-        android:text=""
+        android:layout_alignEnd="@+id/editText8"
+        android:layout_below="@+id/editText8"
+        android:layout_marginTop="13dp"
         android:background="#e7e2e2"
+        android:text=""
         android:visibility="invisible" />
 
     <Button
@@ -36,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/button15"
         android:layout_below="@+id/button15"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="13dp"
         android:text=""
         android:background="#e7e2e2"
         android:visibility="invisible" />
@@ -58,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/button18"
         android:layout_below="@+id/button18"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="13dp"
         android:text=""
         android:background="#e7e2e2"
         android:visibility="invisible" />
@@ -79,7 +78,7 @@
         android:layout_width="180dp"
         android:layout_height="35dp"
         android:layout_above="@+id/progressBar3"
-        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="120dp"
         android:background="#e7e2e2"
         android:text="Dalej"
         android:visibility="invisible" />
@@ -90,7 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/button47"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Ułóż poprawne zdanie z rozsypanki"
         android:inputType="textPersonName" />
@@ -109,9 +108,9 @@
     <Button
         android:id="@+id/button48"
         android:layout_width="180dp"
-        android:layout_height="35dp"
-        android:layout_alignEnd="@+id/button49"
-        android:layout_below="@+id/button49"
+        android:layout_height="40dp"
+        android:layout_marginTop="420dp"
+        android:layout_marginLeft="120dp"
         android:background="#e7e2e2"
         android:text="Sprawdź" />
 
@@ -123,7 +122,7 @@
         android:layout_below="@+id/button44"
         android:visibility="invisible"
         android:background="#e7e2e2"
-        android:layout_marginTop="27dp" />
+        android:layout_marginTop="13dp" />
 
     <Button
         android:id="@+id/button50"
@@ -137,9 +136,9 @@
     <Button
         android:id="@+id/button51"
         android:layout_width="180dp"
-        android:layout_height="35dp"
-        android:layout_alignBottom="@+id/button48"
-        android:layout_alignStart="@+id/button50"
+        android:layout_height="40dp"
+        android:layout_marginTop="470dp"
+        android:layout_marginLeft="120dp"
         android:background="#e7e2e2"
         android:text="Wyczyść" />
 
@@ -150,6 +149,16 @@
         android:layout_height="30dp"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/button47" />
+
+    <Button
+        android:id="@+id/button24"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="520dp"
+        android:background="#e7e2e2"
+        android:visibility="invisible"
+        android:text="Pokaż odpowiedź" />
 
 
 </RelativeLayout>

@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateFormat;
@@ -50,6 +51,11 @@ public class Wybor extends AppCompatActivity {
     ProgressBar pb;
     int progress=0;
 
+    boolean poprawna1=false;
+    boolean poprawna2=false;
+    boolean poprawna3=false;
+    boolean poprawna4=false;
+    Handler handler=new Handler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,34 +119,52 @@ public class Wybor extends AppCompatActivity {
         b2.setText(en.get(random_en1).toString());
         b3.setText(en.get(random_en2).toString());
         b4.setText(en.get(random_en3).toString());
+        nastepne_slowo.setClickable(false);
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //blokowanie przyciskow
-                b1.setClickable(false);
-                b2.setClickable(false);
-                b3.setClickable(false);
-                b4.setClickable(false);
+
 
                 index_en = en.indexOf(b1.getText().toString()); //liczony od zera
                 index_pl = pl.indexOf(t1.getText().toString());
                 if (index_en == index_pl) {
+                    nastepne_slowo.setClickable(true);
+                    poprawna1=true;
                     b1.setBackgroundResource(R.drawable.zielony_gradient);
                     poprawne_odp++;
+                    //blokowanie przyciskow
+                    b1.setClickable(false);
+                    b2.setClickable(false);
+                    b3.setClickable(false);
+                    b4.setClickable(false);
+                    nastepne_slowo.setClickable(true);
                 } else {
                     bledne_odp++;
                     //co zrobic w przypadku zlej odpowiedzi
                     b1.setBackgroundResource(R.drawable.button_border_red);
-                    int index_btn2 = en.indexOf(b2.getText().toString());
-                    int index_btn3 = en.indexOf(b3.getText().toString());
-                    int index_btn4 = en.indexOf(b4.getText().toString());
-                    if (index_pl == index_btn2) {
-                        b2.setBackgroundResource(R.drawable.zielony_gradient);
-                    } else if (index_pl == index_btn3) {
-                        b3.setBackgroundResource(R.drawable.zielony_gradient);
-                    } else if (index_pl == index_btn4) {
-                        b4.setBackgroundResource(R.drawable.zielony_gradient);
-                    }
+                    //blokowanie przyciskow
+                    b1.setClickable(false);
+                    b2.setClickable(false);
+                    b3.setClickable(false);
+                    b4.setClickable(false);
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            b1.setBackgroundColor(Color.parseColor("#e6dcdc"));
+                            nastepne_slowo.setClickable(false);
+                            b1.setClickable(true);
+                            b2.setClickable(true);
+                            b3.setClickable(true);
+                            b4.setClickable(true);
+                        }
+                    }, 3000);
+//                    if (index_pl == index_btn2) {
+//                        b2.setBackgroundResource(R.drawable.zielony_gradient);
+//                    } else if (index_pl == index_btn3) {
+//                        b3.setBackgroundResource(R.drawable.zielony_gradient);
+//                    } else if (index_pl == index_btn4) {
+//                        b4.setBackgroundResource(R.drawable.zielony_gradient);
+//                    }
                 }
             }
         });
@@ -148,29 +172,46 @@ public class Wybor extends AppCompatActivity {
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //blokowanie przyciskow
-                b1.setClickable(false);
-                b2.setClickable(false);
-                b3.setClickable(false);
-                b4.setClickable(false);
+
                 index_en = en.indexOf(b2.getText().toString()); //liczony od zera
                 index_pl = pl.indexOf(t1.getText().toString());
                 if (index_en == index_pl) {
+                    nastepne_slowo.setClickable(true);
+                    poprawna2=true;
                     b2.setBackgroundResource(R.drawable.zielony_gradient);
                     poprawne_odp++;
+                    //blokowanie przyciskow
+                    b1.setClickable(false);
+                    b2.setClickable(false);
+                    b3.setClickable(false);
+                    b4.setClickable(false);
+                    nastepne_slowo.setClickable(true);
                 } else {
                     bledne_odp++;
                     b2.setBackgroundResource(R.drawable.button_border_red);
-                    int index_btn1 = en.indexOf(b1.getText().toString());
-                    int index_btn3 = en.indexOf(b3.getText().toString());
-                    int index_btn4 = en.indexOf(b4.getText().toString());
-                    if (index_pl == index_btn1) {
-                        b1.setBackgroundResource(R.drawable.zielony_gradient);
-                    } else if (index_pl == index_btn3) {
-                        b3.setBackgroundResource(R.drawable.zielony_gradient);
-                    } else if (index_pl == index_btn4) {
-                        b4.setBackgroundResource(R.drawable.zielony_gradient);
-                    }
+                    //blokowanie przyciskow
+                    b1.setClickable(false);
+                    b2.setClickable(false);
+                    b3.setClickable(false);
+                    b4.setClickable(false);
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            b2.setBackgroundColor(Color.parseColor("#e6dcdc"));
+                            nastepne_slowo.setClickable(false);
+                            b1.setClickable(true);
+                            b2.setClickable(true);
+                            b3.setClickable(true);
+                            b4.setClickable(true);
+                        }
+                    }, 3000);
+//                    if (index_pl == index_btn1) {
+//                        b1.setBackgroundResource(R.drawable.zielony_gradient);
+//                    } else if (index_pl == index_btn3) {
+//                        b3.setBackgroundResource(R.drawable.zielony_gradient);
+//                    } else if (index_pl == index_btn4) {
+//                        b4.setBackgroundResource(R.drawable.zielony_gradient);
+//                    }
                 }
             }
         });
@@ -178,29 +219,46 @@ public class Wybor extends AppCompatActivity {
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //blokowanie przyciskow
-                b1.setClickable(false);
-                b2.setClickable(false);
-                b3.setClickable(false);
-                b4.setClickable(false);
+
                 index_en = en.indexOf(b3.getText().toString()); //liczony od zera
                 index_pl = pl.indexOf(t1.getText().toString());
                 if (index_en == index_pl) {
+                    nastepne_slowo.setClickable(true);
+                    poprawna3=true;
                     b3.setBackgroundResource(R.drawable.zielony_gradient);
                     poprawne_odp++;
+                    //blokowanie przyciskow
+                    b1.setClickable(false);
+                    b2.setClickable(false);
+                    b3.setClickable(false);
+                    b4.setClickable(false);
+                    nastepne_slowo.setClickable(true);
                 } else {
                     bledne_odp++;
                     b3.setBackgroundResource(R.drawable.button_border_red);
-                    int index_btn2 = en.indexOf(b2.getText().toString());
-                    int index_btn1 = en.indexOf(b1.getText().toString());
-                    int index_btn4 = en.indexOf(b4.getText().toString());
-                    if (index_pl == index_btn2) {
-                        b2.setBackgroundResource(R.drawable.zielony_gradient);
-                    } else if (index_pl == index_btn1) {
-                        b1.setBackgroundResource(R.drawable.zielony_gradient);
-                    } else if (index_pl == index_btn4) {
-                        b4.setBackgroundResource(R.drawable.zielony_gradient);
-                    }
+                    //blokowanie przyciskow
+                    b1.setClickable(false);
+                    b2.setClickable(false);
+                    b3.setClickable(false);
+                    b4.setClickable(false);
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            b3.setBackgroundColor(Color.parseColor("#e6dcdc"));
+                            nastepne_slowo.setClickable(false);
+                            b1.setClickable(true);
+                            b2.setClickable(true);
+                            b3.setClickable(true);
+                            b4.setClickable(true);
+                        }
+                    }, 3000);
+//                    if (index_pl == index_btn2) {
+//                        b2.setBackgroundResource(R.drawable.zielony_gradient);
+//                    } else if (index_pl == index_btn1) {
+//                        b1.setBackgroundResource(R.drawable.zielony_gradient);
+//                    } else if (index_pl == index_btn4) {
+//                        b4.setBackgroundResource(R.drawable.zielony_gradient);
+//                    }
                 }
             }
         });
@@ -208,32 +266,51 @@ public class Wybor extends AppCompatActivity {
         b4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //blokowanie przyciskow
-                b1.setClickable(false);
-                b2.setClickable(false);
-                b3.setClickable(false);
-                b4.setClickable(false);
+
                 index_en = en.indexOf(b4.getText().toString()); //liczony od zera
                 index_pl = pl.indexOf(t1.getText().toString());
                 if (index_en == index_pl) {
+                    nastepne_slowo.setClickable(true);
+                    poprawna4=true;
                     poprawne_odp++;
                     b4.setBackgroundResource(R.drawable.zielony_gradient);
+                    //blokowanie przyciskow
+                    b1.setClickable(false);
+                    b2.setClickable(false);
+                    b3.setClickable(false);
+                    b4.setClickable(false);
+                    nastepne_slowo.setClickable(true);
                 } else {
                     bledne_odp++;
                     b4.setBackgroundResource(R.drawable.button_border_red);
-                    int index_btn2 = en.indexOf(b2.getText().toString());
-                    int index_btn3 = en.indexOf(b3.getText().toString());
-                    int index_btn1 = en.indexOf(b1.getText().toString());
-                    if (index_pl == index_btn1) {
-                        b1.setBackgroundResource(R.drawable.zielony_gradient);
-                    } else if (index_pl == index_btn3) {
-                        b3.setBackgroundResource(R.drawable.zielony_gradient);
-                    } else if (index_pl == index_btn2) {
-                        b2.setBackgroundResource(R.drawable.zielony_gradient);
-                    }
+                    //blokowanie przyciskow
+                    b1.setClickable(false);
+                    b2.setClickable(false);
+                    b3.setClickable(false);
+                    b4.setClickable(false);
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            b4.setBackgroundColor(Color.parseColor("#e6dcdc"));
+                            nastepne_slowo.setClickable(false);
+                            b1.setClickable(true);
+                            b2.setClickable(true);
+                            b3.setClickable(true);
+                            b4.setClickable(true);
+                        }
+                    }, 3000);
+//                    if (index_pl == index_btn1) {
+//                        b1.setBackgroundResource(R.drawable.zielony_gradient);
+//                    } else if (index_pl == index_btn3) {
+//                        b3.setBackgroundResource(R.drawable.zielony_gradient);
+//                    } else if (index_pl == index_btn2) {
+//                        b2.setBackgroundResource(R.drawable.zielony_gradient);
+//                    }
                 }
             }
         });
+
+
         nastepne_slowo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -244,6 +321,7 @@ public class Wybor extends AppCompatActivity {
                 b2.setClickable(true);
                 b3.setClickable(true);
                 b4.setClickable(true);
+                nastepne_slowo.setClickable(false);
 
                 if (ilosc_iteracji == 13) {
                     nastepne_slowo.setText("Zakończ lekcję");

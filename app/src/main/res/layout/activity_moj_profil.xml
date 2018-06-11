@@ -107,29 +107,31 @@
 
                 </LinearLayout>
 
-                <RelativeLayout
-                    android:id="@+id/tab3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                <!--<RelativeLayout-->
+                    <!--android:id="@+id/tab3"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:orientation="vertical">-->
 
-                    <TextView
-                        android:id="@+id/textView25"
-                        android:layout_width="150dp"
-                        android:layout_height="25dp"
-                        android:layout_marginTop="30dp"
-                        android:textSize="20dp"
-                        android:layout_marginLeft="15dp"
-                        android:text="Przypomnienie" />
+                    <!--<TextView-->
+                        <!--android:id="@+id/textView25"-->
+                        <!--android:layout_width="150dp"-->
+                        <!--android:layout_height="25dp"-->
+                        <!--android:layout_marginTop="30dp"-->
+                        <!--android:textSize="20dp"-->
+                        <!--android:layout_marginLeft="15dp"-->
+                        <!--android:visibility="invisible"-->
+                        <!--android:text="Przypomnienie" />-->
 
-                    <ToggleButton
-                        android:id="@+id/toggleButton"
-                        android:layout_width="95dp"
-                        android:layout_height="45dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginLeft="215dp"
-                        android:onClick="onToggleClicked" />
-                </RelativeLayout>
+                    <!--<ToggleButton-->
+                        <!--android:id="@+id/toggleButton"-->
+                        <!--android:layout_width="95dp"-->
+                        <!--android:layout_height="45dp"-->
+                        <!--android:layout_marginTop="20dp"-->
+                        <!--android:layout_marginLeft="215dp"-->
+                        <!--android:visibility="invisible"-->
+                        <!--android:onClick="onToggleClicked" />-->
+                <!--</RelativeLayout>-->
             </FrameLayout>
         </LinearLayout>
     </TabHost>

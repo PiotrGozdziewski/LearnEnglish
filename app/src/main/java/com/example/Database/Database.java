@@ -524,7 +524,7 @@ public class Database {
         return uri;
     }
 
-    public void queryUsers() {
+   public void queryUsers() {
         String[] projection = {
                 UsersContract.Columns._ID,
                 UsersContract.Columns.USERS_LOGIN,

@@ -22,9 +22,7 @@ import com.example.m.aplikacja_screen.R;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
-//co tu ma byc
-//zmienianie loginu,hasla
-//wybor czy chcemy powiadomieniatry
+
 public class MojProfil extends AppCompatActivity {
     private static final String TAG = "MojProfil";
     TabHost tabHost;
@@ -37,7 +35,6 @@ public class MojProfil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_moj_profil);
         db = new Database(getContentResolver());
-//        tb = (ToggleButton) findViewById(R.id.toggleButton);
         login = (EditText) findViewById(R.id.textView15);
         zmien_login = (Button) findViewById(R.id.button8);
         stare_haslo = (EditText) findViewById(R.id.textView16);
@@ -52,13 +49,13 @@ public class MojProfil extends AppCompatActivity {
         tabHost.setup();
         TabHost.TabSpec s1 = tabHost.newTabSpec("Login");
         s1.setContent(R.id.tab1);
-        s1.setIndicator("Ustawianie loginu");
+        s1.setIndicator("Zmiana loginu");
 
         tabHost.addTab(s1);
 
         s1 = tabHost.newTabSpec("Hasło");
         s1.setContent(R.id.tab2);
-        s1.setIndicator("Ustawianie hasła");
+        s1.setIndicator("Zmiana hasła");
         tabHost.addTab(s1);
 
         s1 = tabHost.newTabSpec("Usuwanie konta");
@@ -159,7 +156,6 @@ public class MojProfil extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "Wystąpił błąd", Toast.LENGTH_SHORT).show();
                             }
                         } catch (Exception e) {
-
                         }
                     }
                 }
@@ -172,7 +168,6 @@ public class MojProfil extends AppCompatActivity {
                 //pobranie id aktualnego uzytkownika
                 SharedPreferences prefs1 = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 final String userID1 = prefs1.getString("id", "0");
-
 
             String stareHasloOdUzytkownika = usun_haslo.getText().toString();
             SHA256 sha256 = new SHA256(stareHasloOdUzytkownika);
@@ -196,44 +191,7 @@ public class MojProfil extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"Usunieto konto", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(MojProfil.this,MainActivity.class));
                 }
-
-
                 }
-
-
-
-
-
-
-
-
-//                final AlertDialog.Builder ad = new AlertDialog.Builder(getApplicationContext(MojProfil.this));
-//                ad.setMessage("Czy na pewno chcesz usunąć konto?");
-//                ad.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//                        //usuwanie konta
-//                                ArrayList<Integer> id_zestawow=new ArrayList<Integer>();
-//                                Cursor c = db.getSetsID(Integer.parseInt(userID1));
-//                                while(c.moveToNext()){
-//                                    id_zestawow.add(c.getInt(0));
-//                                }
-//                                for(int k=0;k<id_zestawow.size();k++){
-//                                    db.deleteFlashcards(id_zestawow.get(k));
-//                                }
-//                                db.deleteFromUsersSets(Integer.parseInt(userID1));
-//                                db.deleteFromUsers(Integer.parseInt(userID1));
-//                                Toast.makeText(getApplicationContext(),"Usunieto konto", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//                ad.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//
-//                    }
-//                });
-//
-//                ad.show();
             }
         });
     }
@@ -243,7 +201,7 @@ public class MojProfil extends AppCompatActivity {
         Pattern upperCasePattern = Pattern.compile("[A-Z ]");
         Pattern lowerCasePatern = Pattern.compile("[a-z ]");
         Pattern digitsPattern = Pattern.compile("[0-9 ]");
-        int passwordMinLength = 6;
+        int passwordMinLength = 8;
 
         if (password.length() < passwordMinLength) {
             return false;
@@ -260,17 +218,6 @@ public class MojProfil extends AppCompatActivity {
         if (!digitsPattern.matcher(password).find()) {
             return false;
         }
-
         return true;
-    }
-
-    public void onToggleClicked(View v) {
-        boolean on = ((ToggleButton) v).isChecked();
-
-        if (on) {
-            //wlacz przypomnienie
-        } else {
-            //wylacz przypomnienie
-        }
     }
 }

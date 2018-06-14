@@ -173,7 +173,6 @@ public class Uzupelnianie extends AppCompatActivity {
                 }else{
                     zmienna=0;
                 }
-
             }
             @Override
             public void afterTextChanged(Editable editable) {

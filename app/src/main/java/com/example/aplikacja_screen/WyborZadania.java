@@ -140,7 +140,6 @@ public class WyborZadania extends AppCompatActivity {
                     e.commit();
                     startActivity(new Intent(WyborZadania.this, Uzupelnianie.class));
                 }
-                //Toast.makeText(getApplicationContext(), "Wybrano " + tekst, Toast.LENGTH_LONG).show();
             }
         });
     }

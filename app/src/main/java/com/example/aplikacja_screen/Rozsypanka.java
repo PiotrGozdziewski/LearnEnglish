@@ -347,7 +347,6 @@ public class Rozsypanka extends AppCompatActivity {
                 if (ilość_iteracji == 5) {
                     dalej.setText("Zakończ lekcję");
                 }
-
             }
         });
 
@@ -362,7 +361,6 @@ public class Rozsypanka extends AppCompatActivity {
                 btn6.setClickable(true);
                 btn7.setClickable(true);
                 btn8.setClickable(true);
-
 
                 wprowadz.getText().clear();
 

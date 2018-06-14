@@ -56,7 +56,7 @@ public class NoweHaslo extends AppCompatActivity {
                     } else if (!pass.equals(pass2)) {
                         Toast.makeText(getApplicationContext(), "Podane hasła nie są identyczne!", Toast.LENGTH_LONG).show();
                     } else if (!isPasswordValid(pass)) {
-                        Toast.makeText(getApplicationContext(), "Hasło musi składać się z sześciu znaków, zawierać cyfry, małe/duże litery oraz znaki specjalne.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Hasło musi składać się z ośmiu znaków, zawierać cyfry, małe/duże litery oraz znaki specjalne.", Toast.LENGTH_LONG).show();
                     } else {
                         try {
                             SHA256 sha256 = new SHA256(pass);
@@ -81,7 +81,7 @@ public class NoweHaslo extends AppCompatActivity {
         Pattern upperCasePattern = Pattern.compile("[A-Z ]");
         Pattern lowerCasePatern = Pattern.compile("[a-z ]");
         Pattern digitsPattern = Pattern.compile("[0-9 ]");
-        int passwordMinLength = 6;
+        int passwordMinLength = 8;
 
         if (password.length() < passwordMinLength) {
             return false;

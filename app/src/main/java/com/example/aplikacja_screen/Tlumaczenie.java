@@ -106,7 +106,6 @@ public class Tlumaczenie extends AppCompatActivity {
             id_zadania = cursor2.getInt(0);
         }
 
-
         pl.setText(polskie.get(randomowa_wartosc));  //0
         sprawdz_poprawnosc.setOnClickListener(new View.OnClickListener() {
             @Override

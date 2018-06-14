@@ -124,7 +124,6 @@ public class Wybor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
                 index_en = en.indexOf(b1.getText().toString()); //liczony od zera
                 index_pl = pl.indexOf(t1.getText().toString());
                 if (index_en == index_pl) {
@@ -157,14 +156,7 @@ public class Wybor extends AppCompatActivity {
                             b3.setClickable(true);
                             b4.setClickable(true);
                         }
-                    }, 3000);
-//                    if (index_pl == index_btn2) {
-//                        b2.setBackgroundResource(R.drawable.zielony_gradient);
-//                    } else if (index_pl == index_btn3) {
-//                        b3.setBackgroundResource(R.drawable.zielony_gradient);
-//                    } else if (index_pl == index_btn4) {
-//                        b4.setBackgroundResource(R.drawable.zielony_gradient);
-//                    }
+                    }, 2000);
                 }
             }
         });
@@ -204,14 +196,7 @@ public class Wybor extends AppCompatActivity {
                             b3.setClickable(true);
                             b4.setClickable(true);
                         }
-                    }, 3000);
-//                    if (index_pl == index_btn1) {
-//                        b1.setBackgroundResource(R.drawable.zielony_gradient);
-//                    } else if (index_pl == index_btn3) {
-//                        b3.setBackgroundResource(R.drawable.zielony_gradient);
-//                    } else if (index_pl == index_btn4) {
-//                        b4.setBackgroundResource(R.drawable.zielony_gradient);
-//                    }
+                    }, 2000);
                 }
             }
         });
@@ -251,14 +236,7 @@ public class Wybor extends AppCompatActivity {
                             b3.setClickable(true);
                             b4.setClickable(true);
                         }
-                    }, 3000);
-//                    if (index_pl == index_btn2) {
-//                        b2.setBackgroundResource(R.drawable.zielony_gradient);
-//                    } else if (index_pl == index_btn1) {
-//                        b1.setBackgroundResource(R.drawable.zielony_gradient);
-//                    } else if (index_pl == index_btn4) {
-//                        b4.setBackgroundResource(R.drawable.zielony_gradient);
-//                    }
+                    }, 2000);
                 }
             }
         });
@@ -298,14 +276,7 @@ public class Wybor extends AppCompatActivity {
                             b3.setClickable(true);
                             b4.setClickable(true);
                         }
-                    }, 3000);
-//                    if (index_pl == index_btn1) {
-//                        b1.setBackgroundResource(R.drawable.zielony_gradient);
-//                    } else if (index_pl == index_btn3) {
-//                        b3.setBackgroundResource(R.drawable.zielony_gradient);
-//                    } else if (index_pl == index_btn2) {
-//                        b2.setBackgroundResource(R.drawable.zielony_gradient);
-//                    }
+                    }, 2000);
                 }
             }
         });

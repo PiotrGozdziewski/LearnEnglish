@@ -25,7 +25,6 @@ public class MojeZestawy extends AppCompatActivity {
     Database db;
 
     RecyclerView recyclerView;
-    RecyclerView.LayoutManager layoutManager;
     RecyclerView.Adapter adapter;
     List<Zestaw> list;
 
@@ -51,7 +50,6 @@ public class MojeZestawy extends AppCompatActivity {
     }
 
     public void loadRecyclerViewItem() {
-
         int nr = 0;
         String nazwa = "";
         int ilość_fiszek = 0;

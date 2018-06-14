@@ -30,7 +30,6 @@ public class TworzenieZestawu extends AppCompatActivity {
         nazwa_zestawu = (EditText) findViewById(R.id.editText2);
         db = new Database(getContentResolver());
 
-
         tworzenie_zestawu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,8 +47,6 @@ public class TworzenieZestawu extends AppCompatActivity {
                             if (nazwa_zestaw.equalsIgnoreCase(cursor.getString(2))) {
                                 czy_istnieje = true;
                             }
-                            //Toast.makeText(getApplicationContext(), "id set: " + String.valueOf(cursor.getInt(0)), Toast.LENGTH_SHORT).show();
-                            //Toast.makeText(getApplicationContext(), "nazwa: " + cursor.getString(2), Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
@@ -63,7 +60,6 @@ public class TworzenieZestawu extends AppCompatActivity {
                 } else {
                     Toast.makeText(getApplicationContext(), "Pozostawiono puste pole.", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
     }

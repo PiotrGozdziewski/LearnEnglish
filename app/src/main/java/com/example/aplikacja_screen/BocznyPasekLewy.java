@@ -33,20 +33,8 @@ public class BocznyPasekLewy extends AppCompatActivity
     //bo ten przycisk nie jest w zwykłym Activity
     NavigationView navigationView;
     View headerView;
-
-    //od animacji
-    private AnimatorSet mSetRightOut;
-    private AnimatorSet mSetLeftIn;
-    private boolean mIsBackVisible = false;
-    private View mCardFrontLayout;
-    private View mCardBackLayout;
-    TextView animacja_przod, animacja_tyl;
-    View view;
-
     Button zestawy, kategorie, statystyki;
     TextView nazwa_uzytkownika;
-    //od wątków
-    Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +70,7 @@ public class BocznyPasekLewy extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
-    //ekran główny
+        //ekran główny
         zestawy = (Button)findViewById(R.id.button21);
         kategorie = (Button)findViewById(R.id.button22);
         statystyki = (Button)findViewById(R.id.button23);
@@ -109,23 +97,6 @@ public class BocznyPasekLewy extends AppCompatActivity
                 startActivity(new Intent(BocznyPasekLewy.this,Statystyka.class));
             }
         });
-
-
-
-
-        // animacja_przod = (TextView) findViewById(R.id.animacja_przod);
-        // animacja_tyl = (TextView) findViewById(R.id.animacja_tyl);
-        //
-        // od animacji
-        // findViews();
-        // loadAnimations();
-        // changeCameraDistance();
-        // handler.postDelayed(new Runnable() {
-        //     @Override
-        //     public void run() {
-        //         flipCard(view); //create view
-        //     }
-        // }, 2000);
     }
 
     @Override
@@ -182,38 +153,4 @@ public class BocznyPasekLewy extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-    // private void changeCameraDistance() {
-    //     int distance = 8000;
-    //     float scale = getResources().getDisplayMetrics().density * distance;
-    //     mCardFrontLayout.setCameraDistance(scale);
-    //     mCardBackLayout.setCameraDistance(scale);
-    // }
-    //
-    // @SuppressLint("ResourceType")
-    // private void loadAnimations() {
-    //     mSetRightOut = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.anim.animacja);
-    //     mSetLeftIn = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.anim.animacja2);
-    // }
-    //
-    // private void findViews() {
-    //     mCardBackLayout = findViewById(R.id.card_back);
-    //     mCardFrontLayout = findViewById(R.id.card_front);
-    // }
-    //
-    // public void flipCard(View view) {
-    //     if (!mIsBackVisible) {
-    //         mSetRightOut.setTarget(mCardFrontLayout);
-    //         mSetLeftIn.setTarget(mCardBackLayout);
-    //         mSetRightOut.start();
-    //         mSetLeftIn.start();
-    //         mIsBackVisible = true;
-    //     } else {
-    //         mSetRightOut.setTarget(mCardBackLayout);
-    //         mSetLeftIn.setTarget(mCardFrontLayout);
-    //         mSetRightOut.start();
-    //         mSetLeftIn.start();
-    //         mIsBackVisible = false;
-    //     }
-    // }
 }

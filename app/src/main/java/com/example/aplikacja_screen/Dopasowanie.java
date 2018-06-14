@@ -223,8 +223,6 @@ public class Dopasowanie extends AppCompatActivity {
                 }
                 bl = false;
                 dalej.setEnabled(false);
-
-
             }
         });
 

@@ -22,7 +22,6 @@ public class EdytowanieZestawu extends AppCompatActivity {
     ArrayList<String> pl;
     ArrayList<String> en;
     String polskie, angielskie;
-    ArrayList<String> zaznaczone_el = new ArrayList<>();
     ListView lv;
     Button edytuj_fiszke;
     Database db;
@@ -38,7 +37,6 @@ public class EdytowanieZestawu extends AppCompatActivity {
         db = new Database(getContentResolver());
         lv = (ListView) findViewById(R.id.listView);
         lv.setChoiceMode(lv.CHOICE_MODE_SINGLE);
-
 
         //ID aktualnego zestawu
         SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());

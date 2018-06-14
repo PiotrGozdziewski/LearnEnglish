@@ -81,7 +81,6 @@ public class Statystyka extends AppCompatActivity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         userID = prefs.getString("id", "0");
 
-
         datyLekcji = new ArrayList<String>();
         ilośćLekcji = new ArrayList<Integer>();
 
@@ -237,12 +236,11 @@ public class Statystyka extends AppCompatActivity {
                 tableLayout.addView(row1);
             }
         }
-        ///////// wyświetlanie ilości lekcji w ciągu 7 ostatnich dni
+        //wyświetlanie ilości lekcji w ciągu 7 ostatnich dni
         for(int i=0;i<7;i++){
             ilość_lekcji.append("Data:  "+datyLekcji.get(i).toString()+"  \t");
             ilość_lekcji.append("Ilość:  "+ilośćLekcji.get(i).toString());
             ilość_lekcji.append("\n");
-
         }
     }
 
@@ -323,7 +321,6 @@ public class Statystyka extends AppCompatActivity {
             ilosc.add(ilość_lekcji);
             ilość_lekcji = 0;
         }
-
         return ilosc;
     }
 }

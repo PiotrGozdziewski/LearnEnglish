@@ -66,7 +66,7 @@ public class Rejestracja extends AppCompatActivity implements AdapterView.OnItem
                 } else if (!sPass.equals(sPass2)) {
                     Toast.makeText(getApplicationContext(), "Podane hasła nie są identyczne!", Toast.LENGTH_LONG).show();
                 } else if (!isPasswordValid(sPass)) {
-                    Toast.makeText(getApplicationContext(), "Hasło musi składać się z sześciu znaków, zawierać cyfry, małe/duże litery oraz znaki specjalne.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Hasło musi składać się z ośmiu znaków, zawierać cyfry, małe/duże litery oraz znaki specjalne.", Toast.LENGTH_LONG).show();
                 } else {
                     try {
                         SHA256 sha256 = new SHA256(sPass);
@@ -75,6 +75,11 @@ public class Rejestracja extends AppCompatActivity implements AdapterView.OnItem
                         int newId = (int) UsersContract.getUserId(uri);
                         db.insertIntoHints(pytanieId, newId, sOdp);
                         Toast.makeText(getApplicationContext(), "Konto zostało utworzone pomyślnie", Toast.LENGTH_LONG).show();
+                        imie.setText("");
+                        login.setText("");
+                        pass.setText("");
+                        pass2.setText("");
+                        odpowiedz.setText("");
                     } catch (Exception e) {
                         Toast.makeText(getApplicationContext(), "Podany login jest zajety!", Toast.LENGTH_LONG).show();
                     }
@@ -116,7 +121,7 @@ public class Rejestracja extends AppCompatActivity implements AdapterView.OnItem
         Pattern upperCasePattern = Pattern.compile("[A-Z ]");
         Pattern lowerCasePatern = Pattern.compile("[a-z ]");
         Pattern digitsPattern = Pattern.compile("[0-9 ]");
-        int passwordMinLength = 6;
+        int passwordMinLength = 8;
 
         if (password.length() < passwordMinLength) {
             return false;

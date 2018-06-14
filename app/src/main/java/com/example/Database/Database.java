@@ -97,10 +97,32 @@ public class Database {
         return cursor;
     }
 
+    public Cursor getSetsID(int userID){
+        String[] projection = {
+                SetsContract.Columns._ID,
+                SetsContract.Columns.SETS_USER_ID,
+                SetsContract.Columns.SETS_NAME};
+
+        String selection = SetsContract.Columns.SETS_USER_ID + " = ?";
+        String[] args = {String.valueOf(userID)};
+        Cursor cursor = contentResolver.query(SetsContract.CONTENT_URI,
+                projection,
+                selection,
+                args,
+                SetsContract.Columns._ID);
+        return cursor;
+    }
+
     //usuwanie zestawu o podanym ID
     public void deleteFromSets(int setId) {
         String selection = SetsContract.Columns._ID + " = ?";
         String[] args = {String.valueOf(setId)};
+        int count = contentResolver.delete(SetsContract.CONTENT_URI, selection, args);
+    }
+
+    public void deleteFromUsersSets(int userId) {
+        String selection = SetsContract.Columns.SETS_USER_ID + " = ?";
+        String[] args = {String.valueOf(userId)};
         int count = contentResolver.delete(SetsContract.CONTENT_URI, selection, args);
     }
 
@@ -522,6 +544,12 @@ public class Database {
         contentValues.put(UsersContract.Columns.USERS_NAME, name);
         Uri uri = contentResolver.insert(UsersContract.CONTENT_URI, contentValues);
         return uri;
+    }
+
+    public void deleteFromUsers(int userId) {
+        String selection = UsersContract.Columns._ID + " = ?";
+        String[] args = {String.valueOf(userId)};
+        int count = contentResolver.delete(UsersContract.CONTENT_URI, selection, args);
     }
 
    public void queryUsers() {

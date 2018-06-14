@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Random;
 
 public class Tlumaczenie extends AppCompatActivity {
 
@@ -48,9 +49,12 @@ public class Tlumaczenie extends AppCompatActivity {
     int idKategorii;
     int id_zadania;
 
-
     ProgressBar pb;
     int progress=0;
+
+    Random r;
+    int randomowa_wartosc;
+    int ilosc_slow=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +92,13 @@ public class Tlumaczenie extends AppCompatActivity {
             angielskie.add(cursor.getString(3));
         }
 
+        //kod od randoma
+        //wybrac 10 różnych elementow zakresu od 0 do polskie.size()-1
+        ilosc_slow=polskie.size()-1;
+        r = new Random();
+        randomowa_wartosc=r.nextInt(ilosc_slow);
+
+
         //pobranie id zadania
         SharedPreferences p2 = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         cursor2 = db.getExercise(idKategorii, id_typu_zadania);
@@ -96,11 +107,11 @@ public class Tlumaczenie extends AppCompatActivity {
         }
 
 
-        pl.setText(polskie.get(0));
+        pl.setText(polskie.get(randomowa_wartosc));  //0
         sprawdz_poprawnosc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (en.getText().toString().equals(angielskie.get(i).toString())) {
+                if (en.getText().toString().toLowerCase().equals(angielskie.get(randomowa_wartosc).toString().toLowerCase())) {  //i
 
                     sprawdz.setVisibility(View.INVISIBLE);
                     sprawdz_poprawnosc.setText("Poprawna odpowiedź");
@@ -124,7 +135,7 @@ public class Tlumaczenie extends AppCompatActivity {
                         public void onClick(View view) {
                             AlertDialog alertDialog = new AlertDialog.Builder(Tlumaczenie.this).create();
                             alertDialog.setTitle("Poprawna odpowiedz");
-                            alertDialog.setMessage(polskie.get(i) + " - " + angielskie.get(i));
+                            alertDialog.setMessage(polskie.get(randomowa_wartosc) + " - " + angielskie.get(randomowa_wartosc));
                             alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                                     new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int which) {
@@ -155,6 +166,8 @@ public class Tlumaczenie extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                r = new Random();
+                randomowa_wartosc=r.nextInt(ilosc_slow);
                 progress++;
                 //postep
                 pb.setProgress(progress);
@@ -171,7 +184,7 @@ public class Tlumaczenie extends AppCompatActivity {
                 bledna = false;
                 dalej.setVisibility(View.INVISIBLE);
                 if (i <= 9) {
-                    wczytaj_slowa(i);
+                    wczytaj_slowa(randomowa_wartosc); //i
                 }
                 if (i == 9) {
                     dalej.setText("Zakończ lekcje");

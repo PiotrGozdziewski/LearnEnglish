@@ -147,14 +147,14 @@ public class Uzupelnianie extends AppCompatActivity {
                     Boolean poprawna=false;
                     Boolean bledna=false;
 
-                   if(String.valueOf(brakujaceLitery.charAt(zmienna)).equals(nowy_literka_poprawna)){
-                       nowy_literka_poprawna="<font color=#1de535>"+nowy_literka_poprawna+"</font>";
-                       kolorowa_lieterka_poprawna=Html.fromHtml(nowy_literka_poprawna);
+                   if(String.valueOf(brakujaceLitery.toLowerCase().charAt(zmienna)).equals(nowy_literka_poprawna.toLowerCase())){
+                       nowy_literka_poprawna="<font color=#1de535>"+nowy_literka_poprawna.toLowerCase()+"</font>";
+                       kolorowa_lieterka_poprawna=Html.fromHtml(nowy_literka_poprawna.toLowerCase());
                        poprawna=true;
 
                    }else{
-                       nowy_literka_bledna="<font color=#db0f38>"+nowy_literka_bledna+"</font>";
-                       kolorowa_lieterka_bledna=Html.fromHtml(nowy_literka_bledna);
+                       nowy_literka_bledna="<font color=#db0f38>"+nowy_literka_bledna.toLowerCase()+"</font>";
+                       kolorowa_lieterka_bledna=Html.fromHtml(nowy_literka_bledna.toLowerCase());
                         bledna=true;
                    }
 
@@ -211,7 +211,7 @@ public class Uzupelnianie extends AppCompatActivity {
         sprawdzPoprawnoscButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (brakujaceLiteryET.getText().toString().equals(brakujaceLitery)) {
+                if (brakujaceLiteryET.getText().toString().toLowerCase().equals(brakujaceLitery.toLowerCase())) {
                     clear.setVisibility(View.INVISIBLE);
                     podpowiedzButton.setVisibility(View.INVISIBLE);
                     sprawdzPoprawnoscButton.setText("Poprawna odpowiedź");

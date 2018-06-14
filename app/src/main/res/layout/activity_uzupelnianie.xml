@@ -29,6 +29,7 @@
         android:layout_below="@+id/slowoPolskie"
         android:gravity="center"
         android:hint="Słowo "
+        android:letterSpacing="0.3"
         android:textSize="22dp" />
 
     <EditText

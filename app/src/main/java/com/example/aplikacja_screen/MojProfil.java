@@ -1,10 +1,12 @@
 package com.example.aplikacja_screen;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +19,7 @@ import com.example.Database.Database;
 import com.example.SHA256;
 import com.example.m.aplikacja_screen.R;
 
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 //co tu ma byc
@@ -25,9 +28,8 @@ import java.util.regex.Pattern;
 public class MojProfil extends AppCompatActivity {
     private static final String TAG = "MojProfil";
     TabHost tabHost;
-    ToggleButton tb;
-    EditText login, stare_haslo, nowe_haslo, nowe_haslo2, haslo;
-    Button zmien_login, zmien_haslo;
+    EditText login, stare_haslo, nowe_haslo, nowe_haslo2, haslo, usun_haslo;
+    Button zmien_login, zmien_haslo, usun_konto;
     Database db;
 
     @Override
@@ -35,7 +37,7 @@ public class MojProfil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_moj_profil);
         db = new Database(getContentResolver());
-        tb = (ToggleButton) findViewById(R.id.toggleButton);
+//        tb = (ToggleButton) findViewById(R.id.toggleButton);
         login = (EditText) findViewById(R.id.textView15);
         zmien_login = (Button) findViewById(R.id.button8);
         stare_haslo = (EditText) findViewById(R.id.textView16);
@@ -43,6 +45,8 @@ public class MojProfil extends AppCompatActivity {
         nowe_haslo = (EditText) findViewById(R.id.textView17);
         nowe_haslo2 = (EditText) findViewById(R.id.textView18);
         zmien_haslo = (Button) findViewById(R.id.button9);
+        usun_konto = (Button)findViewById(R.id.btnUsun);
+        usun_haslo = (EditText)findViewById(R.id.usun_haslo);
 
         tabHost = (TabHost) findViewById(R.id.tabHost);
         tabHost.setup();
@@ -57,9 +61,9 @@ public class MojProfil extends AppCompatActivity {
         s1.setIndicator("Ustawianie hasła");
         tabHost.addTab(s1);
 
-        s1 = tabHost.newTabSpec("Inne");
+        s1 = tabHost.newTabSpec("Usuwanie konta");
         s1.setContent(R.id.tab3);
-        s1.setIndicator("Inne");
+        s1.setIndicator("Usuwanie konta");
         tabHost.addTab(s1);
 
         //zmiana loginu
@@ -159,6 +163,77 @@ public class MojProfil extends AppCompatActivity {
                         }
                     }
                 }
+            }
+        });
+
+        usun_konto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //pobranie id aktualnego uzytkownika
+                SharedPreferences prefs1 = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                final String userID1 = prefs1.getString("id", "0");
+
+
+            String stareHasloOdUzytkownika = usun_haslo.getText().toString();
+            SHA256 sha256 = new SHA256(stareHasloOdUzytkownika);
+            stareHasloOdUzytkownika = sha256.getEncoded();
+
+            Cursor cursor = db.getUser(Integer.parseInt(userID1));
+            while (cursor.moveToNext()) {
+                String haslo_z_bazy = cursor.getString(2);
+                if(stareHasloOdUzytkownika.equals(haslo_z_bazy)){
+                    //usuwanie konta
+                ArrayList<Integer> id_zestawow=new ArrayList<Integer>();
+                Cursor c = db.getSetsID(Integer.parseInt(userID1));
+                while(c.moveToNext()){
+                    id_zestawow.add(c.getInt(0));
+                }
+                for(int k=0;k<id_zestawow.size();k++){
+                    db.deleteFlashcards(id_zestawow.get(k));
+                }
+                db.deleteFromUsersSets(Integer.parseInt(userID1));
+                db.deleteFromUsers(Integer.parseInt(userID1));
+                Toast.makeText(getApplicationContext(),"Usunieto konto", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MojProfil.this,MainActivity.class));
+                }
+
+
+                }
+
+
+
+
+
+
+
+
+//                final AlertDialog.Builder ad = new AlertDialog.Builder(getApplicationContext(MojProfil.this));
+//                ad.setMessage("Czy na pewno chcesz usunąć konto?");
+//                ad.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        //usuwanie konta
+//                                ArrayList<Integer> id_zestawow=new ArrayList<Integer>();
+//                                Cursor c = db.getSetsID(Integer.parseInt(userID1));
+//                                while(c.moveToNext()){
+//                                    id_zestawow.add(c.getInt(0));
+//                                }
+//                                for(int k=0;k<id_zestawow.size();k++){
+//                                    db.deleteFlashcards(id_zestawow.get(k));
+//                                }
+//                                db.deleteFromUsersSets(Integer.parseInt(userID1));
+//                                db.deleteFromUsers(Integer.parseInt(userID1));
+//                                Toast.makeText(getApplicationContext(),"Usunieto konto", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//                ad.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//
+//                    }
+//                });
+//
+//                ad.show();
             }
         });
     }

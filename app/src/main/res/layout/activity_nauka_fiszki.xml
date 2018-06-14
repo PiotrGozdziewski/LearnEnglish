@@ -33,4 +33,13 @@
         android:layout_marginStart="13dp"
         app:srcCompat="?attr/homeAsUpIndicator" />
 
+    <ProgressBar
+        android:id="@+id/progressBar6"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="280dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="46dp" />
+
 </RelativeLayout>

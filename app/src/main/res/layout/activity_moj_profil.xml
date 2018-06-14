@@ -107,31 +107,29 @@
 
                 </LinearLayout>
 
-                <!--<RelativeLayout-->
-                    <!--android:id="@+id/tab3"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:orientation="vertical">-->
+                <RelativeLayout
+                    android:id="@+id/tab3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                    <!--<TextView-->
-                        <!--android:id="@+id/textView25"-->
-                        <!--android:layout_width="150dp"-->
-                        <!--android:layout_height="25dp"-->
-                        <!--android:layout_marginTop="30dp"-->
-                        <!--android:textSize="20dp"-->
-                        <!--android:layout_marginLeft="15dp"-->
-                        <!--android:visibility="invisible"-->
-                        <!--android:text="Przypomnienie" />-->
+                    <EditText
+                        android:id="@+id/usun_haslo"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:inputType="textPassword"
+                        android:layout_marginLeft="15dp"
+                        android:hint="Wprowadź hasło" />
 
-                    <!--<ToggleButton-->
-                        <!--android:id="@+id/toggleButton"-->
-                        <!--android:layout_width="95dp"-->
-                        <!--android:layout_height="45dp"-->
-                        <!--android:layout_marginTop="20dp"-->
-                        <!--android:layout_marginLeft="215dp"-->
-                        <!--android:visibility="invisible"-->
-                        <!--android:onClick="onToggleClicked" />-->
-                <!--</RelativeLayout>-->
+                    <Button
+                        android:id="@+id/btnUsun"
+                        android:layout_width="270dp"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="70dp"
+                        android:text="Usuń konto"
+                        android:layout_marginLeft="15dp"/>
+                </RelativeLayout>
             </FrameLayout>
         </LinearLayout>
     </TabHost>

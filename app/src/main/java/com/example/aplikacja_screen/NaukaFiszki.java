@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 
 import com.example.Database.Database;
 import com.example.m.aplikacja_screen.R;
@@ -27,6 +28,8 @@ public class NaukaFiszki extends AppCompatActivity {
     ArrayList<String> pl;
     ArrayList<String> en;
     Database db;
+    ProgressBar pb;
+    int progress=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +41,12 @@ public class NaukaFiszki extends AppCompatActivity {
         fiszka = (Button) findViewById(R.id.button7);
         next = (ImageButton) findViewById(R.id.imageButton);
         back = (ImageButton)findViewById(R.id.imageButton2);
+        pb = (ProgressBar)findViewById(R.id.progressBar6);
 
         //pobranie ID aktualnego zestawu
         SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         int id_zestawu = p.getInt("ID", 0);
+
         //pobranie fiszek z bazy dla konkretnego zestawu
         Cursor cursor = db.getFlashcards();
         while (cursor.moveToNext()) {
@@ -50,7 +55,7 @@ public class NaukaFiszki extends AppCompatActivity {
                 en.add(cursor.getString(3));
             }
         }
-
+        pb.setMax(pl.size()-1);
         fiszka.setText(pl.get(0)); //pierwszy element z arrayList
         fiszka.setBackgroundColor(Color.parseColor("#f9f9b6"));
 
@@ -72,6 +77,13 @@ public class NaukaFiszki extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progress++;
+                pb.setProgress(progress);
+                if(progress==pl.size())
+                {
+                    progress=0;
+                    pb.setProgress(progress);
+                }
                 //kolejna fiszka
                 fiszka.setBackgroundColor(Color.parseColor("#f9f9b6"));
                 if (i == pl.size() - 1) {
@@ -86,6 +98,13 @@ public class NaukaFiszki extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progress--;
+                pb.setProgress(progress);
+                if(progress<0)
+                {
+                    progress=pl.size()-1;
+                    pb.setProgress(progress);
+                }
                 fiszka.setBackgroundColor(Color.parseColor("#f9f9b6"));
                 i--;
                 if(i==-1)

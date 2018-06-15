@@ -35,7 +35,7 @@
         android:layout_below="@+id/textView22"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="84dp"
-        android:background="#e6e1e1"
+        android:background="#ebfdd4"
         android:text="Sprawdź poprawność " />
 
     <Button
@@ -45,7 +45,7 @@
         android:layout_below="@+id/button17"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="33dp"
-        android:background="#e6e1e1"
+        android:background="#ebfdd4"
         android:visibility="invisible"
         android:text="Dalej" />
 
@@ -56,7 +56,7 @@
         android:layout_alignBaseline="@+id/button20"
         android:layout_alignBottom="@+id/button20"
         android:layout_alignStart="@+id/button20"
-        android:background="#e6e1e1"
+        android:background="#ebfdd4"
         android:visibility="gone"
         android:text="Pokaż odpowiedź" />
 

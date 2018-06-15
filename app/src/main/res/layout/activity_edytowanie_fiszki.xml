@@ -32,11 +32,12 @@
 
     <Button
         android:id="@+id/button11"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/editText20"
         android:layout_below="@+id/editText20"
         android:layout_marginEnd="52dp"
         android:layout_marginTop="38dp"
+        android:background="#ebfdd4"
         android:text="Edytuj" />
 </RelativeLayout>

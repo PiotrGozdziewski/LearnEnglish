@@ -30,11 +30,12 @@
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/editText"
         android:layout_below="@+id/editText"
         android:layout_marginTop="12dp"
+        android:background="#ebfdd4"
         android:text="Odzyskaj hasło" />
 
     <TextView
@@ -67,5 +68,6 @@
         android:layout_below="@+id/editText3"
         android:layout_marginTop="9dp"
         android:visibility="invisible"
+        android:background="#ebfdd4"
         android:text="SPRAWDŹ ODPOWIEDŹ" />
 </RelativeLayout>

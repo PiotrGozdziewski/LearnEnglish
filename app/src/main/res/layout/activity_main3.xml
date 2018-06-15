@@ -7,6 +7,16 @@
     android:background="@drawable/tlo"
     tools:context="com.example.aplikacja_screen.Rejestracja">
 
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="555dp"
+        android:text="* pola wymagane"
+        android:textColor="#000" />
+
     <EditText
         android:id="@+id/imieRej"
         android:layout_width="300dp"
@@ -20,7 +30,7 @@
         android:drawableLeft="@drawable/ic_action_name_person"
         android:gravity="fill_vertical"
         android:hint="Imię"
-        android:textColorHint="#eaedea"
+        android:textColor="#000"
         android:textSize="16dp" />
 
     <EditText
@@ -35,10 +45,11 @@
         android:drawableLeft="@drawable/ic_action_name_person"
         android:gravity="fill_vertical"
         android:maxLength="40"
-        android:hint="Login"
-        android:textColorHint="#e9ece9"
+        android:hint="Login*"
+        android:textColor="#000"
         android:textSize="16dp" />
 
+    <!--android:textColorHint="#e9ece9"-->
     <EditText
         android:id="@+id/passRej"
         android:layout_width="300dp"
@@ -50,9 +61,9 @@
         android:contextClickable="true"
         android:drawableLeft="@drawable/ic_action_name_lock"
         android:gravity="fill_vertical"
-        android:hint="Hasło"
+        android:hint="Hasło*"
         android:inputType="textPassword"
-        android:textColorHint="#e9ece9"
+        android:textColor="#000"
         android:textSize="16dp" />
 
     <EditText
@@ -66,9 +77,9 @@
         android:contextClickable="true"
         android:drawableLeft="@drawable/ic_action_name_lock"
         android:gravity="fill_vertical"
-        android:hint="Powtórz hasło"
+        android:hint="Powtórz hasło*"
         android:inputType="textPassword"
-        android:textColorHint="#e9ece9"
+        android:textColor="#000"
         android:textSize="16dp" />
 
     <Spinner
@@ -122,8 +133,8 @@
         android:layout_alignStart="@+id/pass2Rej"
         android:layout_below="@+id/pass2Rej"
         android:layout_marginTop="20dp"
-        android:hint=" Wybierz pytanie-podpowiedź"
-        android:textColorHint="#ffff" />
+        android:textColor="#000"
+        android:hint=" Wybierz pytanie-podpowiedź" />
 
     <EditText
         android:id="@+id/odpRej"
@@ -135,8 +146,8 @@
         android:background="#11000000"
         android:contextClickable="true"
         android:gravity="fill_vertical"
-        android:hint="     Wprowadź odpowiedź"
-        android:textColorHint="#dce0e5"
+        android:hint="     Wprowadź odpowiedź*"
+        android:textColor="#000"
         android:maxLength="20"
         android:textSize="16dp" />
 
@@ -168,7 +179,6 @@
             android:layout_marginLeft="55dp"
             android:layout_marginTop="13dp"
             android:text="WRÓĆ DO LOGOWANIA"
-
             android:textColor="#000"
             android:textSize="18sp" />
 

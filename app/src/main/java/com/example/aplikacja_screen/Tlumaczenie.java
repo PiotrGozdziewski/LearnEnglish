@@ -42,9 +42,7 @@ public class Tlumaczenie extends AppCompatActivity {
     int bledne_odp = 0;
     Boolean bledna = false;
     Handler h = new Handler();
-    Cursor cursor;
-    Cursor cursor1;
-    Cursor cursor2;
+    Cursor cursor,cursor1, cursor2;
     int id_typu_zadania;
     int idKategorii;
     int id_zadania;
@@ -71,7 +69,7 @@ public class Tlumaczenie extends AppCompatActivity {
         db = new Database(getContentResolver());
 
         pb.setMax(9);
-
+        pb.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
         //pobranie id aktualnej kategorii
         SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         idKategorii = p.getInt("idKategorii", 0);
@@ -143,7 +141,7 @@ public class Tlumaczenie extends AppCompatActivity {
                                     });
                             alertDialog.show();
                             sprawdz_poprawnosc.setText("Sprawdź poprawność");
-                            sprawdz_poprawnosc.setBackgroundColor(Color.parseColor("#e6e1e1"));
+                            sprawdz_poprawnosc.setBackgroundColor(Color.parseColor("#ebfdd4"));
                         }
                     });
 
@@ -154,7 +152,7 @@ public class Tlumaczenie extends AppCompatActivity {
                             //podpowiedzButton.setVisibility(View.VISIBLE);
                             sprawdz_poprawnosc.setVisibility(View.VISIBLE);
                             sprawdz_poprawnosc.setClickable(true);
-                            sprawdz_poprawnosc.setBackgroundColor(Color.parseColor("#e6e1e1"));
+                            sprawdz_poprawnosc.setBackgroundColor(Color.parseColor("#ebfdd4"));
                         }
                     }, 3000);
                 }
@@ -178,7 +176,7 @@ public class Tlumaczenie extends AppCompatActivity {
                 en.setText("");
                 sprawdz_poprawnosc.setClickable(true);
                 sprawdz_poprawnosc.setText("Sprawdź poprawność");
-                sprawdz_poprawnosc.setBackgroundColor(Color.parseColor("#e6e1e1"));
+                sprawdz_poprawnosc.setBackgroundColor(Color.parseColor("#ebfdd4"));
                 i++;
                 bledna = false;
                 dalej.setVisibility(View.INVISIBLE);

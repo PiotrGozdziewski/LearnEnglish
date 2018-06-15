@@ -27,12 +27,8 @@ public class Rejestracja extends AppCompatActivity implements AdapterView.OnItem
     CardView dodaj_uzytkownika;
     CardView wroc_do_logowania;
     TextView wybierz_pytanie;
-    EditText imie;
-    EditText login;
-    EditText pass;
-    EditText pass2;
+    EditText imie,login,pass,pass2,odpowiedz;
     Spinner pytanie_podpowiedz;
-    EditText odpowiedz;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

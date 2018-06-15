@@ -42,10 +42,7 @@ public class Uzupelnianie extends AppCompatActivity {
 
     private static final String TAG = "Uzupelnianie";
 
-    Button sprawdzPoprawnoscButton;
-    Button dalejButton;
-    Button podpowiedzButton;
-    Button clear;
+    Button sprawdzPoprawnoscButton, dalejButton, podpowiedzButton, clear;
 
     TextView zakreskowaneSlowoTV;
     TextView polskieSlowoTV;
@@ -96,7 +93,7 @@ public class Uzupelnianie extends AppCompatActivity {
         brakujaceLiteryET = (EditText) findViewById(R.id.brakujaceLitery);
         pb = (ProgressBar)findViewById(R.id.progressBar4);
         pb.setMax(9);
-
+        pb.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
         polskie = new ArrayList<>();
         angielskie = new ArrayList<>();
         kreski_index = new ArrayList<Integer>();
@@ -245,7 +242,7 @@ public class Uzupelnianie extends AppCompatActivity {
                                     });
                             alertDialog.show();
                             sprawdzPoprawnoscButton.setText("Sprawdź poprawność");
-                            sprawdzPoprawnoscButton.setBackgroundColor(Color.parseColor("#e6e1e1"));
+                            sprawdzPoprawnoscButton.setBackgroundColor(Color.parseColor("#ebfdd4"));
                         }
                     });
 
@@ -256,7 +253,7 @@ public class Uzupelnianie extends AppCompatActivity {
                             //podpowiedzButton.setVisibility(View.VISIBLE);
                             sprawdzPoprawnoscButton.setVisibility(View.VISIBLE);
                             sprawdzPoprawnoscButton.setClickable(true);
-                            sprawdzPoprawnoscButton.setBackgroundColor(Color.parseColor("#e6e1e1"));
+                            sprawdzPoprawnoscButton.setBackgroundColor(Color.parseColor("#ebfdd4"));
                         }
                     }, 3000);
                 }
@@ -278,7 +275,7 @@ public class Uzupelnianie extends AppCompatActivity {
                 brakujaceLiteryET.setText("");
                 sprawdzPoprawnoscButton.setClickable(true);
                 sprawdzPoprawnoscButton.setText("Sprawdź poprawność");
-                sprawdzPoprawnoscButton.setBackgroundColor(Color.parseColor("#e6e1e1"));
+                sprawdzPoprawnoscButton.setBackgroundColor(Color.parseColor("#ebfdd4"));
                 i++;
                 bledna = false;
                 dalejButton.setVisibility(View.INVISIBLE);

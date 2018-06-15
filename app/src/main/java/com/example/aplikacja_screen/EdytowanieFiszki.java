@@ -14,8 +14,7 @@ import com.example.m.aplikacja_screen.R;
 
 public class EdytowanieFiszki extends AppCompatActivity {
 
-    EditText pl;
-    EditText en;
+    EditText pl,en;
     Button edytuj;
     Database db;
     int id_zestawu;

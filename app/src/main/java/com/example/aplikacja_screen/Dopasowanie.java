@@ -37,16 +37,19 @@ public class Dopasowanie extends AppCompatActivity {
 
     ArrayList<String> en;
     ArrayList<String> en_randomowe;
-    ArrayList<byte[]> photos;
     ArrayAdapter<String> adapter;
+    ArrayList<byte[]> photos;
+
     int i = 0;
     //wartosci od wybranego item w spinerze
     int random_sp1 = 0;
     int random_sp2 = 0;
     int random_sp3 = 0;
     int random_sp4 = 0;
-    Database db;
     int ilosc_iteracji = 0;
+
+    Database db;
+
     Bitmap bmp;
     Handler h = new Handler();
 
@@ -93,6 +96,7 @@ public class Dopasowanie extends AppCompatActivity {
 
         pb = (ProgressBar)findViewById(R.id.progressBar2);
         pb.setMax(3);
+        pb.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
 
         //pobranie wartości aktualnie wybranej kategorii
         SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -179,7 +183,7 @@ public class Dopasowanie extends AppCompatActivity {
                         @Override
                         public void run() {
                             sprawdz.setText("Sprawdź");
-                            sprawdz.setBackgroundColor(Color.parseColor("#e6e1e1"));
+                            sprawdz.setBackgroundColor(Color.parseColor("#ebfdd4"));
                         }
                     }, 3000);
                     bledne++;
@@ -198,11 +202,11 @@ public class Dopasowanie extends AppCompatActivity {
                 sp2.setEnabled(true);
                 sp3.setEnabled(true);
                 sp4.setEnabled(true);
-                sprawdz.setBackgroundColor(Color.parseColor("#e6e1e1"));
-                r1.setBackgroundColor(Color.parseColor("#eae9e7"));
-                r2.setBackgroundColor(Color.parseColor("#eae9e7"));
-                r3.setBackgroundColor(Color.parseColor("#eae9e7"));
-                r4.setBackgroundColor(Color.parseColor("#eae9e7"));
+                sprawdz.setBackgroundColor(Color.parseColor("#ebfdd4"));
+                r1.setBackgroundColor(Color.parseColor("#fcfbf9"));
+                r2.setBackgroundColor(Color.parseColor("#fcfbf9"));
+                r3.setBackgroundColor(Color.parseColor("#fcfbf9"));
+                r4.setBackgroundColor(Color.parseColor("#fcfbf9"));
 
                 if (ilosc_iteracji == 3) {
                     zapisz_statytyski();

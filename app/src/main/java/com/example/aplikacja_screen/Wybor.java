@@ -12,9 +12,12 @@ import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.Database.Database;
 import com.example.m.aplikacja_screen.R;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -25,21 +28,15 @@ import java.util.Random;
 public class Wybor extends AppCompatActivity {
 
     Button b1, b2, b3, b4, nastepne_slowo;
-    Button t1;
+    TextView slowo;
     Database db;
-    Cursor cursor;
-    Cursor cursor1;
-    Cursor cursor2;
+    Cursor cursor, cursor1, cursor2;
     int idKategorii;
     ArrayList<String> pl;
     ArrayList<String> en;
     Random r;
     int ilosc_slow;
-    int random_pl;
-    int random_en1;
-    int random_en2;
-    int random_en3;
-    int random_en4;
+    int random_pl, random_en1, random_en2, random_en3, random_en4;
     int index_pl;
     int index_en;
     ArrayList<Integer> randomowe_ustawienie_en;
@@ -64,10 +61,11 @@ public class Wybor extends AppCompatActivity {
         b2 = (Button) findViewById(R.id.button41);
         b3 = (Button) findViewById(R.id.button42);
         b4 = (Button) findViewById(R.id.button43);
-        t1 = (Button) findViewById(R.id.button14);
+        slowo = (TextView)findViewById(R.id.slovoTV);
         nastepne_slowo = (Button) findViewById(R.id.button39);
         pb = (ProgressBar)findViewById(R.id.progressBar5);
         pb.setMax(14);
+        pb.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
         db = new Database(getContentResolver());
 
         pl = new ArrayList<String>();
@@ -113,8 +111,7 @@ public class Wybor extends AppCompatActivity {
         random_en4 = random_pl;
 
 
-        t1.setText(pl.get(random_pl).toString());
-        t1.setTextSize(15);
+        slowo.setText(pl.get(random_pl).toString());
         b1.setText(en.get(random_en4).toString());
         b2.setText(en.get(random_en1).toString());
         b3.setText(en.get(random_en2).toString());
@@ -125,7 +122,7 @@ public class Wybor extends AppCompatActivity {
             public void onClick(View v) {
 
                 index_en = en.indexOf(b1.getText().toString()); //liczony od zera
-                index_pl = pl.indexOf(t1.getText().toString());
+                index_pl = pl.indexOf(slowo.getText().toString());
                 if (index_en == index_pl) {
                     nastepne_slowo.setClickable(true);
                     poprawna1=true;
@@ -149,7 +146,7 @@ public class Wybor extends AppCompatActivity {
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            b1.setBackgroundColor(Color.parseColor("#e6dcdc"));
+                            b1.setBackgroundColor(Color.parseColor("#ebfdd4"));
                             nastepne_slowo.setClickable(false);
                             b1.setClickable(true);
                             b2.setClickable(true);
@@ -166,7 +163,7 @@ public class Wybor extends AppCompatActivity {
             public void onClick(View v) {
 
                 index_en = en.indexOf(b2.getText().toString()); //liczony od zera
-                index_pl = pl.indexOf(t1.getText().toString());
+                index_pl = pl.indexOf(slowo.getText().toString());
                 if (index_en == index_pl) {
                     nastepne_slowo.setClickable(true);
                     poprawna2=true;
@@ -189,7 +186,7 @@ public class Wybor extends AppCompatActivity {
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            b2.setBackgroundColor(Color.parseColor("#e6dcdc"));
+                            b2.setBackgroundColor(Color.parseColor("#ebfdd4"));
                             nastepne_slowo.setClickable(false);
                             b1.setClickable(true);
                             b2.setClickable(true);
@@ -206,7 +203,7 @@ public class Wybor extends AppCompatActivity {
             public void onClick(View v) {
 
                 index_en = en.indexOf(b3.getText().toString()); //liczony od zera
-                index_pl = pl.indexOf(t1.getText().toString());
+                index_pl = pl.indexOf(slowo.getText().toString());
                 if (index_en == index_pl) {
                     nastepne_slowo.setClickable(true);
                     poprawna3=true;
@@ -229,7 +226,7 @@ public class Wybor extends AppCompatActivity {
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            b3.setBackgroundColor(Color.parseColor("#e6dcdc"));
+                            b3.setBackgroundColor(Color.parseColor("#ebfdd4"));
                             nastepne_slowo.setClickable(false);
                             b1.setClickable(true);
                             b2.setClickable(true);
@@ -246,7 +243,7 @@ public class Wybor extends AppCompatActivity {
             public void onClick(View v) {
 
                 index_en = en.indexOf(b4.getText().toString()); //liczony od zera
-                index_pl = pl.indexOf(t1.getText().toString());
+                index_pl = pl.indexOf(slowo.getText().toString());
                 if (index_en == index_pl) {
                     nastepne_slowo.setClickable(true);
                     poprawna4=true;
@@ -269,7 +266,7 @@ public class Wybor extends AppCompatActivity {
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            b4.setBackgroundColor(Color.parseColor("#e6dcdc"));
+                            b4.setBackgroundColor(Color.parseColor("#ebfdd4"));
                             nastepne_slowo.setClickable(false);
                             b1.setClickable(true);
                             b2.setClickable(true);
@@ -349,11 +346,11 @@ public class Wybor extends AppCompatActivity {
                         } while (d == a | d == b | d == c);
                     }
                     //czyszczenie buttonow background
-                    b1.setBackgroundColor(Color.parseColor("#e6dcdc"));
-                    b2.setBackgroundColor(Color.parseColor("#e6dcdc"));
-                    b3.setBackgroundColor(Color.parseColor("#e6dcdc"));
-                    b4.setBackgroundColor(Color.parseColor("#e6dcdc"));
-                    t1.setText(pl.get(random_pl).toString());
+                    b1.setBackgroundColor(Color.parseColor("#ebfdd4"));
+                    b2.setBackgroundColor(Color.parseColor("#ebfdd4"));
+                    b3.setBackgroundColor(Color.parseColor("#ebfdd4"));
+                    b4.setBackgroundColor(Color.parseColor("#ebfdd4"));
+                    slowo.setText(pl.get(random_pl).toString());
                     b1.setText(en.get(randomowe_ustawienie_en.get(b)).toString());
                     b2.setText(en.get(randomowe_ustawienie_en.get(c)).toString());
                     b3.setText(en.get(randomowe_ustawienie_en.get(d)).toString());

@@ -50,7 +50,7 @@
         android:layout_alignStart="@+id/imageView7"
         android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
-        android:background="#eae9e7" >
+        android:background="#fcfbf9" >
     <Spinner
         android:id="@+id/spinner2"
         style="@style/Widget.AppCompat.DropDownItem.Spinner"
@@ -67,7 +67,7 @@
         android:layout_alignStart="@+id/imageView7"
         android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
-        android:background="#eae9e7" >
+        android:background="#fcfbf9" >
     <Spinner
         android:id="@+id/spinner4"
         style="@style/Widget.AppCompat.DropDownItem.Spinner"
@@ -86,7 +86,7 @@
         android:layout_alignStart="@+id/imageView6"
         android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
-        android:background="#eae9e7" >
+        android:background="#fcfbf9" >
     <Spinner
         android:id="@+id/spinner5"
         style="@style/Widget.AppCompat.DropDownItem.Spinner"
@@ -104,7 +104,7 @@
         android:layout_alignStart="@+id/imageView6"
         android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
-        android:background="#eae9e7" >
+        android:background="#fcfbf9" >
     <Spinner
         android:id="@+id/spinner3"
         style="@style/Widget.AppCompat.DropDownItem.Spinner"
@@ -122,6 +122,7 @@
         android:layout_above="@+id/button33"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"
+        android:background="#ebfdd4"
         android:text="Sprawdź" />
 
     <Button
@@ -131,6 +132,7 @@
         android:layout_alignEnd="@+id/button32"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="47dp"
+        android:background="#ebfdd4"
         android:text="Dalej" />
 
     <ProgressBar

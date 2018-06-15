@@ -42,7 +42,7 @@ public class NaukaFiszki extends AppCompatActivity {
         next = (ImageButton) findViewById(R.id.imageButton);
         back = (ImageButton)findViewById(R.id.imageButton2);
         pb = (ProgressBar)findViewById(R.id.progressBar6);
-
+        pb.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
         //pobranie ID aktualnego zestawu
         SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         int id_zestawu = p.getInt("ID", 0);

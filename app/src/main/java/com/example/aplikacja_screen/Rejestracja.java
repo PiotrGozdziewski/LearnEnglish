@@ -61,7 +61,7 @@ public class Rejestracja extends AppCompatActivity implements AdapterView.OnItem
                 int pytanieId = (int) pytanie_podpowiedz.getSelectedItemId();
                 String sOdp = odpowiedz.getText().toString();
 
-                if (sImie.equals("") || sLogin.equals("") || sPass.equals("") || sPass2.equals("") || sOdp.equals("")) {
+                if (sLogin.equals("") || sPass.equals("") || sPass2.equals("") || sOdp.equals("")) {
                     Toast.makeText(getApplicationContext(), "Zostawiono puste pola!", Toast.LENGTH_LONG).show();
                 } else if (!sPass.equals(sPass2)) {
                     Toast.makeText(getApplicationContext(), "Podane hasła nie są identyczne!", Toast.LENGTH_LONG).show();

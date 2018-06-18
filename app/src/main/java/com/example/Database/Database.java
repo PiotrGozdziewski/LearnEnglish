@@ -311,7 +311,23 @@ public class Database {
                 ExercisesTypesContract.Columns._ID);
         return cursor;
     }
-
+    public Cursor getFlashID(int id)
+    {
+        String[] projection = {
+                FlashcardsContract.Columns._ID,
+                FlashcardsContract.Columns.FLASHCARDS_SET_ID,
+                FlashcardsContract.Columns.FLASHCARDS_WORD_PL,
+                FlashcardsContract.Columns.FLASHCARDS_WORD_EN
+        };
+        String[] args = {String.valueOf(id)};
+        String selection = FlashcardsContract.Columns.FLASHCARDS_SET_ID+" =?";
+        Cursor cursor = contentResolver.query(FlashcardsContract.CONTENT_URI,
+                projection,
+                selection,
+                args,
+                FlashcardsContract.Columns._ID);
+        return cursor;
+    }
 
     //pobierz lekcje danego uzytkownika
     public Cursor getLessons(int id)

@@ -69,7 +69,7 @@ public class Tlumaczenie extends AppCompatActivity {
         db = new Database(getContentResolver());
 
         pb.setMax(9);
-        pb.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
+        pb.getProgressDrawable().setColorFilter(Color.parseColor("#10961d"), android.graphics.PorterDuff.Mode.SRC_IN);
         //pobranie id aktualnej kategorii
         SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         idKategorii = p.getInt("idKategorii", 0);
@@ -141,7 +141,7 @@ public class Tlumaczenie extends AppCompatActivity {
                                     });
                             alertDialog.show();
                             sprawdz_poprawnosc.setText("Sprawdź poprawność");
-                            sprawdz_poprawnosc.setBackgroundColor(Color.parseColor("#ebfdd4"));
+                            sprawdz_poprawnosc.setBackgroundColor(Color.parseColor("#eaeae1"));
                         }
                     });
 
@@ -152,7 +152,7 @@ public class Tlumaczenie extends AppCompatActivity {
                             //podpowiedzButton.setVisibility(View.VISIBLE);
                             sprawdz_poprawnosc.setVisibility(View.VISIBLE);
                             sprawdz_poprawnosc.setClickable(true);
-                            sprawdz_poprawnosc.setBackgroundColor(Color.parseColor("#ebfdd4"));
+                            sprawdz_poprawnosc.setBackgroundColor(Color.parseColor("#eaeae1"));
                         }
                     }, 3000);
                 }
@@ -176,7 +176,7 @@ public class Tlumaczenie extends AppCompatActivity {
                 en.setText("");
                 sprawdz_poprawnosc.setClickable(true);
                 sprawdz_poprawnosc.setText("Sprawdź poprawność");
-                sprawdz_poprawnosc.setBackgroundColor(Color.parseColor("#ebfdd4"));
+                sprawdz_poprawnosc.setBackgroundColor(Color.parseColor("#eaeae1"));
                 i++;
                 bledna = false;
                 dalej.setVisibility(View.INVISIBLE);

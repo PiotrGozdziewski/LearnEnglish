@@ -93,7 +93,7 @@ public class Uzupelnianie extends AppCompatActivity {
         brakujaceLiteryET = (EditText) findViewById(R.id.brakujaceLitery);
         pb = (ProgressBar)findViewById(R.id.progressBar4);
         pb.setMax(9);
-        pb.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
+        pb.getProgressDrawable().setColorFilter(Color.parseColor("#10961d"), android.graphics.PorterDuff.Mode.SRC_IN);
         polskie = new ArrayList<>();
         angielskie = new ArrayList<>();
         kreski_index = new ArrayList<Integer>();
@@ -242,7 +242,7 @@ public class Uzupelnianie extends AppCompatActivity {
                                     });
                             alertDialog.show();
                             sprawdzPoprawnoscButton.setText("Sprawdź poprawność");
-                            sprawdzPoprawnoscButton.setBackgroundColor(Color.parseColor("#ebfdd4"));
+                            sprawdzPoprawnoscButton.setBackgroundColor(Color.parseColor("#eaeae1"));
                         }
                     });
 
@@ -253,7 +253,7 @@ public class Uzupelnianie extends AppCompatActivity {
                             //podpowiedzButton.setVisibility(View.VISIBLE);
                             sprawdzPoprawnoscButton.setVisibility(View.VISIBLE);
                             sprawdzPoprawnoscButton.setClickable(true);
-                            sprawdzPoprawnoscButton.setBackgroundColor(Color.parseColor("#ebfdd4"));
+                            sprawdzPoprawnoscButton.setBackgroundColor(Color.parseColor("#eaeae1"));
                         }
                     }, 3000);
                 }
@@ -275,7 +275,7 @@ public class Uzupelnianie extends AppCompatActivity {
                 brakujaceLiteryET.setText("");
                 sprawdzPoprawnoscButton.setClickable(true);
                 sprawdzPoprawnoscButton.setText("Sprawdź poprawność");
-                sprawdzPoprawnoscButton.setBackgroundColor(Color.parseColor("#ebfdd4"));
+                sprawdzPoprawnoscButton.setBackgroundColor(Color.parseColor("#eaeae1"));
                 i++;
                 bledna = false;
                 dalejButton.setVisibility(View.INVISIBLE);

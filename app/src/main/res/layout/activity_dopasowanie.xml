@@ -92,7 +92,6 @@
         style="@style/Widget.AppCompat.DropDownItem.Spinner"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-
         android:popupBackground="#f5f5f0" />
     </RelativeLayout>
 
@@ -122,7 +121,7 @@
         android:layout_above="@+id/button33"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"
-        android:background="#ebfdd4"
+        android:background="#eaeae1"
         android:text="Sprawdź" />
 
     <Button
@@ -132,7 +131,7 @@
         android:layout_alignEnd="@+id/button32"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="47dp"
-        android:background="#ebfdd4"
+        android:background="#eaeae1"
         android:text="Dalej" />
 
     <ProgressBar

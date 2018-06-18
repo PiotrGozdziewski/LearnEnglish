@@ -96,7 +96,7 @@ public class Dopasowanie extends AppCompatActivity {
 
         pb = (ProgressBar)findViewById(R.id.progressBar2);
         pb.setMax(3);
-        pb.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
+        pb.getProgressDrawable().setColorFilter(Color.parseColor("#10961d"), android.graphics.PorterDuff.Mode.SRC_IN);
 
         //pobranie wartości aktualnie wybranej kategorii
         SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -183,7 +183,7 @@ public class Dopasowanie extends AppCompatActivity {
                         @Override
                         public void run() {
                             sprawdz.setText("Sprawdź");
-                            sprawdz.setBackgroundColor(Color.parseColor("#ebfdd4"));
+                            sprawdz.setBackgroundColor(Color.parseColor("#eaeae1"));
                         }
                     }, 3000);
                     bledne++;
@@ -202,16 +202,17 @@ public class Dopasowanie extends AppCompatActivity {
                 sp2.setEnabled(true);
                 sp3.setEnabled(true);
                 sp4.setEnabled(true);
-                sprawdz.setBackgroundColor(Color.parseColor("#ebfdd4"));
-                r1.setBackgroundColor(Color.parseColor("#fcfbf9"));
-                r2.setBackgroundColor(Color.parseColor("#fcfbf9"));
-                r3.setBackgroundColor(Color.parseColor("#fcfbf9"));
-                r4.setBackgroundColor(Color.parseColor("#fcfbf9"));
+                sprawdz.setBackgroundColor(Color.parseColor("#eaeae1"));
+                r1.setBackgroundColor(Color.parseColor("#eaeae1"));
+                r2.setBackgroundColor(Color.parseColor("#eaeae1"));
+                r3.setBackgroundColor(Color.parseColor("#eaeae1"));
+                r4.setBackgroundColor(Color.parseColor("#eaeae1"));
 
                 if (ilosc_iteracji == 3) {
                     zapisz_statytyski();
-                    startActivity(new Intent(Dopasowanie.this, BocznyPasekLewy.class));
+                    startActivity(new Intent(Dopasowanie.this, WyborKategorii.class));
                 }
+
                 if (ilosc_iteracji <= 2) {
                     en_randomowe.clear();
                     en_randomowe.add(0, " ");

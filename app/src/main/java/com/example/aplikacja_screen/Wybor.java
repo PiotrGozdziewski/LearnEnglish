@@ -65,7 +65,7 @@ public class Wybor extends AppCompatActivity {
         nastepne_slowo = (Button) findViewById(R.id.button39);
         pb = (ProgressBar)findViewById(R.id.progressBar5);
         pb.setMax(14);
-        pb.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
+        pb.getProgressDrawable().setColorFilter(Color.parseColor("#10961d"), android.graphics.PorterDuff.Mode.SRC_IN);
         db = new Database(getContentResolver());
 
         pl = new ArrayList<String>();
@@ -146,7 +146,7 @@ public class Wybor extends AppCompatActivity {
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            b1.setBackgroundColor(Color.parseColor("#ebfdd4"));
+                            b1.setBackgroundColor(Color.parseColor("#eaeae1"));
                             nastepne_slowo.setClickable(false);
                             b1.setClickable(true);
                             b2.setClickable(true);
@@ -186,7 +186,7 @@ public class Wybor extends AppCompatActivity {
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            b2.setBackgroundColor(Color.parseColor("#ebfdd4"));
+                            b2.setBackgroundColor(Color.parseColor("#eaeae1"));
                             nastepne_slowo.setClickable(false);
                             b1.setClickable(true);
                             b2.setClickable(true);
@@ -226,7 +226,7 @@ public class Wybor extends AppCompatActivity {
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            b3.setBackgroundColor(Color.parseColor("#ebfdd4"));
+                            b3.setBackgroundColor(Color.parseColor("#eaeae1"));
                             nastepne_slowo.setClickable(false);
                             b1.setClickable(true);
                             b2.setClickable(true);
@@ -266,7 +266,7 @@ public class Wybor extends AppCompatActivity {
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            b4.setBackgroundColor(Color.parseColor("#ebfdd4"));
+                            b4.setBackgroundColor(Color.parseColor("#eaeae1"));
                             nastepne_slowo.setClickable(false);
                             b1.setClickable(true);
                             b2.setClickable(true);
@@ -346,10 +346,10 @@ public class Wybor extends AppCompatActivity {
                         } while (d == a | d == b | d == c);
                     }
                     //czyszczenie buttonow background
-                    b1.setBackgroundColor(Color.parseColor("#ebfdd4"));
-                    b2.setBackgroundColor(Color.parseColor("#ebfdd4"));
-                    b3.setBackgroundColor(Color.parseColor("#ebfdd4"));
-                    b4.setBackgroundColor(Color.parseColor("#ebfdd4"));
+                    b1.setBackgroundColor(Color.parseColor("#eaeae1"));
+                    b2.setBackgroundColor(Color.parseColor("#eaeae1"));
+                    b3.setBackgroundColor(Color.parseColor("#eaeae1"));
+                    b4.setBackgroundColor(Color.parseColor("#eaeae1"));
                     slowo.setText(pl.get(random_pl).toString());
                     b1.setText(en.get(randomowe_ustawienie_en.get(b)).toString());
                     b2.setText(en.get(randomowe_ustawienie_en.get(c)).toString());

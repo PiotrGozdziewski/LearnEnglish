@@ -38,6 +38,6 @@
         android:layout_below="@+id/editText20"
         android:layout_marginEnd="52dp"
         android:layout_marginTop="38dp"
-        android:background="#ebfdd4"
+        android:background="#eaeae1"
         android:text="Edytuj" />
 </RelativeLayout>

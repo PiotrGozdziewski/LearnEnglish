@@ -78,7 +78,7 @@ public class Rozsypanka extends AppCompatActivity {
         słowa_ze_zdania_en = new ArrayList<String>();
 
         pb.setMax(4);
-        pb.getProgressDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
+        pb.getProgressDrawable().setColorFilter(Color.parseColor("#10961d"), android.graphics.PorterDuff.Mode.SRC_IN);
         //pobranie id aktualnej kategorii
         SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         idKategorii = p.getInt("idKategorii", 0);
@@ -124,16 +124,16 @@ public class Rozsypanka extends AppCompatActivity {
                     zapisz_statytyski();
                     startActivity(new Intent(Rozsypanka.this, WyborKategorii.class));
                 }
-                btn1.setBackgroundColor(Color.parseColor("#ebfdd4"));
-                btn2.setBackgroundColor(Color.parseColor("#ebfdd4"));
-                btn3.setBackgroundColor(Color.parseColor("#ebfdd4"));
-                btn4.setBackgroundColor(Color.parseColor("#ebfdd4"));
-                btn5.setBackgroundColor(Color.parseColor("#ebfdd4"));
-                btn6.setBackgroundColor(Color.parseColor("#ebfdd4"));
-                btn7.setBackgroundColor(Color.parseColor("#ebfdd4"));
-                btn8.setBackgroundColor(Color.parseColor("#ebfdd4"));
+                btn1.setBackgroundColor(Color.parseColor("#eaeae1"));
+                btn2.setBackgroundColor(Color.parseColor("#eaeae1"));
+                btn3.setBackgroundColor(Color.parseColor("#eaeae1"));
+                btn4.setBackgroundColor(Color.parseColor("#eaeae1"));
+                btn5.setBackgroundColor(Color.parseColor("#eaeae1"));
+                btn6.setBackgroundColor(Color.parseColor("#eaeae1"));
+                btn7.setBackgroundColor(Color.parseColor("#eaeae1"));
+                btn8.setBackgroundColor(Color.parseColor("#eaeae1"));
                 sprawdź.setText("Sprawdź");
-                sprawdź.setBackgroundColor(Color.parseColor("#ebfdd4"));
+                sprawdź.setBackgroundColor(Color.parseColor("#eaeae1"));
                 wprowadz.setText("");
                 btn1.setVisibility(View.INVISIBLE);
                 btn2.setVisibility(View.INVISIBLE);
@@ -338,7 +338,7 @@ public class Rozsypanka extends AppCompatActivity {
                         @Override
                         public void run() {
                             sprawdź.setText("Sprawdź");
-                            sprawdź.setBackgroundColor(Color.parseColor("#ebfdd4"));
+                            sprawdź.setBackgroundColor(Color.parseColor("#eaeae1"));
                             sprawdź.setClickable(true);
                         }
                     }, 3000);
@@ -366,14 +366,14 @@ public class Rozsypanka extends AppCompatActivity {
 
                 wprowadz.getText().clear();
 
-                btn1.setBackgroundColor(Color.parseColor("#ebfdd4"));
-                btn2.setBackgroundColor(Color.parseColor("#ebfdd4"));
-                btn3.setBackgroundColor(Color.parseColor("#ebfdd4"));
-                btn4.setBackgroundColor(Color.parseColor("#ebfdd4"));
-                btn5.setBackgroundColor(Color.parseColor("#ebfdd4"));
-                btn6.setBackgroundColor(Color.parseColor("#ebfdd4"));
-                btn7.setBackgroundColor(Color.parseColor("#ebfdd4"));
-                btn8.setBackgroundColor(Color.parseColor("#ebfdd4"));
+                btn1.setBackgroundColor(Color.parseColor("#eaeae1"));
+                btn2.setBackgroundColor(Color.parseColor("#eaeae1"));
+                btn3.setBackgroundColor(Color.parseColor("#eaeae1"));
+                btn4.setBackgroundColor(Color.parseColor("#eaeae1"));
+                btn5.setBackgroundColor(Color.parseColor("#eaeae1"));
+                btn6.setBackgroundColor(Color.parseColor("#eaeae1"));
+                btn7.setBackgroundColor(Color.parseColor("#eaeae1"));
+                btn8.setBackgroundColor(Color.parseColor("#eaeae1"));
             }
         });
 

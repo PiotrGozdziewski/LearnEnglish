@@ -59,7 +59,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
                         android:layout_marginTop="40dp"
-                        android:background="#eaeae1"
+                        android:background="@drawable/zestawy_screen"
                         android:text="Zmień login" />
                 </LinearLayout>
 
@@ -104,7 +104,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="70dp"
                         android:layout_marginLeft="40dp"
-                        android:background="#eaeae1"
+                        android:background="@drawable/zestawy_screen"
                         android:text="Zmień hasło" />
 
                 </LinearLayout>
@@ -130,7 +130,7 @@
                         android:layout_height="45dp"
                         android:layout_marginTop="90dp"
                         android:text="Usuń konto"
-                        android:background="#eaeae1"
+                        android:background="@drawable/zestawy_screen"
                         android:layout_marginLeft="15dp"/>
                 </RelativeLayout>
             </FrameLayout>

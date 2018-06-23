@@ -20,7 +20,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginEnd="15dp"
         android:layout_weight="1"
-        android:background="#eaeae1"
+        android:background="@drawable/zestawy_screen"
         android:text="Usuń fiszki" />
 
 </RelativeLayout>

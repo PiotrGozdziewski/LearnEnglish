@@ -49,7 +49,7 @@
         android:layout_below="@+id/brakujaceLitery"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="84dp"
-        android:background="#eaeae1"
+        android:background="@drawable/zestawy_screen"
         android:text="Sprawdź poprawność " />
 
     <Button
@@ -59,7 +59,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/clear"
         android:layout_marginTop="20dp"
-        android:background="#eaeae1"
+        android:background="@drawable/zestawy_screen"
         android:visibility="invisible"
         android:text="Dalej" />
 
@@ -70,7 +70,7 @@
         android:layout_alignBaseline="@+id/dalejButton"
         android:layout_alignBottom="@+id/dalejButton"
         android:layout_alignStart="@+id/dalejButton"
-        android:background="#eaeae1"
+        android:background="@drawable/zestawy_screen"
         android:visibility="gone"
         android:text="Pokaż odpowiedź" />
 
@@ -95,7 +95,7 @@
         android:layout_below="@+id/sprPoprawnoscButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
-        android:background="#eaeae1"
+        android:background="@drawable/zestawy_screen"
         android:text="Wyczyść" />
 
     <ProgressBar

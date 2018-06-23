@@ -38,6 +38,6 @@
         android:layout_below="@+id/editText20"
         android:layout_marginEnd="52dp"
         android:layout_marginTop="38dp"
-        android:background="#eaeae1"
+        android:background="@drawable/zestawy_screen"
         android:text="Edytuj" />
 </RelativeLayout>

@@ -52,6 +52,11 @@ public class Rozsypanka extends AppCompatActivity {
     Handler handler = new Handler();
     ProgressBar pb;
     int progress=0;
+
+    Random random;
+    int randomowa_wartosc=0;
+    int ilosc_do_randoma;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +82,7 @@ public class Rozsypanka extends AppCompatActivity {
         zdania_pl = new ArrayList<String>();
         słowa_ze_zdania_en = new ArrayList<String>();
 
+
         pb.setMax(4);
         pb.getProgressDrawable().setColorFilter(Color.parseColor("#10961d"), android.graphics.PorterDuff.Mode.SRC_IN);
         //pobranie id aktualnej kategorii
@@ -88,7 +94,10 @@ public class Rozsypanka extends AppCompatActivity {
             zdania_en.add(cursor.getString(3)); //pobranie zdań_en do tablicy
             zdania_pl.add(cursor.getString(2)); //pobranie zdań_pl do tablicy
         }
-        zdanie_pl.setText(zdania_pl.get(0));
+        random = new Random();
+        ilosc_do_randoma=zdania_pl.size()-1;
+        randomowa_wartosc=random.nextInt(ilosc_do_randoma);
+        zdanie_pl.setText(zdania_pl.get(randomowa_wartosc));
 
         //pobranie id wybranego zadania
         SharedPreferences p1 = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -119,6 +128,7 @@ public class Rozsypanka extends AppCompatActivity {
                 clear.setVisibility(View.VISIBLE);
                 progress++;
                 pb.setProgress(progress);
+
                 if(ilość_iteracji==5)
                 {
                     zapisz_statytyski();
@@ -133,7 +143,7 @@ public class Rozsypanka extends AppCompatActivity {
                 btn7.setBackgroundColor(Color.parseColor("#eaeae1"));
                 btn8.setBackgroundColor(Color.parseColor("#eaeae1"));
                 sprawdź.setText("Sprawdź");
-                sprawdź.setBackgroundColor(Color.parseColor("#eaeae1"));
+                sprawdź.setBackgroundResource(R.drawable.zestawy_screen);
                 wprowadz.setText("");
                 btn1.setVisibility(View.INVISIBLE);
                 btn2.setVisibility(View.INVISIBLE);
@@ -143,6 +153,9 @@ public class Rozsypanka extends AppCompatActivity {
                 btn6.setVisibility(View.INVISIBLE);
                 btn7.setVisibility(View.INVISIBLE);
                 btn8.setVisibility(View.INVISIBLE);
+                random = new Random();
+                ilosc_do_randoma=zdania_pl.size()-1;
+                randomowa_wartosc=random.nextInt(ilosc_do_randoma);
                 uzupelnij();
                 dalej.setVisibility(View.INVISIBLE);
                 sprawdź.setClickable(true);
@@ -317,7 +330,7 @@ public class Rozsypanka extends AppCompatActivity {
             public void onClick(View v) {
 
                 String napisane_zdanie = wprowadz.getText().toString();
-                String zdanie_z_bazy = zdania_en.get(ilość_iteracji).toString();
+                String zdanie_z_bazy = zdania_en.get(randomowa_wartosc).toString();
                 if (napisane_zdanie.toString().equals(zdanie_z_bazy.toString())) {
                     odpowiedz.setVisibility(View.INVISIBLE);
                     clear.setVisibility(View.INVISIBLE);
@@ -338,7 +351,7 @@ public class Rozsypanka extends AppCompatActivity {
                         @Override
                         public void run() {
                             sprawdź.setText("Sprawdź");
-                            sprawdź.setBackgroundColor(Color.parseColor("#eaeae1"));
+                            sprawdź.setBackgroundResource(R.drawable.zestawy_screen);
                             sprawdź.setClickable(true);
                         }
                     }, 3000);
@@ -382,7 +395,7 @@ public class Rozsypanka extends AppCompatActivity {
             public void onClick(View view) {
                 AlertDialog alertDialog = new AlertDialog.Builder(Rozsypanka.this).create();
                 alertDialog.setTitle("Poprawna odpowiedz");
-                alertDialog.setMessage(zdania_en.get(ilość_iteracji).toString());
+                alertDialog.setMessage(zdania_en.get(randomowa_wartosc).toString());
                 alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
@@ -402,6 +415,7 @@ public class Rozsypanka extends AppCompatActivity {
         //utworzenie randoma do wartości do długości listy słowa_ze_zdanie_en
         int rozmiar = 0;
         Random r = new Random();
+
         int index1, index2, index3, index4, index5, index6, index7, index8 = 0;
         btn1.setClickable(true);
         btn2.setClickable(true);
@@ -413,8 +427,9 @@ public class Rozsypanka extends AppCompatActivity {
         btn8.setClickable(true);
         if (ilość_iteracji <= 15) {
             //if (ilość_iteracji <= zdania_en.size()) {
-            zdanie_pl.setText(zdania_pl.get(ilość_iteracji));
-            słowa_ze_zdania_en = pobierzSłowa(zdania_en.get(ilość_iteracji));
+            zdanie_pl.setText(zdania_pl.get(randomowa_wartosc));
+//            zdanie_pl.setText(zdania_pl.get(ilość_iteracji));
+            słowa_ze_zdania_en = pobierzSłowa(zdania_en.get(randomowa_wartosc));
             rozmiar = słowa_ze_zdania_en.size();
             ilość_słów_w_zdaniu = słowa_ze_zdania_en.size();
             //przypisywanie słów do buttonów

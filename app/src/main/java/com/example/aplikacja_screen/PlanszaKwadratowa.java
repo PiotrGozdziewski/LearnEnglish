@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.Database.Database;
@@ -56,6 +57,8 @@ public class PlanszaKwadratowa extends AppCompatActivity {
     Handler handler = new Handler();
     Handler handler1 = new Handler();
     static int i=0;
+    static int progress=0;
+    ProgressBar pb;
 
     public void ustawWartosci() {
         do {
@@ -128,6 +131,10 @@ public class PlanszaKwadratowa extends AppCompatActivity {
         //następny ekran
         dalej.setVisibility(View.INVISIBLE);
 
+        pb = (ProgressBar)findViewById(R.id.pb);
+        pb.setMax(5);
+        pb.getProgressDrawable().setColorFilter(Color.parseColor("#10961d"), android.graphics.PorterDuff.Mode.SRC_IN);
+
         //pobranie id Kategorii
         SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         int idKategorii = p.getInt("idKategorii", 0);
@@ -136,7 +143,7 @@ public class PlanszaKwadratowa extends AppCompatActivity {
             pl.add(cursor.getString(2));
             en.add(cursor.getString(3));
         }
-
+        pb.setProgress(progress);
         if(i<=4)
         {
             dalej.setText("Dalej");
@@ -3748,19 +3755,25 @@ public class PlanszaKwadratowa extends AppCompatActivity {
         dalej.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 if(i==5){
                     startActivity(new Intent(PlanszaKwadratowa.this,WyborKategorii.class));
                     handler1.postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             i=0;
+                            progress=0;
                         }
                     }, 300);
                 }
                 if(i<=4) {
                     startActivity(new Intent(PlanszaKwadratowa.this, PlanszaKwadratowa.class));
                 }
-                i++; }
+                i++;
+                progress++;
+                pb.setProgress(progress);
+            }
         });
     }
 
@@ -3773,6 +3786,9 @@ public class PlanszaKwadratowa extends AppCompatActivity {
         }
     }
     public void onBackPressed() {
+        i=0;
+        progress=0;
         startActivity(new Intent(PlanszaKwadratowa.this, WyborKategorii.class));
+
     }
 }

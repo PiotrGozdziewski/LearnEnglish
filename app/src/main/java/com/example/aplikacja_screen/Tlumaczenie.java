@@ -141,7 +141,7 @@ public class Tlumaczenie extends AppCompatActivity {
                                     });
                             alertDialog.show();
                             sprawdz_poprawnosc.setText("Sprawdź poprawność");
-                            sprawdz_poprawnosc.setBackgroundColor(Color.parseColor("#eaeae1"));
+                            sprawdz_poprawnosc.setBackgroundResource(R.drawable.zestawy_screen);
                         }
                     });
 
@@ -152,7 +152,7 @@ public class Tlumaczenie extends AppCompatActivity {
                             //podpowiedzButton.setVisibility(View.VISIBLE);
                             sprawdz_poprawnosc.setVisibility(View.VISIBLE);
                             sprawdz_poprawnosc.setClickable(true);
-                            sprawdz_poprawnosc.setBackgroundColor(Color.parseColor("#eaeae1"));
+                            sprawdz_poprawnosc.setBackgroundResource(R.drawable.zestawy_screen);
                         }
                     }, 3000);
                 }
@@ -176,7 +176,7 @@ public class Tlumaczenie extends AppCompatActivity {
                 en.setText("");
                 sprawdz_poprawnosc.setClickable(true);
                 sprawdz_poprawnosc.setText("Sprawdź poprawność");
-                sprawdz_poprawnosc.setBackgroundColor(Color.parseColor("#eaeae1"));
+                sprawdz_poprawnosc.setBackgroundResource(R.drawable.zestawy_screen);
                 i++;
                 bledna = false;
                 dalej.setVisibility(View.INVISIBLE);

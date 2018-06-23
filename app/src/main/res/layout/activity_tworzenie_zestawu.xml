@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="26dp"
         android:text="UTWÓRZ ZESTAW"
-        android:background="#eaeae1"
+        android:background="@drawable/zestawy_screen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText2" />

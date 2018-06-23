@@ -183,7 +183,7 @@ public class Dopasowanie extends AppCompatActivity {
                         @Override
                         public void run() {
                             sprawdz.setText("Sprawdź");
-                            sprawdz.setBackgroundColor(Color.parseColor("#eaeae1"));
+                            sprawdz.setBackgroundResource(R.drawable.zestawy_screen);
                         }
                     }, 3000);
                     bledne++;
@@ -202,7 +202,7 @@ public class Dopasowanie extends AppCompatActivity {
                 sp2.setEnabled(true);
                 sp3.setEnabled(true);
                 sp4.setEnabled(true);
-                sprawdz.setBackgroundColor(Color.parseColor("#eaeae1"));
+                sprawdz.setBackgroundResource(R.drawable.zestawy_screen);
                 r1.setBackgroundColor(Color.parseColor("#eaeae1"));
                 r2.setBackgroundColor(Color.parseColor("#eaeae1"));
                 r3.setBackgroundColor(Color.parseColor("#eaeae1"));

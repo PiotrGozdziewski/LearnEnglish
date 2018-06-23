@@ -117,6 +117,7 @@ public class Wybor extends AppCompatActivity {
         b3.setText(en.get(random_en2).toString());
         b4.setText(en.get(random_en3).toString());
         nastepne_slowo.setClickable(false);
+
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,6 +126,7 @@ public class Wybor extends AppCompatActivity {
                 index_pl = pl.indexOf(slowo.getText().toString());
                 if (index_en == index_pl) {
                     nastepne_slowo.setClickable(true);
+                    nastepne_slowo.setEnabled(true);
                     poprawna1=true;
                     b1.setBackgroundResource(R.drawable.zielony_gradient);
                     poprawne_odp++;
@@ -153,7 +155,7 @@ public class Wybor extends AppCompatActivity {
                             b3.setClickable(true);
                             b4.setClickable(true);
                         }
-                    }, 2000);
+                    }, 1200);
                 }
             }
         });
@@ -166,6 +168,7 @@ public class Wybor extends AppCompatActivity {
                 index_pl = pl.indexOf(slowo.getText().toString());
                 if (index_en == index_pl) {
                     nastepne_slowo.setClickable(true);
+                    nastepne_slowo.setEnabled(true);
                     poprawna2=true;
                     b2.setBackgroundResource(R.drawable.zielony_gradient);
                     poprawne_odp++;
@@ -193,7 +196,7 @@ public class Wybor extends AppCompatActivity {
                             b3.setClickable(true);
                             b4.setClickable(true);
                         }
-                    }, 2000);
+                    }, 1200);
                 }
             }
         });
@@ -206,6 +209,7 @@ public class Wybor extends AppCompatActivity {
                 index_pl = pl.indexOf(slowo.getText().toString());
                 if (index_en == index_pl) {
                     nastepne_slowo.setClickable(true);
+                    nastepne_slowo.setEnabled(true);
                     poprawna3=true;
                     b3.setBackgroundResource(R.drawable.zielony_gradient);
                     poprawne_odp++;
@@ -233,7 +237,7 @@ public class Wybor extends AppCompatActivity {
                             b3.setClickable(true);
                             b4.setClickable(true);
                         }
-                    }, 2000);
+                    }, 1200);
                 }
             }
         });
@@ -246,6 +250,7 @@ public class Wybor extends AppCompatActivity {
                 index_pl = pl.indexOf(slowo.getText().toString());
                 if (index_en == index_pl) {
                     nastepne_slowo.setClickable(true);
+                    nastepne_slowo.setEnabled(true);
                     poprawna4=true;
                     poprawne_odp++;
                     b4.setBackgroundResource(R.drawable.zielony_gradient);
@@ -273,7 +278,7 @@ public class Wybor extends AppCompatActivity {
                             b3.setClickable(true);
                             b4.setClickable(true);
                         }
-                    }, 2000);
+                    }, 1200);
                 }
             }
         });

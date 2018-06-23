@@ -33,9 +33,11 @@
         android:id="@+id/button39"
         android:layout_width="150dp"
         android:layout_height="40dp"
-        android:background="#eaeae1"
+        android:background="@drawable/zestawy_screen"
         android:layout_alignStart="@+id/button14"
         android:layout_below="@+id/button42"
+        android:clickable="false"
+        android:enabled="false"
         android:layout_marginTop="70dp"
         android:text="Dalej" />
 

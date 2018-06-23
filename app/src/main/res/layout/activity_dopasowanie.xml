@@ -121,7 +121,7 @@
         android:layout_above="@+id/button33"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"
-        android:background="#eaeae1"
+        android:background="@drawable/zestawy_screen"
         android:text="Sprawdź" />
 
     <Button
@@ -131,7 +131,7 @@
         android:layout_alignEnd="@+id/button32"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="47dp"
-        android:background="#eaeae1"
+        android:background="@drawable/zestawy_screen"
         android:text="Dalej" />
 
     <ProgressBar

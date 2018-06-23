@@ -242,7 +242,7 @@ public class Uzupelnianie extends AppCompatActivity {
                                     });
                             alertDialog.show();
                             sprawdzPoprawnoscButton.setText("Sprawdź poprawność");
-                            sprawdzPoprawnoscButton.setBackgroundColor(Color.parseColor("#eaeae1"));
+                            sprawdzPoprawnoscButton.setBackgroundResource(R.drawable.zestawy_screen);
                         }
                     });
 
@@ -253,7 +253,7 @@ public class Uzupelnianie extends AppCompatActivity {
                             //podpowiedzButton.setVisibility(View.VISIBLE);
                             sprawdzPoprawnoscButton.setVisibility(View.VISIBLE);
                             sprawdzPoprawnoscButton.setClickable(true);
-                            sprawdzPoprawnoscButton.setBackgroundColor(Color.parseColor("#eaeae1"));
+                            sprawdzPoprawnoscButton.setBackgroundResource(R.drawable.zestawy_screen);
                         }
                     }, 3000);
                 }
@@ -275,7 +275,7 @@ public class Uzupelnianie extends AppCompatActivity {
                 brakujaceLiteryET.setText("");
                 sprawdzPoprawnoscButton.setClickable(true);
                 sprawdzPoprawnoscButton.setText("Sprawdź poprawność");
-                sprawdzPoprawnoscButton.setBackgroundColor(Color.parseColor("#eaeae1"));
+                sprawdzPoprawnoscButton.setBackgroundResource(R.drawable.zestawy_screen);
                 i++;
                 bledna = false;
                 dalejButton.setVisibility(View.INVISIBLE);

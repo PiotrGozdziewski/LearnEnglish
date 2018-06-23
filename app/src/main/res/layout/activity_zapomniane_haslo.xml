@@ -35,7 +35,7 @@
         android:layout_alignStart="@+id/editText"
         android:layout_below="@+id/editText"
         android:layout_marginTop="12dp"
-        android:background="#eaeae1"
+        android:background="@drawable/zestawy_screen"
         android:text="Odzyskaj hasło" />
 
     <TextView
@@ -68,6 +68,6 @@
         android:layout_below="@+id/editText3"
         android:layout_marginTop="9dp"
         android:visibility="invisible"
-        android:background="#eaeae1"
+        android:background="@drawable/zestawy_screen"
         android:text="SPRAWDŹ ODPOWIEDŹ" />
 </RelativeLayout>
